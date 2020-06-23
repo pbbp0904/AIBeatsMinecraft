@@ -1,16 +1,42 @@
 import java.awt.*;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+
 
 public class Typer {
 
+    Robot robot = new Robot();
+
+    public Typer() throws AWTException {
+    }
+
     public void type(String text) throws InterruptedException, AWTException {
-        Robot robot = new Robot();
         for(int i = 0; i < text.length(); i++){
             Thread.sleep(2);
             pressKey(robot, text.charAt(i));
         }
     }
-    private void pressKey(Robot robot, char c){
+
+    public void leftClick(){
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+    }
+
+    public void rightClick(){
+        robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
+        robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+    }
+
+    public void holdShift(){
+        robot.keyPress(KeyEvent.VK_SHIFT);
+    }
+
+    public void releaseShift(){
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+    }
+
+    public void pressKey(Robot robot, char c){
         switch(c) {
             case 'a':
                 robot.keyPress(KeyEvent.VK_A);

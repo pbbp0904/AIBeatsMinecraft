@@ -6,21 +6,135 @@ import java.io.*;
 
 public class Crafter {
 
-    public void craft(String item) throws AWTException, InterruptedException, IOException {
+    Typer typer = new Typer();
+    MouseMover mm = new MouseMover();
+    BufferedImage screen;
+    BufferedImage img;
+    int[] coords;
+    int shortSleepTime = 40;
+    int longSleepTime = 100;
+    static int searchSpacing = 5;
+    int[] handCraftSlot1 = new int[]{1015,360};
+    int[] handCraftSlot2 = new int[]{1067,360};
+    int[] handCraftSlot3 = new int[]{1067,413};
+    int[] handCraftSlot4 = new int[]{1015,413};
+    int[] handCraftSlotRes = new int[]{1189,390};
+
+
+    public Crafter() throws AWTException {
+    }
+
+    public void craft(String item, int number) throws AWTException, InterruptedException, IOException {
         switch (item) {
             case "wooden_planks":
-                Typer typer = new Typer();
+                // Open inventory
                 typer.type("e");
-                Thread.sleep(100);
-                BufferedImage screen = screenShot();
-                BufferedImage img = getImage("C:\\Users\\chris\\IdeaProjects\\AIBeatsMinecraft\\src\\Item_Images\\Log1.JPG");
-                ImageIO.write(screen, "jpg", new File("lol.jpg"));
-                int[] coords = findSubImage(screen, img);
-                System.out.println(coords[0]);
-                System.out.println(coords[1]);
-                MouseMover mm = new MouseMover();
+                Thread.sleep(longSleepTime);
+                // Take a screenshot
+                screen = screenShot();
+                // Grab relevant image
+                img = getImage("C:\\Users\\chris\\IdeaProjects\\AIBeatsMinecraft\\src\\Item_Images\\Log1.JPG");
+                // Find image in screenshot
+                coords = findSubImage(screen, img);
+                // Pick up items
                 mm.moveMouse(coords);
+                Thread.sleep(shortSleepTime);
+                typer.leftClick();
+                Thread.sleep(shortSleepTime);
+                // Move mouse to craft
+                mm.moveMouse(handCraftSlot1);
+                Thread.sleep(shortSleepTime);
+                // Place the correct number of items
+                for(int i = 0;i<number;i++){
+                    typer.rightClick();
+                }
+                Thread.sleep(shortSleepTime);
+                // Place item back in original slot
+                mm.moveMouse(coords);
+                Thread.sleep(shortSleepTime);
+                typer.leftClick();
+                Thread.sleep(shortSleepTime);
+                // Get resultant item
+                mm.moveMouse(handCraftSlotRes);
+                Thread.sleep(shortSleepTime);
+                typer.holdShift();
+                Thread.sleep(shortSleepTime);
+                typer.leftClick();
+                typer.releaseShift();
+                Thread.sleep(shortSleepTime);
+                // Close inventory
+                typer.type("e");
+                Thread.sleep(longSleepTime);
+                break;
 
+
+
+
+            case "crafting_table":
+                // Open inventory
+                typer.type("e");
+                Thread.sleep(longSleepTime);
+                // Take a screenshot
+                screen = screenShot();
+                // Grab relevant image
+                img = getImage("C:\\Users\\chris\\IdeaProjects\\AIBeatsMinecraft\\src\\Item_Images\\Wood1.JPG");
+                // Find image in screenshot
+                coords = findSubImage(screen, img);
+                // Pick up items
+                mm.moveMouse(coords);
+                Thread.sleep(shortSleepTime);
+                typer.leftClick();
+                Thread.sleep(shortSleepTime);
+
+                // Move mouse to craft
+                mm.moveMouse(handCraftSlot1);
+                Thread.sleep(shortSleepTime);
+                // Place the correct number of items
+                for(int i = 0;i<number;i++){
+                    typer.rightClick();
+                }
+                Thread.sleep(shortSleepTime);
+                // Move mouse to craft
+                mm.moveMouse(handCraftSlot2);
+                Thread.sleep(shortSleepTime);
+                // Place the correct number of items
+                for(int i = 0;i<number;i++){
+                    typer.rightClick();
+                }
+                Thread.sleep(shortSleepTime);
+                // Move mouse to craft
+                mm.moveMouse(handCraftSlot3);
+                Thread.sleep(shortSleepTime);
+                // Place the correct number of items
+                for(int i = 0;i<number;i++){
+                    typer.rightClick();
+                }
+                Thread.sleep(shortSleepTime);
+                // Move mouse to craft
+                mm.moveMouse(handCraftSlot4);
+                Thread.sleep(shortSleepTime);
+                // Place the correct number of items
+                for(int i = 0;i<number;i++){
+                    typer.rightClick();
+                }
+                Thread.sleep(shortSleepTime);
+
+                // Place item back in original slot
+                mm.moveMouse(coords);
+                Thread.sleep(shortSleepTime);
+                typer.leftClick();
+                Thread.sleep(shortSleepTime);
+                // Get resultant item
+                mm.moveMouse(handCraftSlotRes);
+                Thread.sleep(shortSleepTime);
+                typer.holdShift();
+                Thread.sleep(shortSleepTime);
+                typer.leftClick();
+                typer.releaseShift();
+                Thread.sleep(shortSleepTime);
+                // Close inventory
+                typer.type("e");
+                Thread.sleep(longSleepTime);
                 break;
         }
     }
@@ -58,8 +172,8 @@ public class Crafter {
         int bestY = 0;
         double lowestDiff = Double.POSITIVE_INFINITY;
         // brute-force search through whole image (slow...)
-        for (int x = 0; x < w1 - w2; x++) {
-            for (int y = 0; y < h1 - h2; y++) {
+        for (int x = 0; x < w1 - w2; x=x+searchSpacing) {
+            for (int y = 0; y < h1 - h2; y=y+searchSpacing) {
                 double comp = compareImages(im1.getSubimage(x, y, w2, h2), im2);
                 if (comp < lowestDiff) {
                     bestX = x;
@@ -69,7 +183,7 @@ public class Crafter {
             }
         }
         // output similarity measure from 0 to 1, with 0 being identical
-        System.out.println(lowestDiff);
+        //System.out.println(lowestDiff);
         // return best location
         return new int[]{bestX+700, bestY+500};
     }
