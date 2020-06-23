@@ -7,7 +7,7 @@ import com.sun.jna.platform.*;
 
 public class Looker {
 
-    static int searchSpacing = 5;
+    static int searchSpacing = 3;
 
     public Rectangle getMinecraftWindow(){
         Rectangle rect = null;
@@ -17,6 +17,16 @@ public class Looker {
             }
         }
         return rect;
+    }
+
+
+    public boolean foundImageOnScreen(String pathname, Rectangle screenRect, double threshold, int scale) throws AWTException {
+        BufferedImage screenImg = screenShot(screenRect);
+        String filePath = new File(pathname).getAbsolutePath();
+        BufferedImage img = getImage(filePath);
+        double diff = findSubImageDiff(screenImg, img, screenRect);
+        System.out.println(diff);
+        return diff < threshold;
     }
 
 
@@ -75,6 +85,36 @@ public class Looker {
         // return best location
         return new int[]{bestX + screenRect.x, bestY + screenRect.y};
     }
+
+
+    public static double findSubImageDiff(BufferedImage im1, BufferedImage im2, Rectangle screenRect) {
+        int w1 = im1.getWidth();
+        int h1 = im1.getHeight();
+        int w2 = im2.getWidth();
+        int h2 = im2.getHeight();
+        assert (w2 <= w1 && h2 <= h1);
+        // will keep track of best position found
+        int bestX = 0;
+        int bestY = 0;
+        double lowestDiff = Double.POSITIVE_INFINITY;
+        // brute-force search through whole image (slow...)
+        for (int x = 0; x < w1 - w2; x = x + searchSpacing) {
+            for (int y = 0; y < h1 - h2; y = y + searchSpacing) {
+                double comp = compareImages(im1.getSubimage(x, y, w2, h2), im2);
+                if (comp < lowestDiff) {
+                    bestX = x;
+                    bestY = y;
+                    lowestDiff = comp;
+                }
+            }
+        }
+        // output similarity measure from 0 to 1, with 0 being identical
+        return lowestDiff;
+    }
+
+
+
+
 
     /**
      * Determines how different two identically sized regions are.
