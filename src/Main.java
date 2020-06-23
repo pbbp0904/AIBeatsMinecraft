@@ -10,8 +10,11 @@ public class Main {
         //typer.type("hello");
         Thread.sleep(5000);
         Crafter crafter = new Crafter();
-        crafter.craft("wooden_planks", 4);
+        crafter.craft("wooden_plank", 4);
         Thread.sleep(50);
-        crafter.craft("crafting_table", 4);
+        crafter.craft("crafting_table", 1);
+        Thread.sleep(50);
+        crafter.craft("stick", 4);
+
     }
 }

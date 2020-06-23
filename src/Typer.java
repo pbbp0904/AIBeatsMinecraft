@@ -11,29 +11,40 @@ public class Typer {
     public Typer() throws AWTException {
     }
 
-    public void type(String text) throws InterruptedException, AWTException {
+    public void type(String text, int sleepShort, int sleepLong) throws InterruptedException, AWTException {
         for(int i = 0; i < text.length(); i++){
-            Thread.sleep(2);
+            Thread.sleep(sleepShort);
             pressKey(robot, text.charAt(i));
         }
+        Thread.sleep(sleepLong);
     }
 
-    public void leftClick(){
+    public void leftClick(int sleepTime) throws InterruptedException {
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(sleepTime);
     }
 
-    public void rightClick(){
+    public void rightClick(int sleepTime) throws InterruptedException {
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+        Thread.sleep(sleepTime);
     }
 
-    public void holdShift(){
+    public void holdShift(int sleepTime) throws InterruptedException {
         robot.keyPress(KeyEvent.VK_SHIFT);
+        Thread.sleep(sleepTime);
     }
 
-    public void releaseShift(){
+    public void releaseShift(int sleepTime) throws InterruptedException {
         robot.keyRelease(KeyEvent.VK_SHIFT);
+        Thread.sleep(sleepTime);
+    }
+
+    public void pressEnter(int sleepTime) throws InterruptedException {
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+        Thread.sleep(sleepTime);
     }
 
     public void pressKey(Robot robot, char c){
