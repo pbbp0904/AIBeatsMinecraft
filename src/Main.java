@@ -8,7 +8,13 @@ public class Main {
         System.out.println("Hello world!");
         Typer typer = new Typer();
         //typer.type("hello");
+
+        Looker looker = new Looker();
+        Rectangle window = looker.getMinecraftWindow();
+        System.out.println(window);
         Thread.sleep(5000);
+
+        /*
         Inventory inventory = new Inventory();
         Crafter crafter = new Crafter();
         crafter.craft("wooden_plank", 4);
@@ -17,5 +23,6 @@ public class Main {
         Thread.sleep(50);
         crafter.craft("stick", 4);
 
+         */
     }
 }

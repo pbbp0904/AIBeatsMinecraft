@@ -3,21 +3,19 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import com.sun.jna.*;
+import com.sun.jna.platform.*;
 
 public class Looker {
 
     static int searchSpacing = 5;
 
     public Rectangle getMinecraftWindow(){
-/*        Rectangle rect = null;
+        Rectangle rect = null;
         for (DesktopWindow desktopWindow : WindowUtils.getAllWindows(true)){
-            if (desktopWindow.getTitle().contains("Minecraft")){
+            if (desktopWindow.getTitle().contains("Minecraft*")){
                 rect = desktopWindow.getLocAndSize();
             }
         }
-        return rect;*/
-        Rectangle rect = null;
         return rect;
     }
 
