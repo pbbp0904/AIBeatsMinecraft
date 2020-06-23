@@ -30,4 +30,36 @@ public class Inventory {
             backpack = newBP;
         }
     }
+
+    public int[] findInBackpack(String item) {
+        int i, j;
+        i = j = 0;
+        for(String[] row : backpack){
+
+            for(String col : row){
+                if(col.equals(item)){
+                    return new int[]{i, j};
+                }
+                else{
+                    j++;
+                }
+            }
+            i++;
+            j = 0;
+        }
+        return null;
+    }
+
+    public int findInHotbar(String item) {
+        int i = 0;
+        for(String col : hotbar){
+            if(col.equals(item)){
+                    return i;
+            }
+            else{
+                i++;
+            }
+        }
+        return -1;
+    }
 }
