@@ -9,6 +9,7 @@ public class Main {
 
         System.out.println("Hello world!");
         Typer typer = new Typer();
+        Inventory inventory = new Inventory(typer);
         Thread.sleep(5000);
         typer.type(".b mine 20 oak_log",10,50);
         typer.pressEnter(1000);
