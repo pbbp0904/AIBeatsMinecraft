@@ -18,6 +18,7 @@ public class Main {
             Thread.sleep(10);
         }
         System.out.println("TRIGGERED!");
+
         Crafter crafter = new Crafter();
         crafter.craft("wooden_plank", 4);
         Thread.sleep(50);
@@ -32,6 +33,11 @@ public class Main {
         typer.type(".b mine 14 stone",10,50);
         typer.pressEnter(10);
 
+        while(!look.foundImageOnScreen("src\\Checkpoint_Images\\Stone_Checkpoint.jpg",screenRect,0.1,1)){
+            Thread.sleep(10);
+        }
+        System.out.println("TRIGGERED!");
+        typer.type(".b goto crafting_table",10,50);
 
     }
 }
