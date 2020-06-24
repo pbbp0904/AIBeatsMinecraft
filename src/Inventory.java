@@ -2,11 +2,13 @@ import java.awt.*;
 
 public class Inventory {
 
-    InvSlot[][] backpack = new InvSlot[3][9];
-    InvSlot[] hotbar = new InvSlot[9];
+    private InvSlot[][] backpack;
+    private InvSlot[] hotbar;
 
     public Inventory(Typer typer) {
         int size = getInvSize(typer);
+        backpack = new InvSlot[3][9];
+        hotbar = new InvSlot[9];
 
     }
 
@@ -46,7 +48,6 @@ public class Inventory {
         int i, j;
         i = j = 0;
         for(InvSlot[] row : backpack){
-
             for(InvSlot col : row){
                 if(col.getItem().equals(item)){
                     return new int[]{i, j};
@@ -72,5 +73,34 @@ public class Inventory {
             }
         }
         return -1;
+    }
+
+    public InvSlot shiftClickLoc(String item) {
+        int i = 8;
+        while(i >= 0){
+            if(hotbar[i].isEmpty()) {
+                hotbar[i].setItem(item);
+                return hotbar[i];
+            }
+            else {
+                i--;
+            }
+        }
+        i = 8;
+        int j = 2;
+        while (j >= 0) {
+            while (i >= 0) {
+                if(backpack[j][i].isEmpty()) {
+                    backpack[j][i].setItem(item);
+                    return backpack[j][i];
+                }
+                else {
+                    i--;
+                }
+            }
+            j--;
+        }
+
+        return null;
     }
 }
