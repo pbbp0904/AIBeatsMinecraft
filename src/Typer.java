@@ -19,6 +19,11 @@ public class Typer {
         Thread.sleep(sleepLong);
     }
 
+    public void command(String text, int sleepShort, int sleepLong) throws AWTException, InterruptedException {
+        type(text,sleepShort,sleepLong);
+        pressEnter(sleepLong);
+    }
+
     public void holdS(int sleepTime) throws InterruptedException {
         robot.keyPress(KeyEvent.VK_S);
         Thread.sleep(sleepTime);
