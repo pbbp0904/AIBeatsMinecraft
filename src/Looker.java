@@ -98,6 +98,19 @@ public class Looker {
         }
     }
 
+
+    public void waitUntilSmeltingDown() throws AWTException, InterruptedException {
+        boolean imagesEqual = false;
+        BufferedImage screenImg1;
+        BufferedImage screenImg2;
+        while(!imagesEqual) {
+            screenImg1 = screenShot(furnaceProgressScreenRect);
+            Thread.sleep(waiter.getStationaryWaitTime());
+            screenImg2 = screenShot(furnaceProgressScreenRect);
+            imagesEqual = bufferedImagesEqual(screenImg1,screenImg2);
+        }
+    }
+
     boolean bufferedImagesEqual(BufferedImage img1, BufferedImage img2) {
         if (img1.getWidth() == img2.getWidth() && img1.getHeight() == img2.getHeight()) {
             for (int x = 0; x < img1.getWidth(); x++) {

@@ -59,22 +59,18 @@ public class Main {
         this.filer.incrementRunCounter();
         // START
         System.out.println("Starting Run!");
-        typer.type("/clear",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
-        typer.type("/time set 0",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
-        typer.type("/weather clear 10000",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
+        typer.command("/clear",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/time set 0",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/weather clear 10000",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        //        while(!looker.foundImageOnScreen("src\\Checkpoint_Images\\Crafting_Table.jpg",craftingScreenRect,0.15,1)){
+        //            Thread.sleep(waiter.getShortSleepTime());
+        //        }
     }
 
     public static void woodGather(Looker looker, Typer typer, Crafter crafter, Waiter waiter) throws IOException, InterruptedException, AWTException {
         System.out.println("Mining logs.");
-        typer.type(".b mine 8 oak_log",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
+        typer.command(".b mine 8 oak_log",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         looker.waitUntilStationary();
-//        while(!looker.foundImageOnScreen("src\\Checkpoint_Images\\Log_Checkpoint_4.jpg",hotbarScreenRect,0.12,1)){
-//            Thread.sleep(waiter.getShortSleepTime());
-//        }
         System.out.println("We now have enough logs!");
 
         System.out.println("Crafting wooden items.");
@@ -85,14 +81,11 @@ public class Main {
         crafter.craft("stick", 4);
 
         System.out.println("Placing crafting table.");
-        typer.type(".b goto grass",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
+        typer.command(".b goto grass",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         looker.lookDown();
         looker.waitUntilStationary();
-        typer.type(".b goal ~ ~-1 ~",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
-        typer.type(".b path",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
+        typer.command(".b goal ~ ~-1 ~",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command(".b path",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         looker.waitUntilStationary();
         typer.type("8",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         looker.lookDown();
@@ -109,20 +102,12 @@ public class Main {
 
     public static void stoneGather(Looker looker, Typer typer, Crafter crafter, MouseMover mm, Waiter waiter) throws IOException, InterruptedException, AWTException {
         System.out.println("Mining stone.");
-        typer.type(".b mine 16 stone",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
-//        while(!looker.foundImageOnScreen("src\\Checkpoint_Images\\Stone_Checkpoint.jpg",hotbarScreenRect,0.12,1)){
-//            Thread.sleep(waiter.getShortSleepTime());
-//        }
+        typer.command(".b mine 16 stone",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         looker.waitUntilStationary();
         System.out.println("We now have enough stone!");
 
         System.out.println("Going to crafting table.");
-        typer.type(".b goto crafting_table",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
-//        while(!looker.foundImageOnScreen("src\\Checkpoint_Images\\Crafting_Table.jpg",craftingScreenRect,0.15,1)){
-//            Thread.sleep(waiter.getShortSleepTime());
-//        }
+        typer.command(".b goto crafting_table",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         looker.waitUntilStationary();
         System.out.println("In crafting table!");
 
@@ -130,22 +115,17 @@ public class Main {
         crafter.craft("stone_tools",1);
 
         System.out.println("Mining a little grass...");
-        typer.type(".b mine grass",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
+        typer.command(".b mine grass",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         Thread.sleep(6000);
-        typer.type(".b cancel",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
+        typer.command(".b cancel",waiter.getShortSleepTime(),waiter.getLongSleepTime());
 
         System.out.println("Placing furnace.");
-        typer.type(".b goto grass",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
+        typer.command(".b goto grass",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         looker.waitUntilStationary();
-        typer.type(".b goal ~ ~-1 ~",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
-        typer.type(".b path",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
+        typer.command(".b goal ~ ~-1 ~",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command(".b path",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         looker.waitUntilStationary();
-        typer.type("e",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("e",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         Thread.sleep(waiter.getLongSleepTime());
         mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\Furnace.jpg",looker.getInventoryScreenRect()),waiter.getLongSleepTime());
         typer.type("1",waiter.getShortSleepTime(),waiter.getLongSleepTime());
@@ -162,59 +142,39 @@ public class Main {
         typer.releaseRightClick(waiter.getShortSleepTime());
         typer.type("e",waiter.getShortSleepTime(),waiter.getLongSleepTime());
 
-
     }
 
 
     public static void ironGather(Looker looker, Typer typer, Crafter crafter, Waiter waiter) throws InterruptedException, AWTException {
         System.out.println("Mining iron ore.");
-        typer.type(".b mine 30 iron_ore",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
+        typer.command(".b mine 30 iron_ore",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         looker.waitUntilStationary();
-//        while(!looker.foundImageOnScreen("src\\Checkpoint_Images\\Iron_Ore_Checkpoint.jpg",inventoryScreenRect,0.15,1)){
-//            Thread.sleep(waiter.getShortSleepTime());
-//        }
         System.out.println("We now have enough iron_ore!");
 
         System.out.println("Mining coal.");
-        typer.type(".b mine 8 coal_ore",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
+        typer.command(".b mine 8 coal_ore",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         looker.waitUntilStationary();
-//        while(!looker.foundImageOnScreen("src\\Checkpoint_Images\\Iron_Ore_Checkpoint.jpg",inventoryScreenRect,0.15,1)){
-//            Thread.sleep(waiter.getShortSleepTime());
-//        }
         System.out.println("We now have enough coal!");
 
         System.out.println("Going to furnace.");
-        typer.type(".b goto furnace",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
-//        while(!looker.foundImageOnScreen("src\\Checkpoint_Images\\Crafting_Table.jpg",craftingScreenRect,0.15,1)){
-//            Thread.sleep(waiter.getShortSleepTime());
-//        }
+        typer.command(".b goto furnace",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         looker.waitUntilStationary();
         System.out.println("In furnace!");
 
         crafter.smelt("iron",30);
 
         System.out.println("Mining gravel.");
-        typer.type(".b mine 20 gravel",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
+        typer.command(".b mine 20 gravel",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         looker.waitUntilStationary();
         System.out.println("We now have enough gravel!");
 
         System.out.println("Going to furnace.");
-        typer.type(".b goto furnace",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.pressEnter(waiter.getLongSleepTime());
-//        while(!looker.foundImageOnScreen("src\\Checkpoint_Images\\Crafting_Table.jpg",craftingScreenRect,0.15,1)){
-//            Thread.sleep(waiter.getShortSleepTime());
-//        }
+        typer.command(".b goto furnace",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         looker.waitUntilStationary();
         System.out.println("In furnace!");
 
-        looker.waitUntilStationary();
+        looker.waitUntilSmeltingDown();
         crafter.getSmelt();
 
-
     }
-
 }
