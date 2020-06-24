@@ -12,8 +12,8 @@ public class Crafter {
     BufferedImage screen;
     BufferedImage img;
     int[] coords;
-    int shortSleepTime = 10;
-    int longSleepTime = 50;
+    int shortSleepTime = 30;
+    int longSleepTime = 60;
     Rectangle screenRect = new Rectangle(700, 500, 550, 300);
     int[] handCraftSlot1 = new int[]{1015, 360};
     int[] handCraftSlot2 = new int[]{1067, 360};
@@ -172,6 +172,9 @@ public class Crafter {
                 mm.moveMouse(coords, shortSleepTime);
                 typer.leftClick(shortSleepTime);
 
+                // Move mouse away
+                mm.moveMouse(200,200, shortSleepTime);
+
                 // Find location of stick
                 coords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect, 1);
                 // Pick up items
@@ -204,8 +207,8 @@ public class Crafter {
 
 
             case "stone_pickaxe":
-                // Find location of wood
-                coords = look.findLocationOnScreen("src\\Item_Images\\Wood1.jpg", screenRect, 1);
+                // Find location of cobblestone
+                coords = look.findLocationOnScreen("src\\Item_Images\\Cobblestone.jpg", screenRect, 1);
                 // Pick up items
                 mm.moveMouse(coords, shortSleepTime);
                 typer.leftClick(shortSleepTime);
@@ -229,7 +232,10 @@ public class Crafter {
                 }
                 // Place item back in original slot
                 mm.moveMouse(coords, shortSleepTime);
-                typer.leftClick(shortSleepTime);
+                typer.leftClick(longSleepTime);
+
+                // Move mouse away
+                mm.moveMouse(200,200, shortSleepTime);
 
                 // Find location of stick
                 coords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect, 1);
@@ -260,6 +266,170 @@ public class Crafter {
                 // Close inventory
                 typer.type("e", shortSleepTime, longSleepTime);
                 break;
+
+            case "stone_sword":
+                // Find location of cobblestone
+                coords = look.findLocationOnScreen("src\\Item_Images\\Cobblestone.jpg", screenRect, 1);
+                // Pick up items
+                mm.moveMouse(coords, shortSleepTime);
+                typer.leftClick(shortSleepTime);
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot2, shortSleepTime);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(shortSleepTime);
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot5, shortSleepTime);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(shortSleepTime);
+                }
+                // Place item back in original slot
+                mm.moveMouse(coords, shortSleepTime);
+                typer.leftClick(shortSleepTime);
+
+                // Move mouse away
+                mm.moveMouse(200,200, shortSleepTime);
+
+                // Find location of stick
+                coords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect, 1);
+                // Pick up items
+                mm.moveMouse(coords, shortSleepTime);
+                typer.leftClick(shortSleepTime);
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot8, shortSleepTime);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(shortSleepTime);
+                }
+                // Place item back in original slot
+                mm.moveMouse(coords, shortSleepTime);
+                typer.leftClick(longSleepTime);
+
+                // Get resultant item
+                mm.moveMouse(tableCraftSlotRes, shortSleepTime);
+                typer.holdShift(shortSleepTime);
+                typer.leftClick(shortSleepTime);
+                typer.releaseShift(longSleepTime);
+                // Close inventory
+                typer.type("e", shortSleepTime, longSleepTime);
+                break;
+
+            case "stone_shovel":
+                // Find location of cobblestone
+                coords = look.findLocationOnScreen("src\\Item_Images\\Cobblestone.jpg", screenRect, 1);
+                // Pick up items
+                mm.moveMouse(coords, shortSleepTime);
+                typer.leftClick(shortSleepTime);
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot2, shortSleepTime);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(shortSleepTime);
+                }
+                // Place item back in original slot
+                mm.moveMouse(coords, shortSleepTime);
+                typer.leftClick(shortSleepTime);
+
+                // Move mouse away
+                mm.moveMouse(200,200, shortSleepTime);
+
+                // Find location of stick
+                coords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect, 1);
+                // Pick up items
+                mm.moveMouse(coords, shortSleepTime);
+                typer.leftClick(shortSleepTime);
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot5, shortSleepTime);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(shortSleepTime);
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot8, shortSleepTime);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(shortSleepTime);
+                }
+                // Place item back in original slot
+                mm.moveMouse(coords, shortSleepTime);
+                typer.leftClick(longSleepTime);
+
+                // Get resultant item
+                mm.moveMouse(tableCraftSlotRes, shortSleepTime);
+                typer.holdShift(shortSleepTime);
+                typer.leftClick(shortSleepTime);
+                typer.releaseShift(longSleepTime);
+                // Close inventory
+                typer.type("e", shortSleepTime, longSleepTime);
+                break;
+
+            case "furnace":
+                // Find location of cobblestone
+                coords = look.findLocationOnScreen("src\\Item_Images\\Cobblestone.jpg", screenRect, 1);
+                // Pick up items
+                mm.moveMouse(coords, shortSleepTime);
+                typer.leftClick(shortSleepTime);
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot1, shortSleepTime);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(shortSleepTime);
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot2, shortSleepTime);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(shortSleepTime);
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot3, shortSleepTime);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(shortSleepTime);
+                }
+                mm.moveMouse(tableCraftSlot4, shortSleepTime);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(shortSleepTime);
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot6, shortSleepTime);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(shortSleepTime);
+                }
+                mm.moveMouse(tableCraftSlot7, shortSleepTime);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(shortSleepTime);
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot8, shortSleepTime);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(shortSleepTime);
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot9, shortSleepTime);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(shortSleepTime);
+                }
+                // Place item back in original slot
+                mm.moveMouse(coords, shortSleepTime);
+                typer.leftClick(shortSleepTime);
+
+                // Get resultant item
+                mm.moveMouse(tableCraftSlotRes, shortSleepTime);
+                typer.holdShift(shortSleepTime);
+                typer.leftClick(shortSleepTime);
+                typer.releaseShift(longSleepTime);
+                // Close inventory
+                typer.type("e", shortSleepTime, longSleepTime);
+                break;
+
         }
     }
 }

@@ -7,7 +7,7 @@ import com.sun.jna.platform.*;
 
 public class Looker {
 
-    static int searchSpacing = 3;
+    static int searchSpacing = 2;
 
     public Rectangle getMinecraftWindow(){
         Rectangle rect = null;

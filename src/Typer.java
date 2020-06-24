@@ -19,6 +19,26 @@ public class Typer {
         Thread.sleep(sleepLong);
     }
 
+    public void holdS(int sleepTime) throws InterruptedException {
+        robot.keyPress(KeyEvent.VK_S);
+        Thread.sleep(sleepTime);
+    }
+
+    public void releaseS(int sleepTime) throws InterruptedException {
+        robot.keyRelease(KeyEvent.VK_S);
+        Thread.sleep(sleepTime);
+    }
+
+    public void holdSpace(int sleepTime) throws InterruptedException {
+        robot.keyPress(KeyEvent.VK_SPACE);
+        Thread.sleep(sleepTime);
+    }
+
+    public void releaseSpace(int sleepTime) throws InterruptedException {
+        robot.keyRelease(KeyEvent.VK_SPACE);
+        Thread.sleep(sleepTime);
+    }
+
     public void leftClick(int sleepTime) throws InterruptedException {
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
@@ -27,6 +47,26 @@ public class Typer {
 
     public void rightClick(int sleepTime) throws InterruptedException {
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
+        robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+        Thread.sleep(sleepTime);
+    }
+
+    public void holdLeftClick(int sleepTime) throws InterruptedException {
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(sleepTime);
+    }
+
+    public void releaseLeftClick(int sleepTime) throws InterruptedException {
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        Thread.sleep(sleepTime);
+    }
+
+    public void holdRightClick(int sleepTime) throws InterruptedException {
+        robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
+        Thread.sleep(sleepTime);
+    }
+
+    public void releaseRightClick(int sleepTime) throws InterruptedException {
         robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
         Thread.sleep(sleepTime);
     }
@@ -201,6 +241,10 @@ public class Typer {
                 robot.keyPress(KeyEvent.VK_SPACE);
                 robot.keyRelease(KeyEvent.VK_SPACE);
                 break;
+            case '-':
+                robot.keyPress(KeyEvent.VK_MINUS);
+                robot.keyRelease(KeyEvent.VK_MINUS);
+                break;
             case '_':
                 robot.keyPress(KeyEvent.VK_SHIFT);
                 robot.keyPress(KeyEvent.VK_MINUS);
@@ -210,6 +254,16 @@ public class Typer {
             case ':':
                 robot.keyPress(KeyEvent.VK_COLON);
                 robot.keyRelease(KeyEvent.VK_COLON);
+                break;
+            case '~':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(192);
+                robot.keyRelease(192);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case '/':
+                robot.keyPress(KeyEvent.VK_SLASH);
+                robot.keyRelease(KeyEvent.VK_SLASH);
                 break;
         }
     }
