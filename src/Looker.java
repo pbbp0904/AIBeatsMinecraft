@@ -3,20 +3,54 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
 import com.sun.jna.platform.*;
 
 public class Looker {
 
-    static int searchSpacing = 2;
+    static int searchSpacingX = 2;
+    static int searchSpacingY = 2;
 
-    public Rectangle getMinecraftWindow(){
+    public Rectangle getMinecraftWindow() {
         Rectangle rect = null;
-        for (DesktopWindow desktopWindow : WindowUtils.getAllWindows(true)){
-            if (desktopWindow.getTitle().contains("Minecraft*")){
+        for (DesktopWindow desktopWindow : WindowUtils.getAllWindows(true)) {
+            if (desktopWindow.getTitle().contains("Minecraft*")) {
                 rect = desktopWindow.getLocAndSize();
             }
         }
         return rect;
+    }
+
+    public void lookDown() throws AWTException, InterruptedException {
+        MouseMover mm = new MouseMover();
+        mm.moveMouse(960,1000,10);
+        mm.moveMouse(960,1000,10);
+    }
+
+    public void waitUntilStationary(Rectangle screenRect, int sleepTime) throws AWTException, InterruptedException {
+        boolean imagesEqual = false;
+        BufferedImage screenImg1;
+        BufferedImage screenImg2;
+        while(!imagesEqual) {
+            screenImg1 = screenShot(screenRect);
+            Thread.sleep(sleepTime);
+            screenImg2 = screenShot(screenRect);
+            imagesEqual = bufferedImagesEqual(screenImg1,screenImg2);
+        }
+    }
+
+    boolean bufferedImagesEqual(BufferedImage img1, BufferedImage img2) {
+        if (img1.getWidth() == img2.getWidth() && img1.getHeight() == img2.getHeight()) {
+            for (int x = 0; x < img1.getWidth(); x++) {
+                for (int y = 0; y < img1.getHeight(); y++) {
+                    if (img1.getRGB(x, y) != img2.getRGB(x, y))
+                        return false;
+                }
+            }
+        } else {
+            return false;
+        }
+        return true;
     }
 
 
@@ -70,8 +104,8 @@ public class Looker {
         int bestY = 0;
         double lowestDiff = Double.POSITIVE_INFINITY;
         // brute-force search through whole image (slow...)
-        for (int x = 0; x < w1 - w2; x = x + searchSpacing) {
-            for (int y = 0; y < h1 - h2; y = y + searchSpacing) {
+        for (int x = 0; x < w1 - w2; x = x + searchSpacingX) {
+            for (int y = 0; y < h1 - h2; y = y + searchSpacingY) {
                 double comp = compareImages(im1.getSubimage(x, y, w2, h2), im2);
                 if (comp < lowestDiff) {
                     bestX = x;
@@ -105,8 +139,8 @@ public class Looker {
         int bestY = 0;
         double lowestDiff = Double.POSITIVE_INFINITY;
         // brute-force search through whole image (slow...)
-        for (int x = 0; x < w1 - w2; x = x + searchSpacing) {
-            for (int y = 0; y < h1 - h2; y = y + searchSpacing) {
+        for (int x = 0; x < w1 - w2; x = x + searchSpacingX) {
+            for (int y = 0; y < h1 - h2; y = y + searchSpacingY) {
                 double comp = compareImages(im1.getSubimage(x, y, w2, h2), im2);
                 if (comp < lowestDiff) {
                     bestX = x;
@@ -118,9 +152,6 @@ public class Looker {
         // output similarity measure from 0 to 1, with 0 being identical
         return lowestDiff;
     }
-
-
-
 
 
     /**

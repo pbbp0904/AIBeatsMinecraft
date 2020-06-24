@@ -14,7 +14,7 @@ public class Crafter {
     int[] coords;
     int shortSleepTime = 30;
     int longSleepTime = 60;
-    Rectangle screenRect = new Rectangle(700, 500, 550, 300);
+    Rectangle screenRect = new Rectangle(700, 500, 600, 400);
     int[] handCraftSlot1 = new int[]{1015, 360};
     int[] handCraftSlot2 = new int[]{1067, 360};
     int[] handCraftSlot3 = new int[]{1067, 413};
@@ -30,6 +30,10 @@ public class Crafter {
     int[] tableCraftSlot8 = new int[]{865, 465};
     int[] tableCraftSlot9 = new int[]{920, 465};
     int[] tableCraftSlotRes = new int[]{1090, 410};
+
+    int[] furnaceCoalSlot = new int[]{888,466};
+    int[] furnaceSmeltSlot = new int[]{888,356};
+    int[] furnaceResSlot = new int[]{1066,411};
 
 
     public Crafter() throws AWTException {
@@ -145,10 +149,17 @@ public class Crafter {
 
 
             case "wooden_pickaxe":
+
+                // Move mouse away
+                mm.moveMouse(200,200, longSleepTime);
+
                 // Find location of wood
-                coords = look.findLocationOnScreen("src\\Item_Images\\Wood1.jpg", screenRect, 1);
+                int[] woodCoords = look.findLocationOnScreen("src\\Item_Images\\Wood1.jpg", screenRect, 1);
+                // Find location of stick
+                int[] stickWoodenPickaxeCoords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect, 1);
+
                 // Pick up items
-                mm.moveMouse(coords, shortSleepTime);
+                mm.moveMouse(woodCoords, shortSleepTime);
                 typer.leftClick(shortSleepTime);
                 // Move mouse to craft
                 mm.moveMouse(tableCraftSlot1, shortSleepTime);
@@ -169,16 +180,11 @@ public class Crafter {
                     typer.rightClick(shortSleepTime);
                 }
                 // Place item back in original slot
-                mm.moveMouse(coords, shortSleepTime);
+                mm.moveMouse(woodCoords, shortSleepTime);
                 typer.leftClick(shortSleepTime);
 
-                // Move mouse away
-                mm.moveMouse(200,200, shortSleepTime);
-
-                // Find location of stick
-                coords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect, 1);
                 // Pick up items
-                mm.moveMouse(coords, shortSleepTime);
+                mm.moveMouse(stickWoodenPickaxeCoords, shortSleepTime);
                 typer.leftClick(shortSleepTime);
                 // Move mouse to craft
                 mm.moveMouse(tableCraftSlot5, shortSleepTime);
@@ -193,7 +199,7 @@ public class Crafter {
                     typer.rightClick(shortSleepTime);
                 }
                 // Place item back in original slot
-                mm.moveMouse(coords, shortSleepTime);
+                mm.moveMouse(stickWoodenPickaxeCoords, shortSleepTime);
                 typer.leftClick(longSleepTime);
 
                 // Get resultant item
@@ -206,11 +212,16 @@ public class Crafter {
                 break;
 
 
-            case "stone_pickaxe":
-                // Find location of cobblestone
-                coords = look.findLocationOnScreen("src\\Item_Images\\Cobblestone.jpg", screenRect, 1);
-                // Pick up items
-                mm.moveMouse(coords, shortSleepTime);
+            case "stone_tools":
+                // Move mouse away
+                mm.moveMouse(200,200, longSleepTime);
+
+                ////STONE PICKAXE
+                // Find location of items
+                int[] cobbleCoords = look.findLocationOnScreen("src\\Item_Images\\Cobblestone.jpg", screenRect, 1);
+                int[] stickCoords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect, 1);
+                // Pick up cobble
+                mm.moveMouse(cobbleCoords, shortSleepTime);
                 typer.leftClick(shortSleepTime);
                 // Move mouse to craft
                 mm.moveMouse(tableCraftSlot1, shortSleepTime);
@@ -231,16 +242,11 @@ public class Crafter {
                     typer.rightClick(shortSleepTime);
                 }
                 // Place item back in original slot
-                mm.moveMouse(coords, shortSleepTime);
+                mm.moveMouse(cobbleCoords, shortSleepTime);
                 typer.leftClick(longSleepTime);
 
-                // Move mouse away
-                mm.moveMouse(200,200, shortSleepTime);
-
-                // Find location of stick
-                coords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect, 1);
-                // Pick up items
-                mm.moveMouse(coords, shortSleepTime);
+                // Pick up sticks
+                mm.moveMouse(stickCoords, shortSleepTime);
                 typer.leftClick(shortSleepTime);
                 // Move mouse to craft
                 mm.moveMouse(tableCraftSlot5, shortSleepTime);
@@ -255,7 +261,7 @@ public class Crafter {
                     typer.rightClick(shortSleepTime);
                 }
                 // Place item back in original slot
-                mm.moveMouse(coords, shortSleepTime);
+                mm.moveMouse(stickCoords, shortSleepTime);
                 typer.leftClick(longSleepTime);
 
                 // Get resultant item
@@ -263,15 +269,12 @@ public class Crafter {
                 typer.holdShift(shortSleepTime);
                 typer.leftClick(shortSleepTime);
                 typer.releaseShift(longSleepTime);
-                // Close inventory
-                typer.type("e", shortSleepTime, longSleepTime);
-                break;
 
-            case "stone_sword":
-                // Find location of cobblestone
-                coords = look.findLocationOnScreen("src\\Item_Images\\Cobblestone.jpg", screenRect, 1);
-                // Pick up items
-                mm.moveMouse(coords, shortSleepTime);
+
+
+                ////STONE SWORD
+                // Pick up cobble
+                mm.moveMouse(cobbleCoords, shortSleepTime);
                 typer.leftClick(shortSleepTime);
                 // Move mouse to craft
                 mm.moveMouse(tableCraftSlot2, shortSleepTime);
@@ -286,16 +289,11 @@ public class Crafter {
                     typer.rightClick(shortSleepTime);
                 }
                 // Place item back in original slot
-                mm.moveMouse(coords, shortSleepTime);
+                mm.moveMouse(cobbleCoords, shortSleepTime);
                 typer.leftClick(shortSleepTime);
 
-                // Move mouse away
-                mm.moveMouse(200,200, shortSleepTime);
-
-                // Find location of stick
-                coords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect, 1);
-                // Pick up items
-                mm.moveMouse(coords, shortSleepTime);
+                // Pick up stick
+                mm.moveMouse(stickCoords, shortSleepTime);
                 typer.leftClick(shortSleepTime);
                 // Move mouse to craft
                 mm.moveMouse(tableCraftSlot8, shortSleepTime);
@@ -304,7 +302,7 @@ public class Crafter {
                     typer.rightClick(shortSleepTime);
                 }
                 // Place item back in original slot
-                mm.moveMouse(coords, shortSleepTime);
+                mm.moveMouse(stickCoords, shortSleepTime);
                 typer.leftClick(longSleepTime);
 
                 // Get resultant item
@@ -312,15 +310,11 @@ public class Crafter {
                 typer.holdShift(shortSleepTime);
                 typer.leftClick(shortSleepTime);
                 typer.releaseShift(longSleepTime);
-                // Close inventory
-                typer.type("e", shortSleepTime, longSleepTime);
-                break;
 
-            case "stone_shovel":
-                // Find location of cobblestone
-                coords = look.findLocationOnScreen("src\\Item_Images\\Cobblestone.jpg", screenRect, 1);
-                // Pick up items
-                mm.moveMouse(coords, shortSleepTime);
+
+                ////STONE SHOVEL
+                // Pick up cobble
+                mm.moveMouse(cobbleCoords, shortSleepTime);
                 typer.leftClick(shortSleepTime);
                 // Move mouse to craft
                 mm.moveMouse(tableCraftSlot2, shortSleepTime);
@@ -329,16 +323,11 @@ public class Crafter {
                     typer.rightClick(shortSleepTime);
                 }
                 // Place item back in original slot
-                mm.moveMouse(coords, shortSleepTime);
+                mm.moveMouse(cobbleCoords, shortSleepTime);
                 typer.leftClick(shortSleepTime);
 
-                // Move mouse away
-                mm.moveMouse(200,200, shortSleepTime);
-
-                // Find location of stick
-                coords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect, 1);
-                // Pick up items
-                mm.moveMouse(coords, shortSleepTime);
+                // Pick up sticks
+                mm.moveMouse(stickCoords, shortSleepTime);
                 typer.leftClick(shortSleepTime);
                 // Move mouse to craft
                 mm.moveMouse(tableCraftSlot5, shortSleepTime);
@@ -353,7 +342,7 @@ public class Crafter {
                     typer.rightClick(shortSleepTime);
                 }
                 // Place item back in original slot
-                mm.moveMouse(coords, shortSleepTime);
+                mm.moveMouse(stickCoords, shortSleepTime);
                 typer.leftClick(longSleepTime);
 
                 // Get resultant item
@@ -361,15 +350,12 @@ public class Crafter {
                 typer.holdShift(shortSleepTime);
                 typer.leftClick(shortSleepTime);
                 typer.releaseShift(longSleepTime);
-                // Close inventory
-                typer.type("e", shortSleepTime, longSleepTime);
-                break;
 
-            case "furnace":
-                // Find location of cobblestone
-                coords = look.findLocationOnScreen("src\\Item_Images\\Cobblestone.jpg", screenRect, 1);
-                // Pick up items
-                mm.moveMouse(coords, shortSleepTime);
+
+
+                ////FURNACE
+                // Pick up cobble
+                mm.moveMouse(cobbleCoords, shortSleepTime);
                 typer.leftClick(shortSleepTime);
                 // Move mouse to craft
                 mm.moveMouse(tableCraftSlot1, shortSleepTime);
@@ -418,7 +404,7 @@ public class Crafter {
                     typer.rightClick(shortSleepTime);
                 }
                 // Place item back in original slot
-                mm.moveMouse(coords, shortSleepTime);
+                mm.moveMouse(cobbleCoords, shortSleepTime);
                 typer.leftClick(shortSleepTime);
 
                 // Get resultant item
@@ -432,4 +418,63 @@ public class Crafter {
 
         }
     }
+
+
+    public void smelt(String item, int number) throws InterruptedException, AWTException {
+        switch(item) {
+            case "iron":
+                // Move mouse away
+                mm.moveMouse(200,200, longSleepTime);
+
+                ////IRON
+                // Find location of items
+                int[] ironOreCoords = look.findLocationOnScreen("src\\Item_Images\\Iron_Ore.jpg", screenRect, 1);
+                int[] coalCoords = look.findLocationOnScreen("src\\Item_Images\\Coal.jpg", screenRect, 1);
+                // Pick up iron ore
+                mm.moveMouse(ironOreCoords, shortSleepTime);
+                typer.leftClick(shortSleepTime);
+                // Move mouse to craft
+                mm.moveMouse(furnaceSmeltSlot, shortSleepTime);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(shortSleepTime);
+                }
+
+                // Place item back in original slot
+                mm.moveMouse(ironOreCoords, shortSleepTime);
+                typer.leftClick(longSleepTime);
+
+                // Pick up coal
+                mm.moveMouse(coalCoords, shortSleepTime);
+                typer.leftClick(shortSleepTime);
+                // Move mouse to craft
+                mm.moveMouse(furnaceCoalSlot, shortSleepTime);
+                // Place the correct number of items
+                for (int i = 0; i <= (number/8+1); i++) {
+                    typer.rightClick(shortSleepTime);
+                }
+
+                // Place item back in original slot
+                mm.moveMouse(coalCoords, shortSleepTime);
+                typer.leftClick(longSleepTime);
+                // Close inventory
+                typer.type("e", shortSleepTime, longSleepTime);
+                break;
+
+        }
+
+    }
+
+
+
+    public void getSmelt() throws InterruptedException, AWTException {
+        mm.moveMouse(furnaceResSlot,shortSleepTime);
+        typer.holdShift(shortSleepTime);
+        typer.leftClick(shortSleepTime);
+        typer.releaseShift(longSleepTime);
+        // Close inventory
+        typer.type("e", shortSleepTime, longSleepTime);
+    }
+
+
 }
