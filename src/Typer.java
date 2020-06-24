@@ -6,9 +6,12 @@ import java.awt.event.MouseEvent;
 
 public class Typer {
 
-    Robot robot = new Robot();
+    Robot robot;
+    Exiter exiter;
 
     public Typer() throws AWTException {
+        robot = new Robot();
+        exiter = new Exiter();
     }
 
     public void type(String text, int sleepShort, int sleepLong) throws InterruptedException, AWTException {
