@@ -14,7 +14,7 @@ public class Typer {
     public void type(String text, int sleepShort, int sleepLong) throws InterruptedException, AWTException {
         for(int i = 0; i < text.length(); i++){
             Thread.sleep(sleepShort);
-            pressKey(robot, text.charAt(i));
+            pressKey(text.charAt(i));
         }
         Thread.sleep(sleepLong);
     }
@@ -87,7 +87,7 @@ public class Typer {
         Thread.sleep(sleepTime);
     }
 
-    public void pressKey(Robot robot, char c){
+    public void pressKey(char c){
         switch(c) {
             case 'a':
                 robot.keyPress(KeyEvent.VK_A);

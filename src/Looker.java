@@ -87,6 +87,13 @@ public class Looker {
     }
 
 
+    public static boolean findColorMatch(BufferedImage im1, Color color, Point p) {
+        int pixel = im1.getRGB(p.x, p.y);
+        Color color2 = new Color(pixel, true);
+        return color.equals(color2);
+    }
+
+
     public static double findSubImageDiff(BufferedImage im1, BufferedImage im2, Rectangle screenRect) {
         int w1 = im1.getWidth();
         int h1 = im1.getHeight();
