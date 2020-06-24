@@ -8,8 +8,65 @@ import com.sun.jna.platform.*;
 
 public class Looker {
 
-    static int searchSpacingX = 2;
-    static int searchSpacingY = 2;
+    private static int searchSpacingX = 2;
+    private static int searchSpacingY = 2;
+    private Rectangle hotbarScreenRect;
+    private Rectangle craftingScreenRect;
+    private Rectangle inventoryScreenRect;
+    private Rectangle centerScreenRect;
+    private Rectangle furnaceProgressScreenRect;
+    private Waiter waiter;
+    private MouseMover mm;
+
+    public Looker() throws AWTException {
+        hotbarScreenRect = new Rectangle(600, 900, 600, 200);
+        craftingScreenRect = new Rectangle(850, 250, 100, 200);
+        inventoryScreenRect = new Rectangle(711, 525, 500, 240);
+        centerScreenRect = new Rectangle(910, 490, 100, 100);
+        furnaceProgressScreenRect = new Rectangle(930, 380, 80, 60);
+        waiter = new Waiter();
+        mm = new MouseMover();
+    }
+
+    public Rectangle getHotbarScreenRect() {
+        return hotbarScreenRect;
+    }
+
+    public void setHotbarScreenRect(Rectangle hotbarScreenRect) {
+        this.hotbarScreenRect = hotbarScreenRect;
+    }
+
+    public Rectangle getCraftingScreenRect() {
+        return craftingScreenRect;
+    }
+
+    public void setCraftingScreenRect(Rectangle craftingScreenRect) {
+        this.craftingScreenRect = craftingScreenRect;
+    }
+
+    public Rectangle getInventoryScreenRect() {
+        return inventoryScreenRect;
+    }
+
+    public void setInventoryScreenRect(Rectangle inventoryScreenRect) {
+        this.inventoryScreenRect = inventoryScreenRect;
+    }
+
+    public Rectangle getCenterScreenRect() {
+        return centerScreenRect;
+    }
+
+    public void setCenterScreenRect(Rectangle centerScreenRect) {
+        this.centerScreenRect = centerScreenRect;
+    }
+
+    public Rectangle getFurnaceProgressScreenRect() {
+        return furnaceProgressScreenRect;
+    }
+
+    public void setFurnaceProgressScreenRect(Rectangle furnaceProgressScreenRect) {
+        this.furnaceProgressScreenRect = furnaceProgressScreenRect;
+    }
 
     public Rectangle getMinecraftWindow() {
         Rectangle rect = null;
@@ -21,20 +78,22 @@ public class Looker {
         return rect;
     }
 
-    public void lookDown() throws AWTException, InterruptedException {
-        MouseMover mm = new MouseMover();
+
+
+
+    public void lookDown() throws InterruptedException {
         mm.moveMouse(960,1000,10);
         mm.moveMouse(960,1000,10);
     }
 
-    public void waitUntilStationary(Rectangle screenRect, int sleepTime) throws AWTException, InterruptedException {
+    public void waitUntilStationary() throws AWTException, InterruptedException {
         boolean imagesEqual = false;
         BufferedImage screenImg1;
         BufferedImage screenImg2;
         while(!imagesEqual) {
-            screenImg1 = screenShot(screenRect);
-            Thread.sleep(sleepTime);
-            screenImg2 = screenShot(screenRect);
+            screenImg1 = screenShot(centerScreenRect);
+            Thread.sleep(waiter.getStationaryWaitTime());
+            screenImg2 = screenShot(centerScreenRect);
             imagesEqual = bufferedImagesEqual(screenImg1,screenImg2);
         }
     }
@@ -64,7 +123,7 @@ public class Looker {
     }
 
 
-    public int[] findLocationOnScreen(String pathname, Rectangle screenRect, int scale) throws AWTException {
+    public int[] findLocationOnScreen(String pathname, Rectangle screenRect) throws AWTException {
         BufferedImage screenImg = screenShot(screenRect);
         String filePath = new File(pathname).getAbsolutePath();
         BufferedImage img = getImage(filePath);
