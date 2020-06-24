@@ -32,6 +32,11 @@ public class Main {
         //inventory = new Inventory(typer);
         filer = new Filer();
     }
+
+
+
+
+
     public static void main(String[] args) throws AWTException, InterruptedException, IOException {
         Thread.sleep(5000);
         Main main = new Main();
@@ -40,6 +45,14 @@ public class Main {
         stoneGather(main.look, main.typer, main.crafter, main.mm, main.waiter);
         ironGather(main.look, main.typer, main.crafter, main.waiter);
     }
+
+
+
+
+
+
+
+
 
     public void startUp() throws IOException, InterruptedException, AWTException {
         System.out.println("Hello world!");

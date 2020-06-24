@@ -46,7 +46,7 @@ public class Crafter {
                 // Open inventory
                 typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
                 // Find location of logs
-                coords = look.findLocationOnScreen("src\\Item_Images\\Log1.jpg", screenRect, 1);
+                coords = look.findLocationOnScreen("src\\Item_Images\\Log1.jpg", screenRect);
                 // Pick up items
                 mm.moveMouse(coords, waiter.getShortSleepTime());
                 typer.leftClick(waiter.getShortSleepTime());
@@ -73,7 +73,7 @@ public class Crafter {
                 // Open inventory
                 typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
                 // Find location of wood
-                coords = look.findLocationOnScreen("src\\Item_Images\\Wood1.jpg", screenRect, 1);
+                coords = look.findLocationOnScreen("src\\Item_Images\\Wood1.jpg", screenRect);
                 // Pick up items
                 mm.moveMouse(coords, waiter.getShortSleepTime());
                 typer.leftClick(waiter.getShortSleepTime());
@@ -119,7 +119,7 @@ public class Crafter {
                 // Open inventory
                 typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
                 // Find location of wood
-                coords = look.findLocationOnScreen("src\\Item_Images\\Wood1.jpg", screenRect, 1);
+                coords = look.findLocationOnScreen("src\\Item_Images\\Wood1.jpg", screenRect);
                 // Pick up items
                 mm.moveMouse(coords, waiter.getShortSleepTime());
                 typer.leftClick(waiter.getShortSleepTime());
@@ -155,9 +155,9 @@ public class Crafter {
                 mm.moveMouse(200,200, waiter.getLongSleepTime());
 
                 // Find location of wood
-                int[] woodCoords = look.findLocationOnScreen("src\\Item_Images\\Wood1.jpg", screenRect, 1);
+                int[] woodCoords = look.findLocationOnScreen("src\\Item_Images\\Wood1.jpg", screenRect);
                 // Find location of stick
-                int[] stickWoodenPickaxeCoords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect, 1);
+                int[] stickWoodenPickaxeCoords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect);
 
                 // Pick up items
                 mm.moveMouse(woodCoords, waiter.getShortSleepTime());
@@ -219,8 +219,8 @@ public class Crafter {
 
                 ////STONE PICKAXE
                 // Find location of items
-                int[] cobbleCoords = look.findLocationOnScreen("src\\Item_Images\\Cobblestone.jpg", screenRect, 1);
-                int[] stickCoords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect, 1);
+                int[] cobbleCoords = look.findLocationOnScreen("src\\Item_Images\\Cobblestone.jpg", screenRect);
+                int[] stickCoords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect);
                 // Pick up cobble
                 mm.moveMouse(cobbleCoords, waiter.getShortSleepTime());
                 typer.leftClick(waiter.getShortSleepTime());
@@ -429,8 +429,8 @@ public class Crafter {
 
                 ////IRON
                 // Find location of items
-                int[] ironOreCoords = look.findLocationOnScreen("src\\Item_Images\\Iron_Ore.jpg", screenRect, 1);
-                int[] coalCoords = look.findLocationOnScreen("src\\Item_Images\\Coal.jpg", screenRect, 1);
+                int[] ironOreCoords = look.findLocationOnScreen("src\\Item_Images\\Iron_Ore.jpg", screenRect);
+                int[] coalCoords = look.findLocationOnScreen("src\\Item_Images\\Coal.jpg", screenRect);
                 // Pick up iron ore
                 mm.moveMouse(ironOreCoords, waiter.getShortSleepTime());
                 typer.leftClick(waiter.getShortSleepTime());
