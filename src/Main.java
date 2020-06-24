@@ -16,7 +16,6 @@ public class Main {
 
         Thread.sleep(5000);
 
-        //Thread.sleep(50000);
         Rectangle hotbarScreenRect = new Rectangle(600, 900, 600, 200);
         Rectangle craftingScreenRect = new Rectangle(850, 250, 100, 200);
         Rectangle inventoryScreenRect = new Rectangle(711, 525, 500, 240);
