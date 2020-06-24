@@ -8,8 +8,61 @@ import com.sun.jna.platform.*;
 
 public class Looker {
 
-    static int searchSpacingX = 2;
-    static int searchSpacingY = 2;
+    private static int searchSpacingX = 2;
+    private static int searchSpacingY = 2;
+    private Rectangle hotbarScreenRect;
+    private Rectangle craftingScreenRect;
+    private Rectangle inventoryScreenRect;
+    private Rectangle centerScreenRect;
+    private Rectangle furnaceProgressScreenRect;
+
+    public Looker() {
+        hotbarScreenRect = new Rectangle(600, 900, 600, 200);
+        craftingScreenRect = new Rectangle(850, 250, 100, 200);
+        inventoryScreenRect = new Rectangle(711, 525, 500, 240);
+        centerScreenRect = new Rectangle(910, 490, 100, 100);
+        furnaceProgressScreenRect = new Rectangle(930, 380, 80, 60);
+    }
+
+    public Rectangle getHotbarScreenRect() {
+        return hotbarScreenRect;
+    }
+
+    public void setHotbarScreenRect(Rectangle hotbarScreenRect) {
+        this.hotbarScreenRect = hotbarScreenRect;
+    }
+
+    public Rectangle getCraftingScreenRect() {
+        return craftingScreenRect;
+    }
+
+    public void setCraftingScreenRect(Rectangle craftingScreenRect) {
+        this.craftingScreenRect = craftingScreenRect;
+    }
+
+    public Rectangle getInventoryScreenRect() {
+        return inventoryScreenRect;
+    }
+
+    public void setInventoryScreenRect(Rectangle inventoryScreenRect) {
+        this.inventoryScreenRect = inventoryScreenRect;
+    }
+
+    public Rectangle getCenterScreenRect() {
+        return centerScreenRect;
+    }
+
+    public void setCenterScreenRect(Rectangle centerScreenRect) {
+        this.centerScreenRect = centerScreenRect;
+    }
+
+    public Rectangle getFurnaceProgressScreenRect() {
+        return furnaceProgressScreenRect;
+    }
+
+    public void setFurnaceProgressScreenRect(Rectangle furnaceProgressScreenRect) {
+        this.furnaceProgressScreenRect = furnaceProgressScreenRect;
+    }
 
     public Rectangle getMinecraftWindow() {
         Rectangle rect = null;

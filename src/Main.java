@@ -3,7 +3,7 @@ import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException, AWTException, IOException {
+    public static void main(String[] args) throws AWTException, InterruptedException, IOException {
         Typer typer = new Typer();
 
         Looker look = new Looker();
@@ -12,24 +12,31 @@ public class Main {
         //Inventory inventory = new Inventory(typer);
         Filer filer = new Filer();
         System.out.println("Hello world!");
+        filer.incrementRunCounter();
 
 
         Thread.sleep(5000);
 
         //Thread.sleep(50000);
-        Rectangle hotbarScreenRect = new Rectangle(600, 900, 600, 200);
-        Rectangle craftingScreenRect = new Rectangle(850, 250, 100, 200);
-        Rectangle inventoryScreenRect = new Rectangle(711, 525, 500, 240);
-        Rectangle centerScreenRect = new Rectangle(910, 490, 100, 100);
-        Rectangle furnaceProgressScreenRect = new Rectangle(930, 380, 80, 60);
+
         int shortSleepTime = 60;
         int longSleepTime = 100;
         int stationaryWaitTime = 1500;
 
 
+        woodGather(look, typer, crafter);
+        stoneGather(look, typer, crafter, mm);
 
+
+
+
+
+
+    }
+
+    public static void woodGather(Looker look, Typer typer, Crafter crafter) throws IOException, InterruptedException, AWTException {
         // START
-        filer.incrementRunCounter();
+
         System.out.println("Starting Run!");
         typer.type("/clear",shortSleepTime,longSleepTime);
         typer.pressEnter(longSleepTime);
@@ -75,14 +82,16 @@ public class Main {
         System.out.println("Crafting wooden pickaxe.");
         crafter.craft("wooden_pickaxe",1);
         Thread.sleep(longSleepTime);
+    }
 
+    public static void stoneGather(Looker look, Typer typer, Crafter crafter, MouseMover mm) throws IOException, InterruptedException {
         System.out.println("Mining stone.");
         typer.type(".b mine 16 stone",shortSleepTime,longSleepTime);
         typer.pressEnter(longSleepTime);
 //        while(!look.foundImageOnScreen("src\\Checkpoint_Images\\Stone_Checkpoint.jpg",hotbarScreenRect,0.12,1)){
 //            Thread.sleep(shortSleepTime);
 //        }
-        look.waitUntilStationary(centerScreenRect, stationaryWaitTime);
+        look.waitUntilStationary(look.getCenterScreenRect(), stationaryWaitTime);
         System.out.println("We now have enough stone!");
 
         System.out.println("Going to crafting table.");
@@ -91,7 +100,7 @@ public class Main {
 //        while(!look.foundImageOnScreen("src\\Checkpoint_Images\\Crafting_Table.jpg",craftingScreenRect,0.15,1)){
 //            Thread.sleep(shortSleepTime);
 //        }
-        look.waitUntilStationary(centerScreenRect, stationaryWaitTime);
+        look.waitUntilStationary(look.getCenterScreenRect(), stationaryWaitTime);
         System.out.println("In crafting table!");
 
         System.out.println("Crafting stone tools.");
@@ -107,15 +116,15 @@ public class Main {
         System.out.println("Placing furnace.");
         typer.type(".b goto grass",shortSleepTime,longSleepTime);
         typer.pressEnter(longSleepTime);
-        look.waitUntilStationary(centerScreenRect, stationaryWaitTime);
+        look.waitUntilStationary(look.getCenterScreenRect(), stationaryWaitTime);
         typer.type(".b goal ~ ~-1 ~",shortSleepTime,longSleepTime);
         typer.pressEnter(longSleepTime);
         typer.type(".b path",shortSleepTime,longSleepTime);
         typer.pressEnter(longSleepTime);
-        look.waitUntilStationary(centerScreenRect, stationaryWaitTime);
+        look.waitUntilStationary(look.getCenterScreenRect(), stationaryWaitTime);
         typer.type("e",shortSleepTime,longSleepTime);
         Thread.sleep(longSleepTime);
-        mm.moveMouse(look.findLocationOnScreen("src\\Item_Images\\Furnace.jpg",inventoryScreenRect,1),longSleepTime);
+        mm.moveMouse(look.findLocationOnScreen("src\\Item_Images\\Furnace.jpg",look.getInventoryScreenRect(),1),longSleepTime);
         typer.type("1",shortSleepTime,longSleepTime);
         Thread.sleep(longSleepTime);
         typer.type("e",shortSleepTime,longSleepTime);
@@ -131,10 +140,14 @@ public class Main {
         typer.type("e",shortSleepTime,longSleepTime);
 
 
+    }
+
+
+    public static void ironGather(Looker look, Typer typer, Crafter crafter) throws InterruptedException {
         System.out.println("Mining iron ore.");
         typer.type(".b mine 30 iron_ore",shortSleepTime,longSleepTime);
         typer.pressEnter(longSleepTime);
-        look.waitUntilStationary(centerScreenRect, stationaryWaitTime);
+        look.waitUntilStationary(look.getCenterScreenRect(), stationaryWaitTime);
 //        while(!look.foundImageOnScreen("src\\Checkpoint_Images\\Iron_Ore_Checkpoint.jpg",inventoryScreenRect,0.15,1)){
 //            Thread.sleep(shortSleepTime);
 //        }
@@ -143,7 +156,7 @@ public class Main {
         System.out.println("Mining coal.");
         typer.type(".b mine 8 coal_ore",shortSleepTime,longSleepTime);
         typer.pressEnter(longSleepTime);
-        look.waitUntilStationary(centerScreenRect, stationaryWaitTime);
+        look.waitUntilStationary(look.getCenterScreenRect(), stationaryWaitTime);
 //        while(!look.foundImageOnScreen("src\\Checkpoint_Images\\Iron_Ore_Checkpoint.jpg",inventoryScreenRect,0.15,1)){
 //            Thread.sleep(shortSleepTime);
 //        }
@@ -155,7 +168,7 @@ public class Main {
 //        while(!look.foundImageOnScreen("src\\Checkpoint_Images\\Crafting_Table.jpg",craftingScreenRect,0.15,1)){
 //            Thread.sleep(shortSleepTime);
 //        }
-        look.waitUntilStationary(centerScreenRect, stationaryWaitTime);
+        look.waitUntilStationary(look.getCenterScreenRect(), stationaryWaitTime);
         System.out.println("In furnace!");
 
         crafter.smelt("iron",30);
@@ -163,7 +176,7 @@ public class Main {
         System.out.println("Mining gravel.");
         typer.type(".b mine 20 gravel",shortSleepTime,longSleepTime);
         typer.pressEnter(longSleepTime);
-        look.waitUntilStationary(centerScreenRect, stationaryWaitTime);
+        look.waitUntilStationary(look.getCenterScreenRect(), stationaryWaitTime);
         System.out.println("We now have enough gravel!");
 
         System.out.println("Going to furnace.");
@@ -172,11 +185,13 @@ public class Main {
 //        while(!look.foundImageOnScreen("src\\Checkpoint_Images\\Crafting_Table.jpg",craftingScreenRect,0.15,1)){
 //            Thread.sleep(shortSleepTime);
 //        }
-        look.waitUntilStationary(centerScreenRect, stationaryWaitTime);
+        look.waitUntilStationary(look.getCenterScreenRect(), stationaryWaitTime);
         System.out.println("In furnace!");
 
-        look.waitUntilStationary(furnaceProgressScreenRect, stationaryWaitTime*2);
+        look.waitUntilStationary(look.getFurnaceProgressScreenRect(), stationaryWaitTime*2);
         crafter.getSmelt();
 
+
     }
+
 }
