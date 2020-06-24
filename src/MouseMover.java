@@ -1,9 +1,10 @@
 import java.awt.*;
 
 public class MouseMover {
-    Robot robot = new Robot();
+    Robot robot;
 
     public MouseMover() throws AWTException {
+        robot = new Robot();
     }
 
     public void moveMouse(int[] coords, int sleepTime) throws AWTException, InterruptedException {

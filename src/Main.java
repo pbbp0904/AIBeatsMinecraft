@@ -33,14 +33,14 @@ public class Main {
         filer = new Filer();
     }
 
-
-
-
+    
 
     public static void main(String[] args) throws AWTException, InterruptedException, IOException {
         Thread.sleep(5000);
         Main main = new Main();
+        //Exiter exiter = new Exiter();
         main.startUp();
+
         woodGather(main.looker, main.typer, main.crafter, main.waiter);
         stoneGather(main.looker, main.typer, main.crafter, main.mm, main.waiter);
         ironGather(main.looker, main.typer, main.crafter, main.waiter);
