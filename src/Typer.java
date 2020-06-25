@@ -96,6 +96,7 @@ public class Typer {
     }
 
     public void pressKey(char c){
+
         switch(c) {
             case 'a':
                 robot.keyPress(KeyEvent.VK_A);

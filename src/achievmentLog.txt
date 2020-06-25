@@ -1,0 +1,3 @@
+100: First Furnace
+132: First Smelted Iron
+163: First Diamonds Mined
