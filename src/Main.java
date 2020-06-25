@@ -168,7 +168,7 @@ public class Main {
         System.out.println("Done putting iron in furnace!");
 
         System.out.println("Mining gravel.");
-        typer.command(".b mine 25 gravel",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command(".b mine 35 gravel",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         looker.waitUntilStationary();
         System.out.println("Done mining gravel!");
 
