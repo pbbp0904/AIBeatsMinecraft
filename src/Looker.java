@@ -13,6 +13,9 @@ public class Looker {
     private Rectangle hotbarScreenRect;
     private Rectangle craftingScreenRect;
     private Rectangle inventoryScreenRect;
+
+
+    private Rectangle backpackScreenRect;
     private Rectangle centerScreenRect;
     private Rectangle furnaceProgressScreenRect;
     private Waiter waiter;
@@ -22,6 +25,7 @@ public class Looker {
         hotbarScreenRect = new Rectangle(600, 900, 600, 200);
         craftingScreenRect = new Rectangle(850, 250, 100, 200);
         inventoryScreenRect = new Rectangle(711, 525, 500, 240);
+        backpackScreenRect = new Rectangle(711, 525, 500, 170);
         centerScreenRect = new Rectangle(910, 490, 100, 100);
         furnaceProgressScreenRect = new Rectangle(930, 380, 80, 60);
         waiter = new Waiter();
@@ -50,6 +54,14 @@ public class Looker {
 
     public void setInventoryScreenRect(Rectangle inventoryScreenRect) {
         this.inventoryScreenRect = inventoryScreenRect;
+    }
+
+    public Rectangle getBackpackScreenRect() {
+        return backpackScreenRect;
+    }
+
+    public void setBackpackScreenRect(Rectangle backpackScreenRect) {
+        this.backpackScreenRect = backpackScreenRect;
     }
 
     public Rectangle getCenterScreenRect() {

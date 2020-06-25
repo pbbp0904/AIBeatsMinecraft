@@ -72,6 +72,9 @@ public class Crafter {
             case "crafting_table":
                 // Open inventory
                 typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
+                // Move mouse away
+                mm.moveMouse(200,200, waiter.getLongSleepTime());
+                waiter.wait(waiter.getLongSleepTime());
                 // Find location of wood
                 coords = look.findLocationOnScreen("src\\Item_Images\\Wood1.jpg", screenRect);
                 // Pick up items
@@ -273,44 +276,44 @@ public class Crafter {
 
 
 
-                ////STONE SWORD
-                // Pick up cobble
-                mm.moveMouse(cobbleCoords, waiter.getShortSleepTime());
-                typer.leftClick(waiter.getShortSleepTime());
-                // Move mouse to craft
-                mm.moveMouse(tableCraftSlot2, waiter.getShortSleepTime());
-                // Place the correct number of items
-                for (int i = 0; i < number; i++) {
-                    typer.rightClick(waiter.getShortSleepTime());
-                }
-                // Move mouse to craft
-                mm.moveMouse(tableCraftSlot5, waiter.getShortSleepTime());
-                // Place the correct number of items
-                for (int i = 0; i < number; i++) {
-                    typer.rightClick(waiter.getShortSleepTime());
-                }
-                // Place item back in original slot
-                mm.moveMouse(cobbleCoords, waiter.getShortSleepTime());
-                typer.leftClick(waiter.getShortSleepTime());
-
-                // Pick up stick
-                mm.moveMouse(stickCoords, waiter.getShortSleepTime());
-                typer.leftClick(waiter.getShortSleepTime());
-                // Move mouse to craft
-                mm.moveMouse(tableCraftSlot8, waiter.getShortSleepTime());
-                // Place the correct number of items
-                for (int i = 0; i < number; i++) {
-                    typer.rightClick(waiter.getShortSleepTime());
-                }
-                // Place item back in original slot
-                mm.moveMouse(stickCoords, waiter.getShortSleepTime());
-                typer.leftClick(waiter.getLongSleepTime());
-
-                // Get resultant item
-                mm.moveMouse(tableCraftSlotRes, waiter.getShortSleepTime());
-                typer.holdShift(waiter.getShortSleepTime());
-                typer.leftClick(waiter.getShortSleepTime());
-                typer.releaseShift(waiter.getLongSleepTime());
+//                ////STONE SWORD
+//                // Pick up cobble
+//                mm.moveMouse(cobbleCoords, waiter.getShortSleepTime());
+//                typer.leftClick(waiter.getShortSleepTime());
+//                // Move mouse to craft
+//                mm.moveMouse(tableCraftSlot2, waiter.getShortSleepTime());
+//                // Place the correct number of items
+//                for (int i = 0; i < number; i++) {
+//                    typer.rightClick(waiter.getShortSleepTime());
+//                }
+//                // Move mouse to craft
+//                mm.moveMouse(tableCraftSlot5, waiter.getShortSleepTime());
+//                // Place the correct number of items
+//                for (int i = 0; i < number; i++) {
+//                    typer.rightClick(waiter.getShortSleepTime());
+//                }
+//                // Place item back in original slot
+//                mm.moveMouse(cobbleCoords, waiter.getShortSleepTime());
+//                typer.leftClick(waiter.getShortSleepTime());
+//
+//                // Pick up stick
+//                mm.moveMouse(stickCoords, waiter.getShortSleepTime());
+//                typer.leftClick(waiter.getShortSleepTime());
+//                // Move mouse to craft
+//                mm.moveMouse(tableCraftSlot8, waiter.getShortSleepTime());
+//                // Place the correct number of items
+//                for (int i = 0; i < number; i++) {
+//                    typer.rightClick(waiter.getShortSleepTime());
+//                }
+//                // Place item back in original slot
+//                mm.moveMouse(stickCoords, waiter.getShortSleepTime());
+//                typer.leftClick(waiter.getLongSleepTime());
+//
+//                // Get resultant item
+//                mm.moveMouse(tableCraftSlotRes, waiter.getShortSleepTime());
+//                typer.holdShift(waiter.getShortSleepTime());
+//                typer.leftClick(waiter.getShortSleepTime());
+//                typer.releaseShift(waiter.getLongSleepTime());
 
 
                 ////STONE SHOVEL
@@ -413,6 +416,581 @@ public class Crafter {
                 typer.holdShift(waiter.getShortSleepTime());
                 typer.leftClick(waiter.getShortSleepTime());
                 typer.releaseShift(waiter.getLongSleepTime());
+                // Close inventory
+                typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
+                break;
+
+            case "iron_tools":
+                // Move mouse away
+                mm.moveMouse(200,200, waiter.getLongSleepTime());
+                // Find location of items
+                int[] ironCoords = look.findLocationOnScreen("src\\Item_Images\\Iron.jpg", screenRect);
+                int[] stickIronToolsCoords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect);
+                int[] flintCoords = look.findLocationOnScreen("src\\Item_Images\\Flint.jpg", screenRect);
+
+                ////IRON PICKAXE
+                // Pick up iron
+                mm.moveMouse(ironCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot1, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot2, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot3, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(ironCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getLongSleepTime());
+
+                // Pick up sticks
+                mm.moveMouse(stickIronToolsCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot5, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot8, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(stickIronToolsCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getLongSleepTime());
+
+                // Get resultant item
+                mm.moveMouse(tableCraftSlotRes, waiter.getShortSleepTime());
+                typer.holdShift(waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                typer.releaseShift(waiter.getLongSleepTime());
+
+                ////IRON PICKAXE 2
+                // Pick up iron
+                mm.moveMouse(ironCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot1, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot2, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot3, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(ironCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getLongSleepTime());
+
+                // Pick up sticks
+                mm.moveMouse(stickIronToolsCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot5, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot8, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(stickIronToolsCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getLongSleepTime());
+
+                // Get resultant item
+                mm.moveMouse(tableCraftSlotRes, waiter.getShortSleepTime());
+                typer.holdShift(waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                typer.releaseShift(waiter.getLongSleepTime());
+
+
+
+                ////IRON SHOVEL
+                // Pick up iron
+                mm.moveMouse(ironCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot2, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(ironCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+
+                // Pick up sticks
+                mm.moveMouse(stickIronToolsCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot5, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot8, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(stickIronToolsCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getLongSleepTime());
+
+                // Get resultant item
+                mm.moveMouse(tableCraftSlotRes, waiter.getShortSleepTime());
+                typer.holdShift(waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                typer.releaseShift(waiter.getLongSleepTime());
+
+
+
+                ////SHEARS
+                // Pick up iron
+                mm.moveMouse(ironCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot2, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot6, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(ironCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getLongSleepTime());
+
+                // Get resultant item
+                mm.moveMouse(tableCraftSlotRes, waiter.getShortSleepTime());
+                typer.holdShift(waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                typer.releaseShift(waiter.getLongSleepTime());
+
+
+
+                ////FLINT AND STEEL
+                // Pick up iron
+                mm.moveMouse(ironCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot2, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(ironCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+
+                // Pick up flint
+                mm.moveMouse(flintCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot6, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(flintCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getLongSleepTime());
+
+                // Get resultant item
+                mm.moveMouse(tableCraftSlotRes, waiter.getShortSleepTime());
+                typer.holdShift(waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                typer.releaseShift(waiter.getLongSleepTime());
+
+
+                // Close inventory
+                typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
+                break;
+
+            case "diamond_items":
+                // Move mouse away
+                mm.moveMouse(200,200, waiter.getLongSleepTime());
+
+                // Find location of items
+                int[] diamondCoords = look.findLocationOnScreen("src\\Item_Images\\Diamond.jpg", screenRect);
+                int[] stickDiamondCoords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect);
+
+
+                ////DIAMOND SWORD
+                // Pick up diamond
+                mm.moveMouse(diamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot2, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot5, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(diamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+
+                // Pick up sticks
+                mm.moveMouse(stickDiamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot8, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(stickDiamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getLongSleepTime());
+
+                // Get resultant item
+                mm.moveMouse(tableCraftSlotRes, waiter.getShortSleepTime());
+                typer.holdShift(waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                typer.releaseShift(waiter.getLongSleepTime());
+
+
+                ////DIAMOND PICKAXE
+
+                // Pick up diamond
+                mm.moveMouse(diamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot1, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot2, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot3, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(diamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getLongSleepTime());
+
+                // Pick up sticks
+                mm.moveMouse(stickDiamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot5, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot8, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(stickDiamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getLongSleepTime());
+
+                // Get resultant item
+                mm.moveMouse(tableCraftSlotRes, waiter.getShortSleepTime());
+                typer.holdShift(waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                typer.releaseShift(waiter.getLongSleepTime());
+
+
+
+                ////DIAMOND SHOVEL
+                // Pick up diamond
+                mm.moveMouse(diamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot2, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(diamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+
+                // Pick up sticks
+                mm.moveMouse(stickDiamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot5, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot8, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(stickDiamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getLongSleepTime());
+
+                // Get resultant item
+                mm.moveMouse(tableCraftSlotRes, waiter.getShortSleepTime());
+                typer.holdShift(waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                typer.releaseShift(waiter.getLongSleepTime());
+
+
+
+                ////HELMET
+                // Pick up diamond
+                mm.moveMouse(diamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot4, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot1, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot2, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot3, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot6, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(diamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getLongSleepTime());
+
+                // Get resultant item
+                mm.moveMouse(tableCraftSlotRes, waiter.getShortSleepTime());
+                typer.holdShift(waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                typer.releaseShift(waiter.getLongSleepTime());
+
+
+
+                ////CHESTPLATE
+                // Pick up diamond
+                mm.moveMouse(diamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot1, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot3, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot4, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot5, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot6, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot7, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot8, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot9, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(diamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getLongSleepTime());
+
+                // Get resultant item
+                mm.moveMouse(tableCraftSlotRes, waiter.getShortSleepTime());
+                typer.holdShift(waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                typer.releaseShift(waiter.getLongSleepTime());
+
+
+                ////LEGGINGS
+                // Pick up diamond
+                mm.moveMouse(diamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot1, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot2, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot3, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot4, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot6, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot7, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot9, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(diamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getLongSleepTime());
+
+                // Get resultant item
+                mm.moveMouse(tableCraftSlotRes, waiter.getShortSleepTime());
+                typer.holdShift(waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                typer.releaseShift(waiter.getLongSleepTime());
+
+
+                ////BOOTS
+                // Pick up diamond
+                mm.moveMouse(diamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot4, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot6, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot7, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Move mouse to craft
+                mm.moveMouse(tableCraftSlot9, waiter.getShortSleepTime());
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    typer.rightClick(waiter.getShortSleepTime());
+                }
+                // Place item back in original slot
+                mm.moveMouse(diamondCoords, waiter.getShortSleepTime());
+                typer.leftClick(waiter.getLongSleepTime());
+
+                // Get resultant item
+                mm.moveMouse(tableCraftSlotRes, waiter.getShortSleepTime());
+                typer.holdShift(waiter.getShortSleepTime());
+                typer.leftClick(waiter.getShortSleepTime());
+                typer.releaseShift(waiter.getLongSleepTime());
+
+
                 // Close inventory
                 typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
                 break;
