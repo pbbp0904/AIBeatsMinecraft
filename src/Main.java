@@ -37,7 +37,14 @@ public class Main {
         Thread.sleep(5000);
         Main main = new Main();
         Exiter exiter = new Exiter();
+        //giveDiamondStuff(main.typer,main.waiter);
+        //main.waiter.wait(30000);
+        //obsidianGather(main.looker, main.typer, main.crafter, main.mm, main.waiter);
+        //makeObsidianTest(main.typer,main.waiter);
         main.startUp();
+
+        //Need to add avoidance changes when mining/going to
+        // Write a block off water fall routine for the obsidian problem?
 
         woodGather(main.looker, main.typer, main.crafter, main.waiter);
         stoneGather(main.looker, main.typer, main.crafter, main.mm, main.waiter);
@@ -143,6 +150,12 @@ public class Main {
         typer.releaseRightClick(waiter.getShortSleepTime());
         typer.type("e",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         System.out.println("Done placing furnace!");
+
+        System.out.println("Mining a little grass...");
+        typer.command(".b mine grass",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        waiter.wait(3000);
+        typer.command(".b cancel",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        System.out.println("Done mining a little grass!");
 
     }
 
@@ -309,5 +322,35 @@ public class Main {
     }
 
     public static void bedGather(Looker looker, Typer typer, Crafter crafter, Waiter waiter) throws InterruptedException, AWTException, IOException {
+    }
+
+    public static void giveDiamondStuff(Typer typer, Waiter waiter) throws InterruptedException, AWTException {
+        typer.command("/give pbbp0904 diamond_pickaxe",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give pbbp0904 diamond_shovel",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give pbbp0904 diamond_helmet",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give pbbp0904 diamond_chestplate",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give pbbp0904 diamond_leggings",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give pbbp0904 diamond_boots",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give pbbp0904 dirt 128",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+    }
+
+    public static void obsidianGather(Looker looker, Typer typer, Crafter crafter, MouseMover mm, Waiter waiter) throws InterruptedException, AWTException {
+        typer.command(".b goto obsidian",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        looker.waitUntilStationary();
+        while(true){
+            typer.command(".b mine 10 obsidian",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+            waiter.wait(10000);
+            typer.command(".b cancel",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+            typer.holdRightClick(10);
+            typer.type("3", waiter.getShortSleepTime(),waiter.getLongSleepTime());
+            looker.lookDown();
+            waiter.wait(10000);
+            typer.releaseRightClick(10);
+        }
+    }
+
+    public static void makeObsidianTest(Typer typer, Waiter waiter) throws InterruptedException, AWTException {
+        typer.command("/fill ~-1 ~-1 ~-1 ~-5 ~-2 ~-5 minecraft:lava",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/fill ~-3 ~3 ~-3 ~-3 ~3 ~-3 minecraft:water",waiter.getShortSleepTime(),waiter.getLongSleepTime());
     }
 }
