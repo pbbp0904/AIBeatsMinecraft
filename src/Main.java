@@ -32,25 +32,28 @@ public class Main {
         //inventory = new Inventory(typer);
         filer = new Filer();
     }
-
     public static void main(String[] args) throws AWTException, InterruptedException, IOException {
         Thread.sleep(5000);
         Main main = new Main();
         Exiter exiter = new Exiter();
         //giveDiamondStuff(main.typer,main.waiter);
         //main.waiter.wait(30000);
+
+        doHunt(main.typer, main.waiter);
+
+
         //obsidianGather(main.looker, main.typer, main.crafter, main.mm, main.waiter);
         //makeObsidianTest(main.typer,main.waiter);
-        main.startUp();
+        //main.startUp();
 
         //Need to add avoidance changes when mining/going to
         // Write a block off water fall routine for the obsidian problem?
 
-        woodGather(main.looker, main.typer, main.crafter, main.waiter);
-        stoneGather(main.looker, main.typer, main.crafter, main.mm, main.waiter);
-        ironGather(main.looker, main.typer, main.crafter, main.mm, main.waiter);
-        diamondGather(main.looker, main.typer, main.crafter, main.mm, main.waiter);
-        bedGather(main.looker, main.typer, main.crafter, main.waiter);
+        //woodGather(main.looker, main.typer, main.crafter, main.waiter);
+        //stoneGather(main.looker, main.typer, main.crafter, main.mm, main.waiter);
+        //ironGather(main.looker, main.typer, main.crafter, main.mm, main.waiter);
+        //diamondGather(main.looker, main.typer, main.crafter, main.mm, main.waiter);
+        //bedGather(main.looker, main.typer, main.crafter, main.waiter);
     }
 
 
@@ -352,5 +355,29 @@ public class Main {
     public static void makeObsidianTest(Typer typer, Waiter waiter) throws InterruptedException, AWTException {
         typer.command("/fill ~-1 ~-1 ~-1 ~-5 ~-2 ~-5 minecraft:lava",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         typer.command("/fill ~-3 ~3 ~-3 ~-3 ~3 ~-3 minecraft:water",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+    }
+
+    public static void doHunt(Typer typer, Waiter waiter) throws InterruptedException, AWTException {
+        typer.command("/clear",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give pbbp0904 diamond_helmet{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give pbbp0904 diamond_chestplate{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give pbbp0904 diamond_leggings{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give pbbp0904 diamond_boots{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+
+        typer.type("1",waiter.getShortSleepTime(),waiter.getLongSleepTime()*5);
+        typer.holdRightClick(waiter.getShortSleepTime());
+        typer.type("2",waiter.getShortSleepTime(),waiter.getLongSleepTime()*5);
+        typer.type("3",waiter.getShortSleepTime(),waiter.getLongSleepTime()*5);
+        typer.type("4",waiter.getShortSleepTime(),waiter.getLongSleepTime()*5);
+        typer.releaseRightClick(waiter.getShortSleepTime());
+
+        typer.command("/give pbbp0904 wooden_sword{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give pbbp0904 diamond_pickaxe{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give pbbp0904 diamond_shovel{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give pbbp0904 golden_apple 64",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give pbbp0904 dirt 1024",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.type("1",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+
+        typer.command(".b follow entity player",waiter.getShortSleepTime(),waiter.getLongSleepTime());
     }
 }

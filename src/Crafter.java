@@ -37,7 +37,7 @@ public class Crafter {
 
 
     public Crafter() throws AWTException {
-        waiter = new Waiter(30,60,1500);
+        waiter = new Waiter(50,60,1500);
     }
 
     public void craft(String item, int number) throws AWTException, InterruptedException, IOException {
