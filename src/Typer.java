@@ -456,6 +456,22 @@ public class Typer {
                 robot.keyPress(KeyEvent.VK_CLOSE_BRACKET);
                 robot.keyRelease(KeyEvent.VK_CLOSE_BRACKET);
                 break;
+            case '@':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_2);
+                robot.keyRelease(KeyEvent.VK_2);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case '=':
+                robot.keyPress(KeyEvent.VK_EQUALS);
+                robot.keyRelease(KeyEvent.VK_EQUALS);
+                break;
+            case '!':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_1);
+                robot.keyRelease(KeyEvent.VK_1);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
         }
     }
 }

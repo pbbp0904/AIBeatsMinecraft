@@ -358,11 +358,11 @@ public class Main {
     }
 
     public static void doHunt(Typer typer, Waiter waiter) throws InterruptedException, AWTException {
-        typer.command("/clear",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.command("/give pbbp0904 diamond_helmet{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.command("/give pbbp0904 diamond_chestplate{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.command("/give pbbp0904 diamond_leggings{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.command("/give pbbp0904 diamond_boots{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/clear @p",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give Cosmologicomical diamond_helmet{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give Cosmologicomical diamond_chestplate{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give Cosmologicomical diamond_leggings{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give Cosmologicomical diamond_boots{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
 
         typer.type("1",waiter.getShortSleepTime(),waiter.getLongSleepTime()*5);
         typer.holdRightClick(waiter.getShortSleepTime());
@@ -371,13 +371,28 @@ public class Main {
         typer.type("4",waiter.getShortSleepTime(),waiter.getLongSleepTime()*5);
         typer.releaseRightClick(waiter.getShortSleepTime());
 
-        typer.command("/give pbbp0904 wooden_sword{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.command("/give pbbp0904 diamond_pickaxe{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.command("/give pbbp0904 diamond_shovel{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.command("/give pbbp0904 golden_apple 64",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.command("/give pbbp0904 dirt 1024",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give Cosmologicomical stone_sword{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give Cosmologicomical diamond_pickaxe{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give Cosmologicomical diamond_shovel{Enchantments:[{id:unbreaking,lvl:100}]}",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give Cosmologicomical cooked_beef 64",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/give Cosmologicomical dirt 1024",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         typer.type("1",waiter.getShortSleepTime(),waiter.getLongSleepTime());
 
+        typer.command("/worldborder center ~ ~",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/worldborder set 640",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/weather clear 1000000",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/time set 0",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/effect give @p minecraft:instant_health 100",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/effect give @p minecraft:saturation 10",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/clear @p[name=!Cosmologicomical]",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("tI'll be coming for you in 20 minutes!!!!",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+
+        waiter.wait(1200000);
+        typer.type("t",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("I'll be coming for you very soon!!!!",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        waiter.wait(210000);
+        typer.type("t",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("Best ye run...",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         typer.command(".b follow entity player",waiter.getShortSleepTime(),waiter.getLongSleepTime());
     }
 }
