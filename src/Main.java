@@ -1,52 +1,61 @@
 import java.awt.*;
 import java.io.IOException;
 
+import java.io.FileReader;
+import java.util.Collections;
+import java.util.Map;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 public class Main {
     
-    private Typer typer;
-    private Looker looker;
-    private Crafter crafter;
-    private MouseMover mm;
-    private Waiter waiter;
-    private Filer filer;
+    private final Typer typer;
+    private final Looker looker;
+    private final Crafter crafter;
+    private final MouseMover mm;
+    private final Waiter waiter;
+    private final Filer filer;
+    private final Exiter exiter;
     //private static Inventory inventory;
     
-    public Main() throws AWTException {
-        try {
-            typer = new Typer();
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
+    public Main() {
+        typer = new Typer();
         looker = new Looker();
-        try {
-            crafter = new Crafter();
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
-        try {
-            mm = new MouseMover();
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
+        crafter = new Crafter();
+        mm = new MouseMover();
         waiter = new Waiter();
-        //inventory = new Inventory(typer);
         filer = new Filer();
+        exiter = new Exiter();
     }
-    public static void main(String[] args) throws AWTException, InterruptedException, IOException {
-        Thread.sleep(5000);
+    public static void main(String[] args){
         Main main = new Main();
-        Exiter exiter = new Exiter();
-        //giveDiamondStuff(main.typer,main.waiter);
-        //main.waiter.wait(30000);
+        main.waiter.wait(5000);
 
-        doHunt(main.typer, main.waiter);
+
+
+        main.startUp();
+        main.jumpToPhase(2);
+        main.waiter.wait(10000);
+        main.typer.holdS(200);
+        main.typer.releaseS(200);
+        main.doPhase(2);
+
+        //main.doPhase(1);
+
+
+        //giveDiamondStuff(main.typer,main.waiter);
+        //main.waiter.iwait(30000);
+
+        //doHunt(main.typer, main.waiter);
 
 
         //obsidianGather(main.looker, main.typer, main.crafter, main.mm, main.waiter);
         //makeObsidianTest(main.typer,main.waiter);
         //main.startUp();
 
-        //Need to add avoidance changes when mining/going to
         // Write a block off water fall routine for the obsidian problem?
 
         //woodGather(main.looker, main.typer, main.crafter, main.waiter);
@@ -56,24 +65,199 @@ public class Main {
         //bedGather(main.looker, main.typer, main.crafter, main.waiter);
     }
 
+    public void jumpToPhase(int phase){
+        String instructionSetString = "src\\Instruction_Sets\\JumpToPhase_" + Integer.toString(phase) + ".json";
+        doInstructionSet(instructionSetString);
+        waiter.wait(500);
+        looker.lookDown();
+        typer.type("4");
+        typer.holdRightClick(20);
+        typer.releaseRightClick(20);
+        waiter.wait(2000);
+    }
 
 
+    public void doPhase(int phase){
+        String instructionSetString = "src\\Instruction_Sets\\Phase_" + Integer.toString(phase) + ".json";
+        doInstructionSet(instructionSetString);
+    }
+
+    public void doPhase(int phase, int startingInstruction){
+        String instructionSetString = "src\\Instruction_Sets\\Phase_" + Integer.toString(phase) + ".json";
+        doInstructionSet(instructionSetString, startingInstruction);
+    }
+
+    public void doInstructionSet(String instructionSetString){
+        JSONArray instructionSet = loadInstructionSet(instructionSetString);
+        for (Object instruction : instructionSet){
+            doInstruction((JSONObject) instruction);
+        }
+    }
+    public void doInstructionSet(String instructionSetString, int startingInstruction){
+        JSONArray instructionSet = loadInstructionSet(instructionSetString);
+        for (int i = startingInstruction; i<instructionSet.size(); i++){
+            Object instruction = instructionSet.get(i);
+            doInstruction((JSONObject) instruction);
+        }
+    }
+
+    private void doInstruction(JSONObject instruction){
+        String type = (String) instruction.get("type");
+        String name = (String) instruction.get("name");
+        System.out.println("Doing Instruction: " + name);
+        switch (type) {
+            case "command":
+                doCommand((String) instruction.get("command_string"), (boolean) instruction.get("wait_until_done"));
+                break;
+            case "craft":
+                doCraft((String) instruction.get("item"), ((Number) instruction.get("number")).intValue(), (boolean) instruction.get("open_inventory"), (boolean) instruction.get("close_inventory"));
+                break;
+            case "smelt":
+                doSmelt((String) instruction.get("item"), ((Number) instruction.get("number")).intValue(), (boolean) instruction.get("place_in"), (boolean) instruction.get("wait_until_done"), (boolean) instruction.get("open_inventory"), (boolean) instruction.get("close_inventory"));
+                break;
+            case "place":
+                doPlace((String) instruction.get("item"), (boolean) instruction.get("enter"));
+                break;
+            case "sort":
+                doSort((JSONArray) instruction.get("spec"), (boolean) instruction.get("discard_unspecified"), (boolean) instruction.get("open_inventory"), (boolean) instruction.get("close_inventory"));
+                break;
+        }
+    }
+
+    private void doCommand(String command_string, boolean wait_until_done) {
+        Typer typer = new Typer();
+        Looker looker = new Looker();
+        typer.command(command_string);
+        if(wait_until_done){
+            looker.waitUntilStationary();
+        }
+    }
+
+    private void doCraft(String item, int number, boolean open_inventory, boolean close_inventory) {
+        Crafter crafter = new Crafter();
+        if(open_inventory){
+            crafter.openInventory();
+        }
+
+        crafter.craft(item, number);
+
+        if(close_inventory){
+            crafter.closeInventory();
+        }
+    }
+
+    private void doSmelt(String item, int number, boolean place_in, boolean wait_until_done, boolean open_inventory, boolean close_inventory) {
+        Crafter crafter = new Crafter();
+        Looker looker = new Looker();
+        if(open_inventory){
+            crafter.openInventory();
+        }
+
+        if(place_in) {
+            crafter.smelt(item, number);
+        }
+
+        if(wait_until_done){
+            looker.waitUntilSmeltingDone();
+            crafter.getSmelt();
+        }
+
+        if(close_inventory){
+            crafter.closeInventory();
+        }
+    }
+
+    private void doPlace(String item, boolean enter) {
+        Typer typer = new Typer();
+        Looker looker = new Looker();
+        MouseMover mm = new MouseMover();
+        Waiter waiter = new Waiter();
+        Sorter sorter = new Sorter();
+
+        looker.waitUntilStationary();
+        typer.command(".b goal ~ ~1 ~");
+        typer.command(".b path");
+        looker.waitUntilStationary();
+        typer.command(".b goal ~ ~-1 ~");
+        typer.command(".b path");
+        looker.waitUntilStationary();
+        sorter.openInventory();
+        mm.moveMouseAway();
+        waiter.wait(waiter.getLongSleepTime());
+        sorter.putItemInHotbar(item, 9, false);
+        sorter.closeInventory();
+        typer.type("9",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        looker.lookDown();
+        waiter.wait(waiter.getLongSleepTime()*2);
+        typer.holdShift(100);
+        typer.holdSpace(100);
+        typer.holdRightClick(2000);
+        typer.releaseRightClick(waiter.getShortSleepTime());
+        typer.releaseSpace(waiter.getShortSleepTime());
+        typer.releaseShift(waiter.getShortSleepTime());
+
+        if(!enter){
+            sorter.closeInventory();
+        }
+    }
+
+    private void doSort(JSONArray spec, boolean discard_unspecified, boolean open_inventory, boolean close_inventory) {
+        Sorter sorter = new Sorter();
+
+        if(open_inventory){
+            sorter.openInventory();
+        }
+
+        for (Object action : spec){
+            int slot = ((Number) (((JSONObject) action).get("slot"))).intValue();
+            if(slot>0) {
+                sorter.putItemInHotbar((String) ((JSONObject) action).get("item"), slot, (Boolean) ((JSONObject) action).get("backOnly"));
+            }else{
+                sorter.putOnArmor((String) ((JSONObject) action).get("item"),(Boolean) ((JSONObject) action).get("backOnly"));
+            }
+        }
+
+        if(close_inventory){
+            sorter.closeInventory();
+        }
+    }
 
 
-    public void startUp() throws IOException, InterruptedException, AWTException {
+    public JSONArray loadInstructionSet(String instructionSetString){
+        JSONParser jsonParser = new JSONParser();
+        JSONArray instructionSet = null;
+        try (FileReader reader = new FileReader(instructionSetString))
+        {
+            // Read JSON file
+            Object obj = jsonParser.parse(reader);
+
+            // Convert to JSON array
+            instructionSet = (JSONArray) obj;
+
+        } catch (ParseException | IOException e) {
+            e.printStackTrace();
+        }
+        return instructionSet;
+    }
+
+    public void startUp() {
         System.out.println("Hello world!");
-        this.filer.incrementRunCounter();
+        try {
+            this.filer.incrementRunCounter();
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
         // START
         System.out.println("Starting Run!");
-        typer.command("/clear",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.command("/time set 0",waiter.getShortSleepTime(),waiter.getLongSleepTime());
-        typer.command("/weather clear 10000",waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        typer.command("/clear");
+        typer.command("/time set 0");
+        typer.command("/weather clear 10000");
         //        while(!looker.foundImageOnScreen("src\\Checkpoint_Images\\Crafting_Table.jpg",craftingScreenRect,0.15,1)){
         //            Thread.sleep(waiter.getShortSleepTime());
         //        }
     }
 
-    public static void woodGather(Looker looker, Typer typer, Crafter crafter, Waiter waiter) throws IOException, InterruptedException, AWTException {
+    public static void woodGather(Looker looker, Typer typer, Crafter crafter, Waiter waiter) {
         System.out.println("Mining logs.");
         typer.command(".b mine 8 oak_log",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         looker.waitUntilStationary();
@@ -163,7 +347,7 @@ public class Main {
     }
 
 
-    public static void ironGather(Looker looker, Typer typer, Crafter crafter, MouseMover mm, Waiter waiter) throws InterruptedException, AWTException, IOException {
+    public static void ironGather(Looker looker, Typer typer, Crafter crafter, MouseMover mm, Waiter waiter)  {
         System.out.println("Mining iron ore.");
         typer.command(".b mine 12 iron_ore",waiter.getShortSleepTime(),waiter.getLongSleepTime());
         looker.waitUntilStationary();
@@ -194,7 +378,7 @@ public class Main {
         System.out.println("In furnace!");
 
         System.out.println("Waiting for smelting to be done.");
-        looker.waitUntilSmeltingDown();
+        looker.waitUntilSmeltingDone();
         crafter.getSmelt();
         System.out.println("Smelting is done!");
 

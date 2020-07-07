@@ -8,91 +8,184 @@ public class Typer {
 
     Robot robot;
     Exiter exiter;
+    Waiter waiter;
+    int sleepShort;
+    int sleepLong;
 
-    public Typer() throws AWTException {
-        robot = new Robot();
+    public Typer() {
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
         exiter = new Exiter();
+        waiter = new Waiter(10,80,1500);
+        sleepShort = waiter.getShortSleepTime();
+        sleepLong = waiter.getLongSleepTime();
     }
 
-    public void type(String text, int sleepShort, int sleepLong) throws InterruptedException, AWTException {
+    public void type(String text) {
         for(int i = 0; i < text.length(); i++){
-            Thread.sleep(sleepShort);
+            try {
+                Thread.sleep(sleepShort);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             pressKey(text.charAt(i));
         }
-        Thread.sleep(sleepLong);
+        try {
+            Thread.sleep(sleepLong);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void command(String text, int sleepShort, int sleepLong) throws AWTException, InterruptedException {
-        type(text,sleepShort,sleepLong);
+    public void type(String text, int sleepS, int sleepL) {
+        for(int i = 0; i < text.length(); i++){
+            try {
+                Thread.sleep(sleepS);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            pressKey(text.charAt(i));
+        }
+        try {
+            Thread.sleep(sleepL);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void command(String text, int sleepS, int sleepL){
+        type(text.substring(0,1), sleepS, sleepL);
+        type(text.substring(1), sleepS, sleepL);
         pressEnter(sleepLong);
     }
 
-    public void holdS(int sleepTime) throws InterruptedException {
+    public void command(String text){
+        type(text.substring(0,1));
+        type(text.substring(1));
+        pressEnter(sleepLong);
+    }
+
+    public void holdS(int sleepTime) {
         robot.keyPress(KeyEvent.VK_S);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void releaseS(int sleepTime) throws InterruptedException {
+    public void releaseS(int sleepTime) {
         robot.keyRelease(KeyEvent.VK_S);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void holdSpace(int sleepTime) throws InterruptedException {
+    public void holdSpace(int sleepTime){
         robot.keyPress(KeyEvent.VK_SPACE);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void releaseSpace(int sleepTime) throws InterruptedException {
+    public void releaseSpace(int sleepTime) {
         robot.keyRelease(KeyEvent.VK_SPACE);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void leftClick(int sleepTime) throws InterruptedException {
+    public void leftClick(int sleepTime){
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void rightClick(int sleepTime) throws InterruptedException {
+    public void rightClick(int sleepTime){
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void holdLeftClick(int sleepTime) throws InterruptedException {
+    public void holdLeftClick(int sleepTime) {
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void releaseLeftClick(int sleepTime) throws InterruptedException {
+    public void releaseLeftClick(int sleepTime) {
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void holdRightClick(int sleepTime) throws InterruptedException {
+    public void holdRightClick(int sleepTime) {
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void releaseRightClick(int sleepTime) throws InterruptedException {
+    public void releaseRightClick(int sleepTime) {
         robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void holdShift(int sleepTime) throws InterruptedException {
+    public void holdShift(int sleepTime) {
         robot.keyPress(KeyEvent.VK_SHIFT);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void releaseShift(int sleepTime) throws InterruptedException {
+    public void releaseShift(int sleepTime) {
         robot.keyRelease(KeyEvent.VK_SHIFT);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void pressEnter(int sleepTime) throws InterruptedException {
+    public void pressEnter(int sleepTime) {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void pressKey(char c){
