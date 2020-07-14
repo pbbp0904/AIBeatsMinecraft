@@ -31,7 +31,8 @@ class HOOKPROC_bg implements WinUser.HOOKPROC {
 
     public WinDef.LRESULT callback(int nCode, WinDef.WPARAM wParam, WinUser.KBDLLHOOKSTRUCT info) {
 
-        if (info.vkCode==27) {
+        // Escape is 27
+        if (info.vkCode==26) {
             System.out.println("Exited program");
             System.exit(0);
         }

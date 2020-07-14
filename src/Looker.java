@@ -114,6 +114,25 @@ public class Looker {
         }
     }
 
+    public void waitUntilStationaryFuse(long fuseTime) {
+        boolean imagesEqual = false;
+        BufferedImage screenImg1 = null;
+        BufferedImage screenImg2 = null;
+        long start = System.currentTimeMillis();
+        long end = System.currentTimeMillis();
+        while(!imagesEqual && end<start+fuseTime) {
+            screenImg1 = screenShot(centerScreenRect);
+            try {
+                Thread.sleep(waiter.getStationaryWaitTime());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            screenImg2 = screenShot(centerScreenRect);
+            imagesEqual = bufferedImagesEqual(screenImg1,screenImg2);
+            end = System.currentTimeMillis();
+        }
+    }
+
 
     public void waitUntilSmeltingDone(){
         boolean imagesEqual = false;

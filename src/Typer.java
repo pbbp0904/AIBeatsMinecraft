@@ -19,7 +19,7 @@ public class Typer {
             e.printStackTrace();
         }
         exiter = new Exiter();
-        waiter = new Waiter(10,80,1500);
+        waiter = new Waiter(25,100,1500);
         sleepShort = waiter.getShortSleepTime();
         sleepLong = waiter.getLongSleepTime();
     }
@@ -79,6 +79,24 @@ public class Typer {
 
     public void releaseS(int sleepTime) {
         robot.keyRelease(KeyEvent.VK_S);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void holdD(int sleepTime) {
+        robot.keyPress(KeyEvent.VK_D);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void releaseD(int sleepTime) {
+        robot.keyRelease(KeyEvent.VK_D);
         try {
             Thread.sleep(sleepTime);
         } catch (InterruptedException e) {
@@ -181,6 +199,34 @@ public class Typer {
     public void pressEnter(int sleepTime) {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void pressTab(int sleepTime) {
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyRelease(KeyEvent.VK_TAB);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void holdEscape(int sleepTime) {
+        robot.keyPress(KeyEvent.VK_ESCAPE);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void releaseEscape(int sleepTime) {
+        robot.keyRelease(KeyEvent.VK_ESCAPE);
         try {
             Thread.sleep(sleepTime);
         } catch (InterruptedException e) {
