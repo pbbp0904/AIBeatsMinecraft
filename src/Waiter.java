@@ -5,7 +5,7 @@ public class Waiter {
     private int stationaryWaitTime;
 
     public Waiter(){
-        shortSleepTime = 60;
+        shortSleepTime = 100;
         longSleepTime = 100;
         stationaryWaitTime = 1500;
     }

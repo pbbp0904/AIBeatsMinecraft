@@ -8,91 +8,184 @@ public class Typer {
 
     Robot robot;
     Exiter exiter;
+    Waiter waiter;
+    int sleepShort;
+    int sleepLong;
 
-    public Typer() throws AWTException {
-        robot = new Robot();
+    public Typer() {
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
         exiter = new Exiter();
+        waiter = new Waiter(10,80,1500);
+        sleepShort = waiter.getShortSleepTime();
+        sleepLong = waiter.getLongSleepTime();
     }
 
-    public void type(String text, int sleepShort, int sleepLong) throws InterruptedException, AWTException {
+    public void type(String text) {
         for(int i = 0; i < text.length(); i++){
-            Thread.sleep(sleepShort);
+            try {
+                Thread.sleep(sleepShort);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             pressKey(text.charAt(i));
         }
-        Thread.sleep(sleepLong);
+        try {
+            Thread.sleep(sleepLong);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void command(String text, int sleepShort, int sleepLong) throws AWTException, InterruptedException {
-        type(text,sleepShort,sleepLong);
+    public void type(String text, int sleepS, int sleepL) {
+        for(int i = 0; i < text.length(); i++){
+            try {
+                Thread.sleep(sleepS);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            pressKey(text.charAt(i));
+        }
+        try {
+            Thread.sleep(sleepL);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void command(String text, int sleepS, int sleepL){
+        type(text.substring(0,1), sleepS, sleepL);
+        type(text.substring(1), sleepS, sleepL);
         pressEnter(sleepLong);
     }
 
-    public void holdS(int sleepTime) throws InterruptedException {
+    public void command(String text){
+        type(text.substring(0,1));
+        type(text.substring(1));
+        pressEnter(sleepLong);
+    }
+
+    public void holdS(int sleepTime) {
         robot.keyPress(KeyEvent.VK_S);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void releaseS(int sleepTime) throws InterruptedException {
+    public void releaseS(int sleepTime) {
         robot.keyRelease(KeyEvent.VK_S);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void holdSpace(int sleepTime) throws InterruptedException {
+    public void holdSpace(int sleepTime){
         robot.keyPress(KeyEvent.VK_SPACE);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void releaseSpace(int sleepTime) throws InterruptedException {
+    public void releaseSpace(int sleepTime) {
         robot.keyRelease(KeyEvent.VK_SPACE);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void leftClick(int sleepTime) throws InterruptedException {
+    public void leftClick(int sleepTime){
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void rightClick(int sleepTime) throws InterruptedException {
+    public void rightClick(int sleepTime){
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void holdLeftClick(int sleepTime) throws InterruptedException {
+    public void holdLeftClick(int sleepTime) {
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void releaseLeftClick(int sleepTime) throws InterruptedException {
+    public void releaseLeftClick(int sleepTime) {
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void holdRightClick(int sleepTime) throws InterruptedException {
+    public void holdRightClick(int sleepTime) {
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void releaseRightClick(int sleepTime) throws InterruptedException {
+    public void releaseRightClick(int sleepTime) {
         robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void holdShift(int sleepTime) throws InterruptedException {
+    public void holdShift(int sleepTime) {
         robot.keyPress(KeyEvent.VK_SHIFT);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void releaseShift(int sleepTime) throws InterruptedException {
+    public void releaseShift(int sleepTime) {
         robot.keyRelease(KeyEvent.VK_SHIFT);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void pressEnter(int sleepTime) throws InterruptedException {
+    public void pressEnter(int sleepTime) {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        Thread.sleep(sleepTime);
+        try {
+            Thread.sleep(sleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void pressKey(char c){
@@ -202,6 +295,162 @@ public class Typer {
                 robot.keyPress(KeyEvent.VK_Z);
                 robot.keyRelease(KeyEvent.VK_Z);
                 break;
+            case 'A':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_A);
+                robot.keyRelease(KeyEvent.VK_A);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'B':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_B);
+                robot.keyRelease(KeyEvent.VK_B);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'C':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_C);
+                robot.keyRelease(KeyEvent.VK_C);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'D':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_D);
+                robot.keyRelease(KeyEvent.VK_D);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'E':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_E);
+                robot.keyRelease(KeyEvent.VK_E);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'F':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_F);
+                robot.keyRelease(KeyEvent.VK_F);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'G':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_G);
+                robot.keyRelease(KeyEvent.VK_G);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'H':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_H);
+                robot.keyRelease(KeyEvent.VK_H);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'I':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_I);
+                robot.keyRelease(KeyEvent.VK_I);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'J':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_J);
+                robot.keyRelease(KeyEvent.VK_J);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'K':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_K);
+                robot.keyRelease(KeyEvent.VK_K);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'L':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_L);
+                robot.keyRelease(KeyEvent.VK_L);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'M':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_M);
+                robot.keyRelease(KeyEvent.VK_M);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'N':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_N);
+                robot.keyRelease(KeyEvent.VK_N);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'O':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_O);
+                robot.keyRelease(KeyEvent.VK_O);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'P':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_P);
+                robot.keyRelease(KeyEvent.VK_P);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'Q':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_Q);
+                robot.keyRelease(KeyEvent.VK_Q);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'R':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_R);
+                robot.keyRelease(KeyEvent.VK_R);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'S':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_S);
+                robot.keyRelease(KeyEvent.VK_S);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'T':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_T);
+                robot.keyRelease(KeyEvent.VK_T);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'U':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_U);
+                robot.keyRelease(KeyEvent.VK_U);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'V':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_V);
+                robot.keyRelease(KeyEvent.VK_V);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'W':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_W);
+                robot.keyRelease(KeyEvent.VK_W);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'X':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_X);
+                robot.keyRelease(KeyEvent.VK_X);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'Y':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_Y);
+                robot.keyRelease(KeyEvent.VK_Y);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case 'Z':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_Z);
+                robot.keyRelease(KeyEvent.VK_Z);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
             case '0':
                 robot.keyPress(KeyEvent.VK_0);
                 robot.keyRelease(KeyEvent.VK_0);
@@ -246,6 +495,10 @@ public class Typer {
                 robot.keyPress(KeyEvent.VK_PERIOD);
                 robot.keyRelease(KeyEvent.VK_PERIOD);
                 break;
+            case ',':
+                robot.keyPress(KeyEvent.VK_COMMA);
+                robot.keyRelease(KeyEvent.VK_COMMA);
+                break;
             case ' ':
                 robot.keyPress(KeyEvent.VK_SPACE);
                 robot.keyRelease(KeyEvent.VK_SPACE);
@@ -261,8 +514,10 @@ public class Typer {
                 robot.keyRelease(KeyEvent.VK_SHIFT);
                 break;
             case ':':
-                robot.keyPress(KeyEvent.VK_COLON);
-                robot.keyRelease(KeyEvent.VK_COLON);
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_SEMICOLON);
+                robot.keyRelease(KeyEvent.VK_SEMICOLON);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
                 break;
             case '~':
                 robot.keyPress(KeyEvent.VK_SHIFT);
@@ -273,6 +528,42 @@ public class Typer {
             case '/':
                 robot.keyPress(KeyEvent.VK_SLASH);
                 robot.keyRelease(KeyEvent.VK_SLASH);
+                break;
+            case '{':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_OPEN_BRACKET);
+                robot.keyRelease(KeyEvent.VK_OPEN_BRACKET);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case '}':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_CLOSE_BRACKET);
+                robot.keyRelease(KeyEvent.VK_CLOSE_BRACKET);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case '[':
+                robot.keyPress(KeyEvent.VK_OPEN_BRACKET);
+                robot.keyRelease(KeyEvent.VK_OPEN_BRACKET);
+                break;
+            case ']':
+                robot.keyPress(KeyEvent.VK_CLOSE_BRACKET);
+                robot.keyRelease(KeyEvent.VK_CLOSE_BRACKET);
+                break;
+            case '@':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_2);
+                robot.keyRelease(KeyEvent.VK_2);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
+                break;
+            case '=':
+                robot.keyPress(KeyEvent.VK_EQUALS);
+                robot.keyRelease(KeyEvent.VK_EQUALS);
+                break;
+            case '!':
+                robot.keyPress(KeyEvent.VK_SHIFT);
+                robot.keyPress(KeyEvent.VK_1);
+                robot.keyRelease(KeyEvent.VK_1);
+                robot.keyRelease(KeyEvent.VK_SHIFT);
                 break;
         }
     }

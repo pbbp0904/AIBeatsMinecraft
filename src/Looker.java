@@ -21,7 +21,7 @@ public class Looker {
     private Waiter waiter;
     private MouseMover mm;
 
-    public Looker() throws AWTException {
+    public Looker(){
         hotbarScreenRect = new Rectangle(600, 900, 600, 200);
         craftingScreenRect = new Rectangle(850, 250, 100, 200);
         inventoryScreenRect = new Rectangle(711, 525, 500, 240);
@@ -93,32 +93,42 @@ public class Looker {
 
 
 
-    public void lookDown() throws InterruptedException {
+    public void lookDown() {
         mm.moveMouse(960,1000,10);
         mm.moveMouse(960,1000,10);
     }
 
-    public void waitUntilStationary() throws AWTException, InterruptedException {
+    public void waitUntilStationary() {
         boolean imagesEqual = false;
-        BufferedImage screenImg1;
-        BufferedImage screenImg2;
+        BufferedImage screenImg1 = null;
+        BufferedImage screenImg2 = null;
         while(!imagesEqual) {
             screenImg1 = screenShot(centerScreenRect);
-            Thread.sleep(waiter.getStationaryWaitTime());
+            try {
+                Thread.sleep(waiter.getStationaryWaitTime());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             screenImg2 = screenShot(centerScreenRect);
             imagesEqual = bufferedImagesEqual(screenImg1,screenImg2);
         }
     }
 
 
-    public void waitUntilSmeltingDown() throws AWTException, InterruptedException {
+    public void waitUntilSmeltingDone(){
         boolean imagesEqual = false;
-        BufferedImage screenImg1;
-        BufferedImage screenImg2;
+        BufferedImage screenImg1 = null;
+        BufferedImage screenImg2 = null;
         while(!imagesEqual) {
             screenImg1 = screenShot(furnaceProgressScreenRect);
-            Thread.sleep(waiter.getStationaryWaitTime());
+            try {
+                Thread.sleep(waiter.getStationaryWaitTime());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             screenImg2 = screenShot(furnaceProgressScreenRect);
+            assert screenImg1 != null;
+            assert screenImg2 != null;
             imagesEqual = bufferedImagesEqual(screenImg1,screenImg2);
         }
     }
@@ -138,29 +148,37 @@ public class Looker {
     }
 
 
-    public boolean foundImageOnScreen(String pathname, Rectangle screenRect, double threshold, int scale) throws AWTException {
-        BufferedImage screenImg = screenShot(screenRect);
+    public boolean foundImageOnScreen(String pathname, Rectangle screenRect, double threshold, int scale) {
+        BufferedImage screenImg = null;
+        screenImg = screenShot(screenRect);
         String filePath = new File(pathname).getAbsolutePath();
         BufferedImage img = getImage(filePath);
+        assert screenImg != null;
         double diff = findSubImageDiff(screenImg, img, screenRect);
         System.out.println(diff);
         return diff < threshold;
     }
 
 
-    public int[] findLocationOnScreen(String pathname, Rectangle screenRect) throws AWTException {
-        BufferedImage screenImg = screenShot(screenRect);
+    public int[] findLocationOnScreen(String pathname, Rectangle screenRect) {
+        BufferedImage screenImg = null;
+        screenImg = screenShot(screenRect);
         String filePath = new File(pathname).getAbsolutePath();
         BufferedImage img = getImage(filePath);
-        int[] coords = findSubImage(screenImg, img, screenRect);
-        return coords;
+        assert screenImg != null;
+        return findSubImage(screenImg, img, screenRect);
     }
 
-    public BufferedImage screenShot(Rectangle screenRect) throws AWTException {
-        Robot robot = new Robot();
+    public BufferedImage screenShot(Rectangle screenRect) {
+        Robot robot = null;
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
 
-        BufferedImage screenFullImage = robot.createScreenCapture(screenRect);
-        return screenFullImage;
+        assert robot != null;
+        return robot.createScreenCapture(screenRect);
     }
 
     public BufferedImage getImage(String filename) {

@@ -8,11 +8,8 @@ public class Crafter {
 
     Typer typer = new Typer();
     MouseMover mm = new MouseMover();
-    Looker look = new Looker();
-    BufferedImage screen;
-    BufferedImage img;
+    Looker looker = new Looker();
     int[] coords;
-    Rectangle screenRect = new Rectangle(700, 500, 600, 400);
     int[] handCraftSlot1 = new int[]{1015, 360};
     int[] handCraftSlot2 = new int[]{1067, 360};
     int[] handCraftSlot3 = new int[]{1067, 413};
@@ -36,17 +33,18 @@ public class Crafter {
     private Waiter waiter;
 
 
-    public Crafter() throws AWTException {
-        waiter = new Waiter(30,60,1500);
+    public Crafter() {
+        waiter = new Waiter(50,60,1500);
     }
 
-    public void craft(String item, int number) throws AWTException, InterruptedException, IOException {
+    public void craft(String item, int number) {
         switch (item) {
-            case "wooden_plank":
-                // Open inventory
-                typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
+            case "oak_planks":
+                // Move Mouse Away
+                mm.moveMouseAway();
+
                 // Find location of logs
-                coords = look.findLocationOnScreen("src\\Item_Images\\Log1.jpg", screenRect);
+                coords = looker.findLocationOnScreen("src\\Item_Images\\oak_log.jpg", looker.getInventoryScreenRect());
 
 
                 // Pick up items
@@ -67,20 +65,15 @@ public class Crafter {
                 typer.leftClick(waiter.getShortSleepTime());
                 typer.releaseShift(waiter.getShortSleepTime());
 
-
-                // Close inventory
-                typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
                 break;
 
 
             case "crafting_table":
-                // Open inventory
-                typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
                 // Move mouse away
-                mm.moveMouse(200,200, waiter.getLongSleepTime());
-                waiter.wait(waiter.getLongSleepTime());
+                mm.moveMouseAway();
+
                 // Find location of wood
-                coords = look.findLocationOnScreen("src\\Item_Images\\Wood1.jpg", screenRect);
+                coords = looker.findLocationOnScreen("src\\Item_Images\\oak_planks.jpg", looker.getInventoryScreenRect());
 
 
                 // Pick up items
@@ -120,17 +113,15 @@ public class Crafter {
                 typer.leftClick(waiter.getShortSleepTime());
                 typer.releaseShift(waiter.getShortSleepTime());
 
-
-                // Close inventory
-                typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
                 break;
 
 
             case "stick":
-                // Open inventory
-                typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
+                // Move Mouse Away
+                mm.moveMouseAway();
+
                 // Find location of wood
-                coords = look.findLocationOnScreen("src\\Item_Images\\Wood1.jpg", screenRect);
+                coords = looker.findLocationOnScreen("src\\Item_Images\\oak_planks.jpg", looker.getInventoryScreenRect());
 
 
                 // Pick up items
@@ -158,38 +149,32 @@ public class Crafter {
                 typer.leftClick(waiter.getShortSleepTime());
                 typer.releaseShift(waiter.getShortSleepTime());
 
-
-                // Close inventory
-                typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
                 break;
 
 
             case "wooden_pickaxe":
 
                 // Move mouse away
-                mm.moveMouse(200,200, waiter.getLongSleepTime());
+                mm.moveMouseAway();
 
                 // Find location of items
-                int[] woodCoords = look.findLocationOnScreen("src\\Item_Images\\Wood1.jpg", screenRect);
-                int[] stickWoodCoords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect);
+                int[] woodCoords = looker.findLocationOnScreen("src\\Item_Images\\oak_planks.jpg", looker.getInventoryScreenRect());
+                int[] stickWoodCoords = looker.findLocationOnScreen("src\\Item_Images\\stick.jpg", looker.getInventoryScreenRect());
 
 
                 ////WOODEN PICKAXE
                 craftItem(woodCoords,stickWoodCoords,new int[]{1,2,3},new int[]{5,8},1);
 
-
-                // Close inventory
-                typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
                 break;
 
 
             case "stone_tools":
                 // Move mouse away
-                mm.moveMouse(200,200, waiter.getLongSleepTime());
+                mm.moveMouseAway();
 
                 // Find location of items
-                int[] stoneCoords = look.findLocationOnScreen("src\\Item_Images\\Cobblestone.jpg", screenRect);
-                int[] stickStoneCoords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect);
+                int[] stoneCoords = looker.findLocationOnScreen("src\\Item_Images\\cobblestone.jpg", looker.getInventoryScreenRect());
+                int[] stickStoneCoords = looker.findLocationOnScreen("src\\Item_Images\\stick.jpg", looker.getInventoryScreenRect());
 
 
                 ////STONE PICKAXE
@@ -201,18 +186,16 @@ public class Crafter {
                 ////FURNACE
                 craftItem(stoneCoords, new int[]{1,2,3,4,6,7,8,9},1 );
 
-
-                // Close inventory
-                typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
                 break;
 
             case "iron_tools":
                 // Move mouse away
-                mm.moveMouse(200,200, waiter.getLongSleepTime());
+                mm.moveMouseAway();
+
                 // Find location of materials
-                int[] ironCoords = look.findLocationOnScreen("src\\Item_Images\\Iron.jpg", screenRect);
-                int[] stickIronCoords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect);
-                int[] flintCoords = look.findLocationOnScreen("src\\Item_Images\\Flint.jpg", screenRect);
+                int[] ironCoords = looker.findLocationOnScreen("src\\Item_Images\\iron.jpg", looker.getInventoryScreenRect());
+                int[] stickIronCoords = looker.findLocationOnScreen("src\\Item_Images\\stick.jpg", looker.getInventoryScreenRect());
+                int[] flintCoords = looker.findLocationOnScreen("src\\Item_Images\\flint.jpg", looker.getInventoryScreenRect());
 
 
                 ////IRON PICKAXES
@@ -227,18 +210,15 @@ public class Crafter {
                 ////FLINT AND STEEL
                 craftItem(ironCoords,flintCoords,new int[]{2},new int[]{6},1);
 
-
-                // Close inventory
-                typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
                 break;
 
             case "diamond_items":
                 // Move mouse away
-                mm.moveMouse(200,200, waiter.getLongSleepTime());
+                mm.moveMouseAway();
 
                 // Find location of materials
-                int[] diamondCoords = look.findLocationOnScreen("src\\Item_Images\\Diamond.jpg", screenRect);
-                int[] stickDiamondCoords = look.findLocationOnScreen("src\\Item_Images\\Stick.jpg", screenRect);
+                int[] diamondCoords = looker.findLocationOnScreen("src\\Item_Images\\diamond.jpg", looker.getInventoryScreenRect());
+                int[] stickDiamondCoords = looker.findLocationOnScreen("src\\Item_Images\\stick.jpg", looker.getInventoryScreenRect());
 
 
                 ////DIAMOND SWORD
@@ -262,14 +242,11 @@ public class Crafter {
                 ////BOOTS
                 craftItem(diamondCoords, new int[]{4,6,7,9},1 );
 
-
-                // Close inventory
-                typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
                 break;
         }
     }
 
-    public void craftItem(int[] materialCoords, int[] craftingPositions, int number) throws InterruptedException, AWTException {
+    public void craftItem(int[] materialCoords, int[] craftingPositions, int number) {
         // Pick up material
         mm.moveMouse(materialCoords, waiter.getShortSleepTime());
         typer.leftClick(waiter.getShortSleepTime());
@@ -325,7 +302,7 @@ public class Crafter {
 
 
 
-    public void craftItem(int[] materialCoords1, int[] materialCoords2, int[] craftingPositions1, int[] craftingPositions2, int number) throws InterruptedException, AWTException {
+    public void craftItem(int[] materialCoords1, int[] materialCoords2, int[] craftingPositions1, int[] craftingPositions2, int number) {
         // Pick up material 1
         mm.moveMouse(materialCoords1, waiter.getShortSleepTime());
         typer.leftClick(waiter.getShortSleepTime());
@@ -425,16 +402,16 @@ public class Crafter {
     }
 
 
-    public void smelt(String item, int number) throws InterruptedException, AWTException {
+    public void smelt(String item, int number) {
         switch(item) {
-            case "iron":
+            case "iron_ore":
                 // Move mouse away
-                mm.moveMouse(200,200, waiter.getLongSleepTime());
+                mm.moveMouseAway();
 
                 ////IRON
                 // Find location of items
-                int[] ironOreCoords = look.findLocationOnScreen("src\\Item_Images\\Iron_Ore.jpg", screenRect);
-                int[] coalCoords = look.findLocationOnScreen("src\\Item_Images\\Coal.jpg", screenRect);
+                int[] ironOreCoords = looker.findLocationOnScreen("src\\Item_Images\\iron_ore.jpg", looker.getInventoryScreenRect());
+                int[] coalCoords = looker.findLocationOnScreen("src\\Item_Images\\coal.jpg", looker.getInventoryScreenRect());
                 // Pick up iron ore
                 mm.moveMouse(ironOreCoords, waiter.getShortSleepTime());
                 typer.leftClick(waiter.getShortSleepTime());
@@ -462,23 +439,27 @@ public class Crafter {
                 // Place item back in original slot
                 mm.moveMouse(coalCoords, waiter.getShortSleepTime());
                 typer.leftClick(waiter.getLongSleepTime());
-                // Close inventory
-                typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
                 break;
 
         }
 
     }
 
+    public void openInventory(){
+        typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
+        waiter.wait(waiter.getLongSleepTime());
+    }
 
+    public void closeInventory(){
+        typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
+        waiter.wait(waiter.getLongSleepTime());
+    }
 
-    public void getSmelt() throws InterruptedException, AWTException {
+    public void getSmelt() {
         mm.moveMouse(furnaceResSlot,waiter.getShortSleepTime());
         typer.holdShift(waiter.getShortSleepTime());
         typer.leftClick(waiter.getShortSleepTime());
         typer.releaseShift(waiter.getLongSleepTime());
-        // Close inventory
-        typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
     }
 
 
