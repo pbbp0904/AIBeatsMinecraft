@@ -16,7 +16,7 @@ import org.json.simple.parser.ParseException;
 import javax.imageio.ImageIO;
 
 public class Main {
-    
+
     private final Typer typer;
     private final Looker looker;
     private final Crafter crafter;
@@ -37,12 +37,26 @@ public class Main {
     }
     public static void main(String[] args){
         Main main = new Main();
-        main.waiter.wait(5000);
 
-        main.startUp();
-        main.jumpToPhase(4);
-        main.waiter.wait(2000);
-        main.doPhase(4);
+
+
+//        for(int i = 0; i < 10000; i++) {
+//            PointerInfo a = MouseInfo.getPointerInfo();
+//            Point b = a.getLocation();
+//            int x = (int) b.getX();
+//            int y = (int) b.getY();
+//            System.out.print(x + ",");
+//            System.out.print(y + "\n");
+//            Thread.sleep(100);
+//        }
+
+//        Main main = new Main();
+//        main.waiter.wait(5000);
+//
+//        main.startUp();
+//        main.jumpToPhase(4);
+//        main.waiter.wait(2000);
+//        main.doPhase(4);
 
 
 
@@ -86,7 +100,9 @@ public class Main {
 //        main.waiter.wait(1000);
 //        main.doPhase(2);
 
-        //main.doPhase(1);
+        main.waiter.wait(5000);
+        main.startUp();
+        main.doPhase(1);
 
 
         //giveDiamondStuff(main.typer,main.waiter);
