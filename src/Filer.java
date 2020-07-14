@@ -18,4 +18,19 @@ public class Filer {
         writer.write(String.valueOf(count));
         writer.close();
     }
+
+    public int getGUIScale() throws IOException {
+        // Read number
+        String appData = System.getenv("APPDATA");
+        File file = new File(appData+"\\.minecraft\\options.txt");
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        String st;
+        while ((st = reader.readLine()) != null){
+              if (st.contains("guiScale:")){
+                  System.out.println();
+                  return Integer.parseInt(st.substring(9,10));
+              }
+        }
+        return 0;
+    }
 }

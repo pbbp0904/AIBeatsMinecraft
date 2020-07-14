@@ -8,77 +8,216 @@ import com.sun.jna.platform.*;
 
 public class Looker {
 
-    private static int searchSpacingX = 2;
-    private static int searchSpacingY = 2;
-    private Rectangle hotbarScreenRect;
-    private Rectangle craftingScreenRect;
-    private Rectangle inventoryScreenRect;
+    private static final int searchSpacingX = 2;
+    private static final int searchSpacingY = 2;
+    private static final int guiScale1InvX = 176;
+    private static final int guiScale1InvY = 166;
+
+    private static final int[] handCraftSlot1Offset = new int[]{106,28};
+    private static final int[] handCraftSlot2Offset = new int[]{124,28};
+    private static final int[] handCraftSlot3Offset = new int[]{106,46};
+    private static final int[] handCraftSlot4Offset = new int[]{124,46};
+    private static final int[] handCraftSlotResOffset = new int[]{162,37};
+
+    private static final int[] tableCraftSlot1Offset = new int[]{38,28};
+    private static final int[] tableCraftSlot2Offset = new int[]{56,28};
+    private static final int[] tableCraftSlot3Offset = new int[]{74,28};
+    private static final int[] tableCraftSlot4Offset = new int[]{38,46};
+    private static final int[] tableCraftSlot5Offset = new int[]{56,46};
+    private static final int[] tableCraftSlot6Offset = new int[]{74,46};
+    private static final int[] tableCraftSlot7Offset = new int[]{38,64};
+    private static final int[] tableCraftSlot8Offset = new int[]{56,64};
+    private static final int[] tableCraftSlot9Offset = new int[]{74,64};
+    private static final int[] tableCraftSlotResOffset = new int[]{132,46};
+
+    private static final int[] furnaceCoalSlotOffset = new int[]{64,64};
+    private static final int[] furnaceSmeltSlotOffset = new int[]{64,28};
+    private static final int[] furnaceResSlotOffset = new int[]{124,46};
+
+    private static final int[] inventoryScreenRectOffset = new int[]{8, 84};
+    private static final int[] backpackScreenRectOffset = new int[]{8, 84};
+    private static final int[] furnaceProgressScreenRectOffset = new int[]{80, 35};
+
+    private static final int[] inventoryScreenRectSize = new int[]{162, 76};
+    private static final int[] backpackScreenRectSize = new int[]{162, 54};
+    private static final int[] furnaceProgressScreenSize = new int[]{24, 17};
+
+    private static final int centerScreenScaling = 15;
 
 
-    private Rectangle backpackScreenRect;
-    private Rectangle centerScreenRect;
-    private Rectangle furnaceProgressScreenRect;
-    private Waiter waiter;
-    private MouseMover mm;
+    private static final int[] handCraftSlot1;
+    private static final int[] handCraftSlot2;
+    private static final int[] handCraftSlot3;
+    private static final int[] handCraftSlot4;
+    private static final int[] handCraftSlotRes;
 
-    public Looker(){
-        hotbarScreenRect = new Rectangle(600, 900, 600, 200);
-        craftingScreenRect = new Rectangle(850, 250, 100, 200);
-        inventoryScreenRect = new Rectangle(711, 525, 500, 240);
-        backpackScreenRect = new Rectangle(711, 525, 500, 170);
-        centerScreenRect = new Rectangle(910, 490, 100, 100);
-        furnaceProgressScreenRect = new Rectangle(930, 380, 80, 60);
+    private static final int[] tableCraftSlot1;
+    private static final int[] tableCraftSlot2;
+    private static final int[] tableCraftSlot3;
+    private static final int[] tableCraftSlot4;
+    private static final int[] tableCraftSlot5;
+    private static final int[] tableCraftSlot6;
+    private static final int[] tableCraftSlot7;
+    private static final int[] tableCraftSlot8;
+    private static final int[] tableCraftSlot9;
+    private static final int[] tableCraftSlotRes;
+
+    private static final int[] furnaceCoalSlot;
+    private static final int[] furnaceSmeltSlot;
+    private static final int[] furnaceResSlot;
+
+    private static final Rectangle inventoryScreenRect;
+    private static final Rectangle backpackScreenRect;
+    private static final Rectangle furnaceProgressScreenRect;
+
+    private static final Rectangle centerScreenRect;
+
+    private static final Waiter waiter;
+    private static final MouseMover mm;
+
+    static{
+        int guiScale = 0;
+        Filer filer = new Filer();
+        try {
+            guiScale = filer.getGUIScale();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        PointerInfo a = MouseInfo.getPointerInfo();
+        Point b = a.getLocation();
+        int centerX = (int) b.getX();
+        int centerY = (int) b.getY();
+
+        int topLeftX = centerX-(guiScale1InvX/2)*guiScale;
+        int topLeftY = centerY-(guiScale1InvY/2)*guiScale;
+
+        handCraftSlot1 = new int[]{topLeftX+(handCraftSlot1Offset[0]*guiScale), topLeftY+(handCraftSlot1Offset[1]*guiScale)};
+        handCraftSlot2 = new int[]{topLeftX+(handCraftSlot2Offset[0]*guiScale), topLeftY+(handCraftSlot2Offset[1]*guiScale)};
+        handCraftSlot3 = new int[]{topLeftX+(handCraftSlot3Offset[0]*guiScale), topLeftY+(handCraftSlot3Offset[1]*guiScale)};
+        handCraftSlot4 = new int[]{topLeftX+(handCraftSlot4Offset[0]*guiScale), topLeftY+(handCraftSlot4Offset[1]*guiScale)};
+        handCraftSlotRes = new int[]{topLeftX+(handCraftSlotResOffset[0]*guiScale), topLeftY+(handCraftSlotResOffset[1]*guiScale)};
+
+        tableCraftSlot1 = new int[]{topLeftX+(tableCraftSlot1Offset[0]*guiScale), topLeftY+(tableCraftSlot1Offset[1]*guiScale)};
+        tableCraftSlot2 = new int[]{topLeftX+(tableCraftSlot2Offset[0]*guiScale), topLeftY+(tableCraftSlot2Offset[1]*guiScale)};
+        tableCraftSlot3 = new int[]{topLeftX+(tableCraftSlot3Offset[0]*guiScale), topLeftY+(tableCraftSlot3Offset[1]*guiScale)};
+        tableCraftSlot4 = new int[]{topLeftX+(tableCraftSlot4Offset[0]*guiScale), topLeftY+(tableCraftSlot4Offset[1]*guiScale)};
+        tableCraftSlot5 = new int[]{topLeftX+(tableCraftSlot5Offset[0]*guiScale), topLeftY+(tableCraftSlot5Offset[1]*guiScale)};
+        tableCraftSlot6 = new int[]{topLeftX+(tableCraftSlot6Offset[0]*guiScale), topLeftY+(tableCraftSlot6Offset[1]*guiScale)};
+        tableCraftSlot7 = new int[]{topLeftX+(tableCraftSlot7Offset[0]*guiScale), topLeftY+(tableCraftSlot7Offset[1]*guiScale)};
+        tableCraftSlot8 = new int[]{topLeftX+(tableCraftSlot8Offset[0]*guiScale), topLeftY+(tableCraftSlot8Offset[1]*guiScale)};
+        tableCraftSlot9 = new int[]{topLeftX+(tableCraftSlot9Offset[0]*guiScale), topLeftY+(tableCraftSlot9Offset[1]*guiScale)};
+        tableCraftSlotRes = new int[]{topLeftX+(tableCraftSlotResOffset[0]*guiScale), topLeftY+(tableCraftSlotResOffset[1]*guiScale)};
+
+        furnaceCoalSlot = new int[]{topLeftX+(furnaceCoalSlotOffset[0]*guiScale), topLeftY+(furnaceCoalSlotOffset[1]*guiScale)};
+        furnaceSmeltSlot = new int[]{topLeftX+(furnaceSmeltSlotOffset[0]*guiScale), topLeftY+(furnaceSmeltSlotOffset[1]*guiScale)};
+        furnaceResSlot = new int[]{topLeftX+(furnaceResSlotOffset[0]*guiScale), topLeftY+(furnaceResSlotOffset[1]*guiScale)};
+
+        inventoryScreenRect = new Rectangle(topLeftX+(inventoryScreenRectOffset[0]*guiScale), topLeftY+(inventoryScreenRectOffset[1]*guiScale), inventoryScreenRectSize[0]*guiScale, inventoryScreenRectSize[1]*guiScale);
+        backpackScreenRect = new Rectangle(topLeftX+(backpackScreenRectOffset[0]*guiScale), topLeftY+(backpackScreenRectOffset[1]*guiScale), backpackScreenRectSize[0]*guiScale, backpackScreenRectSize[1]*guiScale);
+        furnaceProgressScreenRect = new Rectangle(topLeftX+(furnaceProgressScreenRectOffset[0]*guiScale), topLeftY+(furnaceProgressScreenRectOffset[1]*guiScale), furnaceProgressScreenSize[0]*guiScale, furnaceProgressScreenSize[1]*guiScale);
+
+        centerScreenRect = new Rectangle(centerX-centerScreenScaling*guiScale, centerY-centerScreenScaling*guiScale, 2*centerScreenScaling*guiScale, 2*centerScreenScaling*guiScale);
+
         waiter = new Waiter();
         mm = new MouseMover();
     }
 
-    public Rectangle getHotbarScreenRect() {
-        return hotbarScreenRect;
+    public static int[] getHandCraftSlot1() {
+        return handCraftSlot1;
     }
 
-    public void setHotbarScreenRect(Rectangle hotbarScreenRect) {
-        this.hotbarScreenRect = hotbarScreenRect;
+    public static int[] getHandCraftSlot2() {
+        return handCraftSlot2;
     }
 
-    public Rectangle getCraftingScreenRect() {
-        return craftingScreenRect;
+    public static int[] getHandCraftSlot3() {
+        return handCraftSlot3;
     }
 
-    public void setCraftingScreenRect(Rectangle craftingScreenRect) {
-        this.craftingScreenRect = craftingScreenRect;
+    public static int[] getHandCraftSlot4() {
+        return handCraftSlot4;
     }
 
-    public Rectangle getInventoryScreenRect() {
+    public static int[] getHandCraftSlotRes() {
+        return handCraftSlotRes;
+    }
+
+    public static int[] getTableCraftSlot1() {
+        return tableCraftSlot1;
+    }
+
+    public static int[] getTableCraftSlot2() {
+        return tableCraftSlot2;
+    }
+
+    public static int[] getTableCraftSlot3() {
+        return tableCraftSlot3;
+    }
+
+    public static int[] getTableCraftSlot4() {
+        return tableCraftSlot4;
+    }
+
+    public static int[] getTableCraftSlot5() {
+        return tableCraftSlot5;
+    }
+
+    public static int[] getTableCraftSlot6() {
+        return tableCraftSlot6;
+    }
+
+    public static int[] getTableCraftSlot7() {
+        return tableCraftSlot7;
+    }
+
+    public static int[] getTableCraftSlot8() {
+        return tableCraftSlot8;
+    }
+
+    public static int[] getTableCraftSlot9() {
+        return tableCraftSlot9;
+    }
+
+    public static int[] getTableCraftSlotRes() {
+        return tableCraftSlotRes;
+    }
+
+    public static int[] getFurnaceCoalSlot() {
+        return furnaceCoalSlot;
+    }
+
+    public static int[] getFurnaceSmeltSlot() {
+        return furnaceSmeltSlot;
+    }
+
+    public static int[] getFurnaceResSlot() {
+        return furnaceResSlot;
+    }
+
+
+    public static Rectangle getInventoryScreenRect() {
         return inventoryScreenRect;
     }
 
-    public void setInventoryScreenRect(Rectangle inventoryScreenRect) {
-        this.inventoryScreenRect = inventoryScreenRect;
-    }
-
-    public Rectangle getBackpackScreenRect() {
+    public static Rectangle getBackpackScreenRect() {
         return backpackScreenRect;
     }
 
-    public void setBackpackScreenRect(Rectangle backpackScreenRect) {
-        this.backpackScreenRect = backpackScreenRect;
-    }
-
-    public Rectangle getCenterScreenRect() {
+    public static Rectangle getCenterScreenRect() {
         return centerScreenRect;
     }
 
-    public void setCenterScreenRect(Rectangle centerScreenRect) {
-        this.centerScreenRect = centerScreenRect;
-    }
-
-    public Rectangle getFurnaceProgressScreenRect() {
+    public static Rectangle getFurnaceProgressScreenRect() {
         return furnaceProgressScreenRect;
     }
 
-    public void setFurnaceProgressScreenRect(Rectangle furnaceProgressScreenRect) {
-        this.furnaceProgressScreenRect = furnaceProgressScreenRect;
-    }
+
+
+
+
+
+
 
     public Rectangle getMinecraftWindow() {
         Rectangle rect = null;
@@ -91,14 +230,12 @@ public class Looker {
     }
 
 
-
-
-    public void lookDown() {
+    public static void lookDown() {
         mm.moveMouse(960,1000,10);
         mm.moveMouse(960,1000,10);
     }
 
-    public void waitUntilStationary() {
+    public static void waitUntilStationary() {
         boolean imagesEqual = false;
         BufferedImage screenImg1 = null;
         BufferedImage screenImg2 = null;
@@ -114,7 +251,7 @@ public class Looker {
         }
     }
 
-    public void waitUntilStationaryFuse(long fuseTime) {
+    public static void waitUntilStationaryFuse(long fuseTime) {
         boolean imagesEqual = false;
         BufferedImage screenImg1 = null;
         BufferedImage screenImg2 = null;
@@ -134,7 +271,7 @@ public class Looker {
     }
 
 
-    public void waitUntilSmeltingDone(){
+    public static void waitUntilSmeltingDone(){
         boolean imagesEqual = false;
         BufferedImage screenImg1 = null;
         BufferedImage screenImg2 = null;
@@ -152,7 +289,7 @@ public class Looker {
         }
     }
 
-    boolean bufferedImagesEqual(BufferedImage img1, BufferedImage img2) {
+    static boolean bufferedImagesEqual(BufferedImage img1, BufferedImage img2) {
         if (img1.getWidth() == img2.getWidth() && img1.getHeight() == img2.getHeight()) {
             for (int x = 0; x < img1.getWidth(); x++) {
                 for (int y = 0; y < img1.getHeight(); y++) {
@@ -167,7 +304,7 @@ public class Looker {
     }
 
 
-    public boolean foundImageOnScreen(String pathname, Rectangle screenRect, double threshold, int scale) {
+    public static boolean foundImageOnScreen(String pathname, Rectangle screenRect, double threshold, int scale) {
         BufferedImage screenImg = null;
         screenImg = screenShot(screenRect);
         String filePath = new File(pathname).getAbsolutePath();
@@ -179,7 +316,7 @@ public class Looker {
     }
 
 
-    public int[] findLocationOnScreen(String pathname, Rectangle screenRect) {
+    public static int[] findLocationOnScreen(String pathname, Rectangle screenRect) {
         BufferedImage screenImg = null;
         screenImg = screenShot(screenRect);
         String filePath = new File(pathname).getAbsolutePath();
@@ -188,7 +325,7 @@ public class Looker {
         return findSubImage(screenImg, img, screenRect);
     }
 
-    public BufferedImage screenShot(Rectangle screenRect) {
+    public static BufferedImage screenShot(Rectangle screenRect) {
         Robot robot = null;
         try {
             robot = new Robot();
@@ -200,7 +337,7 @@ public class Looker {
         return robot.createScreenCapture(screenRect);
     }
 
-    public BufferedImage getImage(String filename) {
+    public static BufferedImage getImage(String filename) {
         try {
             BufferedImage img = ImageIO.read(new File(filename));
             return img;
