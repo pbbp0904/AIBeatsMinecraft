@@ -309,11 +309,11 @@ public class Main {
         Typer.command(".b goal ~ ~-1 ~");
         Typer.command(".b path");
         Looker.waitUntilStationary();
-        Sorter.openInventory();
+        Typer.openInventory();
         MouseMover.moveMouseAway();
-        Waiter.wait(Waiter.getLongSleepTime());
+        Waiter.waitLong();
         Sorter.putItemInHotbar(item, 9, false);
-        Sorter.closeInventory();
+        Typer.closeInventory();
         Typer.type("9",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Looker.lookDown();
         Waiter.wait(Waiter.getLongSleepTime()*2);
@@ -325,13 +325,13 @@ public class Main {
         Typer.releaseShift(Waiter.getShortSleepTime());
 
         if(!enter){
-            Sorter.closeInventory();
+            Typer.closeInventory();
         }
     }
 
     private static void doSort(JSONArray spec, boolean discard_unspecified, boolean open_inventory, boolean close_inventory) {
         if(open_inventory){
-            Sorter.openInventory();
+            Typer.openInventory();
         }
 
         for (Object action : spec){
@@ -344,7 +344,7 @@ public class Main {
         }
 
         if(close_inventory){
-            Sorter.closeInventory();
+            Typer.closeInventory();
         }
     }
 

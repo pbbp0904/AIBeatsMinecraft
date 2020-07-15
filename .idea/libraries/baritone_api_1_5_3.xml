@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="baritone-api-1.5.3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/baritone-api-1.5.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jna-5.5.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

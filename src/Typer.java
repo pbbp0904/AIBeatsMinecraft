@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 
 
 public class Typer {
@@ -8,7 +9,7 @@ public class Typer {
     private static Robot robot;
     private static int shortSleep;
     private static int longSleep;
-    private static String inventoryKey = "e";
+    private static String inventoryKey;
 
     static {
         try {
@@ -18,6 +19,11 @@ public class Typer {
         }
         shortSleep = 25;
         longSleep = 100;
+        try {
+            setInventoryKey();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void type(String text) {
@@ -138,6 +144,26 @@ public class Typer {
         Waiter.wait(sleepTime);
     }
 
+    public static void pressEnter() {
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+    }
+
+    public static void pressTab() {
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyRelease(KeyEvent.VK_TAB);
+    }
+
+    public static void pressEscape() {
+        robot.keyPress(KeyEvent.VK_ESCAPE);
+        robot.keyRelease(KeyEvent.VK_ESCAPE);
+    }
+
+    public static void pressControl() {
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+    }
+
     public static void holdEscape(int sleepTime) {
         robot.keyPress(KeyEvent.VK_ESCAPE);
         Waiter.wait(sleepTime);
@@ -149,20 +175,38 @@ public class Typer {
     }
 
     public static void openInventory(){
-        Typer.type(inventoryKey, shortSleep, longSleep);
-        Waiter.wait(longSleep);
+        switch (inventoryKey) {
+            case "tab":
+                pressTab();
+                break;
+            case "escape":
+                pressEscape();
+                break;
+            case "enter":
+                pressEnter();
+                break;
+            case "left.control":
+                pressControl();
+                break;
+            case "unknown":
+                System.out.println("Unknown inventory key. Cannot open inventory.");
+                System.exit(-2);
+                break;
+            default:
+                pressKey(inventoryKey.charAt(0));
+                break;
+        }
     }
 
     public static void closeInventory(){
-        Typer.type(inventoryKey, shortSleep, longSleep);
-        Waiter.wait(longSleep);
+        pressEscape();
     }
 
-    public static void setInventoryKey(String e){
-        inventoryKey = e;
+    public static void setInventoryKey() throws IOException {
+        inventoryKey= Filer.getInventoryKey();
     }
 
-    public static void pressKey(char c){
+    public static void pressKey (char c){
 
         switch(c) {
             case 'a':
@@ -539,6 +583,9 @@ public class Typer {
                 robot.keyRelease(KeyEvent.VK_1);
                 robot.keyRelease(KeyEvent.VK_SHIFT);
                 break;
+            case '\t':
+                robot.keyPress(KeyEvent.VK_TAB);
+                robot.keyPress(KeyEvent.VK_TAB);
         }
     }
 }
