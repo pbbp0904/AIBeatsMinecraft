@@ -269,58 +269,53 @@ public class Main {
     }
 
     private static void doCraft(String item, int number, boolean open_inventory, boolean close_inventory) {
-        Crafter crafter = new Crafter();
         if(open_inventory){
-            crafter.openInventory();
+            Crafter.openInventory();
         }
 
-        crafter.craft(item, number);
+        Crafter.craft(item, number);
 
         if(close_inventory){
-            crafter.closeInventory();
+            Crafter.closeInventory();
         }
     }
 
     private static void doSmelt(String item, int number, boolean place_in, boolean wait_until_done, boolean open_inventory, boolean close_inventory) {
-        Crafter crafter = new Crafter();
-        Looker looker = new Looker();
         if(open_inventory){
-            crafter.openInventory();
+            Crafter.openInventory();
         }
 
         if(place_in) {
-            crafter.smelt(item, number);
+            Crafter.smelt(item, number);
         }
 
         if(wait_until_done){
-            looker.waitUntilSmeltingDone();
-            crafter.getSmelt();
+            Looker.waitUntilSmeltingDone();
+            Crafter.getSmelt();
         }
 
         if(close_inventory){
-            crafter.closeInventory();
+            Crafter.closeInventory();
         }
     }
 
     private static void doPlace(String item, boolean enter) {
-        Looker looker = new Looker();
-        MouseMover mm = new MouseMover();
 
-        looker.waitUntilStationary();
+        Looker.waitUntilStationary();
 
 
         Typer.command(".b path");
-        looker.waitUntilStationary();
+        Looker.waitUntilStationary();
         Typer.command(".b goal ~ ~-1 ~");
         Typer.command(".b path");
-        looker.waitUntilStationary();
+        Looker.waitUntilStationary();
         Sorter.openInventory();
-        mm.moveMouseAway();
+        MouseMover.moveMouseAway();
         Waiter.wait(Waiter.getLongSleepTime());
         Sorter.putItemInHotbar(item, 9, false);
         Sorter.closeInventory();
         Typer.type("9",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        looker.lookDown();
+        Looker.lookDown();
         Waiter.wait(Waiter.getLongSleepTime()*2);
         Typer.holdShift(100);
         Typer.holdSpace(100);
@@ -674,12 +669,12 @@ public class Main {
 //        }
 //    }
 
-    public static void makeObsidianTest(Typer Typer, Waiter Waiter) throws InterruptedException, AWTException {
-        Typer.command("/fill ~-1 ~-1 ~-1 ~-5 ~-2 ~-5 minecraft:lava",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/fill ~-3 ~3 ~-3 ~-3 ~3 ~-3 minecraft:water",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+    public static void makeObsidianTest(Typer Typer, Waiter Waiter) {
+        Typer.command("/fill ~-1 ~-1 ~-1 ~-5 ~-2 ~-5 minecraft:lava", Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/fill ~-3 ~3 ~-3 ~-3 ~3 ~-3 minecraft:water", Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
     }
 
-    public static void doHunt(Typer Typer, Waiter Waiter) throws InterruptedException, AWTException {
+    public static void doHunt(Typer Typer, Waiter Waiter) {
         Typer.command("/clear @p",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("/give Cosmologicomical diamond_helmet{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("/give Cosmologicomical diamond_chestplate{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
