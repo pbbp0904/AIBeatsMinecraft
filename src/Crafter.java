@@ -1,130 +1,130 @@
 
 public class Crafter {
-
-    Typer typer = new Typer();
-    MouseMover mm = new MouseMover();
-    int[] coords;
+    
+    private static int[] coords;
 
 
-    private final Waiter waiter;
 
-
-    public Crafter() {
-        waiter = new Waiter(200,500,1500);
-
+    private static int shortSleep;
+    private static int longSleep;
+    
+    
+    static {
+        shortSleep = 200;
+        longSleep = 500;
     }
 
-    public void craft(String item, int number) {
+    public static void craft(String item, int number) {
         switch (item) {
             case "oak_planks":
                 // Move Mouse Away
-                mm.moveMouseAway();
+                MouseMover.moveMouseAway();
 
                 // Find location of logs
                 coords = Looker.findLocationOnScreen("src\\Item_Images\\oak_log.jpg", Looker.getInventoryScreenRect());
 
 
                 // Pick up items
-                mm.moveMouse(coords, waiter.getShortSleepTime());
-                typer.leftClick(waiter.getShortSleepTime());
+                MouseMover.moveMouse(coords, shortSleep);
+                Typer.leftClick(shortSleep);
                 // Move mouse to craft
-                mm.moveMouse(Looker.getHandCraftSlot1(), waiter.getShortSleepTime());
+                MouseMover.moveMouse(Looker.getHandCraftSlot1(), shortSleep);
                 // Place the correct number of items
                 for (int i = 0; i < number; i++) {
-                    typer.rightClick(waiter.getShortSleepTime());
+                    Typer.rightClick(shortSleep);
                 }
                 // Place item back in original slot
-                mm.moveMouse(coords, waiter.getShortSleepTime());
-                typer.leftClick(waiter.getShortSleepTime());
+                MouseMover.moveMouse(coords, shortSleep);
+                Typer.leftClick(shortSleep);
                 // Get resultant item
-                mm.moveMouse(Looker.getHandCraftSlotRes(), waiter.getShortSleepTime());
-                typer.holdShift(waiter.getShortSleepTime());
-                typer.leftClick(waiter.getShortSleepTime());
-                typer.releaseShift(waiter.getShortSleepTime());
+                MouseMover.moveMouse(Looker.getHandCraftSlotRes(), shortSleep);
+                Typer.holdShift(shortSleep);
+                Typer.leftClick(shortSleep);
+                Typer.releaseShift(shortSleep);
 
                 break;
 
 
             case "crafting_table":
                 // Move mouse away
-                mm.moveMouseAway();
+                MouseMover.moveMouseAway();
 
                 // Find location of wood
                 coords = Looker.findLocationOnScreen("src\\Item_Images\\oak_planks.jpg", Looker.getInventoryScreenRect());
 
 
                 // Pick up items
-                mm.moveMouse(coords, waiter.getShortSleepTime());
-                typer.leftClick(waiter.getShortSleepTime());
+                MouseMover.moveMouse(coords, shortSleep);
+                Typer.leftClick(shortSleep);
                 // Move mouse to craft
-                mm.moveMouse(Looker.getHandCraftSlot1(), waiter.getShortSleepTime());
+                MouseMover.moveMouse(Looker.getHandCraftSlot1(), shortSleep);
                 // Place the correct number of items
                 for (int i = 0; i < number; i++) {
-                    typer.rightClick(waiter.getShortSleepTime());
+                    Typer.rightClick(shortSleep);
                 }
                 // Move mouse to craft
-                mm.moveMouse(Looker.getHandCraftSlot2(), waiter.getShortSleepTime());
+                MouseMover.moveMouse(Looker.getHandCraftSlot2(), shortSleep);
                 // Place the correct number of items
                 for (int i = 0; i < number; i++) {
-                    typer.rightClick(waiter.getShortSleepTime());
+                    Typer.rightClick(shortSleep);
                 }
                 // Move mouse to craft
-                mm.moveMouse(Looker.getHandCraftSlot3(), waiter.getShortSleepTime());
+                MouseMover.moveMouse(Looker.getHandCraftSlot3(), shortSleep);
                 // Place the correct number of items
                 for (int i = 0; i < number; i++) {
-                    typer.rightClick(waiter.getShortSleepTime());
+                    Typer.rightClick(shortSleep);
                 }
                 // Move mouse to craft
-                mm.moveMouse(Looker.getHandCraftSlot4(), waiter.getShortSleepTime());
+                MouseMover.moveMouse(Looker.getHandCraftSlot4(), shortSleep);
                 // Place the correct number of items
                 for (int i = 0; i < number; i++) {
-                    typer.rightClick(waiter.getShortSleepTime());
+                    Typer.rightClick(shortSleep);
                 }
 
                 // Place item back in original slot
-                mm.moveMouse(coords, waiter.getShortSleepTime());
-                typer.leftClick(waiter.getShortSleepTime());
+                MouseMover.moveMouse(coords, shortSleep);
+                Typer.leftClick(shortSleep);
                 // Get resultant item
-                mm.moveMouse(Looker.getHandCraftSlotRes(), waiter.getShortSleepTime());
-                typer.holdShift(waiter.getShortSleepTime());
-                typer.leftClick(waiter.getShortSleepTime());
-                typer.releaseShift(waiter.getShortSleepTime());
+                MouseMover.moveMouse(Looker.getHandCraftSlotRes(), shortSleep);
+                Typer.holdShift(shortSleep);
+                Typer.leftClick(shortSleep);
+                Typer.releaseShift(shortSleep);
 
                 break;
 
 
             case "stick":
                 // Move Mouse Away
-                mm.moveMouseAway();
+                MouseMover.moveMouseAway();
 
                 // Find location of wood
                 coords = Looker.findLocationOnScreen("src\\Item_Images\\oak_planks.jpg", Looker.getInventoryScreenRect());
 
 
                 // Pick up items
-                mm.moveMouse(coords, waiter.getShortSleepTime());
-                typer.leftClick(waiter.getShortSleepTime());
+                MouseMover.moveMouse(coords, shortSleep);
+                Typer.leftClick(shortSleep);
                 // Move mouse to craft
-                mm.moveMouse(Looker.getHandCraftSlot2(), waiter.getShortSleepTime());
+                MouseMover.moveMouse(Looker.getHandCraftSlot2(), shortSleep);
                 // Place the correct number of items
                 for (int i = 0; i < number; i++) {
-                    typer.rightClick(waiter.getShortSleepTime());
+                    Typer.rightClick(shortSleep);
                 }
                 // Move mouse to craft
-                mm.moveMouse(Looker.getHandCraftSlot4(), waiter.getShortSleepTime());
+                MouseMover.moveMouse(Looker.getHandCraftSlot4(), shortSleep);
                 // Place the correct number of items
                 for (int i = 0; i < number; i++) {
-                    typer.rightClick(waiter.getShortSleepTime());
+                    Typer.rightClick(shortSleep);
                 }
 
                 // Place item back in original slot
-                mm.moveMouse(coords, waiter.getShortSleepTime());
-                typer.leftClick(waiter.getShortSleepTime());
+                MouseMover.moveMouse(coords, shortSleep);
+                Typer.leftClick(shortSleep);
                 // Get resultant item
-                mm.moveMouse(Looker.getHandCraftSlotRes(), waiter.getShortSleepTime());
-                typer.holdShift(waiter.getShortSleepTime());
-                typer.leftClick(waiter.getShortSleepTime());
-                typer.releaseShift(waiter.getShortSleepTime());
+                MouseMover.moveMouse(Looker.getHandCraftSlotRes(), shortSleep);
+                Typer.holdShift(shortSleep);
+                Typer.leftClick(shortSleep);
+                Typer.releaseShift(shortSleep);
 
                 break;
 
@@ -132,7 +132,7 @@ public class Crafter {
             case "wooden_pickaxe":
 
                 // Move mouse away
-                mm.moveMouseAway();
+                MouseMover.moveMouseAway();
 
                 // Find location of items
                 int[] woodCoords = Looker.findLocationOnScreen("src\\Item_Images\\oak_planks.jpg", Looker.getInventoryScreenRect());
@@ -147,7 +147,7 @@ public class Crafter {
 
             case "stone_tools":
                 // Move mouse away
-                mm.moveMouseAway();
+                MouseMover.moveMouseAway();
 
                 // Find location of items
                 int[] stoneCoords = Looker.findLocationOnScreen("src\\Item_Images\\cobblestone.jpg", Looker.getInventoryScreenRect());
@@ -167,7 +167,7 @@ public class Crafter {
 
             case "iron_tools":
                 // Move mouse away
-                mm.moveMouseAway();
+                MouseMover.moveMouseAway();
 
                 // Find location of materials
                 int[] ironCoords = Looker.findLocationOnScreen("src\\Item_Images\\iron.jpg", Looker.getInventoryScreenRect());
@@ -191,7 +191,7 @@ public class Crafter {
 
             case "diamond_items":
                 // Move mouse away
-                mm.moveMouseAway();
+                MouseMover.moveMouseAway();
 
                 // Find location of materials
                 int[] diamondCoords = Looker.findLocationOnScreen("src\\Item_Images\\diamond.jpg", Looker.getInventoryScreenRect());
@@ -223,220 +223,220 @@ public class Crafter {
         }
     }
 
-    public void craftItem(int[] materialCoords, int[] craftingPositions, int number) {
+    public static void craftItem(int[] materialCoords, int[] craftingPositions, int number) {
         // Pick up material
-        mm.moveMouse(materialCoords, waiter.getShortSleepTime());
-        typer.leftClick(waiter.getShortSleepTime());
+        MouseMover.moveMouse(materialCoords, shortSleep);
+        Typer.leftClick(shortSleep);
 
         for (int craftingPosition : craftingPositions) {
             // Move mouse to craft
             switch (craftingPosition) {
                 case 1:
-                    mm.moveMouse(Looker.getTableCraftSlot1(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot1(), shortSleep);
                     break;
                 case 2:
-                    mm.moveMouse(Looker.getTableCraftSlot2(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot2(), shortSleep);
                     break;
                 case 3:
-                    mm.moveMouse(Looker.getTableCraftSlot3(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot3(), shortSleep);
                     break;
                 case 4:
-                    mm.moveMouse(Looker.getTableCraftSlot4(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot4(), shortSleep);
                     break;
                 case 5:
-                    mm.moveMouse(Looker.getTableCraftSlot5(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot5(), shortSleep);
                     break;
                 case 6:
-                    mm.moveMouse(Looker.getTableCraftSlot6(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot6(), shortSleep);
                     break;
                 case 7:
-                    mm.moveMouse(Looker.getTableCraftSlot7(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot7(), shortSleep);
                     break;
                 case 8:
-                    mm.moveMouse(Looker.getTableCraftSlot8(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot8(), shortSleep);
                     break;
                 case 9:
-                    mm.moveMouse(Looker.getTableCraftSlot9(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot9(), shortSleep);
                     break;
             }
             // Place the correct number of items
             for (int j = 0; j < number; j++) {
-                typer.rightClick(waiter.getShortSleepTime());
+                Typer.rightClick(shortSleep);
             }
         }
 
         // Place material back in original slot
-        mm.moveMouse(materialCoords, waiter.getShortSleepTime());
-        typer.leftClick(waiter.getLongSleepTime());
+        MouseMover.moveMouse(materialCoords, shortSleep);
+        Typer.leftClick(longSleep);
 
         // Get resultant item
-        mm.moveMouse(Looker.getTableCraftSlotRes(), waiter.getShortSleepTime());
-        typer.holdShift(waiter.getShortSleepTime());
-        typer.leftClick(waiter.getShortSleepTime());
-        typer.releaseShift(waiter.getLongSleepTime());
+        MouseMover.moveMouse(Looker.getTableCraftSlotRes(), shortSleep);
+        Typer.holdShift(shortSleep);
+        Typer.leftClick(shortSleep);
+        Typer.releaseShift(longSleep);
     }
 
 
 
 
-    public void craftItem(int[] materialCoords1, int[] materialCoords2, int[] craftingPositions1, int[] craftingPositions2, int number) {
+    public static void craftItem(int[] materialCoords1, int[] materialCoords2, int[] craftingPositions1, int[] craftingPositions2, int number) {
         // Pick up material 1
-        mm.moveMouse(materialCoords1, waiter.getShortSleepTime());
-        typer.leftClick(waiter.getShortSleepTime());
+        MouseMover.moveMouse(materialCoords1, shortSleep);
+        Typer.leftClick(shortSleep);
 
         for (int item : craftingPositions1) {
             // Move mouse to craft
             switch (item) {
                 case 1:
-                    mm.moveMouse(Looker.getTableCraftSlot1(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot1(), shortSleep);
                     break;
                 case 2:
-                    mm.moveMouse(Looker.getTableCraftSlot2(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot2(), shortSleep);
                     break;
                 case 3:
-                    mm.moveMouse(Looker.getTableCraftSlot3(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot3(), shortSleep);
                     break;
                 case 4:
-                    mm.moveMouse(Looker.getTableCraftSlot4(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot4(), shortSleep);
                     break;
                 case 5:
-                    mm.moveMouse(Looker.getTableCraftSlot5(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot5(), shortSleep);
                     break;
                 case 6:
-                    mm.moveMouse(Looker.getTableCraftSlot6(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot6(), shortSleep);
                     break;
                 case 7:
-                    mm.moveMouse(Looker.getTableCraftSlot7(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot7(), shortSleep);
                     break;
                 case 8:
-                    mm.moveMouse(Looker.getTableCraftSlot8(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot8(), shortSleep);
                     break;
                 case 9:
-                    mm.moveMouse(Looker.getTableCraftSlot9(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot9(), shortSleep);
                     break;
             }
             // Place the correct number of items
             for (int j = 0; j < number; j++) {
-                typer.rightClick(waiter.getShortSleepTime());
+                Typer.rightClick(shortSleep);
             }
         }
 
         // Place material 1 back in original slot
-        mm.moveMouse(materialCoords1, waiter.getShortSleepTime());
-        typer.leftClick(waiter.getLongSleepTime());
+        MouseMover.moveMouse(materialCoords1, shortSleep);
+        Typer.leftClick(longSleep);
 
 
         // Pick up material 2
-        mm.moveMouse(materialCoords2, waiter.getShortSleepTime());
-        typer.leftClick(waiter.getShortSleepTime());
+        MouseMover.moveMouse(materialCoords2, shortSleep);
+        Typer.leftClick(shortSleep);
 
         for (int value : craftingPositions2) {
             // Move mouse to craft
             switch (value) {
                 case 1:
-                    mm.moveMouse(Looker.getTableCraftSlot1(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot1(), shortSleep);
                     break;
                 case 2:
-                    mm.moveMouse(Looker.getTableCraftSlot2(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot2(), shortSleep);
                     break;
                 case 3:
-                    mm.moveMouse(Looker.getTableCraftSlot3(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot3(), shortSleep);
                     break;
                 case 4:
-                    mm.moveMouse(Looker.getTableCraftSlot4(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot4(), shortSleep);
                     break;
                 case 5:
-                    mm.moveMouse(Looker.getTableCraftSlot5(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot5(), shortSleep);
                     break;
                 case 6:
-                    mm.moveMouse(Looker.getTableCraftSlot6(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot6(), shortSleep);
                     break;
                 case 7:
-                    mm.moveMouse(Looker.getTableCraftSlot7(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot7(), shortSleep);
                     break;
                 case 8:
-                    mm.moveMouse(Looker.getTableCraftSlot8(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot8(), shortSleep);
                     break;
                 case 9:
-                    mm.moveMouse(Looker.getTableCraftSlot9(), waiter.getShortSleepTime());
+                    MouseMover.moveMouse(Looker.getTableCraftSlot9(), shortSleep);
                     break;
             }
             // Place the correct number of items
             for (int j = 0; j < number; j++) {
-                typer.rightClick(waiter.getShortSleepTime());
+                Typer.rightClick(shortSleep);
             }
         }
 
         // Place material 2 back in original slot
-        mm.moveMouse(materialCoords2, waiter.getShortSleepTime());
-        typer.leftClick(waiter.getLongSleepTime());
+        MouseMover.moveMouse(materialCoords2, shortSleep);
+        Typer.leftClick(longSleep);
 
         // Get resultant item
-        mm.moveMouse(Looker.getTableCraftSlotRes(), waiter.getShortSleepTime());
-        typer.holdShift(waiter.getShortSleepTime());
-        typer.leftClick(waiter.getShortSleepTime());
-        typer.releaseShift(waiter.getLongSleepTime());
+        MouseMover.moveMouse(Looker.getTableCraftSlotRes(), shortSleep);
+        Typer.holdShift(shortSleep);
+        Typer.leftClick(shortSleep);
+        Typer.releaseShift(longSleep);
     }
 
 
-    public void smelt(String item, int number) {
+    public static void smelt(String item, int number) {
         switch(item) {
             case "iron_ore":
                 // Move mouse away
-                mm.moveMouseAway();
+                MouseMover.moveMouseAway();
 
                 ////IRON
                 // Find location of items
                 int[] ironOreCoords = Looker.findLocationOnScreen("src\\Item_Images\\iron_ore.jpg", Looker.getInventoryScreenRect());
                 int[] coalCoords = Looker.findLocationOnScreen("src\\Item_Images\\coal.jpg", Looker.getInventoryScreenRect());
                 // Pick up iron ore
-                mm.moveMouse(ironOreCoords, waiter.getShortSleepTime());
-                typer.leftClick(waiter.getShortSleepTime());
+                MouseMover.moveMouse(ironOreCoords, shortSleep);
+                Typer.leftClick(shortSleep);
                 // Move mouse to craft
-                mm.moveMouse(Looker.getFurnaceSmeltSlot(), waiter.getShortSleepTime());
+                MouseMover.moveMouse(Looker.getFurnaceSmeltSlot(), shortSleep);
                 // Place the correct number of items
                 for (int i = 0; i < number; i++) {
-                    typer.rightClick(waiter.getShortSleepTime());
+                    Typer.rightClick(shortSleep);
                 }
 
                 // Place item back in original slot
-                mm.moveMouse(ironOreCoords, waiter.getShortSleepTime());
-                typer.leftClick(waiter.getLongSleepTime());
+                MouseMover.moveMouse(ironOreCoords, shortSleep);
+                Typer.leftClick(longSleep);
 
                 // Pick up coal
-                mm.moveMouse(coalCoords, waiter.getShortSleepTime());
-                typer.leftClick(waiter.getShortSleepTime());
+                MouseMover.moveMouse(coalCoords, shortSleep);
+                Typer.leftClick(shortSleep);
                 // Move mouse to craft
-                mm.moveMouse(Looker.getFurnaceCoalSlot(), waiter.getShortSleepTime());
+                MouseMover.moveMouse(Looker.getFurnaceCoalSlot(), shortSleep);
                 // Place the correct number of items
                 for (int i = 0; i <= (number/8+1); i++) {
-                    typer.rightClick(waiter.getShortSleepTime());
+                    Typer.rightClick(shortSleep);
                 }
 
                 // Place item back in original slot
-                mm.moveMouse(coalCoords, waiter.getShortSleepTime());
-                typer.leftClick(waiter.getLongSleepTime());
+                MouseMover.moveMouse(coalCoords, shortSleep);
+                Typer.leftClick(longSleep);
                 break;
 
         }
 
     }
 
-    public void openInventory(){
-        typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
-        waiter.wait(waiter.getLongSleepTime());
+    public static void openInventory(){
+        Typer.type("e", shortSleep, longSleep);
+        Waiter.wait(longSleep);
     }
 
-    public void closeInventory(){
-        typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
-        waiter.wait(waiter.getLongSleepTime());
+    public static void closeInventory(){
+        Typer.type("e", shortSleep, longSleep);
+        Waiter.wait(longSleep);
     }
 
-    public void getSmelt() {
-        mm.moveMouse(Looker.getFurnaceResSlot(),waiter.getShortSleepTime());
-        typer.holdShift(waiter.getShortSleepTime());
-        typer.leftClick(waiter.getShortSleepTime());
-        typer.releaseShift(waiter.getLongSleepTime());
+    public static void getSmelt() {
+        MouseMover.moveMouse(Looker.getFurnaceResSlot(),shortSleep);
+        Typer.holdShift(shortSleep);
+        Typer.leftClick(shortSleep);
+        Typer.releaseShift(longSleep);
     }
 
 

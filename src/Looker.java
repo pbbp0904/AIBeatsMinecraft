@@ -72,9 +72,6 @@ public class Looker {
 
     private static final Rectangle centerScreenRect;
 
-    private static final Waiter waiter;
-    private static final MouseMover mm;
-
     static{
         int guiScale = 0;
         Filer filer = new Filer();
@@ -118,9 +115,6 @@ public class Looker {
         furnaceProgressScreenRect = new Rectangle(topLeftX+(furnaceProgressScreenRectOffset[0]*guiScale), topLeftY+(furnaceProgressScreenRectOffset[1]*guiScale), furnaceProgressScreenSize[0]*guiScale, furnaceProgressScreenSize[1]*guiScale);
 
         centerScreenRect = new Rectangle(centerX-centerScreenScaling*guiScale, centerY-centerScreenScaling*guiScale, 2*centerScreenScaling*guiScale, 2*centerScreenScaling*guiScale);
-
-        waiter = new Waiter();
-        mm = new MouseMover();
     }
 
     public static int[] getHandCraftSlot1() {
@@ -219,7 +213,7 @@ public class Looker {
 
 
 
-    public Rectangle getMinecraftWindow() {
+    public static Rectangle getMinecraftWindow() {
         Rectangle rect = null;
         for (DesktopWindow desktopWindow : WindowUtils.getAllWindows(true)) {
             if (desktopWindow.getTitle().contains("Minecraft*")) {
@@ -231,8 +225,8 @@ public class Looker {
 
 
     public static void lookDown() {
-        mm.moveMouse(960,1000,10);
-        mm.moveMouse(960,1000,10);
+        MouseMover.moveMouse(960,1000,10);
+        MouseMover.moveMouse(960,1000,10);
     }
 
     public static void waitUntilStationary() {
@@ -242,7 +236,7 @@ public class Looker {
         while(!imagesEqual) {
             screenImg1 = screenShot(centerScreenRect);
             try {
-                Thread.sleep(waiter.getStationaryWaitTime());
+                Thread.sleep(Waiter.getStationaryWaitTime());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -260,7 +254,7 @@ public class Looker {
         while(!imagesEqual && end<start+fuseTime) {
             screenImg1 = screenShot(centerScreenRect);
             try {
-                Thread.sleep(waiter.getStationaryWaitTime());
+                Thread.sleep(Waiter.getStationaryWaitTime());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -278,7 +272,7 @@ public class Looker {
         while(!imagesEqual) {
             screenImg1 = screenShot(furnaceProgressScreenRect);
             try {
-                Thread.sleep(waiter.getStationaryWaitTime());
+                Thread.sleep(Waiter.getStationaryWaitTime());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -289,7 +283,7 @@ public class Looker {
         }
     }
 
-    static boolean bufferedImagesEqual(BufferedImage img1, BufferedImage img2) {
+    public static boolean bufferedImagesEqual(BufferedImage img1, BufferedImage img2) {
         if (img1.getWidth() == img2.getWidth() && img1.getHeight() == img2.getHeight()) {
             for (int x = 0; x < img1.getWidth(); x++) {
                 for (int y = 0; y < img1.getHeight(); y++) {
