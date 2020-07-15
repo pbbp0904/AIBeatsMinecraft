@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
+
 import com.sun.jna.platform.*;
 
 
@@ -73,11 +75,12 @@ public class Looker {
 
     private static final Rectangle centerScreenRect;
 
+    private static int guiScale;
+
     static{
-        int guiScale = 0;
-        Filer filer = new Filer();
+        guiScale = 0;
         try {
-            guiScale = filer.getGUIScale();
+            guiScale = Filer.getGUIScale();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -299,11 +302,11 @@ public class Looker {
     }
 
 
-    public static boolean foundImageOnScreen(String pathname, Rectangle screenRect, double threshold, int scale) {
+    public static boolean foundImageOnScreen(String pathname, Rectangle screenRect, double threshold) {
         BufferedImage screenImg = null;
         screenImg = screenShot(screenRect);
         String filePath = new File(pathname).getAbsolutePath();
-        BufferedImage img = getImage(filePath);
+       BufferedImage img = resize(Objects.requireNonNull(getImage(filePath)), ((double) (guiScale))/3.0) ;
         assert screenImg != null;
         double diff = findSubImageDiff(screenImg, img, screenRect);
         System.out.println(diff);
@@ -315,7 +318,7 @@ public class Looker {
         BufferedImage screenImg = null;
         screenImg = screenShot(screenRect);
         String filePath = new File(pathname).getAbsolutePath();
-        BufferedImage img = getImage(filePath);
+        BufferedImage img = resize(Objects.requireNonNull(getImage(filePath)), ((double) (guiScale))/3.0) ;
         assert screenImg != null;
         return findSubImage(screenImg, img, screenRect);
     }
@@ -334,8 +337,7 @@ public class Looker {
 
     public static BufferedImage getImage(String filename) {
         try {
-            BufferedImage img = ImageIO.read(new File(filename));
-            return img;
+            return ImageIO.read(new File(filename));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -435,5 +437,35 @@ public class Looker {
         double a2 = ((rgb2 >> 24) & 0xFF) / 255.0;
         // if there is transparency, the alpha values will make difference smaller
         return a1 * a2 * Math.sqrt((r1 - r2) * (r1 - r2) + (g1 - g2) * (g1 - g2) + (b1 - b2) * (b1 - b2));
+    }
+
+
+
+
+
+    /**
+     * Resizes an image by a percentage of original size (proportional).
+     * @param inputImagePath Path of the original image
+     * @param outputImagePath Path to save the resized image
+     * @param percent a double number specifies percentage of the output image
+     * over the input image.
+     */
+    public static BufferedImage resize(BufferedImage inputImage, double percent) {
+        int scaledWidth = (int) (inputImage.getWidth() * percent);
+        int scaledHeight = (int) (inputImage.getHeight() * percent);
+        return resize(inputImage, scaledWidth, scaledHeight);
+    }
+
+    public static BufferedImage resize(BufferedImage inputImage, int scaledWidth, int scaledHeight) {
+
+        // creates output image
+        BufferedImage outputImage = new BufferedImage(scaledWidth, scaledHeight, inputImage.getType());
+
+        // scales the input image to the output image
+        Graphics2D g2d = outputImage.createGraphics();
+        g2d.drawImage(inputImage, 0, 0, scaledWidth, scaledHeight, null);
+        g2d.dispose();
+
+        return outputImage;
     }
 }
