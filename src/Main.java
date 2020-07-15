@@ -139,46 +139,46 @@ public class Main {
         }
 
 
-        Typer.holdEscape(3000);
-        Typer.releaseEscape(100);
+        Typer.holdKey("escape", 3000);
+        Typer.releaseKey("escape", 100);
         for(int i = 0; i<8; i++){
-            Typer.pressTab(600);
+            Typer.pressKey("tab", 600);
         }
-        Typer.pressEnter(1500);
+        Typer.pressKey("enter", 1500);
         for(int i = 0; i<1; i++){
-            Typer.pressTab(100);
+            Typer.pressKey("tab", 100);
         }
-        Typer.pressEnter(100);
+        Typer.pressKey("enter", 100);
 
         for(int i = 0; i<1; i++){
-            Typer.pressTab(100);
+            Typer.pressKey("tab", 100);
         }
-        Typer.pressEnter(15000);
+        Typer.pressKey("enter", 15000);
 
         for(int i = 0; i<2; i++){
-            Typer.pressTab(100);
+            Typer.pressKey("tab", 100);
         }
-        Typer.pressEnter(100);
+        Typer.pressKey("enter", 100);
 
         for(int i = 0; i<4; i++){
-            Typer.pressTab(100);
+            Typer.pressKey("tab", 100);
         }
-        Typer.pressEnter(100);
+        Typer.pressKey("enter", 100);
 
         for(int i = 0; i<3; i++){
-            Typer.pressTab(100);
+            Typer.pressKey("tab", 100);
         }
-        Typer.pressEnter(100);
+        Typer.pressKey("enter", 100);
 
         for(int i = 0; i<6; i++){
-            Typer.pressTab(100);
+            Typer.pressKey("tab", 100);
         }
-        Typer.pressEnter(100);
+        Typer.pressKey("enter", 100);
 
         for(int i = 0; i<3; i++){
-            Typer.pressTab(100);
+            Typer.pressKey("tab", 100);
         }
-        Typer.pressEnter(15000);
+        Typer.pressKey("enter", 15000);
     }
 
     public void jumpToPhase(int phase){
@@ -316,12 +316,12 @@ public class Main {
         Typer.type("9",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Looker.lookDown();
         Waiter.wait(Waiter.getLongSleepTime()*2);
-        Typer.holdShift(100);
-        Typer.holdSpace(100);
+        Typer.holdKey("shift", 100);
+        Typer.holdKey("space", 100);
         Typer.holdRightClick(2000);
         Typer.releaseRightClick(Waiter.getShortSleepTime());
-        Typer.releaseSpace(Waiter.getShortSleepTime());
-        Typer.releaseShift(Waiter.getShortSleepTime());
+        Typer.releaseKey("space");
+        Typer.releaseKey("shift");
 
         if(!enter){
             Typer.closeInventory();

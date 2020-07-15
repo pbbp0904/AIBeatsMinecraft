@@ -38,9 +38,9 @@ public class Crafter {
                 Typer.leftClick(shortSleep);
                 // Get resultant item
                 MouseMover.moveMouse(Looker.getHandCraftSlotRes(), shortSleep);
-                Typer.holdShift(shortSleep);
+                Typer.holdKey("shift", shortSleep);
                 Typer.leftClick(shortSleep);
-                Typer.releaseShift(shortSleep);
+                Typer.releaseKey("shift", shortSleep);
 
                 break;
 
@@ -86,9 +86,9 @@ public class Crafter {
                 Typer.leftClick(shortSleep);
                 // Get resultant item
                 MouseMover.moveMouse(Looker.getHandCraftSlotRes(), shortSleep);
-                Typer.holdShift(shortSleep);
+                Typer.holdKey("shift", shortSleep);
                 Typer.leftClick(shortSleep);
-                Typer.releaseShift(shortSleep);
+                Typer.releaseKey("shift", shortSleep);
 
                 break;
 
@@ -122,9 +122,9 @@ public class Crafter {
                 Typer.leftClick(shortSleep);
                 // Get resultant item
                 MouseMover.moveMouse(Looker.getHandCraftSlotRes(), shortSleep);
-                Typer.holdShift(shortSleep);
+                Typer.holdKey("shift", shortSleep);
                 Typer.leftClick(shortSleep);
-                Typer.releaseShift(shortSleep);
+                Typer.releaseKey("shift", shortSleep);
 
                 break;
 
@@ -271,9 +271,9 @@ public class Crafter {
 
         // Get resultant item
         MouseMover.moveMouse(Looker.getTableCraftSlotRes(), shortSleep);
-        Typer.holdShift(shortSleep);
+        Typer.holdKey("shift", shortSleep);
         Typer.leftClick(shortSleep);
-        Typer.releaseShift(longSleep);
+        Typer.releaseKey("shift", longSleep);
     }
 
 
@@ -373,9 +373,9 @@ public class Crafter {
 
         // Get resultant item
         MouseMover.moveMouse(Looker.getTableCraftSlotRes(), shortSleep);
-        Typer.holdShift(shortSleep);
+        Typer.holdKey("shift", shortSleep);
         Typer.leftClick(shortSleep);
-        Typer.releaseShift(longSleep);
+        Typer.releaseKey("shift", longSleep);
     }
 
 
@@ -425,9 +425,9 @@ public class Crafter {
 
     public static void getSmelt() {
         MouseMover.moveMouse(Looker.getFurnaceResSlot(),shortSleep);
-        Typer.holdShift(shortSleep);
+        Typer.holdKey("shift", shortSleep);
         Typer.leftClick(shortSleep);
-        Typer.releaseShift(longSleep);
+        Typer.releaseKey("shift", longSleep);
     }
 
 

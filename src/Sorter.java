@@ -35,9 +35,9 @@ public class Sorter {
             rect = Looker.getInventoryScreenRect();
         }
         MouseMover.moveMouse(Looker.findLocationOnScreen("src\\Item_Images\\" + item + ".jpg",rect),longSleep);
-        Typer.holdShift(shortSleep);
+        Typer.holdKey("shift");
         Typer.holdRightClick(shortSleep);
         Typer.releaseRightClick(shortSleep);
-        Typer.releaseShift(shortSleep);
+        Typer.releaseKey("shift");
     }
 }

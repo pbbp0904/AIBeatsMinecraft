@@ -20,7 +20,7 @@ public class Starter extends Thread implements NativeKeyListener {
             System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
             Waiter.waitLong();
             Typer.command(".b cancel");
-            Typer.pressEscape(100);
+            Typer.pressKey("escape", 100);
             System.exit(0);
         }
         if (e.getKeyCode() == NativeKeyEvent.VC_ENTER && enter) {

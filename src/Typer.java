@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 
 
@@ -45,14 +46,12 @@ public class Typer {
         else if (k.get(s).size() == 1) {
             robot.keyPress(k.get(s).get(0));
             robot.keyRelease(k.get(s).get(0));
-            Waiter.waitShort();
         }
         else if (k.get(s).size() == 2) {
             robot.keyPress(k.get(s).get(1));
             robot.keyPress(k.get(s).get(0));
             robot.keyRelease(k.get(s).get(0));
             robot.keyRelease(k.get(s).get(1));
-            Waiter.waitShort();
         }
     }
 
@@ -64,22 +63,87 @@ public class Typer {
         else if (k.get(s).size() == 1) {
             robot.keyPress(k.get(s).get(0));
             robot.keyRelease(k.get(s).get(0));
-            Waiter.waitShort();
         }
         else if (k.get(s).size() == 2) {
             robot.keyPress(k.get(s).get(1));
             robot.keyPress(k.get(s).get(0));
             robot.keyRelease(k.get(s).get(0));
             robot.keyRelease(k.get(s).get(1));
-            Waiter.waitShort();
         }
+        Waiter.wait(waitTime);
     }
 
     public static void pressKey (int i){
         robot.keyPress(i);
         robot.keyRelease(i);
-        Waiter.waitShort();
     }
+    
+    public static void holdKey(String s){
+        if (s == "unknown") {
+            System.out.println("Unknown key has been requested to type. Quitting... [TYPER]");
+            System.exit(-1);
+        }
+        else if (k.get(s).size() == 1) {
+            robot.keyPress(k.get(s).get(0));
+        }
+        else if (k.get(s).size() == 2) {
+            robot.keyPress(k.get(s).get(1));
+            robot.keyPress(k.get(s).get(0));
+        }
+    }
+
+    public static void holdKey (String s, int waitTime){
+        if (s == "unknown") {
+            System.out.println("Unknown key has been requested to type. Quitting... [TYPER]");
+            System.exit(-1);
+        }
+        else if (k.get(s).size() == 1) {
+            robot.keyPress(k.get(s).get(0));
+        }
+        else if (k.get(s).size() == 2) {
+            robot.keyPress(k.get(s).get(1));
+            robot.keyPress(k.get(s).get(0));
+        }
+        Waiter.wait(waitTime);
+    }
+
+    public static void holdKey (int i){
+        robot.keyPress(i);
+    }
+
+    public static void releaseKey(String s){
+        if (s == "unknown") {
+            System.out.println("Unknown key has been requested to type. Quitting... [TYPER]");
+            System.exit(-1);
+        }
+        else if (k.get(s).size() == 1) {
+            robot.keyRelease(k.get(s).get(0));
+        }
+        else if (k.get(s).size() == 2) {
+            robot.keyRelease(k.get(s).get(1));
+            robot.keyRelease(k.get(s).get(0));
+        }
+    }
+
+    public static void releaseKey (String s, int waitTime){
+        if (s == "unknown") {
+            System.out.println("Unknown key has been requested to type. Quitting... [TYPER]");
+            System.exit(-1);
+        }
+        else if (k.get(s).size() == 1) {
+            robot.keyRelease(k.get(s).get(0));
+        }
+        else if (k.get(s).size() == 2) {
+            robot.keyRelease(k.get(s).get(1));
+            robot.keyRelease(k.get(s).get(0));
+        }
+        Waiter.wait(waitTime);
+    }
+
+    public static void releaseKey (int i){
+        robot.keyRelease(i);
+    }
+    
 
     public static void type(String text) {
         for(int i = 0; i < text.length(); i++){
@@ -100,24 +164,45 @@ public class Typer {
     public static void command(String text, int sleepS, int sleepL){
         type(text.substring(0,1), sleepS, sleepL);
         type(text.substring(1), sleepS, sleepL);
-        pressEnter(longSleep);
+        pressKey("enter", longSleep);
     }
 
     public static void command(String text){
         type(text.substring(0,1));
         type(text.substring(1));
-        pressEnter(longSleep);
+        pressKey("enter", longSleep);
     }
 
-
-    public static void holdSpace(int sleepTime){
-        robot.keyPress(KeyEvent.VK_SPACE);
-        Waiter.wait(sleepTime);
+    public static void startMoveForward(){
+        holdKey(moveForward);
     }
 
-    public static void releaseSpace(int sleepTime) {
-        robot.keyRelease(KeyEvent.VK_SPACE);
-        Waiter.wait(sleepTime);
+    public static void stopMoveForward(){
+        releaseKey(moveForward);
+    }
+
+    public static void startMoveLeft(){
+        holdKey(moveLeft);
+    }
+
+    public static void stopMoveLeft(){
+        releaseKey(moveLeft);
+    }
+
+    public static void startMoveBack(){
+        holdKey(moveBack);
+    }
+
+    public static void stopMoveBack(){
+        releaseKey(moveBack);
+    }
+
+    public static void startMoveRight(){
+        holdKey(moveRight);
+    }
+
+    public static void stopMoveRight(){
+        releaseKey(moveRight);
     }
 
     public static void leftClick(int sleepTime){
@@ -152,60 +237,6 @@ public class Typer {
         Waiter.wait(sleepTime);
     }
 
-    public static void holdShift(int sleepTime) {
-        robot.keyPress(KeyEvent.VK_SHIFT);
-        Waiter.wait(sleepTime);
-    }
-
-    public static void releaseShift(int sleepTime) {
-        robot.keyRelease(KeyEvent.VK_SHIFT);
-        Waiter.wait(sleepTime);
-    }
-
-    public static void pressEnter(int sleepTime) {
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        Waiter.wait(sleepTime);
-    }
-
-    public static void pressTab(int sleepTime) {
-        robot.keyPress(KeyEvent.VK_TAB);
-        robot.keyRelease(KeyEvent.VK_TAB);
-        Waiter.wait(sleepTime);
-    }
-
-    public static void pressEscape(int sleepTime) {
-        robot.keyPress(KeyEvent.VK_ESCAPE);
-        robot.keyRelease(KeyEvent.VK_ESCAPE);
-        Waiter.wait(sleepTime);
-    }
-
-    public static void pressEnter() {
-        pressKey("enter");
-    }
-
-    public static void pressTab() {
-        pressKey("tab");
-    }
-
-    public static void pressEscape() {
-        pressKey("escape");
-    }
-
-    public static void pressLControl() {
-        pressKey(0xA2);
-    }
-
-    public static void holdEscape(int sleepTime) {
-        robot.keyPress(KeyEvent.VK_ESCAPE);
-        Waiter.wait(sleepTime);
-    }
-
-    public static void releaseEscape(int sleepTime) {
-        robot.keyRelease(KeyEvent.VK_ESCAPE);
-        Waiter.wait(sleepTime);
-    }
-
     public static void openInventory(){
         pressKey(inventoryKey);
     }
@@ -226,33 +257,35 @@ public class Typer {
 
     public static void createHashMap(){
 
+        k = new HashMap<>();
+
         //Begin lower case letters
-        k.put("a", new ArrayList<>(Arrays.asList(KeyEvent.VK_A)));
-        k.put("b", new ArrayList<>(Arrays.asList(KeyEvent.VK_B)));
-        k.put("c", new ArrayList<>(Arrays.asList(KeyEvent.VK_C)));
-        k.put("d", new ArrayList<>(Arrays.asList(KeyEvent.VK_D)));
-        k.put("e", new ArrayList<>(Arrays.asList(KeyEvent.VK_E)));
-        k.put("f", new ArrayList<>(Arrays.asList(KeyEvent.VK_F)));
-        k.put("g", new ArrayList<>(Arrays.asList(KeyEvent.VK_G)));
-        k.put("h", new ArrayList<>(Arrays.asList(KeyEvent.VK_H)));
-        k.put("i", new ArrayList<>(Arrays.asList(KeyEvent.VK_I)));
-        k.put("j", new ArrayList<>(Arrays.asList(KeyEvent.VK_J)));
-        k.put("k", new ArrayList<>(Arrays.asList(KeyEvent.VK_K)));
-        k.put("l", new ArrayList<>(Arrays.asList(KeyEvent.VK_L)));
-        k.put("m", new ArrayList<>(Arrays.asList(KeyEvent.VK_M)));
-        k.put("n", new ArrayList<>(Arrays.asList(KeyEvent.VK_N)));
-        k.put("o", new ArrayList<>(Arrays.asList(KeyEvent.VK_O)));
-        k.put("p", new ArrayList<>(Arrays.asList(KeyEvent.VK_P)));
-        k.put("q", new ArrayList<>(Arrays.asList(KeyEvent.VK_Q)));
-        k.put("r", new ArrayList<>(Arrays.asList(KeyEvent.VK_R)));
-        k.put("s", new ArrayList<>(Arrays.asList(KeyEvent.VK_S)));
-        k.put("t", new ArrayList<>(Arrays.asList(KeyEvent.VK_T)));
-        k.put("u", new ArrayList<>(Arrays.asList(KeyEvent.VK_U)));
-        k.put("v", new ArrayList<>(Arrays.asList(KeyEvent.VK_V)));
-        k.put("w", new ArrayList<>(Arrays.asList(KeyEvent.VK_W)));
-        k.put("x", new ArrayList<>(Arrays.asList(KeyEvent.VK_X)));
-        k.put("y", new ArrayList<>(Arrays.asList(KeyEvent.VK_Y)));
-        k.put("z", new ArrayList<>(Arrays.asList(KeyEvent.VK_Z)));
+        k.put("a", new ArrayList<>(Collections.singletonList(KeyEvent.VK_A)));
+        k.put("b", new ArrayList<>(Collections.singletonList(KeyEvent.VK_B)));
+        k.put("c", new ArrayList<>(Collections.singletonList(KeyEvent.VK_C)));
+        k.put("d", new ArrayList<>(Collections.singletonList(KeyEvent.VK_D)));
+        k.put("e", new ArrayList<>(Collections.singletonList(KeyEvent.VK_E)));
+        k.put("f", new ArrayList<>(Collections.singletonList(KeyEvent.VK_F)));
+        k.put("g", new ArrayList<>(Collections.singletonList(KeyEvent.VK_G)));
+        k.put("h", new ArrayList<>(Collections.singletonList(KeyEvent.VK_H)));
+        k.put("i", new ArrayList<>(Collections.singletonList(KeyEvent.VK_I)));
+        k.put("j", new ArrayList<>(Collections.singletonList(KeyEvent.VK_J)));
+        k.put("k", new ArrayList<>(Collections.singletonList(KeyEvent.VK_K)));
+        k.put("l", new ArrayList<>(Collections.singletonList(KeyEvent.VK_L)));
+        k.put("m", new ArrayList<>(Collections.singletonList(KeyEvent.VK_M)));
+        k.put("n", new ArrayList<>(Collections.singletonList(KeyEvent.VK_N)));
+        k.put("o", new ArrayList<>(Collections.singletonList(KeyEvent.VK_O)));
+        k.put("p", new ArrayList<>(Collections.singletonList(KeyEvent.VK_P)));
+        k.put("q", new ArrayList<>(Collections.singletonList(KeyEvent.VK_Q)));
+        k.put("r", new ArrayList<>(Collections.singletonList(KeyEvent.VK_R)));
+        k.put("s", new ArrayList<>(Collections.singletonList(KeyEvent.VK_S)));
+        k.put("t", new ArrayList<>(Collections.singletonList(KeyEvent.VK_T)));
+        k.put("u", new ArrayList<>(Collections.singletonList(KeyEvent.VK_U)));
+        k.put("v", new ArrayList<>(Collections.singletonList(KeyEvent.VK_V)));
+        k.put("w", new ArrayList<>(Collections.singletonList(KeyEvent.VK_W)));
+        k.put("x", new ArrayList<>(Collections.singletonList(KeyEvent.VK_X)));
+        k.put("y", new ArrayList<>(Collections.singletonList(KeyEvent.VK_Y)));
+        k.put("z", new ArrayList<>(Collections.singletonList(KeyEvent.VK_Z)));
         //End lower case letters
 
 
@@ -287,16 +320,16 @@ public class Typer {
 
 
         //Begin numbers
-        k.put("1", new ArrayList<>(Arrays.asList(KeyEvent.VK_1)));
-        k.put("2", new ArrayList<>(Arrays.asList(KeyEvent.VK_2)));
-        k.put("3", new ArrayList<>(Arrays.asList(KeyEvent.VK_3)));
-        k.put("4", new ArrayList<>(Arrays.asList(KeyEvent.VK_4)));
-        k.put("5", new ArrayList<>(Arrays.asList(KeyEvent.VK_5)));
-        k.put("6", new ArrayList<>(Arrays.asList(KeyEvent.VK_6)));
-        k.put("7", new ArrayList<>(Arrays.asList(KeyEvent.VK_7)));
-        k.put("8", new ArrayList<>(Arrays.asList(KeyEvent.VK_8)));
-        k.put("9", new ArrayList<>(Arrays.asList(KeyEvent.VK_9)));
-        k.put("0", new ArrayList<>(Arrays.asList(KeyEvent.VK_0)));
+        k.put("1", new ArrayList<>(Collections.singletonList(KeyEvent.VK_1)));
+        k.put("2", new ArrayList<>(Collections.singletonList(KeyEvent.VK_2)));
+        k.put("3", new ArrayList<>(Collections.singletonList(KeyEvent.VK_3)));
+        k.put("4", new ArrayList<>(Collections.singletonList(KeyEvent.VK_4)));
+        k.put("5", new ArrayList<>(Collections.singletonList(KeyEvent.VK_5)));
+        k.put("6", new ArrayList<>(Collections.singletonList(KeyEvent.VK_6)));
+        k.put("7", new ArrayList<>(Collections.singletonList(KeyEvent.VK_7)));
+        k.put("8", new ArrayList<>(Collections.singletonList(KeyEvent.VK_8)));
+        k.put("9", new ArrayList<>(Collections.singletonList(KeyEvent.VK_9)));
+        k.put("0", new ArrayList<>(Collections.singletonList(KeyEvent.VK_0)));
         k.put("!", new ArrayList<>(Arrays.asList(KeyEvent.VK_1, KeyEvent.VK_SHIFT)));
         k.put("@", new ArrayList<>(Arrays.asList(KeyEvent.VK_2, KeyEvent.VK_SHIFT)));
         k.put("#", new ArrayList<>(Arrays.asList(KeyEvent.VK_3, KeyEvent.VK_SHIFT)));
@@ -311,47 +344,47 @@ public class Typer {
 
 
         //Begin symbols
-        k.put(";", new ArrayList<>(Arrays.asList(KeyEvent.VK_SEMICOLON)));
+        k.put(";", new ArrayList<>(Collections.singletonList(KeyEvent.VK_SEMICOLON)));
         k.put(":", new ArrayList<>(Arrays.asList(KeyEvent.VK_SEMICOLON, KeyEvent.VK_SHIFT)));
 
-        k.put("tab", new ArrayList<>(Arrays.asList(KeyEvent.VK_TAB)));
-        k.put("\t", new ArrayList<>(Arrays.asList(KeyEvent.VK_TAB)));
+        k.put("tab", new ArrayList<>(Collections.singletonList(KeyEvent.VK_TAB)));
+        k.put("\t", new ArrayList<>(Collections.singletonList(KeyEvent.VK_TAB)));
 
-        k.put("period", new ArrayList<>(Arrays.asList(KeyEvent.VK_PERIOD)));
-        k.put(".", new ArrayList<>(Arrays.asList(KeyEvent.VK_PERIOD)));
+        k.put("period", new ArrayList<>(Collections.singletonList(KeyEvent.VK_PERIOD)));
+        k.put(".", new ArrayList<>(Collections.singletonList(KeyEvent.VK_PERIOD)));
         k.put(">", new ArrayList<>(Arrays.asList(KeyEvent.VK_PERIOD, KeyEvent.VK_SHIFT)));
 
-        k.put("comma", new ArrayList<>(Arrays.asList(KeyEvent.VK_COMMA)));
-        k.put(",", new ArrayList<>(Arrays.asList(KeyEvent.VK_COMMA)));
+        k.put("comma", new ArrayList<>(Collections.singletonList(KeyEvent.VK_COMMA)));
+        k.put(",", new ArrayList<>(Collections.singletonList(KeyEvent.VK_COMMA)));
         k.put("<", new ArrayList<>(Arrays.asList(KeyEvent.VK_COMMA, KeyEvent.VK_SHIFT)));
 
-        k.put("/", new ArrayList<>(Arrays.asList(KeyEvent.VK_SLASH)));
+        k.put("/", new ArrayList<>(Collections.singletonList(KeyEvent.VK_SLASH)));
         k.put("?", new ArrayList<>(Arrays.asList(KeyEvent.VK_SLASH, KeyEvent.VK_SHIFT)));
 
-        k.put("`", new ArrayList<>(Arrays.asList(192)));
+        k.put("`", new ArrayList<>(Collections.singletonList(192)));
         k.put("~", new ArrayList<>(Arrays.asList(192, KeyEvent.VK_SHIFT)));
 
-        k.put("-", new ArrayList<>(Arrays.asList(KeyEvent.VK_MINUS)));
+        k.put("-", new ArrayList<>(Collections.singletonList(KeyEvent.VK_MINUS)));
         k.put("_", new ArrayList<>(Arrays.asList(KeyEvent.VK_MINUS, KeyEvent.VK_SHIFT)));
 
-        k.put("=", new ArrayList<>(Arrays.asList(KeyEvent.VK_EQUALS)));
+        k.put("=", new ArrayList<>(Collections.singletonList(KeyEvent.VK_EQUALS)));
         k.put("+", new ArrayList<>(Arrays.asList(KeyEvent.VK_PLUS, KeyEvent.VK_SHIFT)));
 
-        k.put("[", new ArrayList<>(Arrays.asList(KeyEvent.VK_OPEN_BRACKET)));
+        k.put("[", new ArrayList<>(Collections.singletonList(KeyEvent.VK_OPEN_BRACKET)));
         k.put("{", new ArrayList<>(Arrays.asList(KeyEvent.VK_OPEN_BRACKET, KeyEvent.VK_SHIFT)));
 
-        k.put("]", new ArrayList<>(Arrays.asList(KeyEvent.VK_CLOSE_BRACKET)));
+        k.put("]", new ArrayList<>(Collections.singletonList(KeyEvent.VK_CLOSE_BRACKET)));
         k.put("}", new ArrayList<>(Arrays.asList(KeyEvent.VK_CLOSE_BRACKET, KeyEvent.VK_SHIFT)));
 
-        k.put("space", new ArrayList<>(Arrays.asList(KeyEvent.VK_SPACE)));
-        k.put(" ", new ArrayList<>(Arrays.asList(KeyEvent.VK_SPACE)));
+        k.put("space", new ArrayList<>(Collections.singletonList(KeyEvent.VK_SPACE)));
+        k.put(" ", new ArrayList<>(Collections.singletonList(KeyEvent.VK_SPACE)));
 
 
-        k.put("enter", new ArrayList<>(Arrays.asList(KeyEvent.VK_ENTER)));
-        k.put("shift", new ArrayList<>(Arrays.asList(KeyEvent.VK_SHIFT)));
-        k.put("control", new ArrayList<>(Arrays.asList(KeyEvent.VK_CONTROL)));
-        k.put("escape", new ArrayList<>(Arrays.asList(KeyEvent.VK_ESCAPE)));
-        k.put("left.control", new ArrayList<>(Arrays.asList(0xA2)));
+        k.put("enter", new ArrayList<>(Collections.singletonList(KeyEvent.VK_ENTER)));
+        k.put("shift", new ArrayList<>(Collections.singletonList(KeyEvent.VK_SHIFT)));
+        k.put("control", new ArrayList<>(Collections.singletonList(KeyEvent.VK_CONTROL)));
+        k.put("escape", new ArrayList<>(Collections.singletonList(KeyEvent.VK_ESCAPE)));
+        k.put("left.control", new ArrayList<>(Collections.singletonList(0xA2)));
 
 
 
