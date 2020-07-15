@@ -302,8 +302,7 @@ public class Main {
     private static void doPlace(String item, boolean enter) {
 
         Looker.waitUntilStationary();
-
-
+        Typer.command(".b goal ~ ~1 ~");
         Typer.command(".b path");
         Looker.waitUntilStationary();
         Typer.command(".b goal ~ ~-1 ~");

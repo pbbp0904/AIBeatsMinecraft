@@ -9,8 +9,8 @@ import com.sun.jna.platform.*;
 
 public class Looker {
 
-    private static final int searchSpacingX = 2;
-    private static final int searchSpacingY = 2;
+    private static final int searchSpacingX = 1;
+    private static final int searchSpacingY = 1;
     private static final int guiScale1InvX = 176;
     private static final int guiScale1InvY = 166;
 
