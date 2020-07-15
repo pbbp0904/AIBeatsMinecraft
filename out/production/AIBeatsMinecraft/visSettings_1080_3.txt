@@ -1,6 +1,0 @@
-hotbarScreenRect: 600, 900, 600, 200
-craftingScreenRect: 850, 250, 100, 200
-inventoryScreenRect: 711, 525, 500, 240
-backpackScreenRect: 711, 525, 500, 170
-centerScreenRect: 910, 490, 100, 100
-furnaceProgressScreenRect: 930, 380, 80, 60

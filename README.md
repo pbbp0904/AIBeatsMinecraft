@@ -5,6 +5,7 @@ An AI To Beat Minecraft
 
 ## Usage
 
+
 ###***Required***/Recommended Minecraft Video Settings:  
 Maximized Window  
 Fullscreen Resolution  
