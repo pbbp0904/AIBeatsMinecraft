@@ -2,7 +2,7 @@ import java.io.*;
 
 public class Filer {
 
-    public void incrementRunCounter() throws IOException, InterruptedException {
+    public static void incrementRunCounter() throws IOException, InterruptedException {
         // Read number
         File file = new File("src\\runCounter.txt");
         BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -19,8 +19,8 @@ public class Filer {
         writer.close();
     }
 
-    public int getGUIScale() throws IOException {
-        // Read number
+    public static int getGUIScale() throws IOException {
+        // Read the number
         String appData = System.getenv("APPDATA");
         File file = new File(appData+"\\.minecraft\\options.txt");
         BufferedReader reader = new BufferedReader(new FileReader(file));

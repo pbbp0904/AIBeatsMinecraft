@@ -10,5 +10,6 @@
     <orderEntry type="library" exported="" name="jna-5.5.0" level="project" />
     <orderEntry type="library" name="jna-platform-5.5.0 (2)" level="project" />
     <orderEntry type="library" name="com.googlecode.json-simple:json-simple:1.1.1" level="project" />
+    <orderEntry type="library" name="com.1stleg:jnativehook:2.1.0" level="project" />
   </component>
 </module>

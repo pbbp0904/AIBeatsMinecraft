@@ -2,62 +2,42 @@ import java.awt.*;
 
 public class MouseMover {
 
-    int[] moveAwayCoords = new int[]{200, 200};
+    private static int[] moveAwayCoords = new int[]{200, 200};
+    private static Robot robot;
+    private static int shortSleep;
+    
 
-    Robot robot;
-    Waiter waiter;
-
-    public MouseMover() {
+    static {
         try {
             robot = new Robot();
         } catch (AWTException e) {
             e.printStackTrace();
         }
-        waiter = new Waiter();
+        shortSleep = 100;
     }
 
-    public void moveMouse(int[] coords){
+    public static void moveMouse(int[] coords){
         robot.mouseMove(coords[0], coords[1]);
-        try {
-            Thread.sleep(waiter.getShortSleepTime());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Waiter.wait(shortSleep);
     }
 
-    public void moveMouse(int[] coords, int sleepTime){
+    public static void moveMouse(int[] coords, int sleepTime){
         robot.mouseMove(coords[0], coords[1]);
-        try {
-            Thread.sleep(sleepTime);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Waiter.wait(sleepTime);
     }
 
-    public void moveMouse(int x, int y)  {
+    public static void moveMouse(int x, int y)  {
         robot.mouseMove(x, y);
-        try {
-            Thread.sleep(waiter.getShortSleepTime());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Waiter.wait(shortSleep);
     }
 
-    public void moveMouse(int x, int y, int sleepTime)  {
+    public static void moveMouse(int x, int y, int sleepTime)  {
         robot.mouseMove(x, y);
-        try {
-            Thread.sleep(sleepTime);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Waiter.wait(sleepTime);
     }
 
-    public void moveMouseAway(){
+    public static void moveMouseAway(){
         robot.mouseMove(moveAwayCoords[0], moveAwayCoords[1]);
-        try {
-            Thread.sleep(waiter.getShortSleepTime());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Waiter.wait(shortSleep);
     }
 }

@@ -1,18 +1,22 @@
 import java.awt.*;
 
 public class Sorter {
-    Typer typer = new Typer();
-    MouseMover mm = new MouseMover();
-    Looker looker = new Looker();
-    Waiter waiter;
-
-
-    public Sorter() {
-        waiter = new Waiter(50,60,1500);
+    private static Typer typer = new Typer();
+    private static MouseMover mm = new MouseMover();
+    private static Looker looker = new Looker();
+    
+    private static int shortSleep;
+    private static int longSleep;
+    private static int stationarySleep;
+    
+    static {
+        shortSleep = 50;
+        longSleep = 60;
+        stationarySleep = 1500;
     }
 
 
-    public void putItemInHotbar(String item, int slot, boolean lookOnlyInBackpack){
+    public static void putItemInHotbar(String item, int slot, boolean lookOnlyInBackpack){
         mm.moveMouseAway();
         Rectangle rect;
         if(lookOnlyInBackpack) {
@@ -20,12 +24,12 @@ public class Sorter {
         }else {
             rect = looker.getInventoryScreenRect();
         }
-        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\" + item + ".jpg",rect),waiter.getLongSleepTime());
-        typer.type(Integer.toString(slot),waiter.getShortSleepTime(),waiter.getLongSleepTime());
+        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\" + item + ".jpg",rect),longSleep);
+        typer.type(Integer.toString(slot),shortSleep,longSleep);
     }
 
 
-    public void putOnArmor(String item, boolean lookOnlyInBackpack) {
+    public static void putOnArmor(String item, boolean lookOnlyInBackpack) {
         mm.moveMouseAway();
         Rectangle rect;
         if(lookOnlyInBackpack) {
@@ -33,21 +37,21 @@ public class Sorter {
         }else {
             rect = looker.getInventoryScreenRect();
         }
-        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\" + item + ".jpg",rect),waiter.getLongSleepTime());
-        typer.holdShift(waiter.getShortSleepTime());
-        typer.holdRightClick(waiter.getShortSleepTime());
-        typer.releaseRightClick(waiter.getShortSleepTime());
-        typer.releaseShift(waiter.getShortSleepTime());
+        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\" + item + ".jpg",rect),longSleep);
+        typer.holdShift(shortSleep);
+        typer.holdRightClick(shortSleep);
+        typer.releaseRightClick(shortSleep);
+        typer.releaseShift(shortSleep);
     }
 
-    public void openInventory(){
-        typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
-        waiter.wait(waiter.getLongSleepTime());
+    public static void openInventory(){
+        typer.type("e", shortSleep, longSleep);
+        Waiter.wait(longSleep);
     }
 
-    public void closeInventory(){
-        typer.type("e", waiter.getShortSleepTime(), waiter.getLongSleepTime());
-        waiter.wait(waiter.getLongSleepTime());
+    public static void closeInventory(){
+        typer.type("e", shortSleep, longSleep);
+        Waiter.wait(longSleep);
     }
 
 

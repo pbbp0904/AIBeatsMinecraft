@@ -1,54 +1,63 @@
 public class Waiter {
 
-    private int shortSleepTime;
-    private int longSleepTime;
-    private int stationaryWaitTime;
+    private static final int shortSleepTime;
+    private static final int longSleepTime;
+    private static final int stationaryWaitTime;
 
-    public Waiter(){
-        shortSleepTime = 100;
+
+    static{
+        shortSleepTime = 25;
         longSleepTime = 100;
         stationaryWaitTime = 1500;
     }
 
-    public Waiter(int shortSleepTimeInput, int longSleepTimeInput, int stationaryWaitTimeInput){
-        shortSleepTime = shortSleepTimeInput;
-        longSleepTime = longSleepTimeInput;
-        stationaryWaitTime = stationaryWaitTimeInput;
-    }
 
 
     // Getters
-    public int getShortSleepTime() {
+    public static int getShortSleepTime() {
         return shortSleepTime;
     }
 
-    public int getLongSleepTime() {
+    public static int getLongSleepTime() {
         return longSleepTime;
     }
 
-    public int getStationaryWaitTime() {
+    public static int getStationaryWaitTime() {
         return stationaryWaitTime;
     }
 
-    // Setters
-    public void setShortSleepTime(int shortSleepTime) {
-        this.shortSleepTime = shortSleepTime;
-    }
-
-    public void setLongSleepTime(int longSleepTime) {
-        this.longSleepTime = longSleepTime;
-    }
-
-    public void setStationaryWaitTime(int stationaryWaitTime) {
-        this.stationaryWaitTime = stationaryWaitTime;
-    }
 
     // Methods
-    public void wait(int time){
+    public static void wait(int time){
         try {
             Thread.sleep(time);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
+    public static void waitShort(){
+        try {
+            Thread.sleep(shortSleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void waitLong(){
+        try {
+            Thread.sleep(longSleepTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void waitStationary(){
+        try {
+            Thread.sleep(stationaryWaitTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
