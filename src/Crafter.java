@@ -10,8 +10,8 @@ public class Crafter {
     
     
     static {
-        shortSleep = 200;
-        longSleep = 500;
+        shortSleep = 50;
+        longSleep = 200;
     }
 
     public static void craft(String item, int number) {

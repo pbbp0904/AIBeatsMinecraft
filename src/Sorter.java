@@ -1,58 +1,43 @@
 import java.awt.*;
 
 public class Sorter {
-    private static Typer typer = new Typer();
-    private static MouseMover mm = new MouseMover();
-    private static Looker looker = new Looker();
     
     private static int shortSleep;
     private static int longSleep;
     private static int stationarySleep;
     
     static {
-        shortSleep = 50;
-        longSleep = 60;
+        shortSleep = 100;
+        longSleep = 250;
         stationarySleep = 1500;
     }
 
 
     public static void putItemInHotbar(String item, int slot, boolean lookOnlyInBackpack){
-        mm.moveMouseAway();
+        MouseMover.moveMouseAway();
         Rectangle rect;
         if(lookOnlyInBackpack) {
-            rect = looker.getBackpackScreenRect();
+            rect = Looker.getBackpackScreenRect();
         }else {
-            rect = looker.getInventoryScreenRect();
+            rect = Looker.getInventoryScreenRect();
         }
-        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\" + item + ".jpg",rect),longSleep);
-        typer.type(Integer.toString(slot),shortSleep,longSleep);
+        MouseMover.moveMouse(Looker.findLocationOnScreen("src\\Item_Images\\" + item + ".jpg",rect),longSleep);
+        Typer.type(Integer.toString(slot),shortSleep,longSleep);
     }
 
 
     public static void putOnArmor(String item, boolean lookOnlyInBackpack) {
-        mm.moveMouseAway();
+        MouseMover.moveMouseAway();
         Rectangle rect;
         if(lookOnlyInBackpack) {
-            rect = looker.getBackpackScreenRect();
+            rect = Looker.getBackpackScreenRect();
         }else {
-            rect = looker.getInventoryScreenRect();
+            rect = Looker.getInventoryScreenRect();
         }
-        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\" + item + ".jpg",rect),longSleep);
-        typer.holdShift(shortSleep);
-        typer.holdRightClick(shortSleep);
-        typer.releaseRightClick(shortSleep);
-        typer.releaseShift(shortSleep);
+        MouseMover.moveMouse(Looker.findLocationOnScreen("src\\Item_Images\\" + item + ".jpg",rect),longSleep);
+        Typer.holdShift(shortSleep);
+        Typer.holdRightClick(shortSleep);
+        Typer.releaseRightClick(shortSleep);
+        Typer.releaseShift(shortSleep);
     }
-
-    public static void openInventory(){
-        typer.type("e", shortSleep, longSleep);
-        Waiter.wait(longSleep);
-    }
-
-    public static void closeInventory(){
-        typer.type("e", shortSleep, longSleep);
-        Waiter.wait(longSleep);
-    }
-
-
 }

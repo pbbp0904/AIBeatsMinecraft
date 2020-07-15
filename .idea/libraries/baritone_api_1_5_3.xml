@@ -3,8 +3,6 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/baritone-api-1.5.3.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jna-5.5.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/jna-platform-5.5.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/jnativehook-2.1.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

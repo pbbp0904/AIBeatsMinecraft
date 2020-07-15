@@ -33,4 +33,18 @@ public class Filer {
         }
         return 0;
     }
+
+    public static String getInventoryKey() throws IOException {
+        // Read the number
+        String appData = System.getenv("APPDATA");
+        File file = new File(appData+"\\.minecraft\\options.txt");
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        String st;
+        while ((st = reader.readLine()) != null){
+            if (st.contains("key_key.inventory:key.keyboard.")){
+                return st.substring(31);
+            }
+        }
+        return null;
+    }
 }

@@ -26,6 +26,7 @@ public class Starter extends Thread implements NativeKeyListener {
         if (e.getKeyCode() == NativeKeyEvent.VC_ENTER && enter) {
             System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
             Main.setReady(true);
+            enter = false;
         }
     }
 
