@@ -1,0 +1,5 @@
+[
+  {"type": "command", "name": "Destroy End Crystals", "command_string": ".b follow entity end_crystal", "wait_until_done": true},
+  {"type": "command", "name": "Follow Ender Dragon", "command_string": ".b follow entity ender_dragon", "wait_until_done": false},
+  {"type": "command", "name": "Turn On Kill Aura", "command_string": ".toggle KillAura", "wait_until_done": false}
+]

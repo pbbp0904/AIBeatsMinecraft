@@ -1,0 +1,18 @@
+[
+  {"type": "command", "name": "Fill Obsidian", "command_string": "/fill ~0 ~-1 ~2 ~0 ~-1 ~-1 obsidian", "wait_until_done": false},
+  {"type": "command", "name": "Fill Obsidian", "command_string": "/fill ~0 ~0 ~2 ~0 ~2 ~2 obsidian", "wait_until_done": false},
+  {"type": "command", "name": "Fill Obsidian", "command_string": "/fill ~0 ~0 ~-1 ~0 ~2 ~-1 obsidian", "wait_until_done": false},
+  {"type": "command", "name": "Fill Obsidian", "command_string": "/fill ~0 ~3 ~2 ~0 ~3 ~-1 obsidian", "wait_until_done": false},
+  {"type": "command", "name": "Fill Air", "command_string": "/fill ~0 ~0 ~0 ~0 ~2 ~1 air", "wait_until_done": false},
+  {"type": "command", "name": "Give Diamond Sword", "command_string": "/give Cosmologicomical diamond_sword", "wait_until_done": false},
+  {"type": "command", "name": "Give Diamond Pickaxe", "command_string": "/give Cosmologicomical diamond_pickaxe", "wait_until_done": false},
+  {"type": "command", "name": "Give Diamond Shovel", "command_string": "/give Cosmologicomical diamond_shovel", "wait_until_done": false},
+  {"type": "command", "name": "Give Flint and Steel", "command_string": "/give Cosmologicomical flint_and_steel", "wait_until_done": false},
+  {"type": "command", "name": "Give Dirt", "command_string": "/give Cosmologicomical dirt 64", "wait_until_done": false},
+  {"type": "command", "name": "Give Diamond Helmet", "command_string": "/give Cosmologicomical diamond_helmet", "wait_until_done": false},
+  {"type": "command", "name": "Give Diamond Chestplate", "command_string": "/give Cosmologicomical diamond_chestplate", "wait_until_done": false},
+  {"type": "command", "name": "Give Diamond Leggings", "command_string": "/give Cosmologicomical diamond_leggings", "wait_until_done": false},
+  {"type": "command", "name": "Give Diamond Boots", "command_string": "/give Cosmologicomical diamond_boots", "wait_until_done": false},
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": -1, "item": "diamond_helmet", "backOnly": false}, {"slot": -1, "item": "diamond_chestplate", "backOnly": false}, {"slot": -1, "item": "diamond_leggings", "backOnly": false}, {"slot": -1, "item": "diamond_boots", "backOnly": false}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Give Golden Apples", "command_string": "/give Cosmologicomical golden_apple 6", "wait_until_done": false}
+]

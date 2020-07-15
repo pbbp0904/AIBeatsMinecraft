@@ -1,0 +1,13 @@
+[
+  {"type": "command", "name": "Give Diamond Sword", "command_string": "/give Cosmologicomical diamond_sword", "wait_until_done": false},
+  {"type": "command", "name": "Give Diamond Pickaxe", "command_string": "/give Cosmologicomical diamond_pickaxe", "wait_until_done": false},
+  {"type": "command", "name": "Give Diamond Helmet", "command_string": "/give Cosmologicomical diamond_helmet", "wait_until_done": false},
+  {"type": "command", "name": "Give Diamond Chestplate", "command_string": "/give Cosmologicomical diamond_chestplate", "wait_until_done": false},
+  {"type": "command", "name": "Give Diamond Leggings", "command_string": "/give Cosmologicomical diamond_leggings", "wait_until_done": false},
+  {"type": "command", "name": "Give Diamond Boots", "command_string": "/give Cosmologicomical diamond_boots", "wait_until_done": false},
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": -1, "item": "diamond_helmet", "backOnly": false}, {"slot": -1, "item": "diamond_chestplate", "backOnly": false}, {"slot": -1, "item": "diamond_leggings", "backOnly": false}, {"slot": -1, "item": "diamond_boots", "backOnly": false}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Give Water Bucket", "command_string": "/give Cosmologicomical water_bucket", "wait_until_done": false},
+  {"type": "command", "name": "Give Golden Apples", "command_string": "/give Cosmologicomical golden_apple 20", "wait_until_done": false},
+  {"type": "command", "name": "Give Dirt", "command_string": "/give Cosmologicomical dirt 512", "wait_until_done": false},
+  {"type": "command", "name": "Make End Portal", "command_string": "/fill ~ ~ ~ ~ ~ ~ end_portal", "wait_until_done": false}
+]
