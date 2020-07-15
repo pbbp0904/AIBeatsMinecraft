@@ -5,7 +5,9 @@ An AI To Beat Minecraft
 
 ## Usage
 
-###***Required***/Recommended Minecraft Video Settings:  
+
+
+### ***Required***/Recommended Minecraft Video Settings:  
 Maximized Window  
 Fullscreen Resolution  
 ***Graphics: Fast***  
@@ -23,6 +25,6 @@ Attack Indicator: Crosshair
 ***Particles: Minimal***  
 Entity Shadows: OFF  
 
-###***Required***/Recommended Baritone Settings:  
+### ***Required***/Recommended Baritone Settings:  
 
 ## License
