@@ -25,6 +25,6 @@ Attack Indicator: Crosshair
 ***Particles: Minimal***  
 Entity Shadows: OFF  
 
-###***Required***/Recommended Baritone Settings:  
+### ***Required***/Recommended Baritone Settings:  
 
 ## License
