@@ -7,7 +7,7 @@ An AI To Beat Minecraft
 
 
 
-###***Required***/Recommended Minecraft Video Settings:  
+### ***Required***/Recommended Minecraft Video Settings:  
 Maximized Window  
 Fullscreen Resolution  
 ***Graphics: Fast***  
