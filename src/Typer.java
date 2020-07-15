@@ -13,10 +13,10 @@ public class Typer {
     private static int shortSleep;
     private static int longSleep;
     private static Integer inventoryKey;
-    private static String moveForward;
-    private static String moveLeft;
-    private static String moveBack;
-    private static String moveRight;
+    private static Integer moveForward;
+    private static Integer moveLeft;
+    private static Integer moveBack;
+    private static Integer moveRight;
     private static HashMap<String, ArrayList<Integer>> k;
 
     static {
@@ -64,18 +64,21 @@ public class Typer {
         else if (k.get(s).size() == 1) {
             robot.keyPress(k.get(s).get(0));
             robot.keyRelease(k.get(s).get(0));
+            Waiter.waitShort();
         }
         else if (k.get(s).size() == 2) {
             robot.keyPress(k.get(s).get(1));
             robot.keyPress(k.get(s).get(0));
             robot.keyRelease(k.get(s).get(0));
             robot.keyRelease(k.get(s).get(1));
+            Waiter.waitShort();
         }
     }
 
     public static void pressKey (int i){
         robot.keyPress(i);
         robot.keyRelease(i);
+        Waiter.waitShort();
     }
 
     public static void type(String text) {
@@ -106,25 +109,6 @@ public class Typer {
         pressEnter(longSleep);
     }
 
-    public static void holdS(int sleepTime) {
-        robot.keyPress(KeyEvent.VK_S);
-        Waiter.wait(sleepTime);
-    }
-
-    public static void releaseS(int sleepTime) {
-        robot.keyRelease(KeyEvent.VK_S);
-        Waiter.wait(sleepTime);
-    }
-
-    public static void holdD(int sleepTime) {
-        robot.keyPress(KeyEvent.VK_D);
-        Waiter.wait(sleepTime);
-    }
-
-    public static void releaseD(int sleepTime) {
-        robot.keyRelease(KeyEvent.VK_D);
-        Waiter.wait(sleepTime);
-    }
 
     public static void holdSpace(int sleepTime){
         robot.keyPress(KeyEvent.VK_SPACE);
@@ -209,8 +193,7 @@ public class Typer {
     }
 
     public static void pressLControl() {
-        robot.keyPress(0xA2);
-        robot.keyRelease(0xA2);
+        pressKey(0xA2);
     }
 
     public static void holdEscape(int sleepTime) {
@@ -224,23 +207,21 @@ public class Typer {
     }
 
     public static void openInventory(){
-
-        Waiter.waitShort();
+        pressKey(inventoryKey);
     }
 
     public static void closeInventory(){
-        pressEscape();
-        Waiter.waitShort();
+        pressKey("escape");
     }
 
     public static void setKeyBinds() throws IOException {
         inventoryKey = k.get(Filer.getInventoryKey()).get(0);
 
         String[] s = Filer.getMovementKeys();
-        s[0] = moveForward;
-        s[1] = moveLeft;
-        s[2] = moveBack;
-        s[3] = moveRight;
+        moveForward = k.get(s[0]).get(0);
+        moveLeft = k.get(s[1]).get(0);
+        moveBack = k.get(s[2]).get(0);
+        moveRight = k.get(s[3]).get(0);
     }
 
     public static void createHashMap(){
@@ -370,6 +351,7 @@ public class Typer {
         k.put("shift", new ArrayList<>(Arrays.asList(KeyEvent.VK_SHIFT)));
         k.put("control", new ArrayList<>(Arrays.asList(KeyEvent.VK_CONTROL)));
         k.put("escape", new ArrayList<>(Arrays.asList(KeyEvent.VK_ESCAPE)));
+        k.put("left.control", new ArrayList<>(Arrays.asList(0xA2)));
 
 
 
