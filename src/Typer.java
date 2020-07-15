@@ -8,7 +8,7 @@ public class Typer {
     private static Robot robot;
     private static int shortSleep;
     private static int longSleep;
-    private static String inventoryKey;
+    private static String inventoryKey = "e";
 
     static {
         try {
@@ -152,14 +152,14 @@ public class Typer {
         Typer.type(inventoryKey, shortSleep, longSleep);
         Waiter.wait(longSleep);
     }
-    
-    public static void setInventoryKey(String e){
-        inventoryKey = e;
-    }
 
     public static void closeInventory(){
         Typer.type(inventoryKey, shortSleep, longSleep);
         Waiter.wait(longSleep);
+    }
+
+    public static void setInventoryKey(String e){
+        inventoryKey = e;
     }
 
     public static void pressKey(char c){
