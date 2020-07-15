@@ -422,15 +422,6 @@ public class Crafter {
 
     }
 
-    public static void openInventory(){
-        Typer.type("e", shortSleep, longSleep);
-        Waiter.wait(longSleep);
-    }
-
-    public static void closeInventory(){
-        Typer.type("e", shortSleep, longSleep);
-        Waiter.wait(longSleep);
-    }
 
     public static void getSmelt() {
         MouseMover.moveMouse(Looker.getFurnaceResSlot(),shortSleep);

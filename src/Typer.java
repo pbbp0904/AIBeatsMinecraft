@@ -5,9 +5,10 @@ import java.awt.event.KeyEvent;
 
 public class Typer {
 
-    static Robot robot;
-    static int sleepShort;
-    static int sleepLong;
+    private static Robot robot;
+    private static int shortSleep;
+    private static int longSleep;
+    private static String inventoryKey;
 
     static {
         try {
@@ -15,16 +16,16 @@ public class Typer {
         } catch (AWTException e) {
             e.printStackTrace();
         }
-        sleepShort = 25;
-        sleepLong = 100;
+        shortSleep = 25;
+        longSleep = 100;
     }
 
     public static void type(String text) {
         for(int i = 0; i < text.length(); i++){
-            Waiter.wait(sleepShort);
+            Waiter.wait(shortSleep);
             pressKey(text.charAt(i));
         }
-        Waiter.wait(sleepLong);
+        Waiter.wait(longSleep);
     }
 
     public static void type(String text, int sleepS, int sleepL) {
@@ -38,13 +39,13 @@ public class Typer {
     public static void command(String text, int sleepS, int sleepL){
         type(text.substring(0,1), sleepS, sleepL);
         type(text.substring(1), sleepS, sleepL);
-        pressEnter(sleepLong);
+        pressEnter(longSleep);
     }
 
     public static void command(String text){
         type(text.substring(0,1));
         type(text.substring(1));
-        pressEnter(sleepLong);
+        pressEnter(longSleep);
     }
 
     public static void holdS(int sleepTime) {
@@ -145,6 +146,20 @@ public class Typer {
     public static void releaseEscape(int sleepTime) {
         robot.keyRelease(KeyEvent.VK_ESCAPE);
         Waiter.wait(sleepTime);
+    }
+
+    public static void openInventory(){
+        Typer.type(inventoryKey, shortSleep, longSleep);
+        Waiter.wait(longSleep);
+    }
+    
+    public static void setInventoryKey(String e){
+        inventoryKey = e;
+    }
+
+    public static void closeInventory(){
+        Typer.type(inventoryKey, shortSleep, longSleep);
+        Waiter.wait(longSleep);
     }
 
     public static void pressKey(char c){
