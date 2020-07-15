@@ -270,19 +270,19 @@ public class Main {
 
     private static void doCraft(String item, int number, boolean open_inventory, boolean close_inventory) {
         if(open_inventory){
-            Crafter.openInventory();
+            Typer.openInventory();
         }
 
         Crafter.craft(item, number);
 
         if(close_inventory){
-            Crafter.closeInventory();
+            Typer.closeInventory();
         }
     }
 
     private static void doSmelt(String item, int number, boolean place_in, boolean wait_until_done, boolean open_inventory, boolean close_inventory) {
         if(open_inventory){
-            Crafter.openInventory();
+            Typer.openInventory();
         }
 
         if(place_in) {
@@ -295,7 +295,7 @@ public class Main {
         }
 
         if(close_inventory){
-            Crafter.closeInventory();
+            Typer.closeInventory();
         }
     }
 
@@ -390,291 +390,14 @@ public class Main {
         return ready;
     }
 
-//    public static void woodGather(Looker looker, Typer Typer, Crafter crafter, Waiter Waiter) {
-//        System.out.println("Mining logs.");
-//        Typer.command(".b mine 8 oak_log",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        looker.waitUntilStationary();
-//        System.out.println("Done mining logs!");
-//
-//        System.out.println("Crafting wooden items.");
-//        crafter.craft("wooden_plank", 8);
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        crafter.craft("crafting_table", 1);
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        crafter.craft("stick", 5);
-//        System.out.println("Done crafting wooden items!");
-//
-//        System.out.println("Placing crafting table.");
-//        Typer.command(".b goto grass",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        looker.lookDown();
-//        looker.waitUntilStationary();
-//        Typer.command(".b goal ~ ~-1 ~",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Typer.command(".b path",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        looker.waitUntilStationary();
-//        Typer.type("8",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        looker.lookDown();
-//        Waiter.wait(Waiter.getLongSleepTime()*2);
-//        Typer.holdSpace(100);
-//        Typer.holdRightClick(2000);
-//        Typer.releaseSpace(Waiter.getShortSleepTime());
-//        Typer.releaseRightClick(Waiter.getShortSleepTime());
-//        System.out.println("Done placing crafting table!");
-//
-//        System.out.println("Crafting wooden pickaxe.");
-//        crafter.craft("wooden_pickaxe",1);
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        System.out.println("Done crafting wooden pickaxe!");
-//    }
-//
-//    public static void stoneGather(Looker looker, Typer Typer, Crafter crafter, MouseMover mm, Waiter Waiter) throws IOException, InterruptedException, AWTException {
-//        System.out.println("Mining stone.");
-//        Typer.command(".b mine 12 stone",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        looker.waitUntilStationary();
-//        System.out.println("Done mining stone!");
-//
-//        System.out.println("Going to crafting table.");
-//        Typer.command(".b goto crafting_table",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        looker.waitUntilStationary();
-//        System.out.println("In crafting table!");
-//
-//        System.out.println("Crafting stone tools.");
-//        crafter.craft("stone_tools",1);
-//        System.out.println("Done crafting stone tools!");
-//
-//        System.out.println("Mining a little grass...");
-//        Typer.command(".b mine grass",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Waiter.wait(6000);
-//        Typer.command(".b cancel",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        System.out.println("Done mining a little grass!");
-//
-//        System.out.println("Placing furnace.");
-//        Typer.command(".b goto grass",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        looker.waitUntilStationary();
-//        Typer.command(".b goal ~ ~-1 ~",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Typer.command(".b path",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        looker.waitUntilStationary();
-//        Typer.command("e",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\Furnace.jpg",looker.getInventoryScreenRect()),Waiter.getLongSleepTime());
-//        Typer.type("1",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        Typer.type("e",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        Typer.type("1",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        looker.lookDown();
-//        Waiter.wait(Waiter.getLongSleepTime()*2);
-//        Typer.holdSpace(100);
-//        Typer.holdRightClick(2000);
-//        Typer.releaseSpace(Waiter.getShortSleepTime());
-//        Typer.releaseRightClick(Waiter.getShortSleepTime());
-//        Typer.type("e",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        System.out.println("Done placing furnace!");
-//
-//        System.out.println("Mining a little grass...");
-//        Typer.command(".b mine grass",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Waiter.wait(3000);
-//        Typer.command(".b cancel",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        System.out.println("Done mining a little grass!");
-//
-//    }
-//
-//
-//    public static void ironGather(Looker looker, Typer Typer, Crafter crafter, MouseMover mm, Waiter Waiter)  {
-//        System.out.println("Mining iron ore.");
-//        Typer.command(".b mine 12 iron_ore",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        looker.waitUntilStationary();
-//        System.out.println("Done mining iron ore!");
-//
-//        System.out.println("Mining coal.");
-//        Typer.command(".b mine 3 coal_ore",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        looker.waitUntilStationary();
-//        System.out.println("Done mining coal!");
-//
-//        System.out.println("Going to furnace.");
-//        Typer.command(".b goto furnace",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        looker.waitUntilStationary();
-//        System.out.println("In furnace!");
-//
-//        System.out.println("Putting iron in furnace.");
-//        crafter.smelt("iron",12);
-//        System.out.println("Done putting iron in furnace!");
-//
-//        System.out.println("Mining gravel.");
-//        Typer.command(".b mine 35 gravel",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        looker.waitUntilStationary();
-//        System.out.println("Done mining gravel!");
-//
-//        System.out.println("Going to furnace.");
-//        Typer.command(".b goto furnace",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        looker.waitUntilStationary();
-//        System.out.println("In furnace!");
-//
-//        System.out.println("Waiting for smelting to be done.");
-//        looker.waitUntilSmeltingDone();
-//        crafter.getSmelt();
-//        System.out.println("Smelting is done!");
-//
-//        System.out.println("Going to crafting table.");
-//        Typer.command(".b goto crafting_table",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        looker.waitUntilStationary();
-//        System.out.println("In crafting table!");
-//
-//        System.out.println("Crafting iron tools.");
-//        crafter.craft("iron_tools",1);
-//        System.out.println("Done crafting iron tools!");
-//
-//        System.out.println("Sorting inventory");
-//        Typer.command("e",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        mm.moveMouse(200,200, Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\Iron_Pickaxe.jpg",looker.getInventoryScreenRect()),Waiter.getLongSleepTime());
-//        Typer.type("1",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        mm.moveMouse(200,200, Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\Iron_Pickaxe.jpg",looker.getBackpackScreenRect()),Waiter.getLongSleepTime());
-//        Typer.type("2",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        mm.moveMouse(200,200, Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\Iron_Shovel.jpg",looker.getInventoryScreenRect()),Waiter.getLongSleepTime());
-//        Typer.type("3",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        mm.moveMouse(200,200, Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\Flint_and_Steel.jpg",looker.getInventoryScreenRect()),Waiter.getLongSleepTime());
-//        Typer.type("4",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        mm.moveMouse(200,200, Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\Dirt.jpg",looker.getInventoryScreenRect()),Waiter.getLongSleepTime());
-//        Typer.type("5",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        Typer.type("e",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        System.out.println("Done sorting inventory");
-//
-//    }
-//
-//    public static void diamondGather(Looker looker, Typer Typer, Crafter crafter, MouseMover mm, Waiter Waiter) throws InterruptedException, AWTException, IOException {
-//        System.out.println("Mining diamonds!");
-//        Typer.command(".b mine 30 diamond_ore",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        looker.waitUntilStationary();
-//        System.out.println("Done mining diamonds!");
-//
-//        System.out.println("Making crafting table.");
-//        crafter.craft("crafting_table", 1);
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        System.out.println("Done making crafting table!");
-//
-//        System.out.println("Placing crafting table.");
-//        looker.waitUntilStationary();
-//        Typer.command(".b goal ~ ~1 ~",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Typer.command(".b path",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        looker.waitUntilStationary();
-//        Typer.command(".b goal ~ ~-1 ~",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Typer.command(".b path",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        looker.waitUntilStationary();
-//        Typer.command("e",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        mm.moveMouse(200,200, Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\Crafting_Table.jpg",looker.getInventoryScreenRect()),Waiter.getLongSleepTime());
-//        Typer.type("1",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        Typer.type("e",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        Typer.type("1",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        looker.lookDown();
-//        Waiter.wait(Waiter.getLongSleepTime()*2);
-//        Typer.holdSpace(100);
-//        Typer.holdRightClick(2000);
-//        Typer.releaseSpace(Waiter.getShortSleepTime());
-//        Typer.releaseRightClick(Waiter.getShortSleepTime());
-//        System.out.println("Done placing crafting table!");
-//
-//        System.out.println("Crafting diamond items.");
-//        crafter.craft("diamond_items",1);
-//        System.out.println("Done crafting diamond items!");
-//
-//        System.out.println("Putting on armor and sorting inventory.");
-//        Typer.command("e",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        mm.moveMouse(200,200, Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\Diamond_Sword.jpg",looker.getInventoryScreenRect()),Waiter.getLongSleepTime());
-//        Typer.type("1",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        mm.moveMouse(200,200, Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\Diamond_Pickaxe.jpg",looker.getInventoryScreenRect()),Waiter.getLongSleepTime());
-//        Typer.type("2",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        mm.moveMouse(200,200, Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\Diamond_Shovel.jpg",looker.getInventoryScreenRect()),Waiter.getLongSleepTime());
-//        Typer.type("3",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        mm.moveMouse(200,200, Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\Diamond_Helmet.jpg",looker.getInventoryScreenRect()),Waiter.getLongSleepTime());
-//        Typer.holdShift(Waiter.getShortSleepTime());
-//        Typer.leftClick(Waiter.getShortSleepTime());
-//        Typer.releaseShift(Waiter.getShortSleepTime());
-//        mm.moveMouse(200,200, Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\Diamond_Chestplate.jpg",looker.getInventoryScreenRect()),Waiter.getLongSleepTime());
-//        Typer.holdShift(Waiter.getShortSleepTime());
-//        Typer.leftClick(Waiter.getShortSleepTime());
-//        Typer.releaseShift(Waiter.getShortSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        mm.moveMouse(200,200, Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\Diamond_Leggings.jpg",looker.getInventoryScreenRect()),Waiter.getLongSleepTime());
-//        Typer.holdShift(Waiter.getShortSleepTime());
-//        Typer.leftClick(Waiter.getShortSleepTime());
-//        Typer.releaseShift(Waiter.getShortSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        mm.moveMouse(200,200, Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        mm.moveMouse(looker.findLocationOnScreen("src\\Item_Images\\Diamond_Boots.jpg",looker.getInventoryScreenRect()),Waiter.getLongSleepTime());
-//        Typer.holdShift(Waiter.getShortSleepTime());
-//        Typer.leftClick(Waiter.getShortSleepTime());
-//        Typer.releaseShift(Waiter.getShortSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        Typer.type("e",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Waiter.wait(Waiter.getLongSleepTime());
-//        System.out.println("Done putting on armor and sorting inventory!");
-//
-//    }
-//
-//    public static void bedGather(Looker looker, Typer Typer, Crafter crafter, Waiter Waiter) throws InterruptedException, AWTException, IOException {
-//    }
-//
-//    public static void giveDiamondStuff(Typer Typer, Waiter Waiter) throws InterruptedException, AWTException {
-//        Typer.command("/give pbbp0904 diamond_pickaxe",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Typer.command("/give pbbp0904 diamond_shovel",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Typer.command("/give pbbp0904 diamond_helmet",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Typer.command("/give pbbp0904 diamond_chestplate",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Typer.command("/give pbbp0904 diamond_leggings",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Typer.command("/give pbbp0904 diamond_boots",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        Typer.command("/give pbbp0904 dirt 128",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//    }
-//
-//    public static void obsidianGather(Looker looker, Typer Typer, Crafter crafter, MouseMover mm, Waiter Waiter) throws InterruptedException, AWTException {
-//        Typer.command(".b goto obsidian",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//        looker.waitUntilStationary();
-//        while(true){
-//            Typer.command(".b mine 10 obsidian",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//            Waiter.wait(10000);
-//            Typer.command(".b cancel",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//            Typer.holdRightClick(10);
-//            Typer.type("3", Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-//            looker.lookDown();
-//            Waiter.wait(10000);
-//            Typer.releaseRightClick(10);
-//        }
-//    }
 
-    public static void makeObsidianTest(Typer Typer, Waiter Waiter) {
+
+    public static void makeObsidianTest() {
         Typer.command("/fill ~-1 ~-1 ~-1 ~-5 ~-2 ~-5 minecraft:lava", Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("/fill ~-3 ~3 ~-3 ~-3 ~3 ~-3 minecraft:water", Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
     }
 
-    public static void doHunt(Typer Typer, Waiter Waiter) {
+    public static void doHunt() {
         Typer.command("/clear @p",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("/give Cosmologicomical diamond_helmet{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("/give Cosmologicomical diamond_chestplate{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
