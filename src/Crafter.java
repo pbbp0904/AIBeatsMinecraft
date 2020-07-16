@@ -1,12 +1,8 @@
 
 public class Crafter {
-    
-    private static int[] coords;
 
-
-
-    private static int shortSleep;
-    private static int longSleep;
+    private static final int shortSleep;
+    private static final int longSleep;
     
     
     static {
@@ -15,6 +11,7 @@ public class Crafter {
     }
 
     public static void craft(String item, int number) {
+        int[] coords;
         switch (item) {
             case "oak_planks":
                 // Move Mouse Away
@@ -224,41 +221,44 @@ public class Crafter {
     }
 
     public static void craftItem(int[] materialCoords, int[] craftingPositions, int number) {
-        // Pick up material
+        // Put item in crafting table
+        putMaterialInTable(materialCoords, craftingPositions, number);
+
+        // Get resultant item
+        getResultantItem();
+    }
+
+
+
+
+    public static void craftItem(int[] materialCoords1, int[] materialCoords2, int[] craftingPositions1, int[] craftingPositions2, int number) {
+        // Put item 1 in crafting table
+        putMaterialInTable(materialCoords1, craftingPositions1, number);
+
+        // Put item 2 in crafting table
+        putMaterialInTable(materialCoords2, craftingPositions2, number);
+
+        // Get resultant item
+        getResultantItem();
+    }
+
+
+    public static void getResultantItem(){
+        MouseMover.moveMouse(Looker.getTableCraftSlotRes(), shortSleep);
+        Typer.holdKey("shift", shortSleep);
+        Typer.leftClick(shortSleep);
+        Typer.releaseKey("shift", longSleep);
+    }
+
+    public static void putMaterialInTable(int[] materialCoords, int[] craftingPositions, int number){
+         // Pick up material
         MouseMover.moveMouse(materialCoords, shortSleep);
         Typer.leftClick(shortSleep);
 
         for (int craftingPosition : craftingPositions) {
             // Move mouse to craft
-            switch (craftingPosition) {
-                case 1:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot1(), shortSleep);
-                    break;
-                case 2:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot2(), shortSleep);
-                    break;
-                case 3:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot3(), shortSleep);
-                    break;
-                case 4:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot4(), shortSleep);
-                    break;
-                case 5:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot5(), shortSleep);
-                    break;
-                case 6:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot6(), shortSleep);
-                    break;
-                case 7:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot7(), shortSleep);
-                    break;
-                case 8:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot8(), shortSleep);
-                    break;
-                case 9:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot9(), shortSleep);
-                    break;
-            }
+            moveToCraft(craftingPosition);
+
             // Place the correct number of items
             for (int j = 0; j < number; j++) {
                 Typer.rightClick(shortSleep);
@@ -268,116 +268,41 @@ public class Crafter {
         // Place material back in original slot
         MouseMover.moveMouse(materialCoords, shortSleep);
         Typer.leftClick(longSleep);
-
-        // Get resultant item
-        MouseMover.moveMouse(Looker.getTableCraftSlotRes(), shortSleep);
-        Typer.holdKey("shift", shortSleep);
-        Typer.leftClick(shortSleep);
-        Typer.releaseKey("shift", longSleep);
     }
 
 
 
-
-    public static void craftItem(int[] materialCoords1, int[] materialCoords2, int[] craftingPositions1, int[] craftingPositions2, int number) {
-        // Pick up material 1
-        MouseMover.moveMouse(materialCoords1, shortSleep);
-        Typer.leftClick(shortSleep);
-
-        for (int item : craftingPositions1) {
-            // Move mouse to craft
-            switch (item) {
-                case 1:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot1(), shortSleep);
-                    break;
-                case 2:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot2(), shortSleep);
-                    break;
-                case 3:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot3(), shortSleep);
-                    break;
-                case 4:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot4(), shortSleep);
-                    break;
-                case 5:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot5(), shortSleep);
-                    break;
-                case 6:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot6(), shortSleep);
-                    break;
-                case 7:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot7(), shortSleep);
-                    break;
-                case 8:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot8(), shortSleep);
-                    break;
-                case 9:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot9(), shortSleep);
-                    break;
-            }
-            // Place the correct number of items
-            for (int j = 0; j < number; j++) {
-                Typer.rightClick(shortSleep);
-            }
+    public static void moveToCraft(int value){
+        switch (value) {
+            case 1:
+                MouseMover.moveMouse(Looker.getTableCraftSlot1(), shortSleep);
+                break;
+            case 2:
+                MouseMover.moveMouse(Looker.getTableCraftSlot2(), shortSleep);
+                break;
+            case 3:
+                MouseMover.moveMouse(Looker.getTableCraftSlot3(), shortSleep);
+                break;
+            case 4:
+                MouseMover.moveMouse(Looker.getTableCraftSlot4(), shortSleep);
+                break;
+            case 5:
+                MouseMover.moveMouse(Looker.getTableCraftSlot5(), shortSleep);
+                break;
+            case 6:
+                MouseMover.moveMouse(Looker.getTableCraftSlot6(), shortSleep);
+                break;
+            case 7:
+                MouseMover.moveMouse(Looker.getTableCraftSlot7(), shortSleep);
+                break;
+            case 8:
+                MouseMover.moveMouse(Looker.getTableCraftSlot8(), shortSleep);
+                break;
+            case 9:
+                MouseMover.moveMouse(Looker.getTableCraftSlot9(), shortSleep);
+                break;
         }
-
-        // Place material 1 back in original slot
-        MouseMover.moveMouse(materialCoords1, shortSleep);
-        Typer.leftClick(longSleep);
-
-
-        // Pick up material 2
-        MouseMover.moveMouse(materialCoords2, shortSleep);
-        Typer.leftClick(shortSleep);
-
-        for (int value : craftingPositions2) {
-            // Move mouse to craft
-            switch (value) {
-                case 1:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot1(), shortSleep);
-                    break;
-                case 2:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot2(), shortSleep);
-                    break;
-                case 3:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot3(), shortSleep);
-                    break;
-                case 4:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot4(), shortSleep);
-                    break;
-                case 5:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot5(), shortSleep);
-                    break;
-                case 6:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot6(), shortSleep);
-                    break;
-                case 7:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot7(), shortSleep);
-                    break;
-                case 8:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot8(), shortSleep);
-                    break;
-                case 9:
-                    MouseMover.moveMouse(Looker.getTableCraftSlot9(), shortSleep);
-                    break;
-            }
-            // Place the correct number of items
-            for (int j = 0; j < number; j++) {
-                Typer.rightClick(shortSleep);
-            }
-        }
-
-        // Place material 2 back in original slot
-        MouseMover.moveMouse(materialCoords2, shortSleep);
-        Typer.leftClick(longSleep);
-
-        // Get resultant item
-        MouseMover.moveMouse(Looker.getTableCraftSlotRes(), shortSleep);
-        Typer.holdKey("shift", shortSleep);
-        Typer.leftClick(shortSleep);
-        Typer.releaseKey("shift", longSleep);
     }
-
 
     public static void smelt(String item, int number) {
         switch(item) {

@@ -1,5 +1,6 @@
 [
-  {"type": "command", "name": "Destroy End Crystals", "command_string": ".b follow entity end_crystal", "wait_until_done": true},
-  {"type": "command", "name": "Follow Ender Dragon", "command_string": ".b follow entity ender_dragon", "wait_until_done": false},
-  {"type": "command", "name": "Turn On Kill Aura", "command_string": ".toggle KillAura", "wait_until_done": false}
+  {"type": "command", "name": "Destroy End Crystals", "command_string": "/kill @e[type=end_crystal]", "wait_until_done": true},
+  {"type": "command", "name": "Goto Wall Torch", "command_string": ".b goto wall_torch", "wait_until_done": true},
+  {"type": "command", "name": "Build Shield", "command_string": ".b build shield.schematic ~-1 ~-1 ~-1", "wait_until_done": true},
+  {"type": "command", "name": "Goto Torch", "command_string": ".b goto torch", "wait_until_done": true}
 ]

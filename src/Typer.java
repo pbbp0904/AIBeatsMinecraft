@@ -11,8 +11,8 @@ import java.util.HashMap;
 public class Typer {
 
     private static Robot robot;
-    private static int shortSleep;
-    private static int longSleep;
+    private static final int shortSleep;
+    private static final int longSleep;
     private static Integer inventoryKey;
     private static Integer moveForward;
     private static Integer moveLeft;
@@ -39,7 +39,7 @@ public class Typer {
     }
 
     public static void pressKey (String s){
-        if (s == "unknown") {
+        if (s.equals("unknown")) {
             System.out.println("Unknown key has been requested to type. Quitting... [TYPER]");
             System.exit(-1);
         }
@@ -56,20 +56,7 @@ public class Typer {
     }
 
     public static void pressKey (String s, int waitTime){
-        if (s == "unknown") {
-            System.out.println("Unknown key has been requested to type. Quitting... [TYPER]");
-            System.exit(-1);
-        }
-        else if (k.get(s).size() == 1) {
-            robot.keyPress(k.get(s).get(0));
-            robot.keyRelease(k.get(s).get(0));
-        }
-        else if (k.get(s).size() == 2) {
-            robot.keyPress(k.get(s).get(1));
-            robot.keyPress(k.get(s).get(0));
-            robot.keyRelease(k.get(s).get(0));
-            robot.keyRelease(k.get(s).get(1));
-        }
+        pressKey(s);
         Waiter.wait(waitTime);
     }
 
@@ -79,7 +66,7 @@ public class Typer {
     }
     
     public static void holdKey(String s){
-        if (s == "unknown") {
+        if (s.equals("unknown")) {
             System.out.println("Unknown key has been requested to type. Quitting... [TYPER]");
             System.exit(-1);
         }
@@ -93,17 +80,7 @@ public class Typer {
     }
 
     public static void holdKey (String s, int waitTime){
-        if (s == "unknown") {
-            System.out.println("Unknown key has been requested to type. Quitting... [TYPER]");
-            System.exit(-1);
-        }
-        else if (k.get(s).size() == 1) {
-            robot.keyPress(k.get(s).get(0));
-        }
-        else if (k.get(s).size() == 2) {
-            robot.keyPress(k.get(s).get(1));
-            robot.keyPress(k.get(s).get(0));
-        }
+        holdKey(s);
         Waiter.wait(waitTime);
     }
 
@@ -112,7 +89,7 @@ public class Typer {
     }
 
     public static void releaseKey(String s){
-        if (s == "unknown") {
+        if (s.equals("unknown")) {
             System.out.println("Unknown key has been requested to type. Quitting... [TYPER]");
             System.exit(-1);
         }
@@ -126,17 +103,7 @@ public class Typer {
     }
 
     public static void releaseKey (String s, int waitTime){
-        if (s == "unknown") {
-            System.out.println("Unknown key has been requested to type. Quitting... [TYPER]");
-            System.exit(-1);
-        }
-        else if (k.get(s).size() == 1) {
-            robot.keyRelease(k.get(s).get(0));
-        }
-        else if (k.get(s).size() == 2) {
-            robot.keyRelease(k.get(s).get(1));
-            robot.keyRelease(k.get(s).get(0));
-        }
+        releaseKey(s);
         Waiter.wait(waitTime);
     }
 
@@ -404,7 +371,7 @@ public class Typer {
         //End symbols
 
         //Unknown key. Only used in minecraft congif file for unassigned keys
-        k.put("unknown", new ArrayList<>(Arrays.asList(-1)));
+        k.put("unknown", new ArrayList<>(Collections.singletonList(-1)));
 
     }
 }

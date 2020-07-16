@@ -4,9 +4,6 @@ import java.io.File;
 import java.io.IOException;
 
 import java.io.FileReader;
-import java.util.Collections;
-import java.util.Map;
-import java.util.concurrent.*;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -22,26 +19,22 @@ public class Main {
 
     public static void main(String[] args){
 
+        ready = false;
+        s = new Starter();
+        s.start();
+        System.out.println("Bring minecraft into focus and press Enter to begin.");
+        System.out.println("The program will automatically begin in 10 seconds, even without pressing enter.");
 
+        int time = 10;
 
-//        for(int i = 0; i < 10000; i++) {
-//            PointerInfo a = MouseInfo.getPointerInfo();
-//            Point b = a.getLocation();
-//            int x = (int) b.getX();
-//            int y = (int) b.getY();
-//            System.out.print(x + ",");
-//            System.out.print(y + "\n");
-//            Thread.sleep(100);
-//        }
+        while (!ready && time > 0) {
+            System.out.println(time);
+            time--;
+            Waiter.wait(1000);
+        }
 
-//        Main main = new Main();
-//        main.Waiter.wait(5000);
-//
-//        main.startUp();
-//        main.jumpToPhase(4);
-//        main.Waiter.wait(2000);
-//        main.doPhase(4);
-
+        startUp();
+        doPhase(1);
 
 
 
@@ -84,42 +77,8 @@ public class Main {
 //        main.Waiter.wait(1000);
 //        main.doPhase(2);
 
-        ready = false;
-        s = new Starter();
-        s.start();
-
-        System.out.println("Bring minecraft into focus and press Enter to begin.");
-        System.out.println("The program will automatically begin in 10 seconds, even without pressing enter.");
-
-        int time = 10;
-
-        while (!ready && time > 0) {
-            System.out.println(time);
-            time--;
-            Waiter.wait(1000);
-        }
-
-        startUp();
-        doPhase(1);
 
 
-        //giveDiamondStuff(main.Typer,main.Waiter);
-        //main.Waiter.iwait(30000);
-
-        //doHunt(main.Typer, main.Waiter);
-
-
-        //obsidianGather(main.looker, main.Typer, main.crafter, main.mm, main.Waiter);
-        //makeObsidianTest(main.Typer,main.Waiter);
-        //main.startUp();
-
-        // Write a block off water fall routine for the obsidian problem?
-
-        //woodGather(main.looker, main.Typer, main.crafter, main.Waiter);
-        //stoneGather(main.looker, main.Typer, main.crafter, main.mm, main.Waiter);
-        //ironGather(main.looker, main.Typer, main.crafter, main.mm, main.Waiter);
-        //diamondGather(main.looker, main.Typer, main.crafter, main.mm, main.Waiter);
-        //bedGather(main.looker, main.Typer, main.crafter, main.Waiter);
     }
 
     private static void reset() {
@@ -181,19 +140,19 @@ public class Main {
         Typer.pressKey("enter", 15000);
     }
 
-    public void jumpToPhase(int phase){
-        String instructionSetString = "src\\Instruction_Sets\\JumpToPhase_" + Integer.toString(phase) + ".json";
+    public static void jumpToPhase(int phase){
+        String instructionSetString = "src\\Instruction_Sets\\JumpToPhase_" + phase + ".json";
         doInstructionSet(instructionSetString);
     }
 
 
     public static void doPhase(int phase){
-        String instructionSetString = "src\\Instruction_Sets\\Phase_" + Integer.toString(phase) + ".json";
+        String instructionSetString = "src\\Instruction_Sets\\Phase_" + phase + ".json";
         doInstructionSet(instructionSetString);
     }
 
-    public void doPhase(int phase, int startingInstruction){
-        String instructionSetString = "src\\Instruction_Sets\\Phase_" + Integer.toString(phase) + ".json";
+    public static void doPhase(int phase, int startingInstruction){
+        String instructionSetString = "src\\Instruction_Sets\\Phase_" + phase + ".json";
         doInstructionSet(instructionSetString, startingInstruction);
     }
 
@@ -207,7 +166,7 @@ public class Main {
 
 
     public void doPhaseTime(int phase, long time){
-        String instructionSetString = "src\\Instruction_Sets\\Phase_" + Integer.toString(phase) + ".json";
+        String instructionSetString = "src\\Instruction_Sets\\Phase_" + phase + ".json";
         doInstructionSetTime(instructionSetString, time);
     }
 
@@ -222,7 +181,7 @@ public class Main {
     }
 
 
-    public void doInstructionSet(String instructionSetString, int startingInstruction){
+    public static void doInstructionSet(String instructionSetString, int startingInstruction){
         JSONArray instructionSet = loadInstructionSet(instructionSetString);
         for (int i = startingInstruction; i<instructionSet.size(); i++){
             Object instruction = instructionSet.get(i);
@@ -253,6 +212,9 @@ public class Main {
                 break;
             case "sort":
                 doSort((JSONArray) instruction.get("spec"), (boolean) instruction.get("discard_unspecified"), (boolean) instruction.get("open_inventory"), (boolean) instruction.get("close_inventory"));
+                break;
+            case "light":
+                doLight();
                 break;
         }
     }
@@ -347,6 +309,14 @@ public class Main {
         }
     }
 
+    private static void doLight() {
+        Sorter.putItemInHotbar("flint_and_steel", 7, false);
+        Typer.type("7");
+        Looker.lookDown();
+        Typer.holdRightClick(Waiter.getLongSleepTime());
+        Typer.releaseRightClick(Waiter.getLongSleepTime());
+        Waiter.wait(20000);
+    }
 
     public static JSONArray loadInstructionSet(String instructionSetString){
         JSONParser jsonParser = new JSONParser();

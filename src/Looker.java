@@ -235,8 +235,8 @@ public class Looker {
 
     public static void waitUntilStationary() {
         boolean imagesEqual = false;
-        BufferedImage screenImg1 = null;
-        BufferedImage screenImg2 = null;
+        BufferedImage screenImg1;
+        BufferedImage screenImg2;
         while(!imagesEqual) {
             screenImg1 = screenShot(centerScreenRect);
             try {
@@ -251,8 +251,8 @@ public class Looker {
 
     public static void waitUntilStationaryFuse(long fuseTime) {
         boolean imagesEqual = false;
-        BufferedImage screenImg1 = null;
-        BufferedImage screenImg2 = null;
+        BufferedImage screenImg1;
+        BufferedImage screenImg2;
         long start = System.currentTimeMillis();
         long end = System.currentTimeMillis();
         while(!imagesEqual && end<start+fuseTime) {
@@ -271,8 +271,8 @@ public class Looker {
 
     public static void waitUntilSmeltingDone(){
         boolean imagesEqual = false;
-        BufferedImage screenImg1 = null;
-        BufferedImage screenImg2 = null;
+        BufferedImage screenImg1;
+        BufferedImage screenImg2;
         while(!imagesEqual) {
             screenImg1 = screenShot(furnaceProgressScreenRect);
             try {
@@ -303,20 +303,18 @@ public class Looker {
 
 
     public static boolean foundImageOnScreen(String pathname, Rectangle screenRect, double threshold) {
-        BufferedImage screenImg = null;
-        screenImg = screenShot(screenRect);
+        BufferedImage screenImg = screenShot(screenRect);
         String filePath = new File(pathname).getAbsolutePath();
        BufferedImage img = resize(Objects.requireNonNull(getImage(filePath)), ((double) (guiScale))/3.0) ;
         assert screenImg != null;
-        double diff = findSubImageDiff(screenImg, img, screenRect);
+        double diff = findSubImageDiff(screenImg, img);
         System.out.println(diff);
         return diff < threshold;
     }
 
 
     public static int[] findLocationOnScreen(String pathname, Rectangle screenRect) {
-        BufferedImage screenImg = null;
-        screenImg = screenShot(screenRect);
+        BufferedImage screenImg = screenShot(screenRect);
         String filePath = new File(pathname).getAbsolutePath();
         BufferedImage img = resize(Objects.requireNonNull(getImage(filePath)), ((double) (guiScale))/3.0) ;
         assert screenImg != null;
@@ -383,23 +381,19 @@ public class Looker {
     }
 
 
-    public static double findSubImageDiff(BufferedImage im1, BufferedImage im2, Rectangle screenRect) {
+    public static double findSubImageDiff(BufferedImage im1, BufferedImage im2) {
         int w1 = im1.getWidth();
         int h1 = im1.getHeight();
         int w2 = im2.getWidth();
         int h2 = im2.getHeight();
         assert (w2 <= w1 && h2 <= h1);
         // will keep track of best position found
-        int bestX = 0;
-        int bestY = 0;
         double lowestDiff = Double.POSITIVE_INFINITY;
         // brute-force search through whole image (slow...)
         for (int x = 0; x < w1 - w2; x = x + searchSpacingX) {
             for (int y = 0; y < h1 - h2; y = y + searchSpacingY) {
                 double comp = compareImages(im1.getSubimage(x, y, w2, h2), im2);
                 if (comp < lowestDiff) {
-                    bestX = x;
-                    bestY = y;
                     lowestDiff = comp;
                 }
             }
@@ -443,13 +437,13 @@ public class Looker {
 
 
 
-    /**
-     * Resizes an image by a percentage of original size (proportional).
-     * @param inputImagePath Path of the original image
-     * @param outputImagePath Path to save the resized image
-     * @param percent a double number specifies percentage of the output image
-     * over the input image.
-     */
+
+//    Resizes an image by a percentage of original size (proportional).
+//    @param inputImagePath Path of the original image
+//    @param outputImagePath Path to save the resized image
+//    @param percent a double number specifies percentage of the output image
+//    over the input image.
+
     public static BufferedImage resize(BufferedImage inputImage, double percent) {
         int scaledWidth = (int) (inputImage.getWidth() * percent);
         int scaledHeight = (int) (inputImage.getHeight() * percent);

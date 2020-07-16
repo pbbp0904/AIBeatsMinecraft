@@ -2,9 +2,9 @@ import java.awt.*;
 
 public class Sorter {
     
-    private static int shortSleep;
-    private static int longSleep;
-    private static int stationarySleep;
+    private static final int shortSleep;
+    private static final int longSleep;
+    private static final int stationarySleep;
     
     static {
         shortSleep = 100;
