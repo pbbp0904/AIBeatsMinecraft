@@ -1,4 +1,5 @@
 [
+  {"type": "move",    "name": "Move Out Of Portal", "move_type": "portal"},
   {"type": "command", "name": "Turn On Kill Aura", "command_string": ".toggle KillAura", "wait_until_done": false},
   {"type": "command", "name": "Goto Spawner 1", "command_string": ".b goto spawner", "wait_until_done": true, "fuse":  60000},
   {"type": "command", "name": "Goto Spawner 1", "command_string": ".b goto spawner", "wait_until_done": true, "fuse":  60000},

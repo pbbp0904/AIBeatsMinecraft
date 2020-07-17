@@ -33,8 +33,22 @@ public class Main {
             Waiter.wait(1000);
         }
 
+
         startUp();
         doPhase(1);
+//        doPhase(2);
+
+
+
+        while(true){
+            startUp();
+            long start = System.currentTimeMillis();
+            long end = start + 1200*1000;
+            doPhaseTime(1,end);
+            Waiter.wait(10000);
+            reset();
+        }
+
 
 
 
@@ -97,6 +111,8 @@ public class Main {
             e.printStackTrace();
         }
 
+        Typer.holdKey("escape", 3000);
+        Typer.releaseKey("escape", 100);
 
         Typer.holdKey("escape", 3000);
         Typer.releaseKey("escape", 100);
@@ -137,7 +153,7 @@ public class Main {
         for(int i = 0; i<3; i++){
             Typer.pressKey("tab", 100);
         }
-        Typer.pressKey("enter", 15000);
+        Typer.pressKey("enter", 30000);
     }
 
     public static void jumpToPhase(int phase){
@@ -165,21 +181,24 @@ public class Main {
 
 
 
-    public void doPhaseTime(int phase, long time){
+    public static void doPhaseTime(int phase, long time){
         String instructionSetString = "src\\Instruction_Sets\\Phase_" + phase + ".json";
         doInstructionSetTime(instructionSetString, time);
     }
 
-    public void doInstructionSetTime(String instructionSetString, long time){
+    public static void doInstructionSetTime(String instructionSetString, long time){
         JSONArray instructionSet = loadInstructionSet(instructionSetString);
         for (Object instruction : instructionSet){
             doInstruction((JSONObject) instruction);
             if (System.currentTimeMillis() > time) {
                 break;
             }
+            Rectangle deathScreenRect = new Rectangle(1030, 440, 150, 100);
+            if (Looker.foundImageOnScreen("src\\Checkpoint_Images\\Death.jpg", deathScreenRect, 0.1)){
+                break;
+            }
         }
     }
-
 
     public static void doInstructionSet(String instructionSetString, int startingInstruction){
         JSONArray instructionSet = loadInstructionSet(instructionSetString);
@@ -215,6 +234,9 @@ public class Main {
                 break;
             case "light":
                 doLight();
+                break;
+            case "move":
+                doMove((String) instruction.get("move_type"));
                 break;
         }
     }
@@ -310,12 +332,28 @@ public class Main {
     }
 
     private static void doLight() {
+        Typer.type("2");
+        Looker.lookUp();
+        Typer.holdLeftClick(1000);
+        Typer.releaseLeftClick(10);
         Sorter.putItemInHotbar("flint_and_steel", 7, false);
         Typer.type("7");
-        Looker.lookDown();
         Typer.holdRightClick(Waiter.getLongSleepTime());
         Typer.releaseRightClick(Waiter.getLongSleepTime());
-        Waiter.wait(20000);
+        Waiter.wait(15000);
+    }
+
+
+    public static void doMove(String move_type) {
+        switch (move_type){
+            case "portal":
+                Typer.holdKey("s",400);
+                Typer.holdKey("d",250);
+                Typer.releaseKey("s");
+                Typer.releaseKey("d");
+                Waiter.wait(5000);
+                break;
+        }
     }
 
     public static JSONArray loadInstructionSet(String instructionSetString){

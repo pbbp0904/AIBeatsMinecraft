@@ -76,6 +76,8 @@ public class Looker {
     private static final Rectangle centerScreenRect;
 
     private static int guiScale;
+    private static int centerX;
+    private static int centerY;
 
     static{
         guiScale = 0;
@@ -87,8 +89,8 @@ public class Looker {
 
         PointerInfo a = MouseInfo.getPointerInfo();
         Point b = a.getLocation();
-        int centerX = (int) b.getX();
-        int centerY = (int) b.getY();
+        centerX = (int) b.getX();
+        centerY = (int) b.getY();
 
         int topLeftX = centerX-(guiScale1InvX/2)*guiScale;
         int topLeftY = centerY-(guiScale1InvY/2)*guiScale;
@@ -227,10 +229,14 @@ public class Looker {
         return rect;
     }
 
+    public static void lookUp() {
+        MouseMover.moveMouse(centerX, 0,10);
+        MouseMover.moveMouse(centerX, 0,10);
+    }
 
     public static void lookDown() {
-        MouseMover.moveMouse(960,1000,10);
-        MouseMover.moveMouse(960,1000,10);
+        MouseMover.moveMouse(centerX, (int) (centerY * 3.0/2.0),10);
+        MouseMover.moveMouse(centerX, (int) (centerY * 3.0/2.0),10);
     }
 
     public static void waitUntilStationary() {
@@ -308,7 +314,7 @@ public class Looker {
        BufferedImage img = resize(Objects.requireNonNull(getImage(filePath)), ((double) (guiScale))/3.0) ;
         assert screenImg != null;
         double diff = findSubImageDiff(screenImg, img);
-        System.out.println(diff);
+        //System.out.println(diff);
         return diff < threshold;
     }
 
