@@ -34,20 +34,25 @@ public class Main {
         }
 
 
-        startUp();
-        doPhase(1);
+
+        //        startUp();
+//        doPhase(1);
 //        doPhase(2);
 
 
 
-        while(true){
-            startUp();
-            long start = System.currentTimeMillis();
-            long end = start + 1200*1000;
-            doPhaseTime(1,end);
-            Waiter.wait(10000);
-            reset();
-        }
+//        startUp();
+//        gotoEndPortal();
+
+
+//        while(true){
+//            startUp();
+//            long start = System.currentTimeMillis();
+//            long end = start + 1200*1000;
+//            doPhaseTime(1,end);
+//            Waiter.wait(10000);
+//            reset();
+//        }
 
 
 
@@ -344,6 +349,7 @@ public class Main {
     }
 
 
+
     public static void doMove(String move_type) {
         switch (move_type){
             case "portal":
@@ -355,6 +361,87 @@ public class Main {
                 break;
         }
     }
+
+
+
+    private static void gotoEndPortal(){
+        Typer.command("/give @p ender_eye 20");
+        Typer.command("/give @p diamond_pickaxe");
+        Typer.command("/give @p diamond_shovel");
+        Typer.command("/give @p dirt 256");
+        Typer.command("/give @p cooked_beef 20");
+        Typer.command("/gamerule doDaylightCycle false");
+        Typer.command(".b set exploreForBlocks true");
+
+        Typer.command("1");
+        Typer.command(".b follow entity eye_of_ender");
+        Waiter.wait(200);
+        Typer.rightClick(150);
+        Typer.command(".b thisway 1600");
+        Typer.command(".b path");
+        Looker.waitUntilStationary();
+
+        Typer.command("1");
+        Typer.command(".b follow entity eye_of_ender");
+        Waiter.wait(200);
+        Typer.rightClick(150);
+        Typer.command(".b thisway 800");
+        Typer.command(".b path");
+        Looker.waitUntilStationary();
+
+        Typer.command("1");
+        Typer.command(".b follow entity eye_of_ender");
+        Waiter.wait(200);
+        Typer.rightClick(150);
+        Typer.command(".b thisway 400");
+        Typer.command(".b path");
+        Looker.waitUntilStationary();
+
+        Typer.command("1");
+        Typer.command(".b follow entity eye_of_ender");
+        Waiter.wait(200);
+        Typer.rightClick(150);
+        Typer.command(".b thisway 200");
+        Typer.command(".b path");
+        Looker.waitUntilStationary();
+
+        Typer.command("1");
+        Typer.command(".b follow entity eye_of_ender");
+        Waiter.wait(200);
+        Typer.rightClick(150);
+        Typer.command(".b thisway 200");
+        Typer.command(".b path");
+        Looker.waitUntilStationary();
+
+        Typer.command("1");
+        Typer.command(".b follow entity eye_of_ender");
+        Waiter.wait(200);
+        Typer.rightClick(150);
+        Typer.command(".b thisway 200");
+        Typer.command(".b path");
+        Looker.waitUntilStationary();
+
+        Typer.command("1");
+        Typer.command(".b follow entity eye_of_ender");
+        Waiter.wait(200);
+        Typer.rightClick(150);
+        Typer.command(".b thisway 200");
+        Typer.command(".b path");
+        Looker.waitUntilStationary();
+
+        Typer.command("1");
+        Typer.command(".b follow entity eye_of_ender");
+        Waiter.wait(200);
+        Typer.rightClick(150);
+        Typer.command(".b thisway 100");
+        Typer.command(".b path");
+        Looker.waitUntilStationary();
+
+
+        Typer.command(".b set exploreForBlocks false");
+        Typer.command(".b goto stone_brick_stairs");
+    }
+
 
     public static JSONArray loadInstructionSet(String instructionSetString){
         JSONParser jsonParser = new JSONParser();
@@ -396,6 +483,10 @@ public class Main {
     public static boolean getReady(){
         return ready;
     }
+
+
+
+
 
 
 

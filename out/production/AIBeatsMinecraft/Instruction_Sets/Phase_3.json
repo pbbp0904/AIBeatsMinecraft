@@ -1,0 +1,3 @@
+[
+  {"type": "command", "name": "Follow Enderman", "command_string": ".b follow entity enderman", "wait_until_done": false}
+]
