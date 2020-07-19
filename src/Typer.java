@@ -309,6 +309,18 @@ public class Typer {
         k.put(")", new ArrayList<>(Arrays.asList(KeyEvent.VK_0, KeyEvent.VK_SHIFT)));
         //End Numbers
 
+        //Begin Keypad Numbers
+        k.put("NP1", new ArrayList<>(Collections.singletonList(KeyEvent.VK_NUMPAD1)));
+        k.put("NP2", new ArrayList<>(Collections.singletonList(KeyEvent.VK_NUMPAD2)));
+        k.put("NP3", new ArrayList<>(Collections.singletonList(KeyEvent.VK_NUMPAD3)));
+        k.put("NP4", new ArrayList<>(Collections.singletonList(KeyEvent.VK_NUMPAD4)));
+        k.put("NP5", new ArrayList<>(Collections.singletonList(KeyEvent.VK_NUMPAD5)));
+        k.put("NP6", new ArrayList<>(Collections.singletonList(KeyEvent.VK_NUMPAD6)));
+        k.put("NP7", new ArrayList<>(Collections.singletonList(KeyEvent.VK_NUMPAD7)));
+        k.put("NP8", new ArrayList<>(Collections.singletonList(KeyEvent.VK_NUMPAD8)));
+        k.put("NP9", new ArrayList<>(Collections.singletonList(KeyEvent.VK_NUMPAD9)));
+        k.put("NP0", new ArrayList<>(Collections.singletonList(KeyEvent.VK_NUMPAD0)));
+        //End Keypad Numbers
 
         //Begin symbols
         k.put(";", new ArrayList<>(Collections.singletonList(KeyEvent.VK_SEMICOLON)));

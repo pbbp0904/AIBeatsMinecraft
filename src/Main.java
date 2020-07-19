@@ -35,8 +35,8 @@ public class Main {
 
 
 
-        //        startUp();
-//        doPhase(1);
+        startUp();
+        doPhase(1);
 //        doPhase(2);
 
 
@@ -244,6 +244,8 @@ public class Main {
                 doMove((String) instruction.get("move_type"));
                 break;
         }
+        // Type NUMPAD_1 for splits
+        Typer.pressKey("NP1");
     }
 
     private static void doCommand(String command_string, boolean wait_until_done, long fuse) {
@@ -469,9 +471,12 @@ public class Main {
         }
         // START
         System.out.println("Starting Run!");
-        Typer.command("/clear");
-        Typer.command("/time set 0");
-        Typer.command("/weather clear 10000");
+//        Typer.command("/clear");
+//        Typer.command("/time set 0");
+//        Typer.command("/weather clear 10000");
+
+        // Type $ for to start splits
+        Typer.pressKey("NP1");
         //        while(!looker.foundImageOnScreen("src\\Checkpoint_Images\\Crafting_Table.jpg",craftingScreenRect,0.15,1)){
         //            Thread.sleep(Waiter.getShortSleepTime());
         //        }

@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class MouseMover {
 
-    private static final int[] moveAwayCoords = new int[]{200, 200};
+    private static final int[] moveAwayCoords = new int[]{400, 400};
     private static Robot robot;
     private static final int shortSleep;
     
