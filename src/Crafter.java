@@ -126,6 +126,90 @@ public class Crafter {
                 break;
 
 
+
+
+            case "mushroom_stew":
+                // Move Mouse Away
+                MouseMover.moveMouseAway();
+
+                // Find location of bowls
+                int[] bowlCoords = Looker.findLocationOnScreen("src\\Item_Images\\bowl.jpg", Looker.getInventoryScreenRect());
+                // Find location of brown mushrooms
+                int[] brownCoords = Looker.findLocationOnScreen("src\\Item_Images\\brown_mushroom.jpg", Looker.getInventoryScreenRect());
+                // Find location of red mushrooms
+                int[] redCoords = Looker.findLocationOnScreen("src\\Item_Images\\red_mushroom.jpg", Looker.getInventoryScreenRect());
+
+
+                // Pick up items
+                MouseMover.moveMouse(bowlCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+                // Move mouse to craft
+                MouseMover.moveMouse(Looker.getHandCraftSlot4(), shortSleep);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    Typer.rightClick(shortSleep);
+                }
+
+                // Place item back in original slot
+                MouseMover.moveMouse(bowlCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+
+
+                // Pick up items
+                MouseMover.moveMouse(brownCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+                // Move mouse to craft
+                MouseMover.moveMouse(Looker.getHandCraftSlot1(), shortSleep);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    Typer.rightClick(shortSleep);
+                }
+
+                // Place item back in original slot
+                MouseMover.moveMouse(brownCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+
+
+                // Pick up items
+                MouseMover.moveMouse(redCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+                // Move mouse to craft
+                MouseMover.moveMouse(Looker.getHandCraftSlot2(), shortSleep);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    Typer.rightClick(shortSleep);
+                }
+
+                // Place item back in original slot
+                MouseMover.moveMouse(redCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+
+
+                // Get resultant item
+                MouseMover.moveMouse(Looker.getHandCraftSlotRes(), shortSleep);
+                Typer.holdKey("shift", shortSleep);
+                Typer.leftClick(shortSleep);
+                Typer.releaseKey("shift", shortSleep);
+
+                break;
+
+
+            case "bowl":
+
+                // Move mouse away
+                MouseMover.moveMouseAway();
+
+                // Find location of items
+                int[] woodCoordsBowl = Looker.findLocationOnScreen("src\\Item_Images\\oak_planks.jpg", Looker.getInventoryScreenRect());
+
+                ////Bowl
+                craftItem(woodCoordsBowl,new int[]{4,6,8},number);
+
+                break;
+
+
+
+
             case "wooden_pickaxe":
 
                 // Move mouse away
@@ -137,7 +221,7 @@ public class Crafter {
 
 
                 ////WOODEN PICKAXE
-                craftItem(woodCoords,stickWoodCoords,new int[]{1,2,3},new int[]{5,8},1);
+                craftItem(woodCoords,stickWoodCoords,new int[]{1,2,3},new int[]{5,8},number);
 
                 break;
 
@@ -152,13 +236,13 @@ public class Crafter {
 
 
                 ////STONE PICKAXE
-                craftItem(stoneCoords,stickStoneCoords,new int[]{1,2,3},new int[]{5,8},1);
+                craftItem(stoneCoords,stickStoneCoords,new int[]{1,2,3},new int[]{5,8},number);
 
                 ////STONE SHOVEL
-                craftItem(stoneCoords,stickStoneCoords,new int[]{2},new int[]{5,8},1);
+                craftItem(stoneCoords,stickStoneCoords,new int[]{2},new int[]{5,8},number);
 
                 ////FURNACE
-                craftItem(stoneCoords, new int[]{1,2,3,4,6,7,8,9},1 );
+                craftItem(stoneCoords, new int[]{1,2,3,4,6,7,8,9},number );
 
                 break;
 
@@ -173,16 +257,16 @@ public class Crafter {
 
 
                 ////IRON PICKAXES
-                craftItem(ironCoords,stickIronCoords,new int[]{1,2,3},new int[]{5,8},2);
+                craftItem(ironCoords,stickIronCoords,new int[]{1,2,3},new int[]{5,8},2*number);
 
                 ////IRON SHOVEL
-                craftItem(ironCoords,stickIronCoords,new int[]{2},new int[]{5,8},1);
+                craftItem(ironCoords,stickIronCoords,new int[]{2},new int[]{5,8},number);
 
                 ////SHEARS
                 craftItem(ironCoords, new int[]{2,6},1 );
 
                 ////FLINT AND STEEL
-                craftItem(ironCoords,flintCoords,new int[]{2},new int[]{6},1);
+                craftItem(ironCoords,flintCoords,new int[]{2},new int[]{6},number);
 
                 break;
 
@@ -196,25 +280,25 @@ public class Crafter {
 
 
                 ////DIAMOND SWORD
-                craftItem(diamondCoords,stickDiamondCoords,new int[]{2,5},new int[]{8},1);
+                craftItem(diamondCoords,stickDiamondCoords,new int[]{2,5},new int[]{8},number);
 
                 ////DIAMOND PICKAXE
-                craftItem(diamondCoords,stickDiamondCoords,new int[]{1,2,3},new int[]{5,8},1);
+                craftItem(diamondCoords,stickDiamondCoords,new int[]{1,2,3},new int[]{5,8},number);
 
                 ////DIAMOND SHOVEL
-                craftItem(diamondCoords,stickDiamondCoords,new int[]{2},new int[]{5,8},1);
+                craftItem(diamondCoords,stickDiamondCoords,new int[]{2},new int[]{5,8},number);
 
                 ////HELMET
-                craftItem(diamondCoords, new int[]{1,2,3,4,6},1);
+                craftItem(diamondCoords, new int[]{1,2,3,4,6},number);
 
                 ////CHESTPLATE
-                craftItem(diamondCoords, new int[]{1,3,4,5,6,7,8,9},1);
+                craftItem(diamondCoords, new int[]{1,3,4,5,6,7,8,9},number);
 
                 ////LEGGINGS
-                craftItem(diamondCoords, new int[]{1,2,3,4,6,7,9},1);
+                craftItem(diamondCoords, new int[]{1,2,3,4,6,7,9},number);
 
                 ////BOOTS
-                craftItem(diamondCoords, new int[]{4,6,7,9},1 );
+                craftItem(diamondCoords, new int[]{4,6,7,9},number);
 
                 break;
         }

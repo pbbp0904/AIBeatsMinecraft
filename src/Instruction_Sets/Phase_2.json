@@ -1,6 +1,11 @@
 [
   {"type": "move",    "name": "Move Out Of Portal", "move_type": "portal"},
   {"type": "command", "name": "Turn On Kill Aura", "command_string": ".toggle KillAura", "wait_until_done": false},
+  {"type": "command", "name": "Mine Brown Mushrooms", "command_string": ".b mine 20 brown_mushroom", "wait_until_done": true},
+  {"type": "command", "name": "Mine Red Mushrooms", "command_string": ".b mine 20 red_mushroom", "wait_until_done": true},
+  {"type": "craft",   "name": "Craft Mushroom Stew", "number": 8, "item": "mushroom_stew", "open_inventory": true, "close_inventory": true},
+  {"type": "sort",    "name": "Sort Nether", "spec": [{"slot": 3, "item": "mushroom_stew", "backOnly": false}, {"slot": 5, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 9, "item": "mushroom_stew", "backOnly": true}, {"slot": 3, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "mushroom_stew", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+
   {"type": "command", "name": "Goto Spawner 1", "command_string": ".b goto spawner", "wait_until_done": true, "fuse":  60000},
   {"type": "command", "name": "Goto Spawner 1", "command_string": ".b goto spawner", "wait_until_done": true, "fuse":  60000},
   {"type": "command", "name": "Kill Blaze 1", "command_string": ".b follow entity blaze", "wait_until_done": true, "fuse":  30000},

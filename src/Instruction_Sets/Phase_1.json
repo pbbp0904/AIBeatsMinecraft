@@ -5,6 +5,7 @@
   {"type": "craft",   "name": "Craft Sticks", "item": "stick", "number": 5, "open_inventory": false, "close_inventory": true},
   {"type": "command", "name": "Mine Dirt", "command_string": ".b mine 1 grass_block", "wait_until_done": true},
   {"type": "place",   "name": "Place and Enter Crafting Table", "item": "crafting_table", "enter": true},
+  {"type": "craft",   "name": "Craft Bowls", "number": 3, "item": "bowl", "open_inventory": false, "close_inventory": false},
   {"type": "craft",   "name": "Craft Wooden Pickaxe", "number": 1, "item": "wooden_pickaxe", "open_inventory": false, "close_inventory": true},
 
   {"type": "command", "name": "Mine Stone", "command_string": ".b mine 12 stone", "wait_until_done": true},
@@ -25,7 +26,7 @@
   {"type": "sort",    "name": "Sort Iron Inventory", "spec": [{"slot": 1, "item": "iron_pickaxe", "backOnly": false}, {"slot": 2, "item": "iron_pickaxe", "backOnly": true}, {"slot": 3, "item": "iron_shovel", "backOnly": false}, {"slot": 4, "item": "flint_and_steel", "backOnly": false}, {"slot": 5, "item": "dirt", "backOnly": false}], "discard_unspecified": false, "open_inventory": false, "close_inventory": true},
 
   {"type": "command", "name": "Mine Diamond Ore", "command_string": ".b mine 30 diamond_ore", "wait_until_done": true},
-  {"type": "craft",   "name": "Craft Crafting Table", "number": 1, "item": "crafting_table", "open_inventory": true, "close_inventory": true},
+  {"type": "craft",   "name": "Craft Crafting Table", "item": "crafting_table", "number": 1, "open_inventory": true, "close_inventory": true},
   {"type": "place",   "name": "Place and Enter Crafting Table", "item": "crafting_table", "enter": true},
   {"type": "craft",   "name": "Craft Diamond Items", "number": 1, "item": "diamond_items", "open_inventory": false, "close_inventory": true},
   {"type": "sort",    "name": "Sort Diamond Inventory", "spec": [{"slot": 1, "item": "diamond_sword", "backOnly": false}, {"slot": 2, "item": "diamond_pickaxe", "backOnly": false}, {"slot": 3, "item": "diamond_shovel", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": false}, {"slot": -1, "item": "diamond_helmet", "backOnly": false}, {"slot": -1, "item": "diamond_chestplate", "backOnly": false}, {"slot": -1, "item": "diamond_leggings", "backOnly": false}, {"slot": -1, "item": "diamond_boots", "backOnly": false}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
