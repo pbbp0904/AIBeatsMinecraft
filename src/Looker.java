@@ -230,13 +230,15 @@ public class Looker {
     }
 
     public static void lookUp() {
-        MouseMover.moveMouse(centerX, 0,10);
-        MouseMover.moveMouse(centerX, 0,10);
+        MouseMover.moveMouse(centerX, (int) (centerY /2.0), Waiter.getShortSleepTime());
+        MouseMover.moveMouse(centerX, (int) (centerY /2.0), Waiter.getShortSleepTime());
+        MouseMover.moveMouse(centerX, (int) (centerY /2.0), Waiter.getShortSleepTime());
     }
 
     public static void lookDown() {
-        MouseMover.moveMouse(centerX, (int) (centerY * 3.0/2.0),10);
-        MouseMover.moveMouse(centerX, (int) (centerY * 3.0/2.0),10);
+        MouseMover.moveMouse(centerX, (int) (centerY * 3.0/2.0), Waiter.getShortSleepTime());
+        MouseMover.moveMouse(centerX, (int) (centerY * 3.0/2.0), Waiter.getShortSleepTime());
+        MouseMover.moveMouse(centerX, (int) (centerY * 3.0/2.0), Waiter.getShortSleepTime());
     }
 
     public static void waitUntilStationary() {

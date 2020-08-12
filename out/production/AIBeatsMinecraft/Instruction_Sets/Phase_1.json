@@ -31,7 +31,8 @@
   {"type": "craft",   "name": "Craft Diamond Items", "number": 1, "item": "diamond_items", "open_inventory": false, "close_inventory": true},
   {"type": "sort",    "name": "Sort Diamond Inventory", "spec": [{"slot": 1, "item": "diamond_sword", "backOnly": false}, {"slot": 2, "item": "diamond_pickaxe", "backOnly": false}, {"slot": 3, "item": "diamond_shovel", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": false}, {"slot": -1, "item": "diamond_helmet", "backOnly": false}, {"slot": -1, "item": "diamond_chestplate", "backOnly": false}, {"slot": -1, "item": "diamond_leggings", "backOnly": false}, {"slot": -1, "item": "diamond_boots", "backOnly": false}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
 
-  {"type": "command", "name": "GIVE OBSIDIAN", "command_string": "/give @p obsidian 10", "wait_until_done": false},
+  {"type": "command", "name": "Turn On Kill Aura", "command_string": ".toggle KillAura", "wait_until_done": false},
+  {"type": "command", "name": "Mine Obsidian", "command_string": ".b mine 10 obsidian", "wait_until_done": true},
   {"type": "sort",    "name": "Sort Portal Inventory", "spec": [{"slot": 7, "item": "flint_and_steel", "backOnly": false}, {"slot": 8, "item": "obsidian", "backOnly": false}, {"slot": 9, "item": "cobblestone", "backOnly": false}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
   {"type": "command", "name": "Build Nether Portal", "command_string": ".b build portal.schematic ~ ~2 ~", "wait_until_done": true},
   {"type": "command", "name": "Go Into Portal", "command_string": ".b goto cobblestone", "wait_until_done": true},
