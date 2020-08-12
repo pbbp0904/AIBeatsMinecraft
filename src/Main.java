@@ -308,12 +308,12 @@ public class Main {
         Typer.type("9",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Looker.lookDown();
         Waiter.wait(Waiter.getLongSleepTime()*2);
-        Typer.holdKey("shift", 100);
-        Typer.holdKey("space", 100);
+        Typer.doSneak();
+        Typer.doJump();
         Typer.holdRightClick(2000);
         Typer.releaseRightClick(Waiter.getShortSleepTime());
-        Typer.releaseKey("space");
-        Typer.releaseKey("shift");
+        Typer.stopJump();
+        Typer.stopSneak();
 
         if(!enter){
             Typer.closeInventory();
@@ -356,11 +356,15 @@ public class Main {
     public static void doMove(String move_type) {
         switch (move_type){
             case "portal":
-                Typer.holdKey("s",400);
-                Typer.holdKey("d",250);
+                Typer.startMoveBack();
+                Typer.startMoveRight();
+                Waiter.wait(250);
                 Typer.releaseKey("s");
+                Waiter.wait(150);
                 Typer.releaseKey("d");
                 Waiter.wait(5000);
+                break;
+            default:
                 break;
         }
     }

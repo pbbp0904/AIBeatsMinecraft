@@ -18,6 +18,8 @@ public class Typer {
     private static Integer moveLeft;
     private static Integer moveBack;
     private static Integer moveRight;
+    private static Integer sneak;
+    private static Integer jump;
     private static HashMap<String, ArrayList<Integer>> k;
 
     static {
@@ -208,6 +210,32 @@ public class Typer {
         pressKey(inventoryKey);
     }
 
+    public static void sneak(){
+        pressKey(sneak);
+        releaseKey(sneak);
+    }
+
+    public static void doSneak(){
+        pressKey(sneak);
+    }
+
+    public static void stopSneak(){
+        releaseKey(sneak);
+    }
+
+    public static void jump(){
+        pressKey(jump);
+        releaseKey(jump);
+    }
+
+    public static void doJump(){
+        pressKey(jump);
+    }
+
+    public static void stopJump(){
+        releaseKey(jump);
+    }
+
     public static void closeInventory(){
         pressKey("escape");
     }
@@ -220,6 +248,8 @@ public class Typer {
         moveLeft = k.get(s[1]).get(0);
         moveBack = k.get(s[2]).get(0);
         moveRight = k.get(s[3]).get(0);
+        sneak = k.get(s[4]).get(0);
+        jump = k.get(s[5]).get(0);
     }
 
     public static void createHashMap(){
