@@ -37,8 +37,8 @@ public class Main {
 
         startUp();
         //giveDiamondArmor();
-        //doPhase(1);
-        //doPhase(2);
+        doPhase(1);
+        doPhase(2);
 
 
 

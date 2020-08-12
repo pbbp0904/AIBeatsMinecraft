@@ -47,6 +47,8 @@ public class Looker {
 
     private static final int centerScreenScaling = 15;
 
+    private static final double doneThreshold = 0.1;
+
 
     private static final int[] handCraftSlot1;
     private static final int[] handCraftSlot2;
@@ -242,19 +244,7 @@ public class Looker {
     }
 
     public static void waitUntilStationary() {
-        boolean imagesEqual = false;
-        BufferedImage screenImg1;
-        BufferedImage screenImg2;
-        while(!imagesEqual) {
-            screenImg1 = screenShot(centerScreenRect);
-            try {
-                Thread.sleep(Waiter.getStationaryWaitTime());
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            screenImg2 = screenShot(centerScreenRect);
-            imagesEqual = bufferedImagesEqual(screenImg1,screenImg2);
-        }
+        waitUntilStationaryFuse(10000000);
     }
 
     public static void waitUntilStationaryFuse(long fuseTime) {
