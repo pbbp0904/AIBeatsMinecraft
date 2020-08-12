@@ -36,8 +36,9 @@ public class Main {
 
 
         startUp();
+        //giveDiamondArmor();
         doPhase(1);
-        doPhase(2);
+        //doPhase(2);
 
 
 
@@ -537,5 +538,28 @@ public class Main {
         Typer.type("t",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("Best ye run...",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command(".b follow entity player",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+    }
+
+    public static void giveDiamondArmor() {
+        Typer.command("/clear @p",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give Cosmologicomical diamond_helmet{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give Cosmologicomical diamond_chestplate{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give Cosmologicomical diamond_leggings{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give Cosmologicomical diamond_boots{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+
+        Typer.type("1",Waiter.getShortSleepTime(),Waiter.getLongSleepTime()*5);
+        Typer.holdRightClick(Waiter.getShortSleepTime());
+        Typer.type("2",Waiter.getShortSleepTime(),Waiter.getLongSleepTime()*5);
+        Typer.type("3",Waiter.getShortSleepTime(),Waiter.getLongSleepTime()*5);
+        Typer.type("4",Waiter.getShortSleepTime(),Waiter.getLongSleepTime()*5);
+        Typer.releaseRightClick(Waiter.getShortSleepTime());
+
+        Typer.command("/give Cosmologicomical stone_sword{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give Cosmologicomical diamond_pickaxe{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give Cosmologicomical diamond_shovel{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give Cosmologicomical cooked_beef 64",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give Cosmologicomical dirt 1024",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.type("1",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+
     }
 }
