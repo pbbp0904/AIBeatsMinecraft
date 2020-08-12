@@ -193,6 +193,84 @@ public class Crafter {
 
                 break;
 
+            case "ender_eye":
+                // Move Mouse Away
+                //MouseMover.moveMouseAway();
+
+                // Find location of blaze rods
+                int[] rodCoords = Looker.findLocationOnScreen("src\\Item_Images\\blaze_rod.jpg", Looker.getInventoryScreenRect());
+
+
+                // Pick up items
+                MouseMover.moveMouse(rodCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+                // Move mouse to craft
+                MouseMover.moveMouse(Looker.getHandCraftSlot1(), shortSleep);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    Typer.rightClick(shortSleep);
+                }
+
+                // Place item back in original slot
+                MouseMover.moveMouse(rodCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+
+
+                // Get resultant item
+                MouseMover.moveMouse(Looker.getHandCraftSlotRes(), shortSleep);
+                Typer.holdKey("shift", shortSleep);
+                Typer.leftClick(shortSleep);
+                Typer.releaseKey("shift", shortSleep);
+
+
+
+                // Move Mouse Away
+                MouseMover.moveMouseAway();
+
+                // Find location of blaze powder
+                int[] powderCoords = Looker.findLocationOnScreen("src\\Item_Images\\blaze_powder.jpg", Looker.getInventoryScreenRect());
+                // Find location of ender pearls
+                int[] pearlCoords = Looker.findLocationOnScreen("src\\Item_Images\\ender_pearl.jpg", Looker.getInventoryScreenRect());
+
+
+                // Pick up items
+                MouseMover.moveMouse(powderCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+                // Move mouse to craft
+                MouseMover.moveMouse(Looker.getHandCraftSlot1(), shortSleep);
+                // Place the correct number of items
+                for (int i = 0; i < 2*number; i++) {
+                    Typer.rightClick(shortSleep);
+                }
+
+                // Place item back in original slot
+                MouseMover.moveMouse(powderCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+
+
+                // Pick up items
+                MouseMover.moveMouse(pearlCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+                // Move mouse to craft
+                MouseMover.moveMouse(Looker.getHandCraftSlot2(), shortSleep);
+                // Place the correct number of items
+                for (int i = 0; i < 2*number; i++) {
+                    Typer.rightClick(shortSleep);
+                }
+
+                // Place item back in original slot
+                MouseMover.moveMouse(pearlCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+
+
+                // Get resultant item
+                MouseMover.moveMouse(Looker.getHandCraftSlotRes(), shortSleep);
+                Typer.holdKey("shift", shortSleep);
+                Typer.leftClick(shortSleep);
+                Typer.releaseKey("shift", shortSleep);
+
+                break;
+
 
             case "bowl":
 
