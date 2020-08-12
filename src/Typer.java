@@ -18,6 +18,8 @@ public class Typer {
     private static Integer moveLeft;
     private static Integer moveBack;
     private static Integer moveRight;
+    private static Integer sneak;
+    private static Integer jump;
     private static HashMap<String, ArrayList<Integer>> k;
 
     static {
@@ -208,6 +210,34 @@ public class Typer {
         pressKey(inventoryKey);
     }
 
+    public static void sneak(){
+        holdKey(sneak);
+        Waiter.wait(50);
+        releaseKey(sneak);
+    }
+
+    public static void doSneak(){
+        holdKey(sneak);
+    }
+
+    public static void stopSneak(){
+        releaseKey(sneak);
+    }
+
+    public static void jump(){
+        holdKey(jump);
+        Waiter.wait(50);
+        releaseKey(jump);
+    }
+
+    public static void doJump(){
+        holdKey(jump);
+    }
+
+    public static void stopJump(){
+        releaseKey(jump);
+    }
+
     public static void closeInventory(){
         pressKey("escape");
     }
@@ -220,6 +250,11 @@ public class Typer {
         moveLeft = k.get(s[1]).get(0);
         moveBack = k.get(s[2]).get(0);
         moveRight = k.get(s[3]).get(0);
+        sneak = k.get(s[4]).get(0);
+        jump = k.get(s[5]).get(0);
+
+        System.out.println(sneak);
+        System.out.println(jump);
     }
 
     public static void createHashMap(){
@@ -363,7 +398,7 @@ public class Typer {
         k.put("shift", new ArrayList<>(Collections.singletonList(KeyEvent.VK_SHIFT)));
         k.put("control", new ArrayList<>(Collections.singletonList(KeyEvent.VK_CONTROL)));
         k.put("escape", new ArrayList<>(Collections.singletonList(KeyEvent.VK_ESCAPE)));
-        k.put("left.control", new ArrayList<>(Collections.singletonList(0xA2)));
+        k.put("left.control", new ArrayList<>(Collections.singletonList(KeyEvent.VK_CONTROL)));
 
 
 
