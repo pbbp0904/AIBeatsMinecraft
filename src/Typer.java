@@ -252,7 +252,6 @@ public class Typer {
         moveRight = k.get(s[3]).get(0);
         sneak = k.get(s[4]).get(0);
         jump = k.get(s[5]).get(0);
-
     }
 
     public static void createHashMap(){
@@ -394,7 +393,6 @@ public class Typer {
 
         k.put("enter", new ArrayList<>(Collections.singletonList(KeyEvent.VK_ENTER)));
         k.put("shift", new ArrayList<>(Collections.singletonList(KeyEvent.VK_SHIFT)));
-        k.put("left.shift", new ArrayList<>(Collections.singletonList(KeyEvent.VK_SHIFT)));
         k.put("control", new ArrayList<>(Collections.singletonList(KeyEvent.VK_CONTROL)));
         k.put("escape", new ArrayList<>(Collections.singletonList(KeyEvent.VK_ESCAPE)));
         k.put("left.control", new ArrayList<>(Collections.singletonList(KeyEvent.VK_CONTROL)));
