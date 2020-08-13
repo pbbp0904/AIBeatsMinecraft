@@ -243,6 +243,31 @@ public class Looker {
         MouseMover.moveMouse(centerX, (int) (centerY * 3.0/2.0), Waiter.getShortSleepTime());
     }
 
+    public static void waitUntilDone(){
+
+    }
+
+    public static void waitUntilDoneFuse(long fuseTime){
+        boolean imagesEqual = false;
+        BufferedImage screenImg1;
+        BufferedImage screenImg2;
+        long start = System.currentTimeMillis();
+        long end = System.currentTimeMillis();
+        while(!imagesEqual && end<start+fuseTime) {
+            screenImg1 = screenShot(centerScreenRect);
+            try {
+                Thread.sleep(Waiter.getStationaryWaitTime());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            screenImg2 = screenShot(centerScreenRect);
+            imagesEqual = bufferedImagesEqual(screenImg1,screenImg2);
+            end = System.currentTimeMillis();
+        }
+    }
+
+
+
     public static void waitUntilStationary() {
         waitUntilStationaryFuse(10000000);
     }

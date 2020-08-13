@@ -36,9 +36,23 @@ public class Main {
 
 
         startUp();
-        //giveDiamondArmor();
         doPhase(1);
         doPhase(2);
+
+
+        //giveDiamondThings();
+        //gotoEndPortal();
+        //goIntoEndPortal();
+        //lightEndPortal();
+        //doPhase(1);
+        //doPhase(4);
+
+
+
+
+
+
+
 
 
 
@@ -354,15 +368,16 @@ public class Main {
 
 
 
+
     public static void doMove(String move_type) {
         switch (move_type){
             case "portal":
                 Typer.startMoveBack();
                 Typer.startMoveRight();
                 Waiter.wait(250);
-                Typer.releaseKey("s");
+                Typer.stopMoveBack();
                 Waiter.wait(150);
-                Typer.releaseKey("d");
+                Typer.stopMoveRight();
                 Waiter.wait(5000);
                 break;
             default:
@@ -371,17 +386,36 @@ public class Main {
     }
 
 
+    public static void giveDiamondThings() {
+        Typer.command("/clear @p",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give Cosmologicomical diamond_helmet{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give Cosmologicomical diamond_chestplate{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give Cosmologicomical diamond_leggings{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give Cosmologicomical diamond_boots{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+
+        Typer.type("1",Waiter.getShortSleepTime(),Waiter.getLongSleepTime()*5);
+        Typer.holdRightClick(Waiter.getShortSleepTime());
+        Typer.type("2",Waiter.getShortSleepTime(),Waiter.getLongSleepTime()*5);
+        Typer.type("3",Waiter.getShortSleepTime(),Waiter.getLongSleepTime()*5);
+        Typer.type("4",Waiter.getShortSleepTime(),Waiter.getLongSleepTime()*5);
+        Typer.releaseRightClick(Waiter.getShortSleepTime());
+
+        Typer.command("/give Cosmologicomical diamond_sword{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give Cosmologicomical diamond_pickaxe{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give Cosmologicomical diamond_shovel{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give Cosmologicomical cooked_beef 64",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give Cosmologicomical ender_eye 12",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give Cosmologicomical dirt 1024",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.type("1",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+
+    }
+
 
     private static void gotoEndPortal(){
-        Typer.command("/give @p ender_eye 20");
-        Typer.command("/give @p diamond_pickaxe");
-        Typer.command("/give @p diamond_shovel");
-        Typer.command("/give @p dirt 256");
-        Typer.command("/give @p cooked_beef 20");
         Typer.command("/gamerule doDaylightCycle false");
         Typer.command(".b set exploreForBlocks true");
 
-        Typer.command("1");
+        Typer.command("5");
         Typer.command(".b follow entity eye_of_ender");
         Waiter.wait(200);
         Typer.rightClick(150);
@@ -389,7 +423,7 @@ public class Main {
         Typer.command(".b path");
         Looker.waitUntilStationary();
 
-        Typer.command("1");
+        Typer.command("5");
         Typer.command(".b follow entity eye_of_ender");
         Waiter.wait(200);
         Typer.rightClick(150);
@@ -397,7 +431,7 @@ public class Main {
         Typer.command(".b path");
         Looker.waitUntilStationary();
 
-        Typer.command("1");
+        Typer.command("5");
         Typer.command(".b follow entity eye_of_ender");
         Waiter.wait(200);
         Typer.rightClick(150);
@@ -405,7 +439,7 @@ public class Main {
         Typer.command(".b path");
         Looker.waitUntilStationary();
 
-        Typer.command("1");
+        Typer.command("5");
         Typer.command(".b follow entity eye_of_ender");
         Waiter.wait(200);
         Typer.rightClick(150);
@@ -413,7 +447,7 @@ public class Main {
         Typer.command(".b path");
         Looker.waitUntilStationary();
 
-        Typer.command("1");
+        Typer.command("5");
         Typer.command(".b follow entity eye_of_ender");
         Waiter.wait(200);
         Typer.rightClick(150);
@@ -421,7 +455,7 @@ public class Main {
         Typer.command(".b path");
         Looker.waitUntilStationary();
 
-        Typer.command("1");
+        Typer.command("5");
         Typer.command(".b follow entity eye_of_ender");
         Waiter.wait(200);
         Typer.rightClick(150);
@@ -429,7 +463,7 @@ public class Main {
         Typer.command(".b path");
         Looker.waitUntilStationary();
 
-        Typer.command("1");
+        Typer.command("5");
         Typer.command(".b follow entity eye_of_ender");
         Waiter.wait(200);
         Typer.rightClick(150);
@@ -437,7 +471,7 @@ public class Main {
         Typer.command(".b path");
         Looker.waitUntilStationary();
 
-        Typer.command("1");
+        Typer.command("5");
         Typer.command(".b follow entity eye_of_ender");
         Waiter.wait(200);
         Typer.rightClick(150);
@@ -445,9 +479,37 @@ public class Main {
         Typer.command(".b path");
         Looker.waitUntilStationary();
 
-
         Typer.command(".b set exploreForBlocks false");
+    }
+
+
+
+
+    public static void goIntoEndPortal(){
+        Typer.command(".toggle KillAura");
         Typer.command(".b goto stone_brick_stairs");
+        Looker.waitUntilStationary();
+        Typer.command(".b goto spawner");
+        Waiter.wait(2000);
+        Typer.startMoveForward();
+        Typer.doJump();
+        Waiter.wait(500);
+        Typer.stopJump();
+        Waiter.wait(700);
+        Looker.lookDown();
+        Typer.type("9");
+        Typer.holdRightClick(10);
+        Typer.stopMoveForward();
+        Waiter.wait(750);
+        Typer.releaseRightClick(1);
+    }
+
+    public static void lightEndPortal(){
+        for(int rot = 0; rot<360; rot+=20){
+            Typer.command(".rotate " + Integer.toString(rot) + " 0");
+            Typer.type("5");
+            Typer.rightClick(Waiter.getShortSleepTime());
+        }
     }
 
 
@@ -545,26 +607,5 @@ public class Main {
         Typer.command(".b follow entity player",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
     }
 
-    public static void giveDiamondArmor() {
-        Typer.command("/clear @p",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give Cosmologicomical diamond_helmet{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give Cosmologicomical diamond_chestplate{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give Cosmologicomical diamond_leggings{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give Cosmologicomical diamond_boots{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
 
-        Typer.type("1",Waiter.getShortSleepTime(),Waiter.getLongSleepTime()*5);
-        Typer.holdRightClick(Waiter.getShortSleepTime());
-        Typer.type("2",Waiter.getShortSleepTime(),Waiter.getLongSleepTime()*5);
-        Typer.type("3",Waiter.getShortSleepTime(),Waiter.getLongSleepTime()*5);
-        Typer.type("4",Waiter.getShortSleepTime(),Waiter.getLongSleepTime()*5);
-        Typer.releaseRightClick(Waiter.getShortSleepTime());
-
-        Typer.command("/give Cosmologicomical stone_sword{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give Cosmologicomical diamond_pickaxe{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give Cosmologicomical diamond_shovel{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give Cosmologicomical cooked_beef 64",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give Cosmologicomical dirt 1024",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.type("1",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-
-    }
 }
