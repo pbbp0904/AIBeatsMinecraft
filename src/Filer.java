@@ -122,10 +122,10 @@ public class Filer {
     public static void loadPreset() throws IOException {
         Typer.command(".preset save user");
         String appData = System.getenv("APPDATA");
-        Path src = Paths.get("src\\Presets_Schematics\\AIBM.json");
-        Path dest = Paths.get(appData + "\\.minecraft\\Impact\\presets\\AIBM.json");
+        Path src = Paths.get("src\\Presets_Schematics\\AIBM_preset.json");
+        Path dest = Paths.get(appData + "\\.minecraft\\Impact\\presets\\AIBM_preset.json");
         Files.copy(src, dest, REPLACE_EXISTING);
-        Typer.command(".preset load AIBM");
+        Typer.command(".preset load AIBM_preset");
 }
 
     public static void schematicsFolder() throws IOException {
