@@ -266,10 +266,10 @@ public class Main {
     private static void doCommand(String command_string, boolean wait_until_done, long fuse) {
         Typer.command(command_string);
         if(wait_until_done && fuse == -1){
-            Looker.waitUntilStationary();
+            Looker.waitUntilDone();
         }
         if(wait_until_done && fuse > 0){
-            Looker.waitUntilStationaryFuse(fuse);
+            Looker.waitUntilDoneFuse(fuse);
         }
 
     }
@@ -307,13 +307,13 @@ public class Main {
 
     private static void doPlace(String item, boolean enter) {
 
-        Looker.waitUntilStationary();
+        Looker.waitUntilDone();
         Typer.command(".b goal ~ ~1 ~");
         Typer.command(".b path");
-        Looker.waitUntilStationary();
+        Looker.waitUntilDone();
         Typer.command(".b goal ~ ~-1 ~");
         Typer.command(".b path");
-        Looker.waitUntilStationary();
+        Looker.waitUntilDone();
         Typer.openInventory();
         MouseMover.moveMouseAway();
         Waiter.waitLong();

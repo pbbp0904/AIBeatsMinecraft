@@ -48,6 +48,7 @@ public class Looker {
     private static final int centerScreenScaling = 15;
 
     private static final double doneThreshold = 0.1;
+    private static final int aLongTime = 10000000;
 
 
     private static final int[] handCraftSlot1;
@@ -76,6 +77,7 @@ public class Looker {
     private static final Rectangle furnaceProgressScreenRect;
 
     private static final Rectangle centerScreenRect;
+    private static final Rectangle topLeftScreenRect;
 
     private static int guiScale;
     private static int centerX;
@@ -123,6 +125,7 @@ public class Looker {
         furnaceProgressScreenRect = new Rectangle(topLeftX+(furnaceProgressScreenRectOffset[0]*guiScale), topLeftY+(furnaceProgressScreenRectOffset[1]*guiScale), furnaceProgressScreenSize[0]*guiScale, furnaceProgressScreenSize[1]*guiScale);
 
         centerScreenRect = new Rectangle(centerX-centerScreenScaling*guiScale, centerY-centerScreenScaling*guiScale, 2*centerScreenScaling*guiScale, 2*centerScreenScaling*guiScale);
+        topLeftScreenRect = new Rectangle(getMinecraftWindow().x, getMinecraftWindow().y, getMinecraftWindow().width/4, getMinecraftWindow().height/4);
     }
 
     public static int[] getHandCraftSlot1() {
@@ -244,24 +247,21 @@ public class Looker {
     }
 
     public static void waitUntilDone(){
-
+        waitUntilDoneFuse(aLongTime);
     }
 
     public static void waitUntilDoneFuse(long fuseTime){
-        boolean imagesEqual = false;
-        BufferedImage screenImg1;
-        BufferedImage screenImg2;
+        boolean imageFoundOnScreen = false;
         long start = System.currentTimeMillis();
         long end = System.currentTimeMillis();
-        while(!imagesEqual && end<start+fuseTime) {
-            screenImg1 = screenShot(centerScreenRect);
+
+        while(!imageFoundOnScreen && end<start+fuseTime) {
             try {
                 Thread.sleep(Waiter.getStationaryWaitTime());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            screenImg2 = screenShot(centerScreenRect);
-            imagesEqual = bufferedImagesEqual(screenImg1,screenImg2);
+            imageFoundOnScreen = foundImageOnScreen("src\\Checkpoint_Images\\done.jpg",topLeftScreenRect,doneThreshold);
             end = System.currentTimeMillis();
         }
     }
@@ -269,7 +269,7 @@ public class Looker {
 
 
     public static void waitUntilStationary() {
-        waitUntilStationaryFuse(10000000);
+        waitUntilStationaryFuse(aLongTime);
     }
 
     public static void waitUntilStationaryFuse(long fuseTime) {
@@ -331,7 +331,7 @@ public class Looker {
        BufferedImage img = resize(Objects.requireNonNull(getImage(filePath)), ((double) (guiScale))/3.0) ;
         assert screenImg != null;
         double diff = findSubImageDiff(screenImg, img);
-        //System.out.println(diff);
+        System.out.println(diff);
         return diff < threshold;
     }
 
