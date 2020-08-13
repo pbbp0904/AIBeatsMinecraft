@@ -18,7 +18,8 @@
   {"type": "command", "name": "Mine Coal Ore", "command_string": ".b mine 3 coal_ore", "wait_until_done": true},
   {"type": "command", "name": "Goto and Enter Furnace", "command_string": ".b goto furnace", "wait_until_done": true},
   {"type": "smelt",   "name": "Smelt Iron Ore", "number": 12, "item": "iron_ore", "place_in": true, "wait_until_done": false, "open_inventory": false, "close_inventory": true},
-  {"type": "command", "name": "Mine Gravel", "command_string": ".b mine 35 gravel", "wait_until_done": true},
+  {"type": "command", "name": "Mine Gravel", "command_string": ".b mine 55 gravel", "wait_until_done": true},
+  {"type": "command", "name": "Mine Grass", "command_string": ".b mine 20 grass", "wait_until_done": true},
   {"type": "command", "name": "Goto and Enter Furnace", "command_string": ".b goto furnace", "wait_until_done": true},
   {"type": "smelt",   "name": "Get Smelted Iron", "number": 0, "item": "iron_ore", "place_in": false, "wait_until_done": true, "open_inventory": false, "close_inventory": true},
   {"type": "command", "name": "Goto and Enter Crafting Table", "command_string": ".b goto crafting_table", "wait_until_done": true},
@@ -32,10 +33,11 @@
   {"type": "sort",    "name": "Sort Diamond Inventory", "spec": [{"slot": 1, "item": "diamond_sword", "backOnly": false}, {"slot": 2, "item": "diamond_pickaxe", "backOnly": false}, {"slot": 3, "item": "diamond_shovel", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": false}, {"slot": -1, "item": "diamond_helmet", "backOnly": false}, {"slot": -1, "item": "diamond_chestplate", "backOnly": false}, {"slot": -1, "item": "diamond_leggings", "backOnly": false}, {"slot": -1, "item": "diamond_boots", "backOnly": false}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
 
   {"type": "command", "name": "Turn On Kill Aura", "command_string": ".toggle KillAura", "wait_until_done": false},
+  {"type": "command", "name": "Mine Grass", "command_string": ".b mine 20 grass", "wait_until_done": true},
   {"type": "command", "name": "Mine Obsidian", "command_string": ".b mine 10 obsidian", "wait_until_done": true},
-  {"type": "command", "name": "Goto log", "command_string": ".b goto oak_log", "wait_until_done": true},
+  {"type": "command", "name": "Mine Grass", "command_string": ".b mine 20 grass", "wait_until_done": true},
   {"type": "command", "name": "Turn On Auto Eject", "command_string": ".toggle AutoEject", "wait_until_done": false},
-  {"type": "sort",    "name": "Sort Portal Inventory", "spec": [{"slot": 7, "item": "flint_and_steel", "backOnly": false}, {"slot": 8, "item": "obsidian", "backOnly": false}, {"slot": 9, "item": "cobblestone", "backOnly": false}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "sort",    "name": "Sort Portal Inventory", "spec": [{"slot": 4, "item": "dirt", "backOnly": false}, {"slot": 7, "item": "flint_and_steel", "backOnly": false}, {"slot": 8, "item": "obsidian", "backOnly": false}, {"slot": 9, "item": "cobblestone", "backOnly": false}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
   {"type": "command", "name": "Build Nether Portal", "command_string": ".b build portal.schematic ~ ~2 ~", "wait_until_done": true},
   {"type": "command", "name": "Go Into Portal", "command_string": ".b goto cobblestone", "wait_until_done": true},
   {"type": "light",   "name": "Light Portal"}

@@ -368,6 +368,7 @@ public class Main {
 
 
 
+
     public static void doMove(String move_type) {
         switch (move_type){
             case "portal":
