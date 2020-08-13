@@ -1,5 +1,10 @@
+import com.sun.jna.platform.FileUtils;
+
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import static java.nio.file.StandardCopyOption.*;
 
 public class Filer {
 
@@ -114,15 +119,28 @@ public class Filer {
         return out;
     }
 
-    public static boolean presetsFolder() {
+    public static void loadPreset() throws IOException {
+        Typer.command(".preset save user");
         String appData = System.getenv("APPDATA");
-        File loc = new File(appData + "\\.minecraft\\Impact\\presets");
-        return (Files.exists(loc.toPath()) && Files.isDirectory(loc.toPath()));
-    }
+        Path src = Paths.get("src\\Presets_Schematics\\AIBM.json");
+        Path dest = Paths.get(appData + "\\.minecraft\\Impact\\presets\\AIBM.json");
+        Files.copy(src, dest, REPLACE_EXISTING);
+        Typer.command(".preset load AIBM");
+}
 
-    public static boolean schematicsFolder() {
+    public static void schematicsFolder() throws IOException {
         String appData = System.getenv("APPDATA");
         File loc = new File(appData + "\\.minecraft\\schematics");
-        return (Files.exists(loc.toPath()) && Files.isDirectory(loc.toPath()));
+        if (!(loc.exists() && loc.isDirectory())){
+            loc.mkdir();
+        }
+        Path src = Paths.get("src\\Presets_Schematics\\AIBM_portal.schematic");
+        Path dest = Paths.get(appData + "\\.minecraft\\schematics\\AIBM_portal.schematic");
+        Files.copy(src, dest, REPLACE_EXISTING);
+
+        Path src2 = Paths.get("src\\Presets_Schematics\\AIBM_shield.schematic");
+        Path dest2 = Paths.get(appData + "\\.minecraft\\schematics\\AIBM_shield.schematic");
+        Files.copy(src2, dest2, REPLACE_EXISTING);
+
     }
 }

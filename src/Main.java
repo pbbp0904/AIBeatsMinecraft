@@ -1,9 +1,8 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-
 import java.io.FileReader;
+import java.io.IOException;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -16,8 +15,9 @@ public class Main {
 
     public static boolean ready;
     public static volatile Starter s;
+    public static final String preset = "AIBM";
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
 
         ready = false;
         s = new Starter();
@@ -46,9 +46,6 @@ public class Main {
         //lightEndPortal();
         //doPhase(1);
         //doPhase(4);
-
-
-
 
 
 
@@ -111,8 +108,7 @@ public class Main {
 //        main.Waiter.wait(1000);
 //        main.doPhase(2);
 
-
-
+        finish();
     }
 
     private static void reset() {
@@ -530,7 +526,7 @@ public class Main {
         return instructionSet;
     }
 
-    public static void startUp() {
+    public static void startUp() throws IOException {
         System.out.println("Hello world!");
         try {
             Filer.incrementRunCounter();
@@ -549,12 +545,19 @@ public class Main {
         //            Thread.sleep(Waiter.getShortSleepTime());
         //        }
 
-        if (Filer.presetsFolder()){
-
-            Typer.command(".preset load AIBM");
-        }
+        //load our preset and import schematics
+        Filer.loadPreset();
         Filer.schematicsFolder();
     }
+
+    public static void finish(){
+        Typer.command(".preset load user");
+        System.exit(0);
+    }
+
+
+
+
 
     public static void setReady(boolean rdy){
         ready = rdy;
