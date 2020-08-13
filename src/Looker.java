@@ -48,6 +48,7 @@ public class Looker {
     private static final int centerScreenScaling = 15;
 
     private static final double doneThreshold = 0.1;
+    private static final int whiteThreshold = 240;
     private static final int aLongTime = 10000000;
 
 
@@ -125,7 +126,7 @@ public class Looker {
         furnaceProgressScreenRect = new Rectangle(topLeftX+(furnaceProgressScreenRectOffset[0]*guiScale), topLeftY+(furnaceProgressScreenRectOffset[1]*guiScale), furnaceProgressScreenSize[0]*guiScale, furnaceProgressScreenSize[1]*guiScale);
 
         centerScreenRect = new Rectangle(centerX-centerScreenScaling*guiScale, centerY-centerScreenScaling*guiScale, 2*centerScreenScaling*guiScale, 2*centerScreenScaling*guiScale);
-        topLeftScreenRect = new Rectangle(getMinecraftWindow().x, getMinecraftWindow().y, getMinecraftWindow().width/4, getMinecraftWindow().height/4);
+        topLeftScreenRect = new Rectangle(getMinecraftWindow().x, getMinecraftWindow().y, getMinecraftWindow().width/8, getMinecraftWindow().height/16);
     }
 
     public static int[] getHandCraftSlot1() {
@@ -326,10 +327,9 @@ public class Looker {
 
 
     public static boolean foundImageOnScreen(String pathname, Rectangle screenRect, double threshold) {
-        BufferedImage screenImg = screenShot(screenRect);
+        BufferedImage screenImg = makeImageBlackAndWhite(screenShot(screenRect),whiteThreshold);
         String filePath = new File(pathname).getAbsolutePath();
-       BufferedImage img = resize(Objects.requireNonNull(getImage(filePath)), ((double) (guiScale))/3.0) ;
-        assert screenImg != null;
+        BufferedImage img = resize(makeImageBlackAndWhite(Objects.requireNonNull(getImage(filePath)),whiteThreshold), ((double) (guiScale))/3.0) ;
         double diff = findSubImageDiff(screenImg, img);
         System.out.println(diff);
         return diff < threshold;
@@ -363,6 +363,30 @@ public class Looker {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static BufferedImage makeImageBlackAndWhite(BufferedImage image,int threshold){
+        int width = image.getWidth();
+        int height = image.getHeight();
+        for(int i=0; i<height; i++) {
+
+            for(int j=0; j<width; j++) {
+
+                Color c = new Color(image.getRGB(j, i));
+                int red = c.getRed();
+                int green = c.getGreen();
+                int blue = c.getBlue();
+                Color newColor;
+                if (red+green+blue > 3*threshold) {
+                    newColor = new Color(255, 255, 255);
+                }else{
+                    newColor = new Color(0, 0, 0);
+                }
+
+                image.setRGB(j,i,newColor.getRGB());
+            }
+        }
+        return image;
     }
 
 
