@@ -1,9 +1,8 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-
 import java.io.FileReader;
+import java.io.IOException;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -16,8 +15,9 @@ public class Main {
 
     public static boolean ready;
     public static volatile Starter s;
+    public static final String preset = "AIBM";
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
 
         ready = false;
         s = new Starter();
@@ -46,9 +46,6 @@ public class Main {
         //lightEndPortal();
         //doPhase(1);
         //doPhase(4);
-
-
-
 
 
 
@@ -111,8 +108,7 @@ public class Main {
 //        main.Waiter.wait(1000);
 //        main.doPhase(2);
 
-
-
+        finish();
     }
 
     private static void reset() {
@@ -531,7 +527,7 @@ public class Main {
         return instructionSet;
     }
 
-    public static void startUp() {
+    public static void startUp() throws IOException {
         System.out.println("Hello world!");
         try {
             Filer.incrementRunCounter();
@@ -544,12 +540,25 @@ public class Main {
 //        Typer.command("/time set 0");
 //        Typer.command("/weather clear 10000");
 
-        // Type $ for to start splits
+        // Type num pad 1 for to start splits
         Typer.pressKey("NP1");
         //        while(!looker.foundImageOnScreen("src\\Checkpoint_Images\\Crafting_Table.jpg",craftingScreenRect,0.15,1)){
         //            Thread.sleep(Waiter.getShortSleepTime());
         //        }
+
+        //load our preset and import schematics
+        Filer.loadPreset();
+        Filer.schematicsFolder();
     }
+
+    public static void finish(){
+        Typer.command(".preset load user");
+        System.exit(0);
+    }
+
+
+
+
 
     public static void setReady(boolean rdy){
         ready = rdy;
