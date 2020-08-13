@@ -541,14 +541,17 @@ public class Main {
 //        Typer.command("/weather clear 10000");
 
         // Type num pad 1 for to start splits
-        Typer.pressKey("NP1");
+
         //        while(!looker.foundImageOnScreen("src\\Checkpoint_Images\\Crafting_Table.jpg",craftingScreenRect,0.15,1)){
         //            Thread.sleep(Waiter.getShortSleepTime());
         //        }
 
         //load our preset and import schematics
         Filer.loadPreset();
+        Waiter.waitShort();
         Filer.schematicsFolder();
+        Waiter.waitShort();
+        Typer.pressKey("NP1");
     }
 
     public static void finish(){
