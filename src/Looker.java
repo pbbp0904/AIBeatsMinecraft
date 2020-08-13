@@ -342,9 +342,9 @@ public class Looker {
 
 
     public static boolean foundImageOnScreen(String pathname, Rectangle screenRect, double threshold) {
-        BufferedImage screenImg = makeImageBlackAndWhite(screenShot(screenRect),whiteThreshold);
+        BufferedImage screenImg = makeImageBlackAndWhiteExceptColor(screenShot(screenRect),whiteThreshold,baritoneColor);
         String filePath = new File(pathname).getAbsolutePath();
-        BufferedImage img = resize(makeImageBlackAndWhite(Objects.requireNonNull(getImage(filePath)),whiteThreshold), ((double) (guiScale))/3.0) ;
+        BufferedImage img = resize(makeImageBlackAndWhiteExceptColor(Objects.requireNonNull(getImage(filePath)),whiteThreshold,baritoneColor), ((double) (guiScale))/3.0) ;
         double diff = findSubImageDiff(screenImg, img);
         //System.out.println(diff);
         return diff < threshold;
@@ -399,6 +399,33 @@ public class Looker {
                 }
 
                 image.setRGB(j,i,newColor.getRGB());
+            }
+        }
+        return image;
+    }
+
+    public static BufferedImage makeImageBlackAndWhiteExceptColor(BufferedImage image,int threshold, Color color){
+        int width = image.getWidth();
+        int height = image.getHeight();
+        for(int i=0; i<height; i++) {
+
+            for(int j=0; j<width; j++) {
+
+                Color c = new Color(image.getRGB(j, i));
+                int red = c.getRed();
+                int green = c.getGreen();
+                int blue = c.getBlue();
+                Color newColor;
+                if(!c.equals(color)){
+                    if (red+green+blue > 3*threshold) {
+                        newColor = new Color(255, 255, 255);
+                    }else{
+                        newColor = new Color(0, 0, 0);
+                    }
+                    image.setRGB(j,i,newColor.getRGB());
+                }
+
+
             }
         }
         return image;
