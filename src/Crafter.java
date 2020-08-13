@@ -496,7 +496,7 @@ public class Crafter {
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getFurnaceCoalSlot(), shortSleep);
                 // Place the correct number of items
-                for (int i = 0; i <= (number/8+1); i++) {
+                for (int i = 0; i < (Math.ceil(number/8.0)); i++) {
                     Typer.rightClick(shortSleep);
                 }
 
