@@ -34,6 +34,7 @@
   {"type": "command", "name": "Turn On Kill Aura", "command_string": ".toggle KillAura", "wait_until_done": false},
   {"type": "command", "name": "Mine Obsidian", "command_string": ".b mine 10 obsidian", "wait_until_done": true},
   {"type": "command", "name": "Goto log", "command_string": ".b goto oak_log", "wait_until_done": true},
+  {"type": "command", "name": "Turn On Auto Eject", "command_string": ".toggle AutoEject", "wait_until_done": false},
   {"type": "sort",    "name": "Sort Portal Inventory", "spec": [{"slot": 7, "item": "flint_and_steel", "backOnly": false}, {"slot": 8, "item": "obsidian", "backOnly": false}, {"slot": 9, "item": "cobblestone", "backOnly": false}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
   {"type": "command", "name": "Build Nether Portal", "command_string": ".b build portal.schematic ~ ~2 ~", "wait_until_done": true},
   {"type": "command", "name": "Go Into Portal", "command_string": ".b goto cobblestone", "wait_until_done": true},

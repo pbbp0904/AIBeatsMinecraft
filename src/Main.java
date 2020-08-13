@@ -310,6 +310,7 @@ public class Main {
         Waiter.wait(Waiter.getLongSleepTime()*2);
         Typer.doSneak();
         Typer.doJump();
+        Waiter.wait(Waiter.getLongSleepTime()*2);
         Typer.holdRightClick(2000);
         Typer.releaseRightClick(Waiter.getShortSleepTime());
         Typer.stopJump();
