@@ -340,8 +340,8 @@ public class Crafter {
                 ////IRON SHOVEL
                 craftItem(ironCoords,stickIronCoords,new int[]{2},new int[]{5,8},number);
 
-                ////SHEARS
-                craftItem(ironCoords, new int[]{2,6},1 );
+                ////IRON SWORD
+                craftItem(ironCoords,stickIronCoords,new int[]{2,5},new int[]{8},number);
 
                 ////FLINT AND STEEL
                 craftItem(ironCoords,flintCoords,new int[]{2},new int[]{6},number);
