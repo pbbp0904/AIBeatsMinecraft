@@ -49,6 +49,8 @@ public class Looker {
 
     private static final double doneThreshold = 0.1;
     private static final int whiteThreshold = 240;
+    private static final Color baritoneColor = new Color(97,160,194);
+
     private static final int aLongTime = 10000000;
 
 
@@ -262,7 +264,7 @@ public class Looker {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            imageFoundOnScreen = foundImageOnScreen("src\\Checkpoint_Images\\done.jpg",topLeftScreenRect,doneThreshold);
+            imageFoundOnScreen = foundImageOnScreen("src\\Checkpoint_Images\\done.jpg",topLeftScreenRect,doneThreshold) || !colorInRect(topLeftScreenRect,baritoneColor);
             end = System.currentTimeMillis();
         }
     }
@@ -325,13 +327,26 @@ public class Looker {
         return true;
     }
 
+    public static boolean colorInRect(Rectangle screenRect, Color color){
+        BufferedImage image = screenShot(screenRect);
+        for (int x = 0; x < screenRect.getWidth(); x+=2) {
+            for (int y = 0; y < screenRect.getHeight(); y+=2) {
+                Color c = new Color(image.getRGB(x, y));
+                if (c.equals(color)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
     public static boolean foundImageOnScreen(String pathname, Rectangle screenRect, double threshold) {
         BufferedImage screenImg = makeImageBlackAndWhite(screenShot(screenRect),whiteThreshold);
         String filePath = new File(pathname).getAbsolutePath();
         BufferedImage img = resize(makeImageBlackAndWhite(Objects.requireNonNull(getImage(filePath)),whiteThreshold), ((double) (guiScale))/3.0) ;
         double diff = findSubImageDiff(screenImg, img);
-        System.out.println(diff);
+        //System.out.println(diff);
         return diff < threshold;
     }
 

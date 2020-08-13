@@ -487,6 +487,7 @@ public class Main {
 
     public static void goIntoEndPortal(){
         Typer.command(".toggle KillAura");
+        Typer.command(".b set avoidance false");
         Typer.command(".b goto stone_brick_stairs");
         Looker.waitUntilStationary();
         Typer.command(".b goto spawner");
