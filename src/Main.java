@@ -35,8 +35,9 @@ public class Main {
 
 
 
-        startUp();
-        doPhase(1);
+        //startUp();
+        Looker.waitUntilDone();
+        doPhase(1,23);
         doPhase(2);
 
 
