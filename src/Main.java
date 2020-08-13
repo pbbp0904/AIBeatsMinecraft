@@ -543,11 +543,17 @@ public class Main {
 //        Typer.command("/time set 0");
 //        Typer.command("/weather clear 10000");
 
-        // Type $ for to start splits
+        // Type num pad 1 for to start splits
         Typer.pressKey("NP1");
         //        while(!looker.foundImageOnScreen("src\\Checkpoint_Images\\Crafting_Table.jpg",craftingScreenRect,0.15,1)){
         //            Thread.sleep(Waiter.getShortSleepTime());
         //        }
+
+        if (Filer.presetsFolder()){
+
+            Typer.command(".preset load AIBM");
+        }
+        Filer.schematicsFolder();
     }
 
     public static void setReady(boolean rdy){

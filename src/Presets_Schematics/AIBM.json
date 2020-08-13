@@ -1,0 +1,3392 @@
+{
+  "version": "1.1",
+  "modules": [
+    {
+      "name": "aimbot",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "walls",
+          "value": true
+        },
+        {
+          "id": "safe",
+          "value": false
+        },
+        {
+          "id": "team",
+          "value": false
+        },
+        {
+          "id": "invis",
+          "value": false
+        },
+        {
+          "id": "sleeping",
+          "value": false
+        },
+        {
+          "id": "friends",
+          "value": false
+        },
+        {
+          "id": "player",
+          "value": false
+        },
+        {
+          "id": "hostile",
+          "value": true
+        },
+        {
+          "id": "passive",
+          "value": false
+        },
+        {
+          "id": "range",
+          "value": 4.25
+        },
+        {
+          "id": "fov",
+          "value": 360.0
+        }
+      ]
+    },
+    {
+      "name": "airjump",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "animations",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "block",
+          "value": true,
+          "values": [
+            {
+              "id": "mode",
+              "value": "1.7"
+            }
+          ]
+        },
+        {
+          "id": "shield",
+          "value": false
+        },
+        {
+          "id": "lower",
+          "value": 0.05
+        }
+      ]
+    },
+    {
+      "name": "antiafk",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "jump",
+          "value": true
+        },
+        {
+          "id": "spin",
+          "value": true,
+          "values": [
+            {
+              "id": "speed_spin",
+              "value": 10.0
+            }
+          ]
+        },
+        {
+          "id": "walk",
+          "value": true
+        },
+        {
+          "id": "swing",
+          "value": true,
+          "values": [
+            {
+              "id": "speed_swing",
+              "value": 1.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "antiaim",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "yaw",
+          "value": "NONE"
+        },
+        {
+          "id": "pitch",
+          "value": "NONE"
+        }
+      ]
+    },
+    {
+      "name": "antiblind",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "antibot",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "autoset",
+          "value": true
+        }
+      ],
+      "mode": "AAC"
+    },
+    {
+      "name": "antidesync",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "antifire",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "antihazard",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "cacti",
+          "value": true
+        },
+        {
+          "id": "magma",
+          "value": true
+        },
+        {
+          "id": "pp",
+          "value": true
+        },
+        {
+          "id": "fire",
+          "value": true
+        }
+      ]
+    },
+    {
+      "name": "antihunger",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "mode": "Effective"
+    },
+    {
+      "name": "antioverlay",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "water",
+          "value": true
+        },
+        {
+          "id": "lava",
+          "value": true
+        },
+        {
+          "id": "pumpkin",
+          "value": true
+        },
+        {
+          "id": "hurtcam",
+          "value": true
+        },
+        {
+          "id": "scoreboard",
+          "value": true
+        },
+        {
+          "id": "fire",
+          "value": true
+        },
+        {
+          "id": "bossbar",
+          "value": true
+        },
+        {
+          "id": "totem",
+          "value": true
+        },
+        {
+          "id": "guardian",
+          "value": true
+        }
+      ]
+    },
+    {
+      "name": "antisoundlag",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "antivanish",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "autoarmor",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "delay",
+          "value": 250
+        },
+        {
+          "id": "inventory",
+          "value": false
+        },
+        {
+          "id": "replace",
+          "value": true
+        },
+        {
+          "id": "skulls",
+          "value": false
+        },
+        {
+          "id": "elytra",
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "autocheat",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "autoclicker",
+      "state": false,
+      "bind": "NONE",
+      "display": false,
+      "values": [
+        {
+          "id": "sword",
+          "value": true
+        },
+        {
+          "id": "jitter",
+          "value": false
+        },
+        {
+          "id": "hold",
+          "value": false
+        },
+        {
+          "id": "use",
+          "value": true
+        },
+        {
+          "id": "delay",
+          "value": false,
+          "values": [
+            {
+              "id": "tps",
+              "value": false
+            }
+          ]
+        },
+        {
+          "id": "triggerbot",
+          "value": false,
+          "values": [
+            {
+              "id": "range",
+              "value": 1.5
+            },
+            {
+              "id": "size",
+              "value": 0.35
+            },
+            {
+              "id": "team",
+              "value": false
+            },
+            {
+              "id": "invis",
+              "value": false
+            },
+            {
+              "id": "sleeping",
+              "value": false
+            },
+            {
+              "id": "friends",
+              "value": false
+            },
+            {
+              "id": "player",
+              "value": false
+            },
+            {
+              "id": "hostile",
+              "value": true
+            },
+            {
+              "id": "passive",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "autodisconnect",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "health",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "autoeat",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "priority",
+          "value": "Saturation"
+        },
+        {
+          "id": "hunger",
+          "value": 6.0
+        },
+        {
+          "id": "speed",
+          "value": 60
+        },
+        {
+          "id": "durkburk",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "name": "autoeject",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "weapons",
+          "value": true
+        },
+        {
+          "id": "armor",
+          "value": true
+        },
+        {
+          "id": "custom",
+          "value": true
+        },
+        {
+          "id": "delay",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "autofarm",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "autofish",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "mode",
+          "value": "BOBBER_BOUNCE"
+        },
+        {
+          "id": "autocast",
+          "value": false,
+          "values": [
+            {
+              "id": "acdelay",
+              "value": 5
+            }
+          ]
+        },
+        {
+          "id": "catchdelay",
+          "value": 0.25
+        },
+        {
+          "id": "recastdelay",
+          "value": 0.5
+        }
+      ]
+    },
+    {
+      "name": "autojump",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "automine",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "baritone",
+          "value": true,
+          "values": [
+            {
+              "id": "target",
+              "value": "Diamond"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "autoreconnect",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "delay",
+          "value": 3000
+        }
+      ]
+    },
+    {
+      "name": "autotool",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "autototem",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "counter",
+          "value": true
+        },
+        {
+          "id": "notsosmart",
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "autowalk",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "mode": "Smart",
+      "modes": [
+        {
+          "name": "Smart",
+          "values": [
+            {
+              "id": "lock",
+              "value": "DEG45"
+            },
+            {
+              "id": "preservey",
+              "value": false
+            },
+            {
+              "id": "persistent",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "autoweapon",
+      "state": true,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "baritone",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "targetPause",
+          "value": true
+        }
+      ]
+    },
+    {
+      "name": "blink",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "type",
+          "value": "All"
+        },
+        {
+          "id": "player",
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "boatfly",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "up",
+          "value": 3.0
+        },
+        {
+          "id": "down",
+          "value": 3.0
+        },
+        {
+          "id": "stable",
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "bowaimbot",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "team",
+          "value": false
+        },
+        {
+          "id": "invis",
+          "value": false
+        },
+        {
+          "id": "sleeping",
+          "value": false
+        },
+        {
+          "id": "friends",
+          "value": false
+        },
+        {
+          "id": "player",
+          "value": true
+        },
+        {
+          "id": "hostile",
+          "value": true
+        },
+        {
+          "id": "passive",
+          "value": true
+        },
+        {
+          "id": "fov",
+          "value": 360.0
+        }
+      ]
+    },
+    {
+      "name": "breadcrumbs",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "active",
+          "value": true
+        },
+        {
+          "id": "walls",
+          "value": false
+        },
+        {
+          "id": "color",
+          "value": "ff0000"
+        },
+        {
+          "id": "alpha",
+          "value": 255
+        },
+        {
+          "id": "smooth",
+          "value": 10.0
+        },
+        {
+          "id": "width",
+          "value": 1.0
+        },
+        {
+          "id": "height",
+          "value": 0.1
+        }
+      ]
+    },
+    {
+      "name": "breaker",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "beds",
+          "value": true
+        },
+        {
+          "id": "cakes",
+          "value": true
+        },
+        {
+          "id": "swing",
+          "value": true
+        }
+      ]
+    },
+    {
+      "name": "build",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "mode",
+          "value": "Fill"
+        },
+        {
+          "id": "delay",
+          "value": 50.0
+        }
+      ]
+    },
+    {
+      "name": "cameraclip",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "capes",
+      "state": false,
+      "bind": "NONE",
+      "display": false,
+      "values": [
+        {
+          "id": "localcape",
+          "value": "AUTO"
+        },
+        {
+          "id": "showothercapes",
+          "value": true
+        }
+      ]
+    },
+    {
+      "name": "chams",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "walls",
+          "value": true
+        },
+        {
+          "id": "player",
+          "value": true
+        },
+        {
+          "id": "hostile",
+          "value": true
+        },
+        {
+          "id": "passive",
+          "value": true
+        }
+      ],
+      "mode": "Solid"
+    },
+    {
+      "name": "cheststealer",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "mode",
+          "value": "Shift"
+        },
+        {
+          "id": "delay",
+          "value": 250
+        },
+        {
+          "id": "auto",
+          "value": true
+        },
+        {
+          "id": "autoclose",
+          "value": true
+        },
+        {
+          "id": "smart",
+          "value": true
+        }
+      ]
+    },
+    {
+      "name": "clicktp",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "clickgui",
+      "state": false,
+      "bind": "RSHIFT",
+      "display": false,
+      "values": [
+        {
+          "id": "pause",
+          "value": false
+        },
+        {
+          "id": "scaleFactor",
+          "value": 1.0
+        },
+        {
+          "id": "round",
+          "value": true
+        },
+        {
+          "id": "snap",
+          "value": true
+        },
+        {
+          "id": "opacity",
+          "value": 0.86
+        },
+        {
+          "id": "blur",
+          "value": false,
+          "values": [
+            {
+              "id": "intensity",
+              "value": 0.4
+            }
+          ]
+        },
+        {
+          "id": "extendedTooltips",
+          "value": false
+        },
+        {
+          "id": "search",
+          "value": true
+        }
+      ]
+    },
+    {
+      "name": "copsandcrims",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "priority",
+          "value": "Smart"
+        },
+        {
+          "id": "delay",
+          "value": 35
+        },
+        {
+          "id": "team",
+          "value": false
+        },
+        {
+          "id": "friends",
+          "value": false
+        },
+        {
+          "id": "rcs",
+          "value": false
+        },
+        {
+          "id": "silent",
+          "value": false
+        },
+        {
+          "id": "autoShoot",
+          "value": false
+        },
+        {
+          "id": "bone",
+          "value": "Head"
+        },
+        {
+          "id": "hRecoil",
+          "value": 0.1
+        },
+        {
+          "id": "vRecoil",
+          "value": 0.5
+        },
+        {
+          "id": "fov",
+          "value": 360.0
+        }
+      ]
+    },
+    {
+      "name": "criticals",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "particles",
+          "value": true
+        }
+      ],
+      "mode": "Packet",
+      "modes": [
+        {
+          "name": "Jump",
+          "values": [
+            {
+              "id": "falling",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "crosshair+",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "outline",
+          "value": false
+        },
+        {
+          "id": "dot",
+          "value": false
+        },
+        {
+          "id": "gap",
+          "value": 2.5
+        },
+        {
+          "id": "size",
+          "value": 10.0
+        },
+        {
+          "id": "width",
+          "value": 1.0
+        },
+        {
+          "id": "color",
+          "value": "1eff00"
+        },
+        {
+          "id": "scale",
+          "value": 2.0
+        }
+      ]
+    },
+    {
+      "name": "crystalaura",
+      "state": true,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "speed",
+          "value": 12.0
+        },
+        {
+          "id": "placement",
+          "value": false
+        },
+        {
+          "id": "range",
+          "value": 2.87
+        },
+        {
+          "id": "fov",
+          "value": 360.0
+        },
+        {
+          "id": "suicide",
+          "value": "Avoid"
+        },
+        {
+          "id": "render",
+          "value": true,
+          "values": [
+            {
+              "id": "placeColor",
+              "value": "ff00"
+            },
+            {
+              "id": "triggerColor",
+              "value": "ff0000"
+            }
+          ]
+        },
+        {
+          "id": "antiweakness",
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "discordrpc",
+      "state": true,
+      "bind": "NONE",
+      "display": false
+    },
+    {
+      "name": "elytra+",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "autoboost",
+          "value": false
+        },
+        {
+          "id": "takeoff",
+          "value": true
+        }
+      ],
+      "mode": "Control",
+      "modes": [
+        {
+          "name": "Control",
+          "values": [
+            {
+              "id": "speed",
+              "value": 4.0
+            },
+            {
+              "id": "up",
+              "value": 1.0
+            },
+            {
+              "id": "down",
+              "value": 1.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "enchantcolor",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "color",
+          "value": "ffffff"
+        },
+        {
+          "id": "items",
+          "value": true
+        },
+        {
+          "id": "armor",
+          "value": true
+        }
+      ]
+    },
+    {
+      "name": "esp",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "invis",
+          "value": false
+        },
+        {
+          "id": "sleeping",
+          "value": false
+        },
+        {
+          "id": "player",
+          "value": true
+        },
+        {
+          "id": "friends",
+          "value": "INCLUDE"
+        },
+        {
+          "id": "team",
+          "value": "INCLUDE"
+        },
+        {
+          "id": "hostile",
+          "value": true
+        },
+        {
+          "id": "passive",
+          "value": true
+        },
+        {
+          "id": "items",
+          "value": true
+        },
+        {
+          "id": "other",
+          "value": true
+        },
+        {
+          "id": "antibot",
+          "value": false
+        },
+        {
+          "id": "rbf",
+          "value": true
+        },
+        {
+          "id": "rbd",
+          "value": false
+        },
+        {
+          "id": "colorType",
+          "value": "CUSTOM",
+          "values": [
+            {
+              "id": "color",
+              "value": "bdbdff"
+            }
+          ]
+        },
+        {
+          "id": "width",
+          "value": 1.0
+        }
+      ],
+      "mode": "Shader",
+      "modes": [
+        {
+          "name": "Shader",
+          "values": [
+            {
+              "id": "mode",
+              "value": "Outline"
+            },
+            {
+              "id": "fade",
+              "value": false
+            },
+            {
+              "id": "filled",
+              "value": false,
+              "values": [
+                {
+                  "id": "opacity",
+                  "value": 0.3
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "fancychat",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "mode",
+          "value": "FULLWIDTH"
+        }
+      ]
+    },
+    {
+      "name": "fastfall",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "fastinteract",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "fastplace",
+          "value": false,
+          "values": [
+            {
+              "id": "place_speed",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "id": "fastbreak",
+          "value": false,
+          "values": [
+            {
+              "id": "break_delay",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "id": "fastuse",
+          "value": false,
+          "values": [
+            {
+              "id": "use_speed",
+              "value": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "flight",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "antikick",
+          "value": false
+        }
+      ],
+      "mode": "Vanilla",
+      "modes": [
+        {
+          "name": "Vanilla",
+          "values": [
+            {
+              "id": "speed",
+              "value": 1.0
+            }
+          ]
+        },
+        {
+          "name": "3D",
+          "values": [
+            {
+              "id": "speed",
+              "value": 1.0
+            }
+          ]
+        },
+        {
+          "name": "NCP",
+          "values": [
+            {
+              "id": "speed",
+              "value": 0.06
+            },
+            {
+              "id": "falls",
+              "value": false
+            },
+            {
+              "id": "overshoot",
+              "value": true
+            },
+            {
+              "id": "confirmpackets",
+              "value": true
+            },
+            {
+              "id": "loaddisable",
+              "value": true
+            },
+            {
+              "id": "positive",
+              "value": false
+            }
+          ]
+        },
+        {
+          "name": "Jetpack",
+          "values": [
+            {
+              "id": "max",
+              "value": 1.0
+            },
+            {
+              "id": "accel",
+              "value": 0.1
+            }
+          ]
+        },
+        {
+          "name": "Glide",
+          "values": [
+            {
+              "id": "aspeed",
+              "value": 0.125
+            },
+            {
+              "id": "dspeed",
+              "value": 0.125
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "franky",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "pepsi boy",
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "freecam",
+      "state": false,
+      "bind": "]",
+      "display": true,
+      "values": [
+        {
+          "id": "speed",
+          "value": 3.53
+        },
+        {
+          "id": "vspeed",
+          "value": 2.97
+        },
+        {
+          "id": "reloadchunks",
+          "value": true
+        },
+        {
+          "id": "rerenderchunks",
+          "value": true
+        }
+      ]
+    },
+    {
+      "name": "ghosthand",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "highjump",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "multiplier",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "name": "hitbox",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "debug",
+          "value": true
+        },
+        {
+          "id": "player",
+          "value": true,
+          "values": [
+            {
+              "id": "size",
+              "value": 0.35
+            }
+          ]
+        },
+        {
+          "id": "hostile",
+          "value": true,
+          "values": [
+            {
+              "id": "size",
+              "value": 0.35
+            }
+          ]
+        },
+        {
+          "id": "passive",
+          "value": true,
+          "values": [
+            {
+              "id": "size",
+              "value": 0.35
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hud",
+      "state": true,
+      "bind": "NONE",
+      "display": false,
+      "values": [
+        {
+          "id": "watermark",
+          "value": false
+        },
+        {
+          "id": "arraylist",
+          "value": false,
+          "values": [
+            {
+              "id": "colors",
+              "value": "Random",
+              "values": [
+                {
+                  "id": "saturation",
+                  "value": 50
+                },
+                {
+                  "id": "brightness",
+                  "value": 100
+                }
+              ]
+            },
+            {
+              "id": "style",
+              "value": "Flare"
+            },
+            {
+              "id": "suffix",
+              "value": true,
+              "values": [
+                {
+                  "id": "color",
+                  "value": "YELLOW"
+                },
+                {
+                  "id": "brackets",
+                  "value": false,
+                  "values": [
+                    {
+                      "id": "color",
+                      "value": "LIGHT_PURPLE"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "textshadowdistance",
+          "value": 1.0
+        },
+        {
+          "id": "effects",
+          "value": false
+        },
+        {
+          "id": "potcounter",
+          "value": false
+        },
+        {
+          "id": "coords",
+          "value": "None",
+          "values": [
+            {
+              "id": "nether",
+              "value": true
+            },
+            {
+              "id": "overworld",
+              "value": true
+            },
+            {
+              "id": "freecam",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "speed",
+          "value": false,
+          "values": [
+            {
+              "id": "distance",
+              "value": "METER"
+            },
+            {
+              "id": "time",
+              "value": "SECOND"
+            },
+            {
+              "id": "avg",
+              "value": true,
+              "values": [
+                {
+                  "id": "duration",
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "facing",
+          "value": true
+        },
+        {
+          "id": "info",
+          "value": false,
+          "values": [
+            {
+              "id": "nicerfps",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "tabgui",
+          "value": false
+        },
+        {
+          "id": "lagmeter",
+          "value": false,
+          "values": [
+            {
+              "id": "duration",
+              "value": 0.5
+            },
+            {
+              "id": "blink",
+              "value": true
+            },
+            {
+              "id": "bold",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "statistics",
+          "value": false
+        },
+        {
+          "id": "biome",
+          "value": false
+        },
+        {
+          "id": "entities",
+          "value": false
+        },
+        {
+          "id": "armor",
+          "value": true
+        },
+        {
+          "id": "ttf",
+          "value": false
+        },
+        {
+          "id": "baritone",
+          "value": true
+        },
+        {
+          "id": "time",
+          "value": "NONE"
+        }
+      ]
+    },
+    {
+      "name": "hunt",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "team",
+          "value": false
+        },
+        {
+          "id": "invis",
+          "value": false
+        },
+        {
+          "id": "sleeping",
+          "value": false
+        },
+        {
+          "id": "friends",
+          "value": false
+        },
+        {
+          "id": "player",
+          "value": true
+        },
+        {
+          "id": "hostile",
+          "value": true
+        },
+        {
+          "id": "passive",
+          "value": true
+        }
+      ]
+    },
+    {
+      "name": "ignite",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "swing",
+          "value": true
+        },
+        {
+          "id": "team",
+          "value": false
+        },
+        {
+          "id": "invis",
+          "value": false
+        },
+        {
+          "id": "sleeping",
+          "value": false
+        },
+        {
+          "id": "friends",
+          "value": false
+        },
+        {
+          "id": "player",
+          "value": true
+        },
+        {
+          "id": "hostile",
+          "value": true
+        },
+        {
+          "id": "passive",
+          "value": true
+        },
+        {
+          "id": "range",
+          "value": 3.0
+        },
+        {
+          "id": "fov",
+          "value": 360.0
+        }
+      ]
+    },
+    {
+      "name": "inventory",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "shulkerlines",
+          "value": 5
+        },
+        {
+          "id": "shulkercollate",
+          "value": true
+        },
+        {
+          "id": "secretclose",
+          "value": false
+        },
+        {
+          "id": "xslots",
+          "value": false
+        },
+        {
+          "id": "durability",
+          "value": false
+        },
+        {
+          "id": "move",
+          "value": false
+        },
+        {
+          "id": "look",
+          "value": false
+        },
+        {
+          "id": "yaw",
+          "value": 6.0
+        },
+        {
+          "id": "pitch",
+          "value": 4.0
+        }
+      ]
+    },
+    {
+      "name": "itemsaver",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "dura",
+          "value": 0.0
+        }
+      ]
+    },
+    {
+      "name": "jesus",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "mode": "Solid",
+      "modes": [
+        {
+          "name": "Solid",
+          "values": [
+            {
+              "id": "flowing",
+              "value": false
+            },
+            {
+              "id": "extinguish",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "killaura",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "priority",
+          "value": "Distance"
+        },
+        {
+          "id": "walls",
+          "value": false
+        },
+        {
+          "id": "raytrace",
+          "value": true
+        },
+        {
+          "id": "immune",
+          "value": false
+        },
+        {
+          "id": "tps",
+          "value": false
+        },
+        {
+          "id": "block",
+          "value": true
+        },
+        {
+          "id": "safe",
+          "value": false
+        },
+        {
+          "id": "noswing",
+          "value": false
+        },
+        {
+          "id": "lockview",
+          "value": false
+        },
+        {
+          "id": "team",
+          "value": false
+        },
+        {
+          "id": "invis",
+          "value": false
+        },
+        {
+          "id": "sleeping",
+          "value": false
+        },
+        {
+          "id": "friends",
+          "value": false
+        },
+        {
+          "id": "player",
+          "value": false
+        },
+        {
+          "id": "hostile",
+          "value": true
+        },
+        {
+          "id": "passive",
+          "value": false
+        },
+        {
+          "id": "speed",
+          "value": 12.03
+        },
+        {
+          "id": "speed_deviation",
+          "value": 0.0
+        },
+        {
+          "id": "range",
+          "value": 4.25
+        },
+        {
+          "id": "fov",
+          "value": 360.0
+        },
+        {
+          "id": "ryaw",
+          "value": 0.0
+        },
+        {
+          "id": "rpitch",
+          "value": 0.0
+        },
+        {
+          "id": "ticks",
+          "value": 0
+        },
+        {
+          "id": "hmr",
+          "value": 1.0
+        }
+      ],
+      "mode": "Single",
+      "modes": [
+        {
+          "name": "Switch",
+          "values": [
+            {
+              "id": "switch",
+              "value": 300
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "lag",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "mode": "Fake",
+      "modes": [
+        {
+          "name": "Real",
+          "values": [
+            {
+              "id": "latency",
+              "value": 10
+            },
+            {
+              "id": "renderReal",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "levitationcontrol",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "sneakMode",
+          "value": "Float"
+        },
+        {
+          "id": "antiBullet",
+          "value": true,
+          "values": [
+            {
+              "id": "range",
+              "value": 5.0
+            },
+            {
+              "id": "fov",
+              "value": 360.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "light",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "bright",
+          "value": true
+        },
+        {
+          "id": "gamma2",
+          "value": 12.0
+        },
+        {
+          "id": "fade",
+          "value": true
+        },
+        {
+          "id": "skylight",
+          "value": true
+        }
+      ]
+    },
+    {
+      "name": "liquidinteract",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "logposition",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "names",
+          "value": true
+        },
+        {
+          "id": "save",
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "longjump",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "mode": "Normal",
+      "modes": [
+        {
+          "name": "Normal",
+          "values": [
+            {
+              "id": "boost",
+              "value": 15.0
+            }
+          ]
+        },
+        {
+          "name": "NoDamage",
+          "values": [
+            {
+              "id": "boost",
+              "value": 3.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mainmenu",
+      "state": true,
+      "bind": "NONE",
+      "display": false,
+      "values": [
+        {
+          "id": "custom",
+          "value": false
+        },
+        {
+          "id": "custombackground",
+          "value": false,
+          "values": [
+            {
+              "id": "image",
+              "value": "0"
+            },
+            {
+              "id": "random",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "hidetext",
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "middleclickfriend",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "minestrike",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "mode",
+          "value": "Aimlock"
+        },
+        {
+          "id": "aimType",
+          "value": "Always"
+        },
+        {
+          "id": "bone",
+          "value": "Head"
+        },
+        {
+          "id": "priority",
+          "value": "Distance"
+        },
+        {
+          "id": "aimbot",
+          "value": true
+        },
+        {
+          "id": "autoshoot",
+          "value": true
+        },
+        {
+          "id": "friends",
+          "value": false
+        },
+        {
+          "id": "scoped",
+          "value": true
+        },
+        {
+          "id": "esp",
+          "value": true
+        },
+        {
+          "id": "items",
+          "value": true
+        },
+        {
+          "id": "drawfov",
+          "value": false
+        },
+        {
+          "id": "fov",
+          "value": 360.0
+        },
+        {
+          "id": "nsl",
+          "value": true
+        },
+        {
+          "id": "ignoresmoke",
+          "value": true
+        },
+        {
+          "id": "latencycomp",
+          "value": true
+        },
+        {
+          "id": "visibleTicks",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "murder",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "mode",
+          "value": "PLAYMCM"
+        }
+      ]
+    },
+    {
+      "name": "nametags",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "ttf",
+          "value": true
+        },
+        {
+          "id": "items",
+          "value": false,
+          "values": [
+            {
+              "id": "collate",
+              "value": "DISTANCE"
+            },
+            {
+              "id": "dynamic",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "tamed",
+          "value": false,
+          "values": [
+            {
+              "id": "dynamic",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "sounds",
+          "value": false,
+          "values": [
+            {
+              "id": "duration",
+              "value": 2.0
+            },
+            {
+              "id": "fade",
+              "value": 0.5
+            },
+            {
+              "id": "dynamic",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "health",
+          "value": true,
+          "values": [
+            {
+              "id": "separate",
+              "value": false
+            }
+          ]
+        },
+        {
+          "id": "armor",
+          "value": true
+        },
+        {
+          "id": "rank",
+          "value": true
+        },
+        {
+          "id": "gamemode",
+          "value": true
+        },
+        {
+          "id": "priority",
+          "value": true
+        },
+        {
+          "id": "sleeping",
+          "value": true
+        },
+        {
+          "id": "invis",
+          "value": false
+        },
+        {
+          "id": "scale",
+          "value": 1.0
+        },
+        {
+          "id": "playerdynamic",
+          "value": false
+        },
+        {
+          "id": "mindist",
+          "value": 8.0
+        },
+        {
+          "id": "maxdist",
+          "value": 20.0
+        }
+      ]
+    },
+    {
+      "name": "newchunks",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "color",
+          "value": "ff0000"
+        },
+        {
+          "id": "width",
+          "value": 1.0
+        },
+        {
+          "id": "smooth",
+          "value": true
+        }
+      ]
+    },
+    {
+      "name": "nofall",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "mode": "Packet",
+      "modes": [
+        {
+          "name": "Packet",
+          "values": [
+            {
+              "id": "hypixel",
+              "value": false
+            }
+          ]
+        },
+        {
+          "name": "Bucket",
+          "values": [
+            {
+              "id": "collect",
+              "value": true
+            },
+            {
+              "id": "lethal",
+              "value": false
+            }
+          ]
+        },
+        {
+          "name": "Web",
+          "values": [
+            {
+              "id": "lethal",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "nopush",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "norender",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "remove",
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "norotate",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "noslow",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "items",
+          "value": true,
+          "values": [
+            {
+              "id": "modifier",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "id": "water",
+          "value": false
+        },
+        {
+          "id": "slime",
+          "value": false
+        },
+        {
+          "id": "soulsand",
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "nosrp",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "nuker",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "origin",
+          "value": "Proximity"
+        },
+        {
+          "id": "target",
+          "value": "Normal"
+        },
+        {
+          "id": "autobreak",
+          "value": true
+        },
+        {
+          "id": "filter",
+          "value": false
+        },
+        {
+          "id": "radius",
+          "value": 4
+        },
+        {
+          "id": "autotool",
+          "value": false
+        },
+        {
+          "id": "esp",
+          "value": true,
+          "values": [
+            {
+              "id": "color",
+              "value": "0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "parkour",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "portals",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "gui",
+          "value": true
+        },
+        {
+          "id": "god",
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "pot",
+      "state": false,
+      "bind": "NONE",
+      "display": false,
+      "values": [
+        {
+          "id": "speed",
+          "value": 60
+        },
+        {
+          "id": "random",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "name": "prophunt",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "color",
+          "value": "ff00ff"
+        }
+      ]
+    },
+    {
+      "name": "quakecraft",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "radar",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "mode",
+          "value": "Static"
+        },
+        {
+          "id": "path",
+          "value": true,
+          "values": [
+            {
+              "id": "stipple",
+              "value": false
+            },
+            {
+              "id": "stippleLength",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "id": "invis",
+          "value": false
+        },
+        {
+          "id": "sleeping",
+          "value": false
+        },
+        {
+          "id": "player",
+          "value": true
+        },
+        {
+          "id": "hostile",
+          "value": true
+        },
+        {
+          "id": "passive",
+          "value": true
+        },
+        {
+          "id": "opacity",
+          "value": 75
+        },
+        {
+          "id": "size",
+          "value": 100
+        },
+        {
+          "id": "blip",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "name": "randomizer",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "hotbar1",
+          "value": true
+        },
+        {
+          "id": "hotbar2",
+          "value": true
+        },
+        {
+          "id": "hotbar3",
+          "value": true
+        },
+        {
+          "id": "hotbar4",
+          "value": true
+        },
+        {
+          "id": "hotbar5",
+          "value": true
+        },
+        {
+          "id": "hotbar6",
+          "value": true
+        },
+        {
+          "id": "hotbar7",
+          "value": true
+        },
+        {
+          "id": "hotbar8",
+          "value": true
+        },
+        {
+          "id": "hotbar9",
+          "value": true
+        }
+      ]
+    },
+    {
+      "name": "respawn",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "auto",
+          "value": true,
+          "values": [
+            {
+              "id": "home",
+              "value": false
+            },
+            {
+              "id": "delay",
+              "value": 2500
+            }
+          ]
+        },
+        {
+          "id": "coords",
+          "value": false
+        },
+        {
+          "id": "save",
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "riding",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "jump",
+          "value": true
+        },
+        {
+          "id": "control",
+          "value": true
+        },
+        {
+          "id": "swim",
+          "value": true
+        },
+        {
+          "id": "speed",
+          "value": false,
+          "values": [
+            {
+              "id": "value",
+              "value": 1.0
+            }
+          ]
+        },
+        {
+          "id": "step",
+          "value": false,
+          "values": [
+            {
+              "id": "value",
+              "value": 1.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "safewalk",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "scaffold",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "safe",
+          "value": true
+        },
+        {
+          "id": "swing",
+          "value": true
+        },
+        {
+          "id": "preferOffhand",
+          "value": true
+        },
+        {
+          "id": "tower",
+          "value": false
+        },
+        {
+          "id": "debug",
+          "value": false,
+          "values": [
+            {
+              "id": "face",
+              "value": true
+            },
+            {
+              "id": "offset",
+              "value": true
+            },
+            {
+              "id": "predict",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "search",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "color",
+          "value": "ffff"
+        },
+        {
+          "id": "max",
+          "value": 1000
+        },
+        {
+          "id": "rate",
+          "value": 1000
+        },
+        {
+          "id": "width",
+          "value": 1.0
+        },
+        {
+          "id": "smooth",
+          "value": true
+        },
+        {
+          "id": "fill",
+          "value": false
+        },
+        {
+          "id": "shader",
+          "value": false
+        },
+        {
+          "id": "tracers",
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "selfdestruct",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "signs",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "color",
+          "value": true
+        }
+      ]
+    },
+    {
+      "name": "skinblinker",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "mode",
+          "value": "Random"
+        },
+        {
+          "id": "delay",
+          "value": 200
+        },
+        {
+          "id": "hat",
+          "value": true
+        },
+        {
+          "id": "jacket",
+          "value": true
+        },
+        {
+          "id": "right_sleeve",
+          "value": true
+        },
+        {
+          "id": "left_sleeve",
+          "value": true
+        },
+        {
+          "id": "right_pants_leg",
+          "value": true
+        },
+        {
+          "id": "left_pants_leg",
+          "value": true
+        },
+        {
+          "id": "cape",
+          "value": true
+        }
+      ]
+    },
+    {
+      "name": "smoothaim",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "team",
+          "value": false
+        },
+        {
+          "id": "safe",
+          "value": true
+        },
+        {
+          "id": "invis",
+          "value": false
+        },
+        {
+          "id": "sleeping",
+          "value": false
+        },
+        {
+          "id": "friends",
+          "value": false
+        },
+        {
+          "id": "player",
+          "value": true
+        },
+        {
+          "id": "hostile",
+          "value": true
+        },
+        {
+          "id": "passive",
+          "value": true
+        },
+        {
+          "id": "sidebutton",
+          "value": true
+        },
+        {
+          "id": "range",
+          "value": 5.0
+        },
+        {
+          "id": "fov",
+          "value": 125.0
+        },
+        {
+          "id": "random",
+          "value": 400
+        },
+        {
+          "id": "width",
+          "value": 1.45
+        },
+        {
+          "id": "height",
+          "value": 2.0
+        },
+        {
+          "id": "speed",
+          "value": 1.5
+        }
+      ]
+    },
+    {
+      "name": "sneak",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "packet",
+          "value": true
+        }
+      ]
+    },
+    {
+      "name": "sneakyassassins",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "color",
+          "value": "c700"
+        }
+      ]
+    },
+    {
+      "name": "soup",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "health",
+          "value": 8.0
+        },
+        {
+          "id": "speed",
+          "value": 60
+        },
+        {
+          "id": "random",
+          "value": 20
+        }
+      ]
+    },
+    {
+      "name": "speed",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "mode": "Bhop",
+      "modes": [
+        {
+          "name": "Vanilla",
+          "values": [
+            {
+              "id": "antishake",
+              "value": false
+            },
+            {
+              "id": "speed",
+              "value": 5.0
+            },
+            {
+              "id": "boost",
+              "value": 1.0
+            }
+          ]
+        },
+        {
+          "name": "Strafe",
+          "values": [
+            {
+              "id": "speed",
+              "value": "Vanilla"
+            },
+            {
+              "id": "multiplier",
+              "value": 1.0
+            },
+            {
+              "id": "jump",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "spider",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "sprint",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "multi",
+          "value": false
+        },
+        {
+          "id": "keep",
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "step",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "mode": "NCP",
+      "modes": [
+        {
+          "name": "Vanilla",
+          "values": [
+            {
+              "id": "height",
+              "value": 0.6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "storageesp",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "chest",
+          "value": true,
+          "values": [
+            {
+              "id": "color",
+              "value": "33337f"
+            },
+            {
+              "id": "dungeons",
+              "value": false
+            }
+          ]
+        },
+        {
+          "id": "chestTrapped",
+          "value": true,
+          "values": [
+            {
+              "id": "color",
+              "value": "b33333"
+            }
+          ]
+        },
+        {
+          "id": "chestEnder",
+          "value": true,
+          "values": [
+            {
+              "id": "color",
+              "value": "b300ff"
+            }
+          ]
+        },
+        {
+          "id": "dispenser",
+          "value": true,
+          "values": [
+            {
+              "id": "color",
+              "value": "5a5a5a"
+            }
+          ]
+        },
+        {
+          "id": "furnace",
+          "value": true,
+          "values": [
+            {
+              "id": "color",
+              "value": "5a5a5a"
+            }
+          ]
+        },
+        {
+          "id": "hopper",
+          "value": true,
+          "values": [
+            {
+              "id": "color",
+              "value": "5a5a5a"
+            }
+          ]
+        },
+        {
+          "id": "shulkerBox",
+          "value": true,
+          "values": [
+            {
+              "id": "color",
+              "value": "af506e"
+            }
+          ]
+        },
+        {
+          "id": "minecartChest",
+          "value": true,
+          "values": [
+            {
+              "id": "color",
+              "value": "33337f"
+            }
+          ]
+        },
+        {
+          "id": "minecartFurnace",
+          "value": true,
+          "values": [
+            {
+              "id": "color",
+              "value": "5a5a5a"
+            }
+          ]
+        },
+        {
+          "id": "minecartHopper",
+          "value": true,
+          "values": [
+            {
+              "id": "color",
+              "value": "5a5a5a"
+            }
+          ]
+        },
+        {
+          "id": "itemFrame",
+          "value": false,
+          "values": [
+            {
+              "id": "color",
+              "value": "cc9f6c"
+            },
+            {
+              "id": "hasItem",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "fade",
+          "value": true
+        },
+        {
+          "id": "distance",
+          "value": 20.0
+        },
+        {
+          "id": "width",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "name": "terrain",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "fastladder",
+          "value": false,
+          "values": [
+            {
+              "id": "multiplier",
+              "value": 2.0
+            }
+          ]
+        },
+        {
+          "id": "noweb",
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "timer",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "speed",
+          "value": 0.95
+        }
+      ]
+    },
+    {
+      "name": "tracers",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "invis",
+          "value": false
+        },
+        {
+          "id": "sleeping",
+          "value": false
+        },
+        {
+          "id": "player",
+          "value": true,
+          "values": [
+            {
+              "id": "friends",
+              "value": "INCLUDE",
+              "values": [
+                {
+                  "id": "friendcoloroverride",
+                  "value": true,
+                  "values": [
+                    {
+                      "id": "friendcolor",
+                      "value": "55ffff"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "team",
+              "value": "INCLUDE"
+            },
+            {
+              "id": "playerColor",
+              "value": "ffffff"
+            },
+            {
+              "id": "playerMaxDist",
+              "value": 32.0
+            },
+            {
+              "id": "playerDisableAfterMax",
+              "value": false
+            },
+            {
+              "id": "playerDistanceColor",
+              "value": false,
+              "values": [
+                {
+                  "id": "playerFarColor",
+                  "value": "ff00"
+                },
+                {
+                  "id": "playerMinDist",
+                  "value": 8.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hostile",
+          "value": true,
+          "values": [
+            {
+              "id": "hostileColor",
+              "value": "ffffff"
+            },
+            {
+              "id": "hostileMaxDist",
+              "value": 32.0
+            },
+            {
+              "id": "hostileDisableAfterMax",
+              "value": false
+            },
+            {
+              "id": "hostileDistanceColor",
+              "value": false,
+              "values": [
+                {
+                  "id": "playerFarColor",
+                  "value": "ff00"
+                },
+                {
+                  "id": "playerMinDist",
+                  "value": 8.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "passive",
+          "value": true,
+          "values": [
+            {
+              "id": "passiveColor",
+              "value": "ffffff"
+            },
+            {
+              "id": "passiveMaxDist",
+              "value": 32.0
+            },
+            {
+              "id": "passiveDisableAfterMax",
+              "value": false
+            },
+            {
+              "id": "passiveDistanceColor",
+              "value": false,
+              "values": [
+                {
+                  "id": "playerFarColor",
+                  "value": "ff00"
+                },
+                {
+                  "id": "playerMinDist",
+                  "value": 8.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "antibot",
+          "value": false
+        },
+        {
+          "id": "rbd",
+          "value": true
+        },
+        {
+          "id": "ignoreStationary",
+          "value": false
+        },
+        {
+          "id": "smooth",
+          "value": true
+        },
+        {
+          "id": "complete",
+          "value": true
+        },
+        {
+          "id": "body",
+          "value": true
+        },
+        {
+          "id": "opacity",
+          "value": 1.0
+        },
+        {
+          "id": "width",
+          "value": 1.0
+        }
+      ]
+    },
+    {
+      "name": "trajectories",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "entities",
+          "value": false
+        },
+        {
+          "id": "centered2",
+          "value": false
+        },
+        {
+          "id": "color",
+          "value": "ff7f00"
+        },
+        {
+          "id": "width",
+          "value": 1.8
+        }
+      ]
+    },
+    {
+      "name": "unpack",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "velocity",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "hamt",
+          "value": 0
+        },
+        {
+          "id": "hmultiplier",
+          "value": 1.0
+        },
+        {
+          "id": "hreverse",
+          "value": false
+        },
+        {
+          "id": "vamt",
+          "value": 0
+        },
+        {
+          "id": "vmultiplier",
+          "value": 1.0
+        },
+        {
+          "id": "vreverse",
+          "value": false
+        },
+        {
+          "id": "explosions",
+          "value": false
+        },
+        {
+          "id": "damagefix",
+          "value": true
+        },
+        {
+          "id": "pchance",
+          "value": 100
+        }
+      ]
+    },
+    {
+      "name": "weather",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "rain",
+          "value": false
+        },
+        {
+          "id": "thunder",
+          "value": false
+        }
+      ]
+    },
+    {
+      "name": "wireframe",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "width",
+          "value": 0.1
+        }
+      ]
+    },
+    {
+      "name": "xray",
+      "state": false,
+      "bind": "NONE",
+      "display": true
+    },
+    {
+      "name": "yaw",
+      "state": false,
+      "bind": "NONE",
+      "display": true,
+      "values": [
+        {
+          "id": "round",
+          "value": true,
+          "values": [
+            {
+              "id": "mouse",
+              "value": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
