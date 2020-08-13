@@ -3089,12 +3089,12 @@
     {
       "name": "timer",
       "state": false,
-      "bind": "NONE",
+      "bind": "[",
       "display": true,
       "values": [
         {
           "id": "speed",
-          "value": 0.95
+          "value": 3
         }
       ]
     },
