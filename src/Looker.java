@@ -47,7 +47,7 @@ public class Looker {
 
     private static final int centerScreenScaling = 15;
 
-    private static final double doneThreshold = 0.1;
+    private static final double doneThreshold = 0.05;
     private static final int whiteThreshold = 240;
     private static final Color baritoneColor = new Color(97,160,194);
 
@@ -128,7 +128,7 @@ public class Looker {
         furnaceProgressScreenRect = new Rectangle(topLeftX+(furnaceProgressScreenRectOffset[0]*guiScale), topLeftY+(furnaceProgressScreenRectOffset[1]*guiScale), furnaceProgressScreenSize[0]*guiScale, furnaceProgressScreenSize[1]*guiScale);
 
         centerScreenRect = new Rectangle(centerX-centerScreenScaling*guiScale, centerY-centerScreenScaling*guiScale, 2*centerScreenScaling*guiScale, 2*centerScreenScaling*guiScale);
-        topLeftScreenRect = new Rectangle(getMinecraftWindow().x, getMinecraftWindow().y, getMinecraftWindow().width/8, getMinecraftWindow().height/16);
+        topLeftScreenRect = new Rectangle(getMinecraftWindow().x, getMinecraftWindow().y, getMinecraftWindow().width/8, getMinecraftWindow().height/10);
     }
 
     public static int[] getHandCraftSlot1() {
@@ -264,7 +264,7 @@ public class Looker {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            imageFoundOnScreen = foundImageOnScreen("src\\Checkpoint_Images\\done.jpg",topLeftScreenRect,doneThreshold) || !colorInRect(topLeftScreenRect,baritoneColor);
+            imageFoundOnScreen = foundImageOnScreen("src\\Checkpoint_Images\\done.png",topLeftScreenRect,doneThreshold) || !colorInRect(topLeftScreenRect,baritoneColor);
             end = System.currentTimeMillis();
         }
     }
@@ -343,10 +343,11 @@ public class Looker {
 
     public static boolean foundImageOnScreen(String pathname, Rectangle screenRect, double threshold) {
         BufferedImage screenImg = makeImageBlackAndWhiteExceptColor(screenShot(screenRect),whiteThreshold,baritoneColor);
+        String s = String.valueOf(System.currentTimeMillis());
         String filePath = new File(pathname).getAbsolutePath();
-        BufferedImage img = resize(makeImageBlackAndWhiteExceptColor(Objects.requireNonNull(getImage(filePath)),whiteThreshold,baritoneColor), ((double) (guiScale))/3.0) ;
+        BufferedImage img = makeImageBlackAndWhiteExceptColor(resize(Objects.requireNonNull(getImage(filePath)), ((double) (guiScale))/3.0),whiteThreshold,baritoneColor) ;
         double diff = findSubImageDiff(screenImg, img);
-        System.out.println(diff);
+        //System.out.println(diff);
         return diff < threshold;
     }
 
@@ -416,14 +417,14 @@ public class Looker {
                 int green = c.getGreen();
                 int blue = c.getBlue();
                 Color newColor;
-                if(!c.equals(color)){
+                //if(!c.equals(color)){
                     if (red+green+blue > 3*threshold) {
                         newColor = new Color(255, 255, 255);
                     }else{
                         newColor = new Color(0, 0, 0);
                     }
                     image.setRGB(j,i,newColor.getRGB());
-                }
+                //}
 
 
             }
