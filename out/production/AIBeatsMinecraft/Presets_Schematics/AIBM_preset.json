@@ -559,7 +559,7 @@
       "values": [
         {
           "id": "targetPause",
-          "value": true
+          "value": false
         }
       ]
     },
