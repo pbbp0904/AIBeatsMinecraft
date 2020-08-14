@@ -47,7 +47,7 @@
   {"type": "command", "name": "Mine Grass", "command_string": ".b mine 60 grass_block", "wait_until_done": true},
   {"type": "command", "name": "Turn On Auto Eject", "command_string": ".toggle AutoEject", "wait_until_done": false},
   {"type": "sort",    "name": "Sort Portal Inventory", "spec": [{"slot": 4, "item": "dirt", "backOnly": false}, {"slot": 7, "item": "flint_and_steel", "backOnly": false}, {"slot": 8, "item": "obsidian", "backOnly": false}, {"slot": 9, "item": "cobblestone", "backOnly": false}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
-  {"type": "command", "name": "Build Nether Portal", "command_string": ".b build portal.schematic ~ ~2 ~", "wait_until_done": true},
+  {"type": "command", "name": "Build Nether Portal", "command_string": ".b build AIMB_portal.schematic ~ ~2 ~", "wait_until_done": true},
   {"type": "command", "name": "Go Into Portal", "command_string": ".b goto cobblestone", "wait_until_done": true},
   {"type": "light",   "name": "Light Portal"}
 ]
