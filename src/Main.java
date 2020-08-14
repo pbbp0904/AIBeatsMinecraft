@@ -552,6 +552,8 @@ public class Main {
         Waiter.waitShort();
         Filer.schematicsFolder();
         Waiter.waitShort();
+        Typer.command(".b set avoidance false");
+        Waiter.waitShort();
         Typer.pressKey("NP1");
     }
 
