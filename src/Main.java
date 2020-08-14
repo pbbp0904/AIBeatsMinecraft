@@ -373,14 +373,14 @@ public class Main {
                 Typer.startMoveRight();
                 Waiter.wait(250);
                 Typer.stopMoveBack();
-                Waiter.wait(150);
+                Waiter.wait(250);
                 Typer.stopMoveRight();
                 Typer.startMoveForward();
-                Typer.startMoveLeft();
-                Waiter.wait(200);
+                Typer.startMoveRight();
+                Waiter.wait(150);
                 Typer.stopMoveForward();
-                Waiter.wait(100);
-                Typer.stopMoveLeft();
+                Waiter.wait(150);
+                Typer.stopMoveRight();
                 Waiter.wait(2000);
                 break;
             default:

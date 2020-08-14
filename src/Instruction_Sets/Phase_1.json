@@ -8,7 +8,6 @@
   {"type": "craft",   "name": "Craft Bowls", "number": 3, "item": "bowl", "open_inventory": false, "close_inventory": false},
   {"type": "craft",   "name": "Craft Wooden Pickaxe", "number": 1, "item": "wooden_pickaxe", "open_inventory": false, "close_inventory": true},
 
-  {"type": "command", "name": "Turn Off Mob Avoidance", "command_string": ".b set avoidance false", "wait_until_done": false},
   {"type": "command", "name": "Mine Stone", "command_string": ".b mine 12 stone", "wait_until_done": true},
   {"type": "command", "name": "Goto and Enter Crafting Table", "command_string": ".b goto crafting_table", "wait_until_done": true},
   {"type": "craft",   "name": "Craft Stone Tools", "number": 1, "item": "stone_tools", "open_inventory": false, "close_inventory": true},
