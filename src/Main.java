@@ -559,6 +559,7 @@ public class Main {
         Filer.schematicsFolder();
         Waiter.waitShort();
         Typer.command(".b set avoidance false");
+        Typer.command(".b set exploreForBlocks false");
         Waiter.waitShort();
         Typer.pressKey("NP1");
     }

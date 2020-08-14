@@ -184,6 +184,8 @@ public class Crafter {
                 MouseMover.moveMouse(redCoords, shortSleep);
                 Typer.leftClick(shortSleep);
 
+                Waiter.wait(Waiter.getShortSleepTime());
+
 
                 // Get resultant item
                 MouseMover.moveMouse(Looker.getHandCraftSlotRes(), shortSleep);
