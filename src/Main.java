@@ -558,6 +558,7 @@ public class Main {
         Waiter.waitShort();
         Filer.schematicsFolder();
         Waiter.waitShort();
+        Typer.command(".b set followRadius 0");
         Typer.command(".b set avoidance false");
         Typer.command(".b set exploreForBlocks false");
         Waiter.waitShort();
