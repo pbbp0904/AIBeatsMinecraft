@@ -379,7 +379,7 @@
     },
     {
       "name": "autoeat",
-      "state": false,
+      "state": true,
       "bind": "NONE",
       "display": true,
       "values": [
@@ -389,7 +389,7 @@
         },
         {
           "id": "hunger",
-          "value": 6.0
+          "value": 9.0
         },
         {
           "id": "speed",
