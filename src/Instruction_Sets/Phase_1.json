@@ -35,12 +35,12 @@
 
 
   {"type": "command", "name": "Mine Grass", "command_string": ".b mine 60 grass_block", "wait_until_done": true},
-  {"type": "command", "name": "Set Goal In The Sky", "command_string": ".b goal 90", "wait_until_done": true},
+  {"type": "command", "name": "Set Goal In The Sky", "command_string": ".b goal 90", "wait_until_done": false},
   {"type": "command", "name": "Go To The Sky", "command_string": ".b path", "wait_until_done": true},
   {"type": "command", "name": "Look Around", "command_string": ".rotate 0 0", "wait_until_done": true},
-  {"type": "command", "name": "Look Around", "command_string": ".b goal 90 0", "wait_until_done": true},
-  {"type": "command", "name": "Look Around", "command_string": ".b goal 180 0", "wait_until_done": true},
-  {"type": "command", "name": "Look Around", "command_string": ".b goal 270 0", "wait_until_done": true},
+  {"type": "command", "name": "Look Around", "command_string": ".rotate 90 0", "wait_until_done": true},
+  {"type": "command", "name": "Look Around", "command_string": ".rotate 180 0", "wait_until_done": true},
+  {"type": "command", "name": "Look Around", "command_string": ".rotate 270 0", "wait_until_done": true},
   {"type": "command", "name": "Mine Obsidian", "command_string": ".b mine 10 obsidian", "wait_until_done": true},
   {"type": "command", "name": "Mine Grass", "command_string": ".b mine 60 grass_block", "wait_until_done": true},
   {"type": "command", "name": "Turn On Auto Eject", "command_string": ".toggle AutoEject", "wait_until_done": false},

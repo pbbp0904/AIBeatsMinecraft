@@ -35,8 +35,9 @@ public class Main {
 
 
 
-        //startUp();
+        startUp();
         doPhase(1);
+
         doPhase(2);
 
 
