@@ -3,3 +3,4 @@
 163: First Diamonds Mined
 242: Nether Run Only Complete
 414: Can Find End Portal Starting With Eyes of Ender
+566: Can Fully Complete Phase 1

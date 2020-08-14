@@ -238,9 +238,7 @@ public class Looker {
     }
 
     public static void lookUp() {
-        MouseMover.moveMouse(centerX, (int) (centerY /2.0), Waiter.getShortSleepTime());
-        MouseMover.moveMouse(centerX, (int) (centerY /2.0), Waiter.getShortSleepTime());
-        MouseMover.moveMouse(centerX, (int) (centerY /2.0), Waiter.getShortSleepTime());
+        Typer.command(".rotate 0 -90");
     }
 
     public static void lookDown() {

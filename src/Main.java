@@ -360,7 +360,7 @@ public class Main {
         Typer.type("7");
         Typer.holdRightClick(Waiter.getLongSleepTime());
         Typer.releaseRightClick(Waiter.getLongSleepTime());
-        Waiter.wait(15000);
+        Waiter.wait(10000);
     }
 
 
@@ -375,7 +375,13 @@ public class Main {
                 Typer.stopMoveBack();
                 Waiter.wait(150);
                 Typer.stopMoveRight();
-                Waiter.wait(5000);
+                Typer.startMoveForward();
+                Typer.startMoveLeft();
+                Waiter.wait(200);
+                Typer.stopMoveForward();
+                Waiter.wait(100);
+                Typer.stopMoveLeft();
+                Waiter.wait(2000);
                 break;
             default:
                 break;
