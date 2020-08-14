@@ -41,6 +41,7 @@ public class Main {
         doPhase(2);
 
 
+
         //giveDiamondThings();
         //gotoEndPortal();
         //goIntoEndPortal();

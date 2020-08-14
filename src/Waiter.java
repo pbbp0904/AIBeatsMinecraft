@@ -6,7 +6,7 @@ public class Waiter {
 
 
     static{
-        shortSleepTime = 30;
+        shortSleepTime = 40;
         longSleepTime = 120;
         stationaryWaitTime = 1500;
     }
