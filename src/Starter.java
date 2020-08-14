@@ -19,9 +19,9 @@ public class Starter extends Thread implements NativeKeyListener {
         if (e.getKeyCode() == NativeKeyEvent.VC_BACK_SLASH) {
             System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
             Waiter.waitLong();
-            Typer.command(".b cancel");
             Typer.command(".preset load user");
-            Typer.pressKey("escape", 100);
+            Typer.command(".b cancel");
+            Typer.pressKey("escape", 10);
             System.exit(0);
         }
         if (e.getKeyCode() == NativeKeyEvent.VC_ENTER && enter) {
