@@ -19,6 +19,28 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+        //TODO Implementations:
+        // - Know when to stop killing blazes, Medium
+        // - Know when to stop killing enderman, Medium
+        // - Replenishing food, Medium
+        // - Integrating phases, Medium
+        // - Dealing damage to kill the ender dragon, Hard
+
+        //TODO Improvements:
+        // - External config file, Easy
+        // - Move command/instruction code out of main, Easy
+        // - Start up Baritone/Autoeject config, Medium
+        // - Making inventory item search faster, Medium
+        // - Move to png image files, Medium
+        // - Progress checks, Medium
+        // - More efficiently hunting enderman, Medium
+        // - Asynch run counter git push, Medium
+        // - Interact via the baritone API, Hard
+        // - Getting obsidian more consistently, Hard
+
+
+
+
         ready = false;
         s = new Starter();
         s.start();
