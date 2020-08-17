@@ -35,7 +35,7 @@
   {"type": "sort",    "name": "Sort Diamond Inventory", "spec": [{"slot": 1, "item": "diamond_sword", "backOnly": false}, {"slot": 2, "item": "diamond_pickaxe", "backOnly": false}, {"slot": 3, "item": "diamond_shovel", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": false}, {"slot": -1, "item": "diamond_helmet", "backOnly": false}, {"slot": -1, "item": "diamond_chestplate", "backOnly": false}, {"slot": -1, "item": "diamond_leggings", "backOnly": false}, {"slot": -1, "item": "diamond_boots", "backOnly": false}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
 
   {"type": "command", "name": "Goto Oak Logs", "command_string": ".b goto oak_log", "wait_until_done": true},
-  {"type": "command", "name": "Mine Dirt", "command_string": ".b mine 250 dirt", "wait_until_done": true},
+  {"type": "command", "name": "Mine Grass", "command_string": ".b mine 250 grass_block", "wait_until_done": true},
   {"type": "sort",    "name": "Sort Obsidian Inventory", "spec": [{"slot": 4, "item": "dirt", "backOnly": false}, {"slot": 5, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
   {"type": "command", "name": "Set Goal In The Sky", "command_string": ".b goal 100", "wait_until_done": false},
   {"type": "command", "name": "Go To The Sky", "command_string": ".b path", "wait_until_done": true},
@@ -44,11 +44,11 @@
   {"type": "command", "name": "Look Around", "command_string": ".rotate 180 0", "wait_until_done": true},
   {"type": "command", "name": "Look Around", "command_string": ".rotate 270 0", "wait_until_done": true},
   {"type": "command", "name": "Mine Obsidian", "command_string": ".b mine 10 obsidian", "wait_until_done": true},
-  {"type": "command", "name": "Mine Dirt", "command_string": ".b mine 128 dirt", "wait_until_done": true},
+  {"type": "command", "name": "Mine Grass", "command_string": ".b mine 128 grass_block", "wait_until_done": true},
   {"type": "command", "name": "Set Goal Above Lava Level", "command_string": ".b goal 20", "wait_until_done": false},
   {"type": "command", "name": "Go To Above Lava Level", "command_string": ".b path", "wait_until_done": true},
   {"type": "sort",    "name": "Sort Portal Inventory", "spec": [{"slot": 4, "item": "dirt", "backOnly": false}, {"slot": 7, "item": "flint_and_steel", "backOnly": false}, {"slot": 8, "item": "obsidian", "backOnly": false}, {"slot": 9, "item": "cobblestone", "backOnly": false}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
-  {"type": "command", "name": "Build Nether Portal", "command_string": ".b build AIBM_portal.schematic ~ ~2 ~", "wait_until_done": true, "fuse":  45000},
+  {"type": "command", "name": "Build Nether Portal", "command_string": ".b build AIBM_portal.schematic ~ ~2 ~", "wait_until_done": true, "fuse":  90000},
   {"type": "command", "name": "Turn On Auto Eject", "command_string": ".toggle AutoEject", "wait_until_done": false},
   {"type": "command", "name": "Go Into Portal", "command_string": ".b goto cobblestone", "wait_until_done": true},
   {"type": "light",   "name": "Light Portal"}
