@@ -193,6 +193,139 @@ public class Crafter {
                 Typer.leftClick(shortSleep);
                 Typer.releaseKey("shift", shortSleep);
 
+            case "mushroom_stew_1":
+                // Move Mouse Away
+                MouseMover.moveMouseAway();
+
+                // Find location of bowls
+                int[] bowlCoords = Looker.findLocationOnScreen("src\\Item_Images\\bowl.jpg", Looker.getInventoryScreenRect());
+                // Find location of brown mushrooms
+                int[] brownCoords = Looker.findLocationOnScreen("src\\Item_Images\\brown_mushroom_1.jpg", Looker.getInventoryScreenRect());
+                // Find location of red mushrooms
+                int[] redCoords = Looker.findLocationOnScreen("src\\Item_Images\\red_mushroom_1.jpg", Looker.getInventoryScreenRect());
+
+
+                // Pick up items
+                MouseMover.moveMouse(bowlCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+                // Move mouse to craft
+                MouseMover.moveMouse(Looker.getHandCraftSlot4(), shortSleep);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    Typer.rightClick(shortSleep);
+                }
+
+                // Place item back in original slot
+                MouseMover.moveMouse(bowlCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+
+
+                // Pick up items
+                MouseMover.moveMouse(brownCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+                // Move mouse to craft
+                MouseMover.moveMouse(Looker.getHandCraftSlot1(), shortSleep);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    Typer.rightClick(shortSleep);
+                }
+
+                // Place item back in original slot
+                MouseMover.moveMouse(brownCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+
+
+                // Pick up items
+                MouseMover.moveMouse(redCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+                // Move mouse to craft
+                MouseMover.moveMouse(Looker.getHandCraftSlot2(), shortSleep);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    Typer.rightClick(shortSleep);
+                }
+
+                // Place item back in original slot
+                MouseMover.moveMouse(redCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+
+                Waiter.wait(Waiter.getShortSleepTime());
+
+
+                // Get resultant item
+                MouseMover.moveMouse(Looker.getHandCraftSlotRes(), shortSleep);
+                Typer.holdKey("shift", shortSleep);
+                Typer.leftClick(shortSleep);
+                Typer.releaseKey("shift", shortSleep);
+
+                break;
+
+
+             case "mushroom_stew_2":
+                // Move Mouse Away
+                MouseMover.moveMouseAway();
+
+                // Find location of bowls
+                int[] bowlCoords = Looker.findLocationOnScreen("src\\Item_Images\\bowl.jpg", Looker.getInventoryScreenRect());
+                // Find location of brown mushrooms
+                int[] brownCoords = Looker.findLocationOnScreen("src\\Item_Images\\brown_mushroom_2.jpg", Looker.getInventoryScreenRect());
+                // Find location of red mushrooms
+                int[] redCoords = Looker.findLocationOnScreen("src\\Item_Images\\red_mushroom_2.jpg", Looker.getInventoryScreenRect());
+
+
+                // Pick up items
+                MouseMover.moveMouse(bowlCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+                // Move mouse to craft
+                MouseMover.moveMouse(Looker.getHandCraftSlot4(), shortSleep);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    Typer.rightClick(shortSleep);
+                }
+
+                // Place item back in original slot
+                MouseMover.moveMouse(bowlCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+
+
+                // Pick up items
+                MouseMover.moveMouse(brownCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+                // Move mouse to craft
+                MouseMover.moveMouse(Looker.getHandCraftSlot1(), shortSleep);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    Typer.rightClick(shortSleep);
+                }
+
+                // Place item back in original slot
+                MouseMover.moveMouse(brownCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+
+
+                // Pick up items
+                MouseMover.moveMouse(redCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+                // Move mouse to craft
+                MouseMover.moveMouse(Looker.getHandCraftSlot2(), shortSleep);
+                // Place the correct number of items
+                for (int i = 0; i < number; i++) {
+                    Typer.rightClick(shortSleep);
+                }
+
+                // Place item back in original slot
+                MouseMover.moveMouse(redCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+
+                Waiter.wait(Waiter.getShortSleepTime());
+
+
+                // Get resultant item
+                MouseMover.moveMouse(Looker.getHandCraftSlotRes(), shortSleep);
+                Typer.holdKey("shift", shortSleep);
+                Typer.leftClick(shortSleep);
+                Typer.releaseKey("shift", shortSleep);
+
                 break;
 
             case "ender_eye":
