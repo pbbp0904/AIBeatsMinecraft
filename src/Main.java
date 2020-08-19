@@ -58,7 +58,8 @@ public class Main {
 
 
         startUp();
-        doPhase(1);
+        //doPhase(1);
+        jumpToPhase(2);
         doPhase(2);
 
 
@@ -413,10 +414,10 @@ public class Main {
 
     public static void giveDiamondThings() {
         Typer.command("/clear @p",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give Cosmologicomical diamond_helmet{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give Cosmologicomical diamond_chestplate{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give Cosmologicomical diamond_leggings{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give Cosmologicomical diamond_boots{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give pbbp0904 diamond_helmet{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give pbbp0904 diamond_chestplate{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give pbbp0904 diamond_leggings{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give pbbp0904 diamond_boots{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
 
         Typer.type("1",Waiter.getShortSleepTime(),Waiter.getLongSleepTime()*5);
         Typer.holdRightClick(Waiter.getShortSleepTime());
@@ -425,12 +426,12 @@ public class Main {
         Typer.type("4",Waiter.getShortSleepTime(),Waiter.getLongSleepTime()*5);
         Typer.releaseRightClick(Waiter.getShortSleepTime());
 
-        Typer.command("/give Cosmologicomical diamond_sword{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give Cosmologicomical diamond_pickaxe{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give Cosmologicomical diamond_shovel{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give Cosmologicomical cooked_beef 64",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give Cosmologicomical ender_eye 12",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give Cosmologicomical dirt 1024",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give pbbp0904 diamond_sword{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give pbbp0904 diamond_pickaxe{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give pbbp0904 diamond_shovel{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give pbbp0904 cooked_beef 64",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give pbbp0904 ender_eye 24",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give pbbp0904 dirt 1024",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.type("1",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
 
     }
