@@ -341,13 +341,6 @@ public class Looker {
 
     public static boolean foundImageOnScreen(String pathname, Rectangle screenRect, double threshold) {
         BufferedImage screenImg = screenShot(screenRect);
-        try {
-            assert screenImg != null;
-            String s = String.valueOf(System.currentTimeMillis());
-            ImageIO.write(screenImg, "png", new File("src\\Completion_Images\\" + s + ".png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         String s = String.valueOf(System.currentTimeMillis());
         String filePath = new File(pathname).getAbsolutePath();
         BufferedImage img = resize(Objects.requireNonNull(getImage(filePath)), ((double) (guiScale))/3.0);
@@ -362,7 +355,7 @@ public class Looker {
         String filePath = new File(pathname).getAbsolutePath();
         BufferedImage img = makeImageBlackAndWhiteExceptColor(resize(Objects.requireNonNull(getImage(filePath)), ((double) (guiScale))/3.0),whiteThreshold,baritoneColor) ;
         double diff = findSubImageDiff(screenImg, img);
-        System.out.println(diff);
+        //System.out.println(diff);
         return diff < threshold;
     }
 

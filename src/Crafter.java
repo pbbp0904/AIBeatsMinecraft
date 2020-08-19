@@ -136,7 +136,7 @@ public class Crafter {
 
             case "mushroom_stew":
 
-                Waiter.wait(Waiter.getShortSleepTime());
+                Waiter.wait(Waiter.getLongSleepTime());
                 // Move Mouse Away
                 MouseMover.moveMouseAway();
 
@@ -205,7 +205,7 @@ public class Crafter {
 
             case "mushroom_stew_1":
 
-                Waiter.wait(Waiter.getShortSleepTime());
+                Waiter.wait(Waiter.getLongSleepTime());
                 // Move Mouse Away
                 MouseMover.moveMouseAway();
 
@@ -277,7 +277,7 @@ public class Crafter {
 
 
             case "mushroom_stew_2":
-                Waiter.wait(Waiter.getShortSleepTime());
+                Waiter.wait(Waiter.getLongSleepTime());
 
                 // Move Mouse Away
                 MouseMover.moveMouseAway();

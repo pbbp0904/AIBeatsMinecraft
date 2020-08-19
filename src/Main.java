@@ -54,13 +54,9 @@ public class Main {
         }
 
         startUp();
-        while (true){
-            doCheck("blaze_rods");
-            Waiter.wait(3000);
-        }
         //doPhase(1);
-        //jumpToPhase(2);
-        //doPhase(2);
+        jumpToPhase(2);
+        doPhase(2);
 
 
 
@@ -214,8 +210,11 @@ public class Main {
 
     public static void doInstructionSet(String instructionSetString){
         JSONArray instructionSet = loadInstructionSet(instructionSetString);
-        for (Object instruction : instructionSet){
-            doInstruction((JSONObject) instruction);
+        for (int i = 0; i<instructionSet.size(); i++){
+            Object instruction = instructionSet.get(i);
+            int jumpValue = doInstruction((JSONObject) instruction);
+            System.out.print(jumpValue);
+            i = i + jumpValue;
         }
     }
 
@@ -245,6 +244,7 @@ public class Main {
         for (int i = startingInstruction; i<instructionSet.size(); i++){
             Object instruction = instructionSet.get(i);
             int jumpValue = doInstruction((JSONObject) instruction);
+            //System.out.print(jumpValue);
             i = i + jumpValue;
         }
     }
@@ -431,6 +431,7 @@ public class Main {
                 }else{
                     jumpValue = -8;
                 }
+                Typer.closeInventory();
         }
 
         return jumpValue;
