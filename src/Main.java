@@ -39,8 +39,6 @@ public class Main {
         // - Getting obsidian more consistently, Hard
 
 
-
-
         ready = false;
         s = new Starter();
         s.start();
@@ -56,9 +54,13 @@ public class Main {
         }
 
         startUp();
+        while (true){
+            doCheck("blaze_rods");
+            Waiter.wait(3000);
+        }
         //doPhase(1);
-        jumpToPhase(2);
-        doPhase(2);
+        //jumpToPhase(2);
+        //doPhase(2);
 
 
 
@@ -130,7 +132,7 @@ public class Main {
 //        main.Waiter.wait(1000);
 //        main.doPhase(2);
 
-        finish();
+        //finish();
     }
 
     private static void reset() {
@@ -242,14 +244,16 @@ public class Main {
         JSONArray instructionSet = loadInstructionSet(instructionSetString);
         for (int i = startingInstruction; i<instructionSet.size(); i++){
             Object instruction = instructionSet.get(i);
-            doInstruction((JSONObject) instruction);
+            int jumpValue = doInstruction((JSONObject) instruction);
+            i = i + jumpValue;
         }
     }
 
-    private static void doInstruction(JSONObject instruction){
+    private static int doInstruction(JSONObject instruction){
         String type = (String) instruction.get("type");
         String name = (String) instruction.get("name");
         System.out.println("Doing Instruction: " + name);
+        int jumpValue = 0;
         switch (type) {
             case "command":
                 try {
@@ -276,9 +280,15 @@ public class Main {
             case "move":
                 doMove((String) instruction.get("move_type"));
                 break;
+            case "check":
+                jumpValue = doCheck((String) instruction.get("check_type"));
+                break;
         }
         // Type NUMPAD_1 for splits
         Typer.pressKey("NP1");
+
+        //return
+        return jumpValue;
     }
 
     private static void doCommand(String command_string, boolean wait_until_done, long fuse) {
@@ -407,6 +417,23 @@ public class Main {
             default:
                 break;
         }
+    }
+
+    public static int doCheck(String check_type){
+        int jumpValue = 0;
+        switch(check_type){
+            case "blaze_rods":
+                Typer.openInventory();
+                Waiter.wait(Waiter.getShortSleepTime());
+                boolean check = Looker.foundImageOnScreen("src\\Checkpoint_Images\\blaze_rod.jpg", Looker.getInventoryScreenRect(),0.05);
+                if (check){
+                    jumpValue = 0;
+                }else{
+                    jumpValue = -8;
+                }
+        }
+
+        return jumpValue;
     }
 
 
