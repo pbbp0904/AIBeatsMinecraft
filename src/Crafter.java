@@ -14,6 +14,8 @@ public class Crafter {
         int[] coords;
         switch (item) {
             case "oak_planks":
+
+                Waiter.wait(Waiter.getShortSleepTime());
                 // Move Mouse Away
                 MouseMover.moveMouseAway();
 
@@ -43,6 +45,8 @@ public class Crafter {
 
 
             case "crafting_table":
+
+                Waiter.wait(Waiter.getShortSleepTime());
                 // Move mouse away
                 MouseMover.moveMouseAway();
 
@@ -91,6 +95,8 @@ public class Crafter {
 
 
             case "stick":
+
+                Waiter.wait(Waiter.getShortSleepTime());
                 // Move Mouse Away
                 MouseMover.moveMouseAway();
 
@@ -129,6 +135,8 @@ public class Crafter {
 
 
             case "mushroom_stew":
+
+                Waiter.wait(Waiter.getShortSleepTime());
                 // Move Mouse Away
                 MouseMover.moveMouseAway();
 
@@ -196,6 +204,8 @@ public class Crafter {
                 break;
 
             case "mushroom_stew_1":
+
+                Waiter.wait(Waiter.getShortSleepTime());
                 // Move Mouse Away
                 MouseMover.moveMouseAway();
 
@@ -210,6 +220,8 @@ public class Crafter {
                 // Pick up items
                 MouseMover.moveMouse(bowlCoords1, shortSleep);
                 Typer.leftClick(shortSleep);
+                Waiter.wait(Waiter.getShortSleepTime());
+                Typer.leftClick(shortSleep);
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getHandCraftSlot4(), shortSleep);
                 // Place the correct number of items
@@ -220,6 +232,7 @@ public class Crafter {
                 // Place item back in original slot
                 MouseMover.moveMouse(bowlCoords1, shortSleep);
                 Typer.leftClick(shortSleep);
+
 
 
                 // Pick up items
@@ -263,7 +276,9 @@ public class Crafter {
                 break;
 
 
-             case "mushroom_stew_2":
+            case "mushroom_stew_2":
+                Waiter.wait(Waiter.getShortSleepTime());
+
                 // Move Mouse Away
                 MouseMover.moveMouseAway();
 
@@ -277,6 +292,8 @@ public class Crafter {
 
                 // Pick up items
                 MouseMover.moveMouse(bowlCoords2, shortSleep);
+                Typer.leftClick(shortSleep);
+                Waiter.wait(Waiter.getShortSleepTime());
                 Typer.leftClick(shortSleep);
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getHandCraftSlot4(), shortSleep);

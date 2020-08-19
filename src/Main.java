@@ -55,8 +55,6 @@ public class Main {
             Waiter.wait(1000);
         }
 
-
-
         startUp();
         //doPhase(1);
         jumpToPhase(2);
