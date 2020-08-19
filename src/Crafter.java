@@ -193,20 +193,22 @@ public class Crafter {
                 Typer.leftClick(shortSleep);
                 Typer.releaseKey("shift", shortSleep);
 
+                break;
+
             case "mushroom_stew_1":
                 // Move Mouse Away
                 MouseMover.moveMouseAway();
 
                 // Find location of bowls
-                int[] bowlCoords = Looker.findLocationOnScreen("src\\Item_Images\\bowl.jpg", Looker.getInventoryScreenRect());
+                int[] bowlCoords1 = Looker.findLocationOnScreen("src\\Item_Images\\bowl.jpg", Looker.getInventoryScreenRect());
                 // Find location of brown mushrooms
-                int[] brownCoords = Looker.findLocationOnScreen("src\\Item_Images\\brown_mushroom_1.jpg", Looker.getInventoryScreenRect());
+                int[] brownCoords1 = Looker.findLocationOnScreen("src\\Item_Images\\brown_mushroom_1.jpg", Looker.getInventoryScreenRect());
                 // Find location of red mushrooms
-                int[] redCoords = Looker.findLocationOnScreen("src\\Item_Images\\red_mushroom_1.jpg", Looker.getInventoryScreenRect());
+                int[] redCoords1 = Looker.findLocationOnScreen("src\\Item_Images\\red_mushroom_1.jpg", Looker.getInventoryScreenRect());
 
 
                 // Pick up items
-                MouseMover.moveMouse(bowlCoords, shortSleep);
+                MouseMover.moveMouse(bowlCoords1, shortSleep);
                 Typer.leftClick(shortSleep);
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getHandCraftSlot4(), shortSleep);
@@ -216,12 +218,12 @@ public class Crafter {
                 }
 
                 // Place item back in original slot
-                MouseMover.moveMouse(bowlCoords, shortSleep);
+                MouseMover.moveMouse(bowlCoords1, shortSleep);
                 Typer.leftClick(shortSleep);
 
 
                 // Pick up items
-                MouseMover.moveMouse(brownCoords, shortSleep);
+                MouseMover.moveMouse(brownCoords1, shortSleep);
                 Typer.leftClick(shortSleep);
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getHandCraftSlot1(), shortSleep);
@@ -231,12 +233,12 @@ public class Crafter {
                 }
 
                 // Place item back in original slot
-                MouseMover.moveMouse(brownCoords, shortSleep);
+                MouseMover.moveMouse(brownCoords1, shortSleep);
                 Typer.leftClick(shortSleep);
 
 
                 // Pick up items
-                MouseMover.moveMouse(redCoords, shortSleep);
+                MouseMover.moveMouse(redCoords1, shortSleep);
                 Typer.leftClick(shortSleep);
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getHandCraftSlot2(), shortSleep);
@@ -246,7 +248,7 @@ public class Crafter {
                 }
 
                 // Place item back in original slot
-                MouseMover.moveMouse(redCoords, shortSleep);
+                MouseMover.moveMouse(redCoords1, shortSleep);
                 Typer.leftClick(shortSleep);
 
                 Waiter.wait(Waiter.getShortSleepTime());
@@ -266,15 +268,15 @@ public class Crafter {
                 MouseMover.moveMouseAway();
 
                 // Find location of bowls
-                int[] bowlCoords = Looker.findLocationOnScreen("src\\Item_Images\\bowl.jpg", Looker.getInventoryScreenRect());
+                int[] bowlCoords2 = Looker.findLocationOnScreen("src\\Item_Images\\bowl.jpg", Looker.getInventoryScreenRect());
                 // Find location of brown mushrooms
-                int[] brownCoords = Looker.findLocationOnScreen("src\\Item_Images\\brown_mushroom_2.jpg", Looker.getInventoryScreenRect());
+                int[] brownCoords2 = Looker.findLocationOnScreen("src\\Item_Images\\brown_mushroom_2.jpg", Looker.getInventoryScreenRect());
                 // Find location of red mushrooms
-                int[] redCoords = Looker.findLocationOnScreen("src\\Item_Images\\red_mushroom_2.jpg", Looker.getInventoryScreenRect());
+                int[] redCoords2 = Looker.findLocationOnScreen("src\\Item_Images\\red_mushroom_2.jpg", Looker.getInventoryScreenRect());
 
 
                 // Pick up items
-                MouseMover.moveMouse(bowlCoords, shortSleep);
+                MouseMover.moveMouse(bowlCoords2, shortSleep);
                 Typer.leftClick(shortSleep);
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getHandCraftSlot4(), shortSleep);
@@ -284,12 +286,12 @@ public class Crafter {
                 }
 
                 // Place item back in original slot
-                MouseMover.moveMouse(bowlCoords, shortSleep);
+                MouseMover.moveMouse(bowlCoords2, shortSleep);
                 Typer.leftClick(shortSleep);
 
 
                 // Pick up items
-                MouseMover.moveMouse(brownCoords, shortSleep);
+                MouseMover.moveMouse(brownCoords2, shortSleep);
                 Typer.leftClick(shortSleep);
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getHandCraftSlot1(), shortSleep);
@@ -299,12 +301,12 @@ public class Crafter {
                 }
 
                 // Place item back in original slot
-                MouseMover.moveMouse(brownCoords, shortSleep);
+                MouseMover.moveMouse(brownCoords2, shortSleep);
                 Typer.leftClick(shortSleep);
 
 
                 // Pick up items
-                MouseMover.moveMouse(redCoords, shortSleep);
+                MouseMover.moveMouse(redCoords2, shortSleep);
                 Typer.leftClick(shortSleep);
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getHandCraftSlot2(), shortSleep);
@@ -314,7 +316,7 @@ public class Crafter {
                 }
 
                 // Place item back in original slot
-                MouseMover.moveMouse(redCoords, shortSleep);
+                MouseMover.moveMouse(redCoords2, shortSleep);
                 Typer.leftClick(shortSleep);
 
                 Waiter.wait(Waiter.getShortSleepTime());
