@@ -55,10 +55,9 @@ public class Main {
 
 
 
-        //startUp();
-        Looker.lookDown();
-        //doPhase(1);
-        jumpToPhase(3);
+        startUp();
+        doPhase(1);
+        doPhase(2);
         doPhase(3);
 
 

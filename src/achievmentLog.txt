@@ -4,3 +4,5 @@
 242: Nether Run Only Complete
 414: Can Find End Portal Starting With Eyes of Ender
 566: Can Fully Complete Phase 1
+~630: Fully Completed Nether Run Really
+666: Completed Phase 3 With Pearls Given to It.
