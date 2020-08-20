@@ -1,4 +1,6 @@
 [
+  {"type": "command", "name": "Set Explore for Blocks to True", "command_string": ".b set exploreForBlocks true", "wait_until_done": false},
+  {"type": "command", "name": "Turn On Kill Aura", "command_string": ".toggle KillAura", "wait_until_done": false},
   {"type": "command", "name": "Give Diamond Sword", "command_string": "/give pbbp0904 diamond_sword", "wait_until_done": false},
   {"type": "command", "name": "Give Diamond Pickaxe", "command_string": "/give pbbp0904 diamond_pickaxe", "wait_until_done": false},
   {"type": "command", "name": "Give Diamond Shovel", "command_string": "/give pbbp0904 diamond_shovel", "wait_until_done": false},

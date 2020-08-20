@@ -139,6 +139,7 @@ public class Crafter {
                 Waiter.wait(Waiter.getLongSleepTime());
                 // Move Mouse Away
                 MouseMover.moveMouseAway();
+                Waiter.wait(Waiter.getLongSleepTime());
 
                 // Find location of bowls
                 int[] bowlCoords = Looker.findLocationOnScreen("src\\Item_Images\\bowl.jpg", Looker.getInventoryScreenRect());
@@ -208,6 +209,7 @@ public class Crafter {
                 Waiter.wait(Waiter.getLongSleepTime());
                 // Move Mouse Away
                 MouseMover.moveMouseAway();
+                Waiter.wait(Waiter.getLongSleepTime());
 
                 // Find location of bowls
                 int[] bowlCoords1 = Looker.findLocationOnScreen("src\\Item_Images\\bowl.jpg", Looker.getInventoryScreenRect());
@@ -279,6 +281,7 @@ public class Crafter {
 
                 // Move Mouse Away
                 MouseMover.moveMouseAway();
+                Waiter.wait(Waiter.getLongSleepTime());
 
                 // Find location of bowls
                 int[] bowlCoords2 = Looker.findLocationOnScreen("src\\Item_Images\\bowl.jpg", Looker.getInventoryScreenRect());
@@ -344,8 +347,12 @@ public class Crafter {
                 break;
 
             case "ender_eye":
+                Waiter.wait(Waiter.getLongSleepTime());
+
                 // Move Mouse Away
-                //MouseMover.moveMouseAway();
+                MouseMover.moveMouseAway();
+
+                Waiter.wait(Waiter.getLongSleepTime());
 
                 // Find location of blaze rods
                 int[] rodCoords = Looker.findLocationOnScreen("src\\Item_Images\\blaze_rod.jpg", Looker.getInventoryScreenRect());

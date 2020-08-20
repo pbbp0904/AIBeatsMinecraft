@@ -20,8 +20,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         //TODO Implementations:
-        // - Know when to stop killing enderman, Easy
-        // - Replenishing food for phases 3 and 4, Easy
+        // - Replenishing food for phases 3 and 4, Medium
         // - Integrating phases, Medium
         // - Dealing damage to kill the ender dragon, Hard
 
@@ -54,19 +53,13 @@ public class Main {
         }
 
 
-        startUp();
-        Looker.lookDown();
-        int i = 0;
-        while(i < 1000000000){
-            doCheck("ender_pearls");
-            Waiter.wait(10000);
-            i++;
-        }
+
 
         startUp();
+        Looker.lookDown();
         //doPhase(1);
-        jumpToPhase(2);
-        doPhase(2);
+        jumpToPhase(3);
+        doPhase(3);
 
 
 
@@ -80,7 +73,14 @@ public class Main {
 
 
 
-
+//        startUp();
+//        Looker.lookDown();
+//        int i = 0;
+//        while(i < 1000000000){
+//            doCheck("ender_pearls");
+//            Waiter.wait(10000);
+//            i++;
+//        }
 
 
 //        startUp();
