@@ -51,5 +51,5 @@
   {"type": "command", "name": "Build Nether Portal", "command_string": ".b build AIBM_portal.schematic ~ ~2 ~", "wait_until_done": true, "fuse":  90000},
   {"type": "command", "name": "Turn On Auto Eject", "command_string": ".toggle AutoEject", "wait_until_done": false},
   {"type": "command", "name": "Go Into Portal", "command_string": ".b goto cobblestone", "wait_until_done": true},
-  {"type": "light",   "name": "Light Portal"}
+  {"type": "light",   "name": "Light Nether Portal", "portal": "nether"}
 ]

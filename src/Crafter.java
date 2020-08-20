@@ -151,12 +151,12 @@ public class Crafter {
                 // Pick up items
                 MouseMover.moveMouse(bowlCoords, shortSleep);
                 Typer.leftClick(shortSleep);
+                Waiter.wait(Waiter.getShortSleepTime());
+                Typer.leftClick(shortSleep);
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getHandCraftSlot4(), shortSleep);
-                // Place the correct number of items
-                for (int i = 0; i < number; i++) {
-                    Typer.rightClick(shortSleep);
-                }
+                // Place all the items
+                Typer.leftClick(shortSleep);
 
                 // Place item back in original slot
                 MouseMover.moveMouse(bowlCoords, shortSleep);
@@ -224,10 +224,8 @@ public class Crafter {
                 Typer.leftClick(shortSleep);
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getHandCraftSlot4(), shortSleep);
-                // Place the correct number of items
-                for (int i = 0; i < number; i++) {
-                    Typer.rightClick(shortSleep);
-                }
+                // Place all the items
+                Typer.leftClick(shortSleep);
 
                 // Place item back in original slot
                 MouseMover.moveMouse(bowlCoords1, shortSleep);
@@ -297,10 +295,8 @@ public class Crafter {
                 Typer.leftClick(shortSleep);
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getHandCraftSlot4(), shortSleep);
-                // Place the correct number of items
-                for (int i = 0; i < number; i++) {
-                    Typer.rightClick(shortSleep);
-                }
+                // Place all the items
+                Typer.leftClick(shortSleep);
 
                 // Place item back in original slot
                 MouseMover.moveMouse(bowlCoords2, shortSleep);
@@ -361,7 +357,7 @@ public class Crafter {
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getHandCraftSlot1(), shortSleep);
                 // Place the correct number of items
-                for (int i = 0; i < number; i++) {
+                for (int i = 0; i < number/2; i++) {
                     Typer.rightClick(shortSleep);
                 }
 
@@ -393,7 +389,7 @@ public class Crafter {
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getHandCraftSlot1(), shortSleep);
                 // Place the correct number of items
-                for (int i = 0; i < 2*number; i++) {
+                for (int i = 0; i < number; i++) {
                     Typer.rightClick(shortSleep);
                 }
 
@@ -408,12 +404,33 @@ public class Crafter {
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getHandCraftSlot2(), shortSleep);
                 // Place the correct number of items
-                for (int i = 0; i < 2*number; i++) {
-                    Typer.rightClick(shortSleep);
-                }
+                Typer.leftClick(shortSleep);
 
                 // Place item back in original slot
                 MouseMover.moveMouse(pearlCoords, shortSleep);
+                Typer.leftClick(shortSleep);
+
+
+                // Get resultant item
+                MouseMover.moveMouse(Looker.getHandCraftSlotRes(), shortSleep);
+                Typer.holdKey("shift", shortSleep);
+                Typer.leftClick(shortSleep);
+                Typer.releaseKey("shift", shortSleep);
+
+
+                // Find location of ender pearls
+                int[] pearlCoords_2 = Looker.findLocationOnScreen("src\\Item_Images\\ender_pearl.jpg", Looker.getInventoryScreenRect());
+
+                // Pick up items
+                MouseMover.moveMouse(pearlCoords_2, shortSleep);
+                Typer.leftClick(shortSleep);
+                // Move mouse to craft
+                MouseMover.moveMouse(Looker.getHandCraftSlot2(), shortSleep);
+                // Place the correct number of items
+                Typer.leftClick(shortSleep);
+
+                // Place item back in original slot
+                MouseMover.moveMouse(pearlCoords_2, shortSleep);
                 Typer.leftClick(shortSleep);
 
 

@@ -53,6 +53,16 @@ public class Main {
             Waiter.wait(1000);
         }
 
+
+        startUp();
+        Looker.lookDown();
+        int i = 0;
+        while(i < 1000000000){
+            doCheck("ender_pearls");
+            Waiter.wait(10000);
+            i++;
+        }
+
         startUp();
         //doPhase(1);
         jumpToPhase(2);
@@ -275,13 +285,19 @@ public class Main {
                 doSort((JSONArray) instruction.get("spec"), (boolean) instruction.get("discard_unspecified"), (boolean) instruction.get("open_inventory"), (boolean) instruction.get("close_inventory"));
                 break;
             case "light":
-                doLight();
+                doLight((String) instruction.get("portal"));
                 break;
             case "move":
                 doMove((String) instruction.get("move_type"));
                 break;
             case "check":
                 jumpValue = doCheck((String) instruction.get("check_type"));
+                break;
+            case "hotbar":
+                doHotbar((String) instruction.get("slot"));
+                break;
+            case "throw":
+                doThrow();
                 break;
         }
         // Type NUMPAD_1 for splits
@@ -382,16 +398,44 @@ public class Main {
         }
     }
 
-    private static void doLight() {
-        Typer.type("2");
-        Looker.lookUp();
-        Typer.holdLeftClick(1000);
-        Typer.releaseLeftClick(10);
-        Sorter.putItemInHotbar("flint_and_steel", 7, false);
-        Typer.type("7");
-        Typer.holdRightClick(Waiter.getLongSleepTime());
-        Typer.releaseRightClick(Waiter.getLongSleepTime());
-        Waiter.wait(10000);
+    private static void doLight(String portal) {
+        switch (portal) {
+            case "nether":
+                Typer.type("2");
+                Looker.lookUp();
+                Typer.holdLeftClick(1000);
+                Typer.releaseLeftClick(10);
+                Sorter.putItemInHotbar("flint_and_steel", 7, false);
+                Typer.type("7");
+                Typer.holdRightClick(Waiter.getLongSleepTime());
+                Typer.releaseRightClick(Waiter.getLongSleepTime());
+                Waiter.wait(10000);
+                break;
+            case "end":
+                Typer.command(".toggle KillAura");
+                Typer.command(".b set avoidance false");
+                Typer.command(".b goto stone_brick_stairs");
+                Looker.waitUntilStationary();
+                Typer.command(".b goto spawner");
+                Waiter.wait(2000);
+                Typer.startMoveForward();
+                Typer.doJump();
+                Waiter.wait(500);
+                Typer.stopJump();
+                Waiter.wait(700);
+                Looker.lookDown();
+                Typer.type("4");
+                Typer.holdRightClick(10);
+                Typer.stopMoveForward();
+                Waiter.wait(750);
+                Typer.releaseRightClick(1);
+
+                for(int rot = 0; rot<360; rot+=20) {
+                    Typer.command(".rotate " + Integer.toString(rot) + " 0");
+                    Typer.type("5");
+                    Typer.rightClick(Waiter.getShortSleepTime());
+                }
+        }
     }
 
 
@@ -424,17 +468,41 @@ public class Main {
         switch(check_type){
             case "blaze_rods":
                 Typer.openInventory();
-                Waiter.wait(Waiter.getShortSleepTime());
-                boolean check = Looker.foundImageOnScreen("src\\Checkpoint_Images\\blaze_rod.jpg", Looker.getInventoryScreenRect(),0.05);
-                if (check){
+                Waiter.wait(Waiter.getLongSleepTime());
+                MouseMover.moveMouseAway();
+                Waiter.wait(Waiter.getLongSleepTime());
+                boolean blaze_check = Looker.foundImageOnScreen("src\\Checkpoint_Images\\blaze_rod.jpg", Looker.getInventoryScreenRect(),0.05);
+                if (blaze_check){
                     jumpValue = 0;
                 }else{
                     jumpValue = -9;
                 }
                 Typer.closeInventory();
+            case "ender_pearls":
+                Typer.openInventory();
+                Waiter.wait(Waiter.getLongSleepTime());
+                MouseMover.moveMouseAway();
+                Waiter.wait(Waiter.getLongSleepTime());
+                boolean ender_check_4 = Looker.foundImageOnScreen("src\\Checkpoint_Images\\ender_pearls_4.jpg", Looker.getInventoryScreenRect(),0.05);
+                boolean ender_check_16 = Looker.foundImageOnScreen("src\\Checkpoint_Images\\ender_pearls_16.jpg", Looker.getInventoryScreenRect(),0.05);
+                if (ender_check_4 && ender_check_16){
+                    jumpValue = 0;
+                }else{
+                    jumpValue = -7;
+                }
+                Typer.closeInventory();
         }
 
         return jumpValue;
+    }
+
+
+    public static void doHotbar(String slot){
+        Typer.type(slot);
+    }
+
+    public static void doThrow(){
+        Typer.rightClick(150);
     }
 
 
