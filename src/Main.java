@@ -55,7 +55,7 @@ public class Main {
 
 
 
-        startUp();
+        //startUp();
         Looker.lookDown();
         //doPhase(1);
         jumpToPhase(3);
@@ -412,7 +412,6 @@ public class Main {
                 Waiter.wait(10000);
                 break;
             case "end":
-                Typer.command(".toggle KillAura");
                 Typer.command(".b set avoidance false");
                 Typer.command(".b goto stone_brick_stairs");
                 Looker.waitUntilStationary();
@@ -502,7 +501,8 @@ public class Main {
     }
 
     public static void doThrow(){
-        Typer.rightClick(150);
+        Typer.rightClick(250);
+        Waiter.wait(100);
     }
 
 

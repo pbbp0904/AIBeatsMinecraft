@@ -4,7 +4,7 @@
   {"type": "command", "name": "Give Diamond Sword", "command_string": "/give pbbp0904 diamond_sword", "wait_until_done": false},
   {"type": "command", "name": "Give Diamond Pickaxe", "command_string": "/give pbbp0904 diamond_pickaxe", "wait_until_done": false},
   {"type": "command", "name": "Give Diamond Shovel", "command_string": "/give pbbp0904 diamond_shovel", "wait_until_done": false},
-  {"type": "command", "name": "Give Dirt", "command_string": "/give pbbp0904 dirt 64", "wait_until_done": false},
+  {"type": "command", "name": "Give Dirt", "command_string": "/give pbbp0904 dirt 128", "wait_until_done": false},
   {"type": "command", "name": "Give Blaze Rods", "command_string": "/give pbbp0904 blaze_rod 10", "wait_until_done": false},
   {"type": "command", "name": "Give Diamond Helmet", "command_string": "/give pbbp0904 diamond_helmet", "wait_until_done": false},
   {"type": "command", "name": "Give Diamond Chestplate", "command_string": "/give pbbp0904 diamond_chestplate", "wait_until_done": false},
