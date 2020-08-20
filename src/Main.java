@@ -54,8 +54,8 @@ public class Main {
         }
 
         startUp();
-        doPhase(1);
-        //jumpToPhase(2);
+        //doPhase(1);
+        jumpToPhase(2);
         doPhase(2);
 
 
