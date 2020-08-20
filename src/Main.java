@@ -25,6 +25,7 @@ public class Main {
         // - Dealing damage to kill the ender dragon, Hard
 
         //TODO Improvements:
+        // - Edit Portal Schematic for better chance at lighting the portal, Medium
         // - External config file, Easy
         // - Move command/instruction code out of main, Easy
         // - More consistent portal assembly, Medium
