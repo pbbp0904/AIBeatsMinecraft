@@ -20,15 +20,15 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         //TODO Implementations:
-        // - Know when to stop killing blazes, Medium
-        // - Know when to stop killing enderman, Medium
-        // - Replenishing food, Medium
+        // - Know when to stop killing enderman, Easy
+        // - Replenishing food for phases 3 and 4, Easy
         // - Integrating phases, Medium
         // - Dealing damage to kill the ender dragon, Hard
 
         //TODO Improvements:
         // - External config file, Easy
         // - Move command/instruction code out of main, Easy
+        // - More consistent portal assembly, Medium
         // - Start up Baritone/Autoeject config, Medium
         // - Making inventory item search faster, Medium
         // - Move to png image files, Medium
@@ -54,8 +54,8 @@ public class Main {
         }
 
         startUp();
-        //doPhase(1);
-        jumpToPhase(2);
+        doPhase(1);
+        //jumpToPhase(2);
         doPhase(2);
 
 
@@ -429,7 +429,7 @@ public class Main {
                 if (check){
                     jumpValue = 0;
                 }else{
-                    jumpValue = -8;
+                    jumpValue = -9;
                 }
                 Typer.closeInventory();
         }
