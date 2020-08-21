@@ -38,7 +38,8 @@ public class Main {
         // - More efficiently hunting enderman, Medium
         // - Asynch run counter git push, Medium
         // - Interact via the baritone API, Hard
-        // - Getting obsidian more consistently, Hard
+        // - Getting obsidian more consistently, Hard - Break chest, implement an obsidian check
+        // - Maybe just look for villages in general, hay bales for food, obsidian
 
 
         ready = false;
