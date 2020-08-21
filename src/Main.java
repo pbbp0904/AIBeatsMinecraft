@@ -22,6 +22,7 @@ public class Main {
         //TODO Implementations:
         // - Replenishing food for phases 3 and 4, Medium
         // - Integrating phases 2->3 and 3->4, Medium
+        // - Destroy end crystals, Hard - N/A time detection, better ways?
         // - Dealing damage to kill the ender dragon, Hard
 
         //TODO Improvements:
@@ -58,14 +59,14 @@ public class Main {
 
 
         startUp();
-        jumpToPhase(4);
-        Waiter.wait(2000);
-        doPhase(4);
-//        doPhase(1);
-//        doPhase(2);
-//        doPhase(3);
 
+        doPhase(1);
+        doPhase(2);
+        doPhase(3);
 
+        //jumpToPhase(4);
+        //Waiter.wait(2000);
+        //doPhase(4);
 
         //giveDiamondThings();
         //gotoEndPortal();
@@ -679,7 +680,7 @@ public class Main {
         Waiter.waitShort();
         Filer.schematicsFolder();
         Waiter.waitShort();
-        Typer.command(".b set followRadius 0");
+        Typer.command(".b set maxFallHeightNoWater 3");
         Typer.command(".b set avoidance false");
         Typer.command(".b set exploreForBlocks false");
         Waiter.waitShort();

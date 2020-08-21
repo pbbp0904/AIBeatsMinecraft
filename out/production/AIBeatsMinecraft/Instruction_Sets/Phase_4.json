@@ -1,6 +1,7 @@
 [
-  {"type": "command", "name": "Destroy End Crystals", "command_string": "/kill @e[type=end_crystal]", "wait_until_done": true},
-  {"type": "command", "name": "Goto Wall Torch", "command_string": ".b goto wall_torch", "wait_until_done": true},
+  {"type": "command", "name": "Change Max Fall Height", "command_string": ".b set maxFallHeightNoWater 8", "wait_until_done": true},
+  {"type": "command", "name": "Destroy End Crystals", "command_string": ".b follow entity end_crystal", "wait_until_done": true},
+  {"type": "command", "name": "Goto Wall Torch", "command_string": ".b mine 1 wall_torch", "wait_until_done": true},
   {"type": "command", "name": "Build Shield", "command_string": ".b build shield.schematic ~-1 ~-1 ~-1", "wait_until_done": true},
   {"type": "command", "name": "Goto Torch", "command_string": ".b goto torch", "wait_until_done": true}
 ]
