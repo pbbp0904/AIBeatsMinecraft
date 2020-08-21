@@ -21,13 +21,14 @@ public class Main {
 
         //TODO Implementations:
         // - Replenishing food for phases 3 and 4, Medium
-        // - Integrating phases, Medium
+        // - Integrating phases 2->3 and 3->4, Medium
         // - Dealing damage to kill the ender dragon, Hard
 
         //TODO Improvements:
         // - Edit Portal Schematic for better chance at lighting the portal, Medium
         // - External config file, Easy
         // - Move command/instruction code out of main, Easy
+        // - Nether Mushroom Shimmy
         // - More consistent portal assembly, Medium
         // - Start up Baritone/Autoeject config, Medium
         // - Making inventory item search faster, Medium

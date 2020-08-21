@@ -8,7 +8,6 @@
   {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": -1, "item": "diamond_helmet", "backOnly": false}, {"slot": -1, "item": "diamond_chestplate", "backOnly": false}, {"slot": -1, "item": "diamond_leggings", "backOnly": false}, {"slot": -1, "item": "diamond_boots", "backOnly": false}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
   {"type": "command", "name": "Give Water Bucket", "command_string": "/give Cosmologicomical water_bucket", "wait_until_done": false},
   {"type": "command", "name": "Give Golden Apples", "command_string": "/give Cosmologicomical golden_apple 20", "wait_until_done": false},
-  {"type": "command", "name": "Give a Torch", "command_string": "/give Cosmologicomical torch 1", "wait_until_done": false},
-  {"type": "command", "name": "Give Dirt", "command_string": "/give Cosmologicomical dirt 512", "wait_until_done": false},
+  {"type": "command", "name": "Give Dirt", "command_string": "/give Cosmologicomical dirt 128", "wait_until_done": false},
   {"type": "command", "name": "Make End Portal", "command_string": "/fill ~ ~ ~ ~ ~ ~ end_portal", "wait_until_done": false}
 ]

@@ -14,8 +14,8 @@
 
   {"type": "command", "name": "Goto Spawner 0", "command_string": ".b goto spawner", "wait_until_done": true, "fuse":  60000},
   {"type": "command", "name": "Goto Spawner 1", "command_string": ".b goto spawner", "wait_until_done": true, "fuse":  60000},
-  {"type": "command", "name": "Kill Blaze 1", "command_string": ".b follow entity blaze", "wait_until_done": true, "fuse":  30000},
-  {"type": "command", "name": "Pick Up Items 1", "command_string": ".b follow entity item", "wait_until_done": true, "fuse":  30000},
+  {"type": "command", "name": "Kill Blaze 1", "command_string": ".b follow entity blaze", "wait_until_done": true, "fuse":  15000},
+  {"type": "command", "name": "Pick Up Items 1", "command_string": ".b follow entity item", "wait_until_done": true, "fuse":  15000},
   {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
 
   {"type": "sort",    "name": "Sort Nether", "spec": [{"slot": 6, "item": "mushroom_stew", "backOnly": false}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
