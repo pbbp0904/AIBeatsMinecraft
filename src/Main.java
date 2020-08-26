@@ -471,6 +471,19 @@ public class Main {
     public static int doCheck(String check_type){
         int jumpValue = 0;
         switch(check_type){
+            case "flint":
+                Typer.openInventory();
+                Waiter.wait(Waiter.getLongSleepTime());
+                MouseMover.moveMouseAway();
+                Waiter.wait(Waiter.getLongSleepTime());
+                boolean flint_check = Looker.foundImageOnScreen("src\\Checkpoint_Images\\flint.jpg", Looker.getInventoryScreenRect(),0.05);
+                if (flint_check){
+                    jumpValue = 0;
+                }else{
+                    jumpValue = -2;
+                }
+                Typer.closeInventory();
+                break;
             case "blaze_rods":
                 Typer.openInventory();
                 Waiter.wait(Waiter.getLongSleepTime());
@@ -483,6 +496,7 @@ public class Main {
                     jumpValue = -9;
                 }
                 Typer.closeInventory();
+                break;
             case "ender_pearls":
                 Typer.openInventory();
                 Waiter.wait(Waiter.getLongSleepTime());
@@ -496,6 +510,7 @@ public class Main {
                     jumpValue = -7;
                 }
                 Typer.closeInventory();
+                break;
         }
 
         return jumpValue;
