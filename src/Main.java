@@ -480,7 +480,7 @@ public class Main {
                 if (flint_check){
                     jumpValue = 0;
                 }else{
-                    jumpValue = -2;
+                    jumpValue = -3;
                 }
                 Typer.closeInventory();
                 break;
