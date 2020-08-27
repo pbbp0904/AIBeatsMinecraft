@@ -19,7 +19,11 @@
   {"type": "command", "name": "Goto and Enter Furnace", "command_string": ".b goto furnace", "wait_until_done": true},
   {"type": "smelt",   "name": "Smelt Iron Ore", "number": 10, "item": "iron_ore", "place_in": true, "wait_until_done": false, "open_inventory": false, "close_inventory": true},
 
-  {"type": "command", "name": "Mine Gravel", "command_string": ".b mine gravel", "wait_until_done": true, "fuse": 15000},
+  {"type": "command", "name": "Mine Gravel", "command_string": ".b mine gravel", "wait_until_done": true, "fuse": 10000},
+  {"type": "command", "name": "Stop", "command_string": ".b stop", "wait_until_done": false},
+
+  {"type": "command", "name": "Mine Gravel", "command_string": ".b mine gravel", "wait_until_done": true, "fuse": 10000},
+  {"type": "command", "name": "Stop", "command_string": ".b stop", "wait_until_done": false},
   {"type":   "check", "name": "Gravel Check", "check_type": "flint"},
 
   {"type": "command", "name": "Mine Grass", "command_string": ".b mine 70 grass_block", "wait_until_done": true},

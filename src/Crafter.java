@@ -364,7 +364,7 @@ public class Crafter {
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getHandCraftSlot1(), shortSleep);
                 // Place the correct number of items
-                for (int i = 0; i < number/2; i++) {
+                for (int i = 0; i < Math.ceil(number/2.0); i++) {
                     Typer.rightClick(shortSleep);
                 }
 

@@ -26,6 +26,7 @@ public class Main {
         // - Dealing damage to kill the ender dragon, Hard
 
         //TODO Improvements:
+        // - Any amount of mushrooms craft, Medium
         // - Edit Portal Schematic for better chance at lighting the portal, Medium
         // - External config file, Easy
         // - Move command/instruction code out of main, Easy
@@ -61,13 +62,13 @@ public class Main {
 
         startUp();
 
-        doPhase(1);
-        doPhase(2);
-        doPhase(3);
+        //doPhase(1);
+        //doPhase(2);
+        //doPhase(3);
 
-        //jumpToPhase(4);
-        //Waiter.wait(2000);
-        //doPhase(4);
+        jumpToPhase(3);
+        Waiter.wait(30000);
+        doPhase(3);
 
         //giveDiamondThings();
         //gotoEndPortal();
