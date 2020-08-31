@@ -30,7 +30,7 @@ public class Main {
         // - Edit Portal Schematic for better chance at lighting the portal, Medium
         // - External config file, Easy
         // - Move command/instruction code out of main, Easy
-        // - Nether Mushroom Shimmy
+        // - Nether Mushroom Shimmy, Medium
         // - More consistent portal assembly, Medium
         // - Start up Baritone/Autoeject config, Medium
         // - Making inventory item search faster, Medium
@@ -60,15 +60,15 @@ public class Main {
 
 
 
-        startUp();
-
+        //startUp();
+        Looker.lookDown();
         //doPhase(1);
         //doPhase(2);
-        //doPhase(3);
-
-        jumpToPhase(3);
-        Waiter.wait(30000);
         doPhase(3);
+
+//        jumpToPhase(3);
+//        Waiter.wait(30000);
+//        doPhase(3);
 
         //giveDiamondThings();
         //gotoEndPortal();

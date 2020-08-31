@@ -71,5 +71,5 @@
   {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
   {"type":   "check", "name": "Blaze Rod Check", "check_type": "blaze_rods"},
 
-  {"type": "command", "name": "Goto Nether Portal", "command_string": ".b goto nether_portal", "wait_until_done": false}
+  {"type": "command", "name": "Goto Nether Portal", "command_string": ".b goto nether_portal", "wait_until_done": true}
 ]
