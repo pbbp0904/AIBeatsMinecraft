@@ -31,16 +31,15 @@ public class Main {
         // - External config file, Easy
         // - Move command/instruction code out of main, Easy
         // - Nether Mushroom Shimmy, Medium
+        // - Better Ender Pearl Detection, Medium
         // - More consistent portal assembly, Medium
         // - Start up Baritone/Autoeject config, Medium
         // - Making inventory item search faster, Medium
         // - Move to png image files, Medium
-        // - Progress checks, Medium
         // - More efficiently hunting enderman, Medium
         // - Asynch run counter git push, Medium
         // - Interact via the baritone API, Hard
-        // - Getting obsidian more consistently, Hard - Break chest, implement an obsidian check
-        // - Maybe just look for villages in general, hay bales for food, obsidian
+        // - Getting obsidian more consistently, Hard
 
 
         ready = false;
