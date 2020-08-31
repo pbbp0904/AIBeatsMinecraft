@@ -26,20 +26,22 @@ public class Main {
         // - Dealing damage to kill the ender dragon, Hard
 
         //TODO Improvements:
-        // - Any amount of mushrooms craft, Medium
-        // - Edit Portal Schematic for better chance at lighting the portal, Medium
-        // - External config file, Easy
-        // - Move command/instruction code out of main, Easy
+        // - Pressing:
         // - Nether Mushroom Shimmy, Medium
         // - Better Ender Pearl Detection, Medium
-        // - More consistent portal assembly, Medium
+        // - More consistent portal assembly, Edit Portal Schematic for better chance at lighting the portal, Medium
         // - Start up Baritone/Autoeject config, Medium
         // - Making inventory item search faster, Medium
-        // - Move to png image files, Medium
         // - More efficiently hunting enderman, Medium
+        // - Not Pressing:
+        // - External config file, Easy
         // - Asynch run counter git push, Medium
         // - Interact via the baritone API, Hard
         // - Getting obsidian more consistently, Hard
+        // - Move to png image files, Medium
+        // - Move command/instruction code out of main, Easy
+
+
 
 
         ready = false;
@@ -61,6 +63,7 @@ public class Main {
 
         //startUp();
         Looker.lookDown();
+        Crafter.craft("mushroom_stew",12);
         //doPhase(1);
         //doPhase(2);
         doPhase(3);
