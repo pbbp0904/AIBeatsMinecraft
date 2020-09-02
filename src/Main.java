@@ -61,11 +61,11 @@ public class Main {
 
 
 
-        //startUp();
-        Looker.lookDown();
-        Crafter.craft("mushroom_stew",12);
-        //doPhase(1);
-        //doPhase(2);
+        startUp();
+        //Looker.lookDown();
+        //Crafter.craft("mushroom_stew",12);
+        doPhase(1);
+        doPhase(2);
         doPhase(3);
 
 //        jumpToPhase(3);
@@ -702,6 +702,7 @@ public class Main {
         Typer.command(".b set maxFallHeightNoWater 3");
         Typer.command(".b set avoidance false");
         Typer.command(".b set exploreForBlocks false");
+        Typer.command(".b set blocksToAvoid water");
         Waiter.waitShort();
         Typer.pressKey("NP1");
     }
