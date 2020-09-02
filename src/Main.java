@@ -27,7 +27,6 @@ public class Main {
 
         //TODO Improvements:
         // - Pressing:
-        // - Nether Mushroom Shimmy, Medium
         // - Better Ender Pearl Detection, Medium
         // - More consistent portal assembly, Edit Portal Schematic for better chance at lighting the portal, Medium
         // - Start up Baritone/Autoeject config, Medium
