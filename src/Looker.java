@@ -53,6 +53,8 @@ public class Looker {
 
     private static final int aLongTime = 10000000;
 
+    public static boolean randomMovement = false;
+
 
     private static final int[] handCraftSlot1;
     private static final int[] handCraftSlot2;
@@ -264,6 +266,12 @@ public class Looker {
             }
             imageFoundOnScreen = foundImageOnScreenBW("src\\Checkpoint_Images\\done.png",topLeftScreenRect,doneThreshold) || !colorInRect(topLeftScreenRect,baritoneColor);
             end = System.currentTimeMillis();
+
+            if(randomMovement && Math.random() < 0.1){
+                Typer.startMoveForward();
+                Waiter.wait(100);
+                Typer.stopMoveForward();
+            }
         }
     }
 

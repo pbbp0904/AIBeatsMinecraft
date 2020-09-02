@@ -62,8 +62,6 @@ public class Main {
 
 
         startUp();
-        //Looker.lookDown();
-        //Crafter.craft("mushroom_stew",12);
         doPhase(1);
         doPhase(2);
         doPhase(3);
@@ -465,6 +463,12 @@ public class Main {
                 Waiter.wait(150);
                 Typer.stopMoveRight();
                 Waiter.wait(2000);
+                break;
+            case "randomMovementOn":
+                Looker.randomMovement = true;
+                break;
+            case "randomMovementOff":
+                Looker.randomMovement = false;
                 break;
             default:
                 break;
