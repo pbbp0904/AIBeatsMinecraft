@@ -3,6 +3,7 @@
   {"type": "command", "name": "Turn On Explore for Blocks", "command_string": ".b set exploreForBlocks true", "wait_until_done": false},
   {"type": "command", "name": "Turn Off Mob Avoidance", "command_string": ".b set avoidance false", "wait_until_done": false},
   {"type": "command", "name": "Can Place Cobblestone", "command_string": ".b set acceptableThrowawayItems dirt,netherrack,cobblestone", "wait_until_done": false},
+  {"type": "command", "name": "Set Portal Waypoint", "command_string": ".b wp s user Portal", "wait_until_done": false},
   {"type": "move",    "name": "Turn Random Movement On", "move_type": "randomMovementOn"},
   {"type": "command", "name": "Mine Brown Mushrooms", "command_string": ".b mine 3 brown_mushroom", "wait_until_done": true},
   {"type": "command", "name": "Mine Red Mushrooms", "command_string": ".b mine 3 red_mushroom", "wait_until_done": true},
@@ -75,12 +76,13 @@
   {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
   {"type": "check",   "name": "Blaze Rod Check", "check_type": "blaze_rods"},
 
-  {"type": "command", "name": "Goto Nether Portal", "command_string": ".b goto obsidian", "wait_until_done": true},
   {"type": "move",    "name": "Turn Random Movement On", "move_type": "randomMovementOn"},
   {"type": "command", "name": "Mine Mushrooms", "command_string": ".b mine 30 brown_mushroom red_mushroom", "wait_until_done": true},
   {"type": "command", "name": "Mine Brown Mushrooms", "command_string": ".b mine 30 brown_mushroom", "wait_until_done": true},
   {"type": "command", "name": "Mine Red Mushrooms", "command_string": ".b mine 30 red_mushroom", "wait_until_done": true},
   {"type": "move",    "name": "Turn Random Movement Off", "move_type": "randomMovementOff"},
 
+  {"type": "command", "name": "Goto Portal Waypoint", "command_string": ".b wp goal Portal", "wait_until_done": false},
+  {"type": "command", "name": "Path", "command_string": ".b path", "wait_until_done": true},
   {"type": "command", "name": "Goto Nether Portal", "command_string": ".b goto nether_portal", "wait_until_done": true}
 ]
