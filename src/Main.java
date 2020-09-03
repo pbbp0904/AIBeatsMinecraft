@@ -231,7 +231,7 @@ public class Main {
         for (int i = 0; i<instructionSet.size(); i++){
             Object instruction = instructionSet.get(i);
             int jumpValue = doInstruction((JSONObject) instruction);
-            System.out.print(jumpValue);
+            //System.out.print(jumpValue);
             i = i + jumpValue;
         }
     }

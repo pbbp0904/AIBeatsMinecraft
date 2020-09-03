@@ -353,7 +353,7 @@ public class Looker {
         String filePath = new File(pathname).getAbsolutePath();
         BufferedImage img = resize(Objects.requireNonNull(getImage(filePath)), ((double) (guiScale))/3.0);
         double diff = findSubImageDiff(screenImg, img);
-        System.out.println(diff);
+        //System.out.println(diff);
         return diff < threshold;
     }
 

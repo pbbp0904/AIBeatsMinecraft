@@ -68,6 +68,8 @@
   {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
   {"type": "check",   "name": "Blaze Rod Check", "check_type": "blaze_rods"},
 
+  {"type": "command", "name": "Goto Portal Waypoint", "command_string": ".b wp goal Portal", "wait_until_done": false},
+  {"type": "command", "name": "Path", "command_string": ".b path", "wait_until_done": true},
   {"type": "move",    "name": "Turn Random Movement On", "move_type": "randomMovementOn"},
   {"type": "command", "name": "Mine Mushrooms", "command_string": ".b mine 30 brown_mushroom red_mushroom", "wait_until_done": true},
   {"type": "command", "name": "Mine Brown Mushrooms", "command_string": ".b mine 30 brown_mushroom", "wait_until_done": true},
