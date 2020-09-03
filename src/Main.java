@@ -61,7 +61,9 @@ public class Main {
 
 
         startUp();
-        doPhase(1);
+        //doPhase(1);
+        Looker.lookDown();
+        jumpToPhase(2);
         doPhase(2);
         doPhase(3);
 
@@ -706,6 +708,7 @@ public class Main {
         Typer.command(".b set avoidance false");
         Typer.command(".b set exploreForBlocks false");
         Typer.command(".b set blocksToAvoid water");
+        Typer.command(".b set acceptableThrowawayItems dirt,netherrack");
         Waiter.waitShort();
         Typer.pressKey("NP1");
     }
