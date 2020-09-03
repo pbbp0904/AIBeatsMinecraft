@@ -3,6 +3,7 @@
   {"type": "command", "name": "Turn On Explore for Blocks", "command_string": ".b set exploreForBlocks true", "wait_until_done": false},
   {"type": "command", "name": "Turn Off Mob Avoidance", "command_string": ".b set avoidance false", "wait_until_done": false},
   {"type": "command", "name": "Can Place Cobblestone", "command_string": ".b set acceptableThrowawayItems dirt,netherrack,cobblestone", "wait_until_done": false},
+  {"type": "command", "name": "Set Portal Waypoint", "command_string": ".b wp s user Portal", "wait_until_done": false},
   {"type": "move",    "name": "Turn Random Movement On", "move_type": "randomMovementOn"},
   {"type": "command", "name": "Mine Brown Mushrooms", "command_string": ".b mine 3 brown_mushroom", "wait_until_done": true},
   {"type": "command", "name": "Mine Red Mushrooms", "command_string": ".b mine 3 red_mushroom", "wait_until_done": true},
@@ -16,8 +17,8 @@
   {"type": "craft",   "name": "Craft Mushroom Stew", "number": 12, "item": "mushroom_stew", "open_inventory": true, "close_inventory": true},
   {"type": "sort",    "name": "Sort Nether", "spec": [{"slot": 6, "item": "mushroom_stew", "backOnly": false}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 9, "item": "mushroom_stew", "backOnly": true}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
 
-  {"type": "command", "name": "Goto Spawner 0", "command_string": ".b goto spawner", "wait_until_done": true, "fuse":  60000},
-  {"type": "command", "name": "Goto Spawner 1", "command_string": ".b goto spawner", "wait_until_done": true, "fuse":  60000},
+  {"type": "command", "name": "Goto Spawner 0", "command_string": ".b goto spawner", "wait_until_done": true, "fuse":  90000},
+  {"type": "command", "name": "Goto Spawner 1", "command_string": ".b goto spawner", "wait_until_done": true, "fuse":  90000},
   {"type": "command", "name": "Kill Blaze 1", "command_string": ".b follow entity blaze", "wait_until_done": true, "fuse":  15000},
   {"type": "command", "name": "Pick Up Items 1", "command_string": ".b follow entity item", "wait_until_done": true, "fuse":  15000},
   {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
@@ -81,5 +82,7 @@
   {"type": "command", "name": "Mine Red Mushrooms", "command_string": ".b mine 30 red_mushroom", "wait_until_done": true},
   {"type": "move",    "name": "Turn Random Movement Off", "move_type": "randomMovementOff"},
 
+  {"type": "command", "name": "Goto Portal Waypoint", "command_string": ".b wp goal Portal", "wait_until_done": false},
+  {"type": "command", "name": "Path", "command_string": ".b path", "wait_until_done": true},
   {"type": "command", "name": "Goto Nether Portal", "command_string": ".b goto nether_portal", "wait_until_done": true}
 ]
