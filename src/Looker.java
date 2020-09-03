@@ -54,6 +54,7 @@ public class Looker {
     private static final int aLongTime = 10000000;
 
     public static boolean randomMovement = false;
+    private static final double randomMovementFrequency = 0.15;
 
 
     private static final int[] handCraftSlot1;
@@ -267,10 +268,13 @@ public class Looker {
             imageFoundOnScreen = foundImageOnScreenBW("src\\Checkpoint_Images\\done.png",topLeftScreenRect,doneThreshold) || !colorInRect(topLeftScreenRect,baritoneColor);
             end = System.currentTimeMillis();
 
-            if(randomMovement && Math.random() < 0.1){
+            if(randomMovement && Math.random() < randomMovementFrequency){
                 Typer.startMoveForward();
                 Waiter.wait(100);
                 Typer.stopMoveForward();
+            }
+            if(randomMovement && Math.random() < randomMovementFrequency/2.0){
+                Typer.rightClick(50);
             }
         }
     }
