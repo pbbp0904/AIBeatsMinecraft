@@ -20,24 +20,24 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         //TODO Implementations:
-        // - Replenishing food for phases 3 and 4, Easy
-        // - Destroy end crystals, Hard - N/A time detection, better ways?
-        // - Dealing damage to kill the ender dragon, Hard
+        // - [PHASE 3,4] Replenishing food for phases 3 and 4, Easy
+        // - [PHASE 4] Destroy end crystals, Hard - N/A time detection, better ways?
+        // - [PHASE 4] Dealing damage to kill the ender dragon, Hard
 
         //TODO Improvements:
         // - Pressing:
-        // - Better Ender Pearl Detection, Medium
-        // - More consistent portal assembly, Edit Portal Schematic for better chance at lighting the portal, Medium
-        // - Start up Baritone/Autoeject config, Medium
-        // - Making inventory item search faster, Medium
-        // - More efficiently hunting enderman, Medium
+        // - [PHASE 3] More efficiently hunting enderman, Hard
+        // - [PHASE 3] Better Ender Pearl Detection, Medium
+        // - [PHASE 1] More consistent portal assembly, Edit Portal Schematic for better chance at lighting the portal, Medium
+        // - [PHASE 0] Start up Baritone/Autoeject config, Medium
+        // - [PHASE 0] Making inventory item search faster, Medium
         // - Not Pressing:
-        // - External config file, Easy
-        // - Asynch run counter git push, Medium
-        // - Interact via the baritone API, Hard
-        // - Getting obsidian more consistently, Hard
-        // - Move to png image files, Medium
-        // - Move command/instruction code out of main, Easy
+        // - [PHASE 0] External config file, Easy
+        // - [PHASE 0] Asynch run counter git push, Medium
+        // - [PHASE 0] Interact via the baritone API, Hard
+        // - [PHASE 1] Getting obsidian more consistently, Hard
+        // - [PHASE 0] Move to png image files, Medium
+        // - [PHASE 0] Move command/instruction code out of main, Easy
 
 
 
@@ -454,7 +454,7 @@ public class Main {
                 Typer.startMoveRight();
                 Waiter.wait(250);
                 Typer.stopMoveBack();
-                Waiter.wait(250);
+                Waiter.wait(300);
                 Typer.stopMoveRight();
                 Typer.startMoveForward();
                 Typer.startMoveRight();
