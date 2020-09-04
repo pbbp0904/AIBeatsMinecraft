@@ -20,8 +20,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         //TODO Implementations:
-        // - Replenishing food for phases 3 and 4, Medium
-        // - Integrating phases 2->3 and 3->4, Medium
+        // - Replenishing food for phases 3 and 4, Easy
         // - Destroy end crystals, Hard - N/A time detection, better ways?
         // - Dealing damage to kill the ender dragon, Hard
 
