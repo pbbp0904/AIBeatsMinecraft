@@ -28,6 +28,8 @@ public class Main {
         // - Pressing:
         // - [PHASE 3] More efficiently hunting enderman, Hard
         // - [PHASE 3] Better Ender Pearl Detection, Medium
+        // - [PHASE 2] Open spawner problem, Hard
+        // - [PHASE 2] Netherbrick fence problem, Hard
         // - [PHASE 1] More consistent portal assembly, Edit Portal Schematic for better chance at lighting the portal, Medium
         // - [PHASE 0] Start up Baritone/Autoeject config, Medium
         // - [PHASE 0] Making inventory item search faster, Medium
@@ -35,7 +37,7 @@ public class Main {
         // - [PHASE 0] External config file, Easy
         // - [PHASE 0] Asynch run counter git push, Medium
         // - [PHASE 0] Interact via the baritone API, Hard
-        // - [PHASE 1] Getting obsidian more consistently, Hard
+        // - [PHASE 1] Getting obsidian more consistently/optimizing getting, try obsidian then pillaring, Hard
         // - [PHASE 0] Move to png image files, Medium
         // - [PHASE 0] Move command/instruction code out of main, Easy
 
