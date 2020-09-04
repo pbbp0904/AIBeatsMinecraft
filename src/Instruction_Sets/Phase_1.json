@@ -35,6 +35,7 @@
 
   {"type": "command", "name": "Turn On Kill Aura", "command_string": ".toggle KillAura", "wait_until_done": false},
   {"type": "command", "name": "Turn On Mob Avoidance", "command_string": ".b set avoidance true", "wait_until_done": false},
+  {"type": "command", "name": "Mine Grass", "command_string": ".b mine 185 grass_block", "wait_until_done": true},
   {"type": "command", "name": "Mine Diamond Ore", "command_string": ".b mine 30 diamond_ore", "wait_until_done": true},
   {"type": "craft",   "name": "Craft Crafting Table", "item": "crafting_table", "number": 1, "open_inventory": true, "close_inventory": true},
   {"type": "place",   "name": "Place and Enter Crafting Table", "item": "crafting_table", "enter": true},
