@@ -368,6 +368,7 @@ public class Main {
         Typer.command(".b path");
         Looker.waitUntilDone();
         Typer.openInventory();
+        Waiter.wait(100);
         MouseMover.moveMouseAway();
         Waiter.waitLong();
         Sorter.putItemInHotbar(item, 9, false);
@@ -392,6 +393,8 @@ public class Main {
         if(open_inventory){
             Typer.openInventory();
         }
+
+        Waiter.wait(100);
 
         for (Object action : spec){
             int slot = ((Number) (((JSONObject) action).get("slot"))).intValue();
