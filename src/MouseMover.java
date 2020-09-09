@@ -2,7 +2,6 @@ import java.awt.*;
 
 public class MouseMover {
 
-    private static final int[] moveAwayCoords = new int[]{400, 400};
     private static Robot robot;
     private static final int shortSleep;
     
@@ -37,7 +36,7 @@ public class MouseMover {
     }
 
     public static void moveMouseAway(){
-        robot.mouseMove(moveAwayCoords[0], moveAwayCoords[1]);
+        robot.mouseMove(Looker.getTableCraftSlotRes()[0], Looker.getTableCraftSlotRes()[1]);
         Waiter.wait(shortSleep);
     }
 }

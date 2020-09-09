@@ -62,8 +62,9 @@ public class Main {
 
 
         startUp();
-        doPhase(1);
-        //Looker.lookDown();
+        //doPhase(1);
+        Looker.lookDown();
+
         //jumpToPhase(2);
         doPhase(2);
         doPhase(3);
