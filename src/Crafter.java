@@ -148,6 +148,25 @@ public class Crafter {
                 // Find location of red mushrooms
                 int[] redCoords = Looker.findLocationOnScreen("src\\Item_Images\\red_mushroom.jpg", Looker.getInventoryScreenRect());
 
+                // Find if dandelions are on the screen
+                boolean dandelionsFound = Looker.foundImageOnScreen("src\\Item_Images\\dandelion.jpg", Looker.getInventoryScreenRect(),0.05);
+
+                if(dandelionsFound) {
+                    int[] dandelionCoords = Looker.findLocationOnScreen("src\\Item_Images\\dandelion.jpg", Looker.getInventoryScreenRect());
+                    // Pick up items
+                    MouseMover.moveMouse(dandelionCoords, shortSleep);
+                    Typer.leftClick(shortSleep);
+                    Waiter.wait(Waiter.getShortSleepTime());
+                    Typer.leftClick(shortSleep);
+                    // Move mouse to craft
+                    MouseMover.moveMouse(Looker.getHandCraftSlot3(), shortSleep);
+                    // Place all the items
+                    Typer.leftClick(shortSleep);
+
+                    // Place item back in original slot
+                    MouseMover.moveMouse(dandelionCoords, shortSleep);
+                    Typer.leftClick(shortSleep);
+                }
 
                 // Pick up items
                 MouseMover.moveMouse(bowlCoords, shortSleep);
@@ -194,6 +213,7 @@ public class Crafter {
                 Typer.leftClick(shortSleep);
 
                 Waiter.wait(Waiter.getShortSleepTime());
+
 
 
                 // Get resultant item
