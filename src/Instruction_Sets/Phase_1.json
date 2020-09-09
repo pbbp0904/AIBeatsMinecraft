@@ -32,6 +32,9 @@
   {"type": "command", "name": "Goto and Enter Crafting Table", "command_string": ".b goto crafting_table", "wait_until_done": true},
   {"type": "craft",   "name": "Craft Iron Tools", "number": 1, "item": "iron_tools", "open_inventory": false, "close_inventory": false},
   {"type": "sort",    "name": "Sort Iron Inventory", "spec": [{"slot": 1, "item": "iron_pickaxe", "backOnly": false}, {"slot": 2, "item": "iron_pickaxe", "backOnly": true}, {"slot": 3, "item": "iron_shovel", "backOnly": false}, {"slot": 4, "item": "iron_sword", "backOnly": false}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 6, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": false, "close_inventory": true},
+  {"type": "move",    "name": "Turn Random Movement On", "move_type": "randomMovementOn"},
+  {"type": "command", "name": "Mine Dandelion", "command_string": ".b mine 20 dandelion", "wait_until_done": true},
+  {"type": "move",    "name": "Turn Random Movement Off", "move_type": "randomMovementOff"},
 
   {"type": "command", "name": "Turn On Kill Aura", "command_string": ".toggle KillAura", "wait_until_done": false},
   {"type": "command", "name": "Turn On Mob Avoidance", "command_string": ".b set avoidance true", "wait_until_done": false},
@@ -56,7 +59,7 @@
   {"type": "command", "name": "Set Goal Above Lava Level", "command_string": ".b goal 20", "wait_until_done": false},
   {"type": "command", "name": "Go To Above Lava Level", "command_string": ".b path", "wait_until_done": true},
   {"type": "sort",    "name": "Sort Portal Inventory", "spec": [{"slot": 4, "item": "dirt", "backOnly": false}, {"slot": 7, "item": "flint_and_steel", "backOnly": false}, {"slot": 8, "item": "obsidian", "backOnly": false}, {"slot": 9, "item": "cobblestone", "backOnly": false}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
-  {"type": "command", "name": "Build Nether Portal", "command_string": ".b build AIBM_portal.schematic ~ ~2 ~", "wait_until_done": true, "fuse":  90000},
+  {"type": "command", "name": "Build Nether Portal", "command_string": ".b build AIBMw_portal.schematic ~ ~2 ~", "wait_until_done": true, "fuse":  90000},
   {"type": "command", "name": "Turn On Auto Eject", "command_string": ".toggle AutoEject", "wait_until_done": false},
   {"type": "command", "name": "Go Into Portal", "command_string": ".b goto cobblestone", "wait_until_done": true},
   {"type": "light",   "name": "Light Nether Portal", "portal": "nether"}
