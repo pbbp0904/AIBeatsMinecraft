@@ -46,9 +46,10 @@ public class Crafter {
 
             case "crafting_table":
 
-                Waiter.wait(Waiter.getShortSleepTime());
+                Waiter.wait(Waiter.getLongSleepTime());
                 // Move mouse away
                 MouseMover.moveMouseAway();
+                Waiter.wait(Waiter.getLongSleepTime());
 
                 // Find location of wood
                 coords = Looker.findLocationOnScreen("src\\Item_Images\\oak_planks.jpg", Looker.getInventoryScreenRect());

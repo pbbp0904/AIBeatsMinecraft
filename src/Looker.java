@@ -269,6 +269,7 @@ public class Looker {
             end = System.currentTimeMillis();
 
             if(randomMovement && Math.random() < randomMovementFrequency){
+                System.out.println("Moved");
                 Typer.startMoveForward();
                 Waiter.wait(100);
                 Typer.stopMoveForward();

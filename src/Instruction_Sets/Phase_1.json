@@ -59,7 +59,7 @@
   {"type": "command", "name": "Set Goal Above Lava Level", "command_string": ".b goal 20", "wait_until_done": false},
   {"type": "command", "name": "Go To Above Lava Level", "command_string": ".b path", "wait_until_done": true},
   {"type": "sort",    "name": "Sort Portal Inventory", "spec": [{"slot": 4, "item": "dirt", "backOnly": false}, {"slot": 7, "item": "flint_and_steel", "backOnly": false}, {"slot": 8, "item": "obsidian", "backOnly": false}, {"slot": 9, "item": "cobblestone", "backOnly": false}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
-  {"type": "command", "name": "Build Nether Portal", "command_string": ".b build AIBMw_portal.schematic ~ ~2 ~", "wait_until_done": true, "fuse":  90000},
+  {"type": "command", "name": "Build Nether Portal", "command_string": ".b build AIBM_portal.schematic ~ ~2 ~", "wait_until_done": true, "fuse":  90000},
   {"type": "command", "name": "Turn On Auto Eject", "command_string": ".toggle AutoEject", "wait_until_done": false},
   {"type": "command", "name": "Go Into Portal", "command_string": ".b goto cobblestone", "wait_until_done": true},
   {"type": "light",   "name": "Light Nether Portal", "portal": "nether"}
