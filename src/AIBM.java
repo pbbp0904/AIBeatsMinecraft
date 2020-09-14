@@ -12,7 +12,8 @@ import javax.imageio.ImageIO;
 
 public class AIBM {
 
-    public static void main() throws IOException {
+    public static void main
+            () throws IOException {
 
 
         startUp();
