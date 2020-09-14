@@ -19,5 +19,5 @@ echoCommands false
 exploreForBlocks false
 goalBreakFromAbove true
 mineDropLoiterDurationMSThanksLouca 600
-followOffsetDirection 0.0
 followRadius 0
+chatControl true

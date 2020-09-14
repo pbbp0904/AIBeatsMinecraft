@@ -155,7 +155,7 @@ public class Filer {
         String appData = System.getenv("APPDATA");
         File user = new File(appData + "\\.minecraft\\baritone\\settings.txt");
         BufferedReader readerUser = new BufferedReader(new FileReader(user));
-        File ours = new File("src\\Preset_Schematics\\AIBM_baritone_settings.txt");
+        File ours = new File("src\\Presets_Schematics\\AIBM_baritone_settings.txt");
         BufferedReader readerOurs = new BufferedReader(new FileReader(ours));
 
         //defining some objects to use during loops so they do not need to be created and destroyed all the time
@@ -237,7 +237,7 @@ public class Filer {
         while (!out.empty()) {
 
             //pop from @out and run the command using Typer.command
-            Typer.command(out.pop());
+            Typer.command(".b " + out.pop());
         }
 
         //report number of settings changed, cased for singular or plural
