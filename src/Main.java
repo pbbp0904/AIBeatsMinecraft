@@ -26,27 +26,26 @@ import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
 import java.io.IOException;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
 
-class ThreadHandler implements Runnable {
-
-    Thread t;
-
-    ThreadHandler() {
-        t = new Thread(this);
-        System.out.println("New thread: " + t);
-        t.start();
-    }
+class ThreadHandler extends Thread {
 
     @Override
     public void run() {
-        try {
-            AIBM.main();
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        Thread t = Thread.currentThread();
+        Main.sett1ID(t.getId());
+
+        while (!interrupted()) {
+            try {
+                AIBM.main();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
@@ -56,25 +55,24 @@ class ThreadHandler implements Runnable {
 
 
 
-
-
 class Starter extends Thread implements NativeKeyListener {
 
     private static boolean enter;
-    private ThreadHandler t1;
+    private long t1ID;
 
     static {
         enter = true;
     }
 
-    public void setT1(ThreadHandler in) {
-        this.t1 = in;
+    public void setT1(long in) {
+        this.t1ID = in;
+        System.out.println(in);
     }
 
     public void nativeKeyPressed(NativeKeyEvent e) {
         if (e.getKeyCode() == NativeKeyEvent.VC_BACK_SLASH) {
             System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
-            t1.t.interrupt();
+
             Waiter.waitLong();
             Typer.command(".b cancel");
             Typer.command(".preset load user");
@@ -82,9 +80,9 @@ class Starter extends Thread implements NativeKeyListener {
             Main.setShutdown(true);
         }
         if (e.getKeyCode() == NativeKeyEvent.VC_ENTER && enter) {
+            enter = false;
             System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
             Main.setReady(true);
-            enter = false;
         }
     }
 
@@ -117,10 +115,13 @@ class Starter extends Thread implements NativeKeyListener {
     public void run(){
         createListener();
     }
+
+    public static void finish() {
+        Typer.command(".preset load user");
+        Typer.pressKey("escape", 10);
+        System.exit(0);
+    }
 }
-
-
-
 
 
 
@@ -134,12 +135,15 @@ public class Main {
     public static boolean shutdown = false;
     public static volatile Starter s;
     public static volatile ThreadHandler t1;
+    private static long t1ID;
     public static final String preset = "AIBM";
 
     public static void main(String[] args) {
         ready = false;
         s = new Starter();
         s.start();
+        s.setName("KeyboardListener");
+        System.out.println(s);
         System.out.println("Bring minecraft into focus and press Enter to begin.");
         System.out.println("The program will automatically begin in 10 seconds, even without pressing enter.");
 
@@ -152,13 +156,18 @@ public class Main {
         }
 
         t1 = new ThreadHandler();
-        s.setT1(t1);
+
+        t1.setName("AIBM");
+        t1.start();
 
         while(!shutdown){
         }
 
         System.exit(0);
+
     }
+
+
 
     public static void setReady(boolean rdy){
         ready = rdy;
@@ -167,4 +176,6 @@ public class Main {
     public static void setShutdown(boolean sd){
         shutdown = sd;
     }
+
+    public static void sett1ID(long i) { t1ID = i; }
 }
