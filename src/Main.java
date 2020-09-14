@@ -541,11 +541,11 @@ public class Main {
 
 
     public static void giveDiamondThings() {
-        Typer.command("/clear @p",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give pbbp0904 diamond_helmet{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give pbbp0904 diamond_chestplate{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give pbbp0904 diamond_leggings{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give pbbp0904 diamond_boots{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/clear @s",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give @s diamond_helmet{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give @s diamond_chestplate{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give @s diamond_leggings{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give @s diamond_boots{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
 
         Typer.type("1",Waiter.getShortSleepTime(),Waiter.getLongSleepTime()*5);
         Typer.holdRightClick(Waiter.getShortSleepTime());
@@ -554,12 +554,12 @@ public class Main {
         Typer.type("4",Waiter.getShortSleepTime(),Waiter.getLongSleepTime()*5);
         Typer.releaseRightClick(Waiter.getShortSleepTime());
 
-        Typer.command("/give pbbp0904 diamond_sword{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give pbbp0904 diamond_pickaxe{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give pbbp0904 diamond_shovel{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give pbbp0904 cooked_beef 64",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give pbbp0904 ender_eye 24",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/give pbbp0904 dirt 1024",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give @s diamond_sword{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give @s diamond_pickaxe{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give @s diamond_shovel{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give @s cooked_beef 64",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give @s ender_eye 24",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/give @s dirt 1024",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.type("1",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
 
     }
@@ -742,7 +742,7 @@ public class Main {
     }
 
     public static void doHunt() {
-        Typer.command("/clear @p",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/clear @s",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("/give Cosmologicomical diamond_helmet{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("/give Cosmologicomical diamond_chestplate{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("/give Cosmologicomical diamond_leggings{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
@@ -766,9 +766,9 @@ public class Main {
         Typer.command("/worldborder set 640",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("/weather clear 1000000",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("/time set 0",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/effect give @p minecraft:instant_health 100",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/effect give @p minecraft:saturation 10",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
-        Typer.command("/clear @p[name=!Cosmologicomical]",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/effect give @s minecraft:instant_health 100",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/effect give @s minecraft:saturation 10",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+        Typer.command("/clear @s[name=!Cosmologicomical]",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("tI'll be coming for you in 20 minutes!!!!",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
 
         Waiter.wait(1200000);
