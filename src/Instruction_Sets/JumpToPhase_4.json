@@ -7,7 +7,8 @@
   {"type": "command", "name": "Give Diamond Leggings", "command_string": "/give pbbp0904 diamond_leggings", "wait_until_done": false},
   {"type": "command", "name": "Give Diamond Boots", "command_string": "/give pbbp0904 diamond_boots", "wait_until_done": false},
   {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": -1, "item": "diamond_helmet", "backOnly": false}, {"slot": -1, "item": "diamond_chestplate", "backOnly": false}, {"slot": -1, "item": "diamond_leggings", "backOnly": false}, {"slot": -1, "item": "diamond_boots", "backOnly": false}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
-  {"type": "command", "name": "Give Mushroom Stew", "command_string": "/give pbbp0904 mushroom_stew 20", "wait_until_done": false},
+  {"type": "command", "name": "Water Bucket", "command_string": "/give pbbp0904 water_bucket", "wait_until_done": false},
+  {"type": "command", "name": "Give Mushroom Stew", "command_string": "/give @p minecraft:suspicious_stew{Effects:[{EffectId:23,EffectDuration:7}]} 20", "wait_until_done": false},
   {"type": "command", "name": "Give Dirt", "command_string": "/give pbbp0904 dirt 384", "wait_until_done": false},
   {"type": "command", "name": "Make End Portal", "command_string": "/fill ~ ~ ~ ~ ~ ~ end_portal", "wait_until_done": false}
 ]

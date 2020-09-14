@@ -67,7 +67,7 @@ public class Main {
         jumpToPhase(4);
         //doPhase(2);
         //doPhase(3);
-        doPhase(4);
+        doPhase(5);
 
 //        jumpToPhase(3);
 //        Waiter.wait(30000);
