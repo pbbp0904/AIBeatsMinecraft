@@ -12,7 +12,6 @@ mobAvoidanceRadius 10
 maxFallHeightNoWater 8
 maxFallHeightBucket 71
 primaryTimeoutMS 1067
-failureTimeoutMS 2000
 planAheadPrimaryTimeoutMS 896
 freeLook false
 echoCommands false
@@ -20,4 +19,3 @@ exploreForBlocks false
 goalBreakFromAbove true
 mineDropLoiterDurationMSThanksLouca 600
 followRadius 0
-chatControl true

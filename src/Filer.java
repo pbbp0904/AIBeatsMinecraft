@@ -231,6 +231,9 @@ public class Filer {
 
             //push these remaining items to the Stack @out
             out.push(ourData.getKey() + " " + ourData.getValue());
+
+            //increment settings updated @counter
+            counter++;
         }
 
         //while @out is not empty
