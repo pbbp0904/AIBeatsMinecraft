@@ -188,6 +188,12 @@ public class Filer {
             //get the @key for this entry @userData
             String key = userData.getKey();
 
+            //this function does not matter, but likely will get updated every time without this
+            //its super annoying so we just remove it
+            if (key.equals("chatControl")) {
+                continue;
+            }
+
             //if @ourSettings contains this @key
             if (ourSettings.containsKey(key)) {
 
