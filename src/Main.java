@@ -709,11 +709,7 @@ public class Main {
         Waiter.waitShort();
         Filer.schematicsFolder();
         Waiter.waitShort();
-        Typer.command(".b set maxFallHeightNoWater 3");
-        Typer.command(".b set avoidance false");
-        Typer.command(".b set exploreForBlocks false");
-        Typer.command(".b set blocksToAvoid water");
-        Typer.command(".b set acceptableThrowawayItems dirt,netherrack");
+        Filer.setBaritoneSettings();
         Waiter.waitShort();
         Typer.pressKey("NP1");
     }

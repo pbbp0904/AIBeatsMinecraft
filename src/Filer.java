@@ -4,6 +4,9 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Stack;
 import static java.nio.file.StandardCopyOption.*;
 
 public class Filer {
@@ -119,6 +122,7 @@ public class Filer {
         return out;
     }
 
+    //replacing the preset settings with our settings for impact
     public static void loadPreset() throws IOException {
         Typer.command(".preset save user");
         String appData = System.getenv("APPDATA");
@@ -126,8 +130,9 @@ public class Filer {
         Path dest = Paths.get(appData + "\\.minecraft\\Impact\\presets\\AIBM_preset.json");
         Files.copy(src, dest, REPLACE_EXISTING);
         Typer.command(".preset load AIBM_preset");
-}
+    }
 
+    //addint our portal schematic to the schematics folder
     public static void schematicsFolder() throws IOException {
         String appData = System.getenv("APPDATA");
         File loc = new File(appData + "\\.minecraft\\schematics");
@@ -141,6 +146,108 @@ public class Filer {
         Path src2 = Paths.get("src\\Presets_Schematics\\AIBM_shield.schematic");
         Path dest2 = Paths.get(appData + "\\.minecraft\\schematics\\AIBM_shield.schematic");
         Files.copy(src2, dest2, REPLACE_EXISTING);
-
     }
+
+    //interpreting current user settings and making adjustments to fit our needs
+    public static void setBaritoneSettings() throws IOException {
+
+        //locating the files needed and reading them into File objects, then BufferedReader
+        String appData = System.getenv("APPDATA");
+        File user = new File(appData + "\\.minecraft\\baritone\\settings.txt");
+        BufferedReader readerUser = new BufferedReader(new FileReader(user));
+        File ours = new File("src\\Preset_Schematics\\AIBM_baritone_settings.txt");
+        BufferedReader readerOurs = new BufferedReader(new FileReader(ours));
+
+        //defining some objects to use during loops so they do not need to be created and destroyed all the time
+        String stUser;
+        String stOurs;
+        int counter = 0;
+
+        //where we will store our values to be tested against eachother
+        HashMap<String, String> userSettings = new HashMap<>();
+        HashMap<String, String> ourSettings = new HashMap<>();
+
+        //our final command Stack that we iterate through to change the settings we need
+        Stack<String> out = new Stack<>();
+
+        //read in the users settings file and create the HashMap
+        while ((stUser = readerUser.readLine()) != null) {
+            String[] splitUser = stUser.split(" ", 2);
+            userSettings.put(splitUser[0], splitUser[1]);
+        }
+
+        //create HashMap for our desired settings
+        while ((stOurs = readerOurs.readLine()) != null) {
+            String[] splitOurs = stOurs.split(" ", 2);
+            ourSettings.put(splitOurs[0], splitOurs[1]);
+        }
+
+        //for every entry @userData in @userSettings
+        for (HashMap.Entry<String,String> userData : userSettings.entrySet()) {
+
+            //get the @key for this entry @userData
+            String key = userData.getKey();
+
+            //if @ourSettings contains this @key
+            if (ourSettings.containsKey(key)) {
+
+                //if the values of both entries are the same
+                if (userData.getValue().equals(ourSettings.get(key))) {
+
+                    //remove the entry from @ourSettings so it is not updated at the end
+                    ourSettings.remove(key);
+                    continue;
+                }
+
+                //if the values are not the same
+                else {
+
+                    //push the updated to the Stack @out
+                    out.push(key + " " + ourSettings.get(key));
+
+                    //remove the entry from @ourSettings so it is not updated at the end
+                    ourSettings.remove(key);
+
+                    //increment the settings updated @counter
+                    counter++;
+                    continue;
+                }
+            }
+
+            //if @ourSettings does not contain this @key
+            else {
+
+                //push the updated to the Stack @out
+                out.push("reset " + key);
+
+                //increment the settings updated @counter
+                counter++;
+                continue;
+            }
+        }
+
+        //for everything left in @ourSettings after checking the users settings
+        for (HashMap.Entry<String,String> ourData : ourSettings.entrySet()) {
+
+            //push these remaining items to the Stack @out
+            out.push(ourData.getKey() + " " + ourData.getValue());
+        }
+
+        //while @out is not empty
+        while (!out.empty()) {
+
+            //pop from @out and run the command using Typer.command
+            Typer.command(out.pop());
+        }
+
+        //report number of settings changed, cased for singular or plural
+        if (counter == 1) {
+            System.out.println("1 baritone setting was updated for this run");
+        }
+        else {
+            System.out.println(counter + " baritone settings were updated for this run");
+        }
+    }
+
+
 }
