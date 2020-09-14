@@ -21,10 +21,119 @@
 // - [PHASE 0] Move command/instruction code out of main, Easy
 
 
+import org.jnativehook.GlobalScreen;
+import org.jnativehook.NativeHookException;
+import org.jnativehook.keyboard.NativeKeyEvent;
+import org.jnativehook.keyboard.NativeKeyListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+
+class ThreadHandler implements Runnable {
+
+    Thread t;
+
+    ThreadHandler() {
+        t = new Thread(this);
+        System.out.println("New thread: " + t);
+        t.start();
+    }
+
+    @Override
+    public void run() {
+        try {
+            AIBM.main();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+class Starter extends Thread implements NativeKeyListener {
+
+    private static boolean enter;
+    private ThreadHandler t1;
+
+    static {
+        enter = true;
+    }
+
+    public void setT1(ThreadHandler in) {
+        this.t1 = in;
+    }
+
+    public void nativeKeyPressed(NativeKeyEvent e) {
+        if (e.getKeyCode() == NativeKeyEvent.VC_BACK_SLASH) {
+            System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
+            t1.t.interrupt();
+            Waiter.waitLong();
+            Typer.command(".b cancel");
+            Typer.command(".preset load user");
+            Typer.pressKey("escape", 10);
+            Main.setShutdown(true);
+        }
+        if (e.getKeyCode() == NativeKeyEvent.VC_ENTER && enter) {
+            System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
+            Main.setReady(true);
+            enter = false;
+        }
+    }
+
+    public void nativeKeyReleased(NativeKeyEvent e) {
+    }
+
+    public void nativeKeyTyped(NativeKeyEvent e) {
+    }
+
+    public void createListener() {
+        // Disables the logging outputs for this stuff
+        Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
+        logger.setLevel(Level.WARNING);
+        logger.setUseParentHandlers(false);
+
+
+        try {
+            GlobalScreen.registerNativeHook();
+        }
+        catch (NativeHookException ex) {
+            System.err.println("There was a problem registering the native hook.");
+            System.err.println(ex.getMessage());
+
+            System.exit(1);
+        }
+
+        GlobalScreen.addNativeKeyListener(new Starter());
+    }
+
+    public void run(){
+        createListener();
+    }
+}
+
+
+
+
+
+
+
+
+
+
 public class Main {
 
     public static boolean ready;
+    public static boolean shutdown = false;
     public static volatile Starter s;
+    public static volatile ThreadHandler t1;
     public static final String preset = "AIBM";
 
     public static void main(String[] args) {
@@ -42,24 +151,20 @@ public class Main {
             Waiter.wait(1000);
         }
 
+        t1 = new ThreadHandler();
+        s.setT1(t1);
 
+        while(!shutdown){
+        }
 
-
-    }
-
-
-
-    public static void finish(){
-        Typer.command(".preset load user");
         System.exit(0);
     }
 
     public static void setReady(boolean rdy){
         ready = rdy;
     }
-    public static boolean getReady(){
-        return ready;
+
+    public static void setShutdown(boolean sd){
+        shutdown = sd;
     }
-
-
 }
