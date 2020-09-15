@@ -21,7 +21,6 @@ public class Main {
 
         //TODO Implementations:
         // - [PHASE 3,4] Replenishing food for phases 3 and 4, Easy
-        // - [PHASE 4] Destroy end crystals, Hard - N/A time detection, better ways?
         // - [PHASE 4] Dealing damage to kill the ender dragon, Hard
 
         //TODO Improvements:
@@ -31,7 +30,7 @@ public class Main {
         // - [PHASE 2] Open spawner problem, Hard
         // - [PHASE 2] Netherbrick fence problem, Hard
         // - [PHASE 1] More consistent portal assembly, Edit Portal Schematic for better chance at lighting the portal, Medium
-        // - [PHASE 0] Start up Baritone/Autoeject config, Medium
+        // - [PHASE 0] Start up Autoeject config, Medium
         // - [PHASE 0] Making inventory item search faster, Medium
         // - Not Pressing:
         // - [PHASE 0] External config file, Easy
@@ -63,11 +62,11 @@ public class Main {
 
         startUp();
         //doPhase(1);
-        //Looker.lookDown();
-        //jumpToPhase(4);
+        Looker.lookDown();
+        jumpToPhase(4);
         //doPhase(2);
         //doPhase(3);
-        //doPhase(5);
+        doPhase(4);
 
 //        jumpToPhase(3);
 //        Waiter.wait(30000);
@@ -81,7 +80,11 @@ public class Main {
         //doPhase(4);
 
 
-
+//        Looker.lookDown();
+//        while(true){
+//            doCheck("end_sky");
+//            Waiter.wait(1000);
+//        }
 
 //        startUp();
 //        Looker.lookDown();
@@ -523,6 +526,15 @@ public class Main {
                     jumpValue = -7;
                 }
                 Typer.closeInventory();
+                break;
+            case "top_of_pillar":
+                boolean top_of_pillar_check = Looker.foundImageOnScreen("src\\Checkpoint_Images\\top_obsidian.jpg", Looker.getInventoryScreenRect(),0.01);
+                if (top_of_pillar_check){
+                    jumpValue = 0;
+                }else{
+                    jumpValue = -3;
+                }
+
                 break;
         }
 
