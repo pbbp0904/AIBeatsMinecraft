@@ -425,7 +425,7 @@ public class Typer {
     }
 
     private static void checkInterrupted() {
-        while (Thread.currentThread().isInterrupted()) {
+        if (Thread.currentThread().isInterrupted()) {
             try {
                 Thread.sleep(1);
             } catch (InterruptedException e) {
@@ -434,6 +434,9 @@ public class Typer {
                     Typer.releaseKey(entry.getValue().get(0));
                 }
             }
+        }
+        while (Thread.currentThread().isInterrupted()) {
+
         }
     }
 }

@@ -41,7 +41,7 @@ class ThreadHandler extends Thread {
         while (!interrupted()) {
             try {
                 AIBM.main();
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -65,21 +65,7 @@ class Starter extends Thread implements NativeKeyListener {
     public void nativeKeyPressed(NativeKeyEvent e) {
         if (e.getKeyCode() == NativeKeyEvent.VC_BACK_SLASH) {
             System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
-
-            Set<Thread> setOfThread = Thread.getAllStackTraces().keySet();
-            //Iterate over set to find yours
-            for(Thread thread : setOfThread){
-                if(thread.getName()=="AIBM"){
-                    thread.interrupt();
-                }
-            }
-            Waiter.waitLong();
-            Typer.pressKey("enter", Waiter.getLongSleepTime());
-            Typer.pressKey("enter", Waiter.getLongSleepTime());
-            Typer.command(".b cancel");
-            Typer.command(".preset load user");
-            Typer.pressKey("escape", 10);
-            System.exit(0);
+            Main.setShutdown(true);
         }
         if (e.getKeyCode() == NativeKeyEvent.VC_ENTER && enter) {
             enter = false;
@@ -136,7 +122,7 @@ public class Main {
     public static boolean ready;
     public static boolean shutdown = false;
     public static volatile Starter s;
-    public static volatile ThreadHandler t1;
+    public static volatile ThreadHandler aibm;
 
     public static void main(String[] args) {
         ready = false;
@@ -155,17 +141,32 @@ public class Main {
             Waiter.wait(1000);
         }
 
-        t1 = new ThreadHandler();
-        t1.setName("AIBM");
-        t1.start();
+        aibm = new ThreadHandler();
+        aibm.setName("AIBM");
+        aibm.start();
+        Waiter.wait(3000);
 
         while(!shutdown){
+            Waiter.waitShort();
         }
 
+        aibm.interrupt();
+        endThreads(s, aibm);
+
+
+        Waiter.waitLong();
+        Typer.pressKey("enter", Waiter.getLongSleepTime());
+        Typer.pressKey("enter", Waiter.getLongSleepTime());
+        Typer.command(".b cancel");
+        Typer.command(".preset load user");
+        Typer.pressKey("escape", 10);
         System.exit(0);
 
     }
 
+    public static void endThreads(Thread s, Thread aibm){
+
+    }
 
 
     public static void setReady(boolean rdy){

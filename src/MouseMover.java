@@ -43,11 +43,7 @@ public class MouseMover {
 
     private static void checkInterrupted() {
         while (Thread.currentThread().isInterrupted()) {
-            try {
-                Thread.sleep(1);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
         }
     }
 }
