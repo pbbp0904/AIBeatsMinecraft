@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Sorter {
     
@@ -7,6 +9,8 @@ public class Sorter {
     private static final int stationarySleep;
     
     static {
+        checkInterrupted();
+
         shortSleep = 100;
         longSleep = 250;
         stationarySleep = 1500;
@@ -39,5 +43,15 @@ public class Sorter {
         Typer.holdRightClick(shortSleep);
         Typer.releaseRightClick(shortSleep);
         Typer.releaseKey("shift");
+    }
+
+    private static void checkInterrupted() {
+        while (Thread.currentThread().isInterrupted()) {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

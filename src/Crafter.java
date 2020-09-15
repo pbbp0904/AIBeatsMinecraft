@@ -6,6 +6,7 @@ public class Crafter {
     
     
     static {
+        checkInterrupted();
         shortSleep = 50;
         longSleep = 200;
     }
@@ -575,5 +576,13 @@ public class Crafter {
         Typer.releaseKey("shift", longSleep);
     }
 
-
+    private static void checkInterrupted() {
+        while (Thread.currentThread().isInterrupted()) {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

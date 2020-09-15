@@ -6,6 +6,7 @@ public class Waiter {
 
 
     static{
+        checkInterrupted();
         shortSleepTime = 40;
         longSleepTime = 120;
         stationaryWaitTime = 1500;
@@ -57,6 +58,16 @@ public class Waiter {
             Thread.sleep(stationaryWaitTime);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    private static void checkInterrupted() {
+        while (Thread.currentThread().isInterrupted()) {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

@@ -11,6 +11,11 @@ import static java.nio.file.StandardCopyOption.*;
 
 public class Filer {
 
+
+    static {
+        checkInterrupted();
+    }
+
     public static void incrementRunCounter() throws IOException, InterruptedException {
         // Read number
         File file = new File("src\\runCounter.txt");
@@ -258,5 +263,14 @@ public class Filer {
         }
     }
 
+    private static void checkInterrupted() {
+        while (Thread.currentThread().isInterrupted()) {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }

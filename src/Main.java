@@ -26,6 +26,8 @@ import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,10 +38,6 @@ class ThreadHandler extends Thread {
 
     @Override
     public void run() {
-
-        Thread t = Thread.currentThread();
-        Main.sett1ID(t.getId());
-
         while (!interrupted()) {
             try {
                 AIBM.main();
@@ -55,29 +53,33 @@ class ThreadHandler extends Thread {
 
 
 
+
 class Starter extends Thread implements NativeKeyListener {
 
     private static boolean enter;
-    private long t1ID;
 
     static {
         enter = true;
-    }
-
-    public void setT1(long in) {
-        this.t1ID = in;
-        System.out.println(in);
     }
 
     public void nativeKeyPressed(NativeKeyEvent e) {
         if (e.getKeyCode() == NativeKeyEvent.VC_BACK_SLASH) {
             System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
 
+            Set<Thread> setOfThread = Thread.getAllStackTraces().keySet();
+            //Iterate over set to find yours
+            for(Thread thread : setOfThread){
+                if(thread.getName()=="AIBM"){
+                    thread.interrupt();
+                }
+            }
             Waiter.waitLong();
+            Typer.pressKey("enter", Waiter.getLongSleepTime());
+            Typer.pressKey("enter", Waiter.getLongSleepTime());
             Typer.command(".b cancel");
             Typer.command(".preset load user");
             Typer.pressKey("escape", 10);
-            Main.setShutdown(true);
+            System.exit(0);
         }
         if (e.getKeyCode() == NativeKeyEvent.VC_ENTER && enter) {
             enter = false;
@@ -135,8 +137,6 @@ public class Main {
     public static boolean shutdown = false;
     public static volatile Starter s;
     public static volatile ThreadHandler t1;
-    private static long t1ID;
-    public static final String preset = "AIBM";
 
     public static void main(String[] args) {
         ready = false;
@@ -156,7 +156,6 @@ public class Main {
         }
 
         t1 = new ThreadHandler();
-
         t1.setName("AIBM");
         t1.start();
 
@@ -172,10 +171,7 @@ public class Main {
     public static void setReady(boolean rdy){
         ready = rdy;
     }
-
     public static void setShutdown(boolean sd){
         shutdown = sd;
     }
-
-    public static void sett1ID(long i) { t1ID = i; }
 }
