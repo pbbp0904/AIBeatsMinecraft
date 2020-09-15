@@ -7,6 +7,7 @@ public class MouseMover {
     
 
     static {
+        checkInterrupted();
         try {
             robot = new Robot();
         } catch (AWTException e) {
@@ -38,5 +39,15 @@ public class MouseMover {
     public static void moveMouseAway(){
         robot.mouseMove(Looker.getTableCraftSlotRes()[0], Looker.getTableCraftSlotRes()[1]);
         Waiter.wait(shortSleep);
+    }
+
+    private static void checkInterrupted() {
+        while (Thread.currentThread().isInterrupted()) {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

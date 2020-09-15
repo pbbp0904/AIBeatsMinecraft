@@ -90,6 +90,10 @@ public class Looker {
     private static int centerY;
 
     static{
+
+        checkInterrupted();
+
+
         guiScale = 0;
         try {
             guiScale = Filer.getGUIScale();
@@ -133,6 +137,8 @@ public class Looker {
         centerScreenRect = new Rectangle(centerX-centerScreenScaling*guiScale, centerY-centerScreenScaling*guiScale, 2*centerScreenScaling*guiScale, 2*centerScreenScaling*guiScale);
         topLeftScreenRect = new Rectangle(getMinecraftWindow().x, getMinecraftWindow().y, getMinecraftWindow().width/8, getMinecraftWindow().height/10);
     }
+
+
 
     public static int[] getHandCraftSlot1() {
         return handCraftSlot1;
@@ -572,5 +578,15 @@ public class Looker {
         g2d.dispose();
 
         return outputImage;
+    }
+
+    private static void checkInterrupted() {
+        while (Thread.currentThread().isInterrupted()) {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
