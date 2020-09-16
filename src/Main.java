@@ -38,11 +38,13 @@ class ThreadHandler extends Thread {
 
     @Override
     public void run() {
-        while (!interrupted()) {
+        if (!Thread.currentThread().isInterrupted()) {
             try {
                 AIBM.main();
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (Exception ignored) {
+
+            } finally {
+                System.out.println("AIBM has closed, check for errors.");
             }
         }
     }
@@ -65,6 +67,7 @@ class Starter extends Thread implements NativeKeyListener {
     public void nativeKeyPressed(NativeKeyEvent e) {
         if (e.getKeyCode() == NativeKeyEvent.VC_BACK_SLASH) {
             System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
+            System.out.println("Quitting run...");
             Main.setShutdown(true);
         }
         if (e.getKeyCode() == NativeKeyEvent.VC_ENTER && enter) {
@@ -103,12 +106,6 @@ class Starter extends Thread implements NativeKeyListener {
     public void run(){
         createListener();
     }
-
-    public static void finish() {
-        Typer.command(".preset load user");
-        Typer.pressKey("escape", 10);
-        System.exit(0);
-    }
 }
 
 
@@ -120,12 +117,13 @@ class Starter extends Thread implements NativeKeyListener {
 public class Main {
 
     public static boolean ready;
-    public static boolean shutdown = false;
+    public static boolean shutdown;
     public static volatile Starter s;
     public static volatile ThreadHandler aibm;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ready = false;
+        shutdown = false;
         s = new Starter();
         s.start();
         s.setName("KeyboardListener");
@@ -147,7 +145,7 @@ public class Main {
         Waiter.wait(3000);
 
         while(!shutdown){
-            Waiter.waitShort();
+            Waiter.waitLong();
         }
 
         aibm.interrupt();
@@ -155,7 +153,6 @@ public class Main {
 
 
         Waiter.waitLong();
-        Typer.pressKey("enter", Waiter.getLongSleepTime());
         Typer.pressKey("enter", Waiter.getLongSleepTime());
         Typer.command(".b cancel");
         Typer.command(".preset load user");

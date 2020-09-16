@@ -90,10 +90,6 @@ public class Looker {
     private static int centerY;
 
     static{
-
-        checkInterrupted();
-
-
         guiScale = 0;
         try {
             guiScale = Filer.getGUIScale();
@@ -246,21 +242,21 @@ public class Looker {
         return rect;
     }
 
-    public static void lookUp() {
+    public static void lookUp() throws InterruptedException {
         Typer.command(".rotate 0 -90");
     }
 
-    public static void lookDown() {
+    public static void lookDown() throws InterruptedException {
         MouseMover.moveMouse(centerX, (int) (centerY * 3.0/2.0), Waiter.getShortSleepTime());
         MouseMover.moveMouse(centerX, (int) (centerY * 3.0/2.0), Waiter.getShortSleepTime());
         MouseMover.moveMouse(centerX, (int) (centerY * 3.0/2.0), Waiter.getShortSleepTime());
     }
 
-    public static void waitUntilDone(){
+    public static void waitUntilDone() throws InterruptedException {
         waitUntilDoneFuse(aLongTime);
     }
 
-    public static void waitUntilDoneFuse(long fuseTime){
+    public static void waitUntilDoneFuse(long fuseTime) throws InterruptedException {
         boolean imageFoundOnScreen = false;
         long start = System.currentTimeMillis();
         long end = System.currentTimeMillis();
@@ -288,11 +284,11 @@ public class Looker {
 
 
 
-    public static void waitUntilStationary() {
+    public static void waitUntilStationary() throws InterruptedException {
         waitUntilStationaryFuse(aLongTime);
     }
 
-    public static void waitUntilStationaryFuse(long fuseTime) {
+    public static void waitUntilStationaryFuse(long fuseTime) throws InterruptedException {
         boolean imagesEqual = false;
         BufferedImage screenImg1;
         BufferedImage screenImg2;
@@ -312,7 +308,7 @@ public class Looker {
     }
 
 
-    public static void waitUntilSmeltingDone(){
+    public static void waitUntilSmeltingDone() throws InterruptedException {
         boolean imagesEqual = false;
         BufferedImage screenImg1;
         BufferedImage screenImg2;
@@ -330,35 +326,41 @@ public class Looker {
         }
     }
 
-    public static boolean bufferedImagesEqual(BufferedImage img1, BufferedImage img2) {
+    public static boolean bufferedImagesEqual(BufferedImage img1, BufferedImage img2) throws InterruptedException {
+        checkInterrupted();
         if (img1.getWidth() == img2.getWidth() && img1.getHeight() == img2.getHeight()) {
             for (int x = 0; x < img1.getWidth(); x++) {
                 for (int y = 0; y < img1.getHeight(); y++) {
                     if (img1.getRGB(x, y) != img2.getRGB(x, y))
+                        checkInterrupted();
                         return false;
                 }
             }
         } else {
+            checkInterrupted();
             return false;
         }
+        checkInterrupted();
         return true;
     }
 
-    public static boolean colorInRect(Rectangle screenRect, Color color){
+    public static boolean colorInRect(Rectangle screenRect, Color color) throws InterruptedException {
         BufferedImage image = screenShot(screenRect);
         for (int x = 0; x < screenRect.getWidth(); x+=2) {
             for (int y = 0; y < screenRect.getHeight(); y+=2) {
                 Color c = new Color(image.getRGB(x, y));
                 if (c.equals(color)) {
+                    checkInterrupted();
                     return true;
                 }
             }
         }
+        checkInterrupted();
         return false;
     }
 
 
-    public static boolean foundImageOnScreen(String pathname, Rectangle screenRect, double threshold) {
+    public static boolean foundImageOnScreen(String pathname, Rectangle screenRect, double threshold) throws InterruptedException {
         BufferedImage screenImg = screenShot(screenRect);
         String s = String.valueOf(System.currentTimeMillis());
         String filePath = new File(pathname).getAbsolutePath();
@@ -368,18 +370,18 @@ public class Looker {
         return diff < threshold;
     }
 
-    public static boolean foundImageOnScreenBW(String pathname, Rectangle screenRect, double threshold) {
-        BufferedImage screenImg = makeImageBlackAndWhiteExceptColor(screenShot(screenRect),whiteThreshold,baritoneColor);
+    public static boolean foundImageOnScreenBW(String pathname, Rectangle screenRect, double threshold) throws InterruptedException {
+        BufferedImage screenImg = makeImageBlackAndWhite(screenShot(screenRect),whiteThreshold);
         String s = String.valueOf(System.currentTimeMillis());
         String filePath = new File(pathname).getAbsolutePath();
-        BufferedImage img = makeImageBlackAndWhiteExceptColor(resize(Objects.requireNonNull(getImage(filePath)), ((double) (guiScale))/3.0),whiteThreshold,baritoneColor) ;
+        BufferedImage img = makeImageBlackAndWhite(resize(Objects.requireNonNull(getImage(filePath)), ((double) (guiScale))/3.0),whiteThreshold) ;
         double diff = findSubImageDiff(screenImg, img);
         //System.out.println(diff);
         return diff < threshold;
     }
 
 
-    public static int[] findLocationOnScreen(String pathname, Rectangle screenRect) {
+    public static int[] findLocationOnScreen(String pathname, Rectangle screenRect) throws InterruptedException {
         BufferedImage screenImg = screenShot(screenRect);
         String filePath = new File(pathname).getAbsolutePath();
         BufferedImage img = resize(Objects.requireNonNull(getImage(filePath)), ((double) (guiScale))/3.0) ;
@@ -387,7 +389,8 @@ public class Looker {
         return findSubImage(screenImg, img, screenRect);
     }
 
-    public static BufferedImage screenShot(Rectangle screenRect) {
+    public static BufferedImage screenShot(Rectangle screenRect) throws InterruptedException {
+        checkInterrupted();
         Robot robot = null;
         try {
             robot = new Robot();
@@ -399,7 +402,9 @@ public class Looker {
         return robot.createScreenCapture(screenRect);
     }
 
-    public static BufferedImage getImage(String filename) {
+    public static BufferedImage getImage(String filename) throws InterruptedException {
+        checkInterrupted();
+
         try {
             return ImageIO.read(new File(filename));
         } catch (IOException e) {
@@ -408,7 +413,9 @@ public class Looker {
         return null;
     }
 
-    public static BufferedImage makeImageBlackAndWhite(BufferedImage image,int threshold){
+    public static BufferedImage makeImageBlackAndWhite(BufferedImage image,int threshold) throws InterruptedException {
+        checkInterrupted();
+
         int width = image.getWidth();
         int height = image.getHeight();
         for(int i=0; i<height; i++) {
@@ -429,10 +436,14 @@ public class Looker {
                 image.setRGB(j,i,newColor.getRGB());
             }
         }
+
+        checkInterrupted();
         return image;
     }
 
-    public static BufferedImage makeImageBlackAndWhiteExceptColor(BufferedImage image,int threshold, Color color){
+    public static BufferedImage makeImageBlackAndWhite(BufferedImage image,int threshold, Color color) throws InterruptedException {
+        checkInterrupted();
+
         int width = image.getWidth();
         int height = image.getHeight();
         for(int i=0; i<height; i++) {
@@ -444,18 +455,19 @@ public class Looker {
                 int green = c.getGreen();
                 int blue = c.getBlue();
                 Color newColor;
-                //if(!c.equals(color)){
+                if(!c.equals(color)){
                     if (red+green+blue > 3*threshold) {
                         newColor = new Color(255, 255, 255);
                     }else{
                         newColor = new Color(0, 0, 0);
                     }
                     image.setRGB(j,i,newColor.getRGB());
-                //}
+                }
 
 
             }
         }
+        checkInterrupted();
         return image;
     }
 
@@ -463,7 +475,7 @@ public class Looker {
     /**
      * Finds the a region in one image that best matches another, smaller, image.
      */
-    public static int[] findSubImage(BufferedImage im1, BufferedImage im2, Rectangle screenRect) {
+    public static int[] findSubImage(BufferedImage im1, BufferedImage im2, Rectangle screenRect) throws InterruptedException {
         int w1 = im1.getWidth();
         int h1 = im1.getHeight();
         int w2 = im2.getWidth();
@@ -491,14 +503,16 @@ public class Looker {
     }
 
 
-    public static boolean findColorMatch(BufferedImage im1, Color color, Point p) {
+    public static boolean findColorMatch(BufferedImage im1, Color color, Point p) throws InterruptedException {
+        checkInterrupted();
+
         int pixel = im1.getRGB(p.x, p.y);
         Color color2 = new Color(pixel, true);
         return color.equals(color2);
     }
 
 
-    public static double findSubImageDiff(BufferedImage im1, BufferedImage im2) {
+    public static double findSubImageDiff(BufferedImage im1, BufferedImage im2) throws InterruptedException {
         int w1 = im1.getWidth();
         int h1 = im1.getHeight();
         int w2 = im2.getWidth();
@@ -523,7 +537,7 @@ public class Looker {
     /**
      * Determines how different two identically sized regions are.
      */
-    private static double compareImages(BufferedImage im1, BufferedImage im2) {
+    private static double compareImages(BufferedImage im1, BufferedImage im2) throws InterruptedException {
         assert (im1.getHeight() == im2.getHeight() && im1.getWidth() == im2.getWidth());
         double variation = 0.0;
         for (int x = 0; x < im1.getWidth(); x++) {
@@ -537,7 +551,9 @@ public class Looker {
     /**
      * Calculates the difference between two ARGB colours (BufferedImage.TYPE_INT_ARGB).
      */
-    private static double compareARGB(int rgb1, int rgb2) {
+    private static double compareARGB(int rgb1, int rgb2) throws InterruptedException {
+        checkInterrupted();
+
         double r1 = ((rgb1 >> 16) & 0xFF) / 255.0;
         double r2 = ((rgb2 >> 16) & 0xFF) / 255.0;
         double g1 = ((rgb1 >> 8) & 0xFF) / 255.0;
@@ -561,14 +577,16 @@ public class Looker {
 //    @param percent a double number specifies percentage of the output image
 //    over the input image.
 
-    public static BufferedImage resize(BufferedImage inputImage, double percent) {
+    public static BufferedImage resize(BufferedImage inputImage, double percent) throws InterruptedException {
+        checkInterrupted();
+
         int scaledWidth = (int) (inputImage.getWidth() * percent);
         int scaledHeight = (int) (inputImage.getHeight() * percent);
         return resize(inputImage, scaledWidth, scaledHeight);
     }
 
-    public static BufferedImage resize(BufferedImage inputImage, int scaledWidth, int scaledHeight) {
-
+    public static BufferedImage resize(BufferedImage inputImage, int scaledWidth, int scaledHeight) throws InterruptedException {
+        checkInterrupted();
         // creates output image
         BufferedImage outputImage = new BufferedImage(scaledWidth, scaledHeight, inputImage.getType());
 
@@ -580,9 +598,9 @@ public class Looker {
         return outputImage;
     }
 
-    private static void checkInterrupted() {
-        while (Thread.currentThread().isInterrupted()) {
-
+    private static void checkInterrupted() throws InterruptedException {
+        if (Thread.currentThread().isInterrupted()) {
+            throw new InterruptedException();
         }
     }
 }

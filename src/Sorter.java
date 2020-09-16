@@ -9,15 +9,14 @@ public class Sorter {
     private static final int stationarySleep;
     
     static {
-        checkInterrupted();
-
         shortSleep = 100;
         longSleep = 250;
         stationarySleep = 1500;
     }
 
 
-    public static void putItemInHotbar(String item, int slot, boolean lookOnlyInBackpack){
+    public static void putItemInHotbar(String item, int slot, boolean lookOnlyInBackpack) throws InterruptedException {
+        checkInterrupted();
         MouseMover.moveMouseAway();
         Rectangle rect;
         if(lookOnlyInBackpack) {
@@ -30,7 +29,8 @@ public class Sorter {
     }
 
 
-    public static void putOnArmor(String item, boolean lookOnlyInBackpack) {
+    public static void putOnArmor(String item, boolean lookOnlyInBackpack) throws InterruptedException {
+        checkInterrupted();
         MouseMover.moveMouseAway();
         Rectangle rect;
         if(lookOnlyInBackpack) {
@@ -45,9 +45,9 @@ public class Sorter {
         Typer.releaseKey("shift");
     }
 
-    private static void checkInterrupted() {
-        while (Thread.currentThread().isInterrupted()) {
-
+    private static void checkInterrupted() throws InterruptedException {
+        if (Thread.currentThread().isInterrupted()) {
+            throw new InterruptedException();
         }
     }
 }

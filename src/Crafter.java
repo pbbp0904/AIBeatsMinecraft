@@ -6,12 +6,12 @@ public class Crafter {
     
     
     static {
-        checkInterrupted();
         shortSleep = 50;
         longSleep = 200;
     }
 
-    public static void craft(String item, int number) {
+    public static void craft(String item, int number) throws InterruptedException {
+        checkInterrupted();
         int[] coords;
         switch (item) {
             case "oak_planks":
@@ -441,7 +441,8 @@ public class Crafter {
         }
     }
 
-    public static void craftItem(int[] materialCoords, int[] craftingPositions, int number) {
+    public static void craftItem(int[] materialCoords, int[] craftingPositions, int number) throws InterruptedException {
+        checkInterrupted();
         // Put item in crafting table
         putMaterialInTable(materialCoords, craftingPositions, number);
 
@@ -452,7 +453,8 @@ public class Crafter {
 
 
 
-    public static void craftItem(int[] materialCoords1, int[] materialCoords2, int[] craftingPositions1, int[] craftingPositions2, int number) {
+    public static void craftItem(int[] materialCoords1, int[] materialCoords2, int[] craftingPositions1, int[] craftingPositions2, int number) throws InterruptedException {
+        checkInterrupted();
         // Put item 1 in crafting table
         putMaterialInTable(materialCoords1, craftingPositions1, number);
 
@@ -464,14 +466,16 @@ public class Crafter {
     }
 
 
-    public static void getResultantItem(){
+    public static void getResultantItem() throws InterruptedException {
+        checkInterrupted();
         MouseMover.moveMouse(Looker.getTableCraftSlotRes(), shortSleep);
         Typer.holdKey("shift", shortSleep);
         Typer.leftClick(shortSleep);
         Typer.releaseKey("shift", longSleep);
     }
 
-    public static void putMaterialInTable(int[] materialCoords, int[] craftingPositions, int number){
+    public static void putMaterialInTable(int[] materialCoords, int[] craftingPositions, int number) throws InterruptedException {
+        checkInterrupted();
          // Pick up material
         MouseMover.moveMouse(materialCoords, shortSleep);
         Typer.leftClick(shortSleep);
@@ -493,7 +497,8 @@ public class Crafter {
 
 
 
-    public static void moveToCraft(int value){
+    public static void moveToCraft(int value) throws InterruptedException {
+        checkInterrupted();
         switch (value) {
             case 1:
                 MouseMover.moveMouse(Looker.getTableCraftSlot1(), shortSleep);
@@ -525,7 +530,8 @@ public class Crafter {
         }
     }
 
-    public static void smelt(String item, int number) {
+    public static void smelt(String item, int number) throws InterruptedException {
+        checkInterrupted();
         switch(item) {
             case "iron_ore":
                 // Move mouse away
@@ -569,16 +575,17 @@ public class Crafter {
     }
 
 
-    public static void getSmelt() {
+    public static void getSmelt() throws InterruptedException {
+        checkInterrupted();
         MouseMover.moveMouse(Looker.getFurnaceResSlot(),shortSleep);
         Typer.holdKey("shift", shortSleep);
         Typer.leftClick(shortSleep);
         Typer.releaseKey("shift", longSleep);
     }
 
-    private static void checkInterrupted() {
-        while (Thread.currentThread().isInterrupted()) {
-
+    private static void checkInterrupted() throws InterruptedException {
+        if (Thread.currentThread().isInterrupted()) {
+            throw new InterruptedException();
         }
     }
 }
