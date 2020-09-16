@@ -600,6 +600,7 @@ public class Looker {
 
     private static void checkInterrupted() throws InterruptedException {
         if (Thread.currentThread().isInterrupted()) {
+            Typer.releaseAllKeys();
             throw new InterruptedException();
         }
     }

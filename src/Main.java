@@ -26,9 +26,6 @@ import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -41,10 +38,16 @@ class ThreadHandler extends Thread {
         if (!Thread.currentThread().isInterrupted()) {
             try {
                 AIBM.main();
-            } catch (Exception ignored) {
+                System.out.println("Successfully completed AIBM main.");
+            } catch (InterruptedException ignore) {
 
+            } catch (IOException e) {
+                System.out.println("Exception in AIBM Thread.");
+                e.printStackTrace();
             } finally {
-                System.out.println("AIBM has closed, check for errors.");
+                Typer.releaseAllKeys();
+                System.out.println("AIBM is closing.");
+                Main.setShutdown(true);
             }
         }
     }
@@ -67,7 +70,7 @@ class Starter extends Thread implements NativeKeyListener {
     public void nativeKeyPressed(NativeKeyEvent e) {
         if (e.getKeyCode() == NativeKeyEvent.VC_BACK_SLASH) {
             System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
-            System.out.println("Quitting run...");
+            System.out.println("Voluntarily quitting run...");
             Main.setShutdown(true);
         }
         if (e.getKeyCode() == NativeKeyEvent.VC_ENTER && enter) {
@@ -111,15 +114,12 @@ class Starter extends Thread implements NativeKeyListener {
 
 
 
-
-
-
 public class Main {
 
     public static boolean ready;
     public static boolean shutdown;
     public static volatile Starter s;
-    public static volatile ThreadHandler aibm;
+    public static final ThreadHandler aibm = new ThreadHandler();
 
     public static void main(String[] args) throws InterruptedException {
         ready = false;
@@ -139,32 +139,31 @@ public class Main {
             Waiter.wait(1000);
         }
 
-        aibm = new ThreadHandler();
         aibm.setName("AIBM");
         aibm.start();
         Waiter.wait(3000);
 
         while(!shutdown){
-            Waiter.waitLong();
+            Waiter.wait(500);
         }
 
-        aibm.interrupt();
-        endThreads(s, aibm);
+        if (!aibm.isInterrupted()) {
+            aibm.interrupt();
+        }
 
-
-        Waiter.waitLong();
-        Typer.pressKey("enter", Waiter.getLongSleepTime());
+        Waiter.wait(1000);
+        System.out.println("before escape 1");
+        Typer.pressKey("escape", 4000);
+        System.out.println("before escape 2");
+        //Typer.pressKey("escape");
+        System.out.println("before cancel");
         Typer.command(".b cancel");
         Typer.command(".preset load user");
-        Typer.pressKey("escape", 10);
+        System.out.println("Before final escape");
+        Typer.pressKey("escape");
         System.exit(0);
 
     }
-
-    public static void endThreads(Thread s, Thread aibm){
-
-    }
-
 
     public static void setReady(boolean rdy){
         ready = rdy;
