@@ -1,6 +1,8 @@
 [
   {"type": "command", "name": "Turn Off Auto Weapon", "command_string": ".toggle autoweapon", "wait_until_done": false},
-  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "dirt", "backOnly": false}, {"slot": 5, "item": "dirt", "backOnly": true}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Turn Off Parkour", "command_string": ".b set allowParkour false", "wait_until_done": false},
+  {"type": "command", "name": "Turn On Backfill", "command_string": ".b set backfill true", "wait_until_done": false},
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
 
   {"type": "command", "name": "Set Goal", "command_string": ".b goal 47 50 0", "wait_until_done": false},
   {"type": "command", "name": "Path to pillar at 42,0", "command_string": ".b path", "wait_until_done": true},
@@ -17,7 +19,7 @@
   {"type": "command", "name": "Set Goal", "command_string": ".b goal 43 50 0", "wait_until_done": false},
   {"type": "command", "name": "Path to pillar at 42,0", "command_string": ".b path", "wait_until_done": true},
 
-  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "dirt", "backOnly": false}, {"slot": 5, "item": "dirt", "backOnly": true}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
 
   {"type": "command", "name": "Set Goal", "command_string": ".b goal ~ ~2 ~", "wait_until_done": false},
   {"type": "command", "name": "Path up", "command_string": ".b path", "wait_until_done": true},
@@ -41,7 +43,7 @@
   {"type": "command", "name": "Set Goal", "command_string": ".b goal 34 50 24", "wait_until_done": false},
   {"type": "command", "name": "Path to pillar at 33,24", "command_string": ".b path", "wait_until_done": true},
 
-  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "dirt", "backOnly": false}, {"slot": 5, "item": "dirt", "backOnly": true}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
 
   {"type": "command", "name": "Set Goal", "command_string": ".b goal ~ ~2 ~", "wait_until_done": false},
   {"type": "command", "name": "Path up", "command_string": ".b path", "wait_until_done": true},
@@ -65,7 +67,7 @@
   {"type": "command", "name": "Set Goal", "command_string": ".b goal 12 50 40", "wait_until_done": false},
   {"type": "command", "name": "Path to pillar at 12,39", "command_string": ".b path", "wait_until_done": true},
 
-  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "dirt", "backOnly": false}, {"slot": 5, "item": "dirt", "backOnly": true}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
 
   {"type": "command", "name": "Set Goal", "command_string": ".b goal ~ ~2 ~", "wait_until_done": false},
   {"type": "command", "name": "Path up", "command_string": ".b path", "wait_until_done": true},
@@ -88,7 +90,7 @@
   {"type": "command", "name": "Set Goal", "command_string": ".b goal -13 50 40", "wait_until_done": false},
   {"type": "command", "name": "Path to pillar at -13,39", "command_string": ".b path", "wait_until_done": true},
 
-  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "dirt", "backOnly": false}, {"slot": 5, "item": "dirt", "backOnly": true}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
 
   {"type": "command", "name": "Set Goal", "command_string": ".b goal ~ ~2 ~", "wait_until_done": false},
   {"type": "command", "name": "Path up", "command_string": ".b path", "wait_until_done": true},
@@ -112,7 +114,7 @@
   {"type": "command", "name": "Set Goal", "command_string": ".b goal -35 50 24", "wait_until_done": false},
   {"type": "command", "name": "Path to pillar at -34,24", "command_string": ".b path", "wait_until_done": true},
 
-  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "dirt", "backOnly": false}, {"slot": 5, "item": "dirt", "backOnly": true}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
 
   {"type": "command", "name": "Set Goal", "command_string": ".b goal ~ ~2 ~", "wait_until_done": false},
   {"type": "command", "name": "Path up", "command_string": ".b path", "wait_until_done": true},
@@ -136,7 +138,7 @@
   {"type": "command", "name": "Set Goal", "command_string": ".b goal -44 50 0", "wait_until_done": false},
   {"type": "command", "name": "Path to pillar at -43,0", "command_string": ".b path", "wait_until_done": true},
 
-  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "dirt", "backOnly": false}, {"slot": 5, "item": "dirt", "backOnly": true}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
 
   {"type": "command", "name": "Set Goal", "command_string": ".b goal ~ ~2 ~", "wait_until_done": false},
   {"type": "command", "name": "Path up", "command_string": ".b path", "wait_until_done": true},
@@ -160,7 +162,7 @@
   {"type": "command", "name": "Set Goal", "command_string": ".b goal -34 50 -26", "wait_until_done": false},
   {"type": "command", "name": "Path to pillar at -34,-25", "command_string": ".b path", "wait_until_done": true},
 
-  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "dirt", "backOnly": false}, {"slot": 5, "item": "dirt", "backOnly": true}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
 
   {"type": "command", "name": "Set Goal", "command_string": ".b goal ~ ~2 ~", "wait_until_done": false},
   {"type": "command", "name": "Path up", "command_string": ".b path", "wait_until_done": true},
@@ -184,7 +186,7 @@
   {"type": "command", "name": "Set Goal", "command_string": ".b goal -13 50 -41", "wait_until_done": false},
   {"type": "command", "name": "Path to pillar at -13,-40", "command_string": ".b path", "wait_until_done": true},
 
-  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "dirt", "backOnly": false}, {"slot": 5, "item": "dirt", "backOnly": true}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
 
   {"type": "command", "name": "Set Goal", "command_string": ".b goal ~ ~2 ~", "wait_until_done": false},
   {"type": "command", "name": "Path up", "command_string": ".b path", "wait_until_done": true},
@@ -208,7 +210,7 @@
   {"type": "command", "name": "Set Goal", "command_string": ".b goal 13 50 -40", "wait_until_done": false},
   {"type": "command", "name": "Path to pillar at 12,-40", "command_string": ".b path", "wait_until_done": true},
 
-  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "dirt", "backOnly": false}, {"slot": 5, "item": "dirt", "backOnly": true}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
 
   {"type": "command", "name": "Set Goal", "command_string": ".b goal ~ ~2 ~", "wait_until_done": false},
   {"type": "command", "name": "Path up", "command_string": ".b path", "wait_until_done": true},
@@ -232,7 +234,7 @@
   {"type": "command", "name": "Set Goal", "command_string": ".b goal 34 50 -25", "wait_until_done": false},
   {"type": "command", "name": "Path to pillar at 33,-25", "command_string": ".b path", "wait_until_done": true},
 
-  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "dirt", "backOnly": false}, {"slot": 5, "item": "dirt", "backOnly": true}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
 
   {"type": "command", "name": "Set Goal", "command_string": ".b goal ~ ~2 ~", "wait_until_done": false},
   {"type": "command", "name": "Path up", "command_string": ".b path", "wait_until_done": true},

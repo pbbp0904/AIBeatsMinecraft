@@ -21,6 +21,7 @@ public class Main {
 
         //TODO Implementations:
         // - [PHASE 3,4] Replenishing food for phases 3 and 4, Easy
+        // - [PHASE 4] Destroying End Crystals, Hard
         // - [PHASE 4] Dealing damage to kill the ender dragon, Hard
 
         //TODO Improvements:
@@ -64,9 +65,10 @@ public class Main {
         //doPhase(1);
         Looker.lookDown();
         jumpToPhase(4);
+        Waiter.wait(3000);
         //doPhase(2);
         //doPhase(3);
-        doPhase(4);
+        doPhase(5);
 
 //        jumpToPhase(3);
 //        Waiter.wait(30000);
@@ -532,7 +534,7 @@ public class Main {
                 if (top_of_pillar_check){
                     jumpValue = 0;
                 }else{
-                    jumpValue = -3;
+                    jumpValue = -1;
                 }
 
                 break;
