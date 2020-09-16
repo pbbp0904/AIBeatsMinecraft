@@ -12,10 +12,7 @@ import javax.imageio.ImageIO;
 
 public class AIBM {
 
-    public AIBM() { while(Thread.currentThread().isInterrupted()) { } }
-    public static void main
-            () throws IOException {
-
+    public static void main() throws IOException, InterruptedException {
 
         startUp();
         //doPhase(1);
@@ -107,7 +104,7 @@ public class AIBM {
         //finish();
     }
 
-    private static void reset() {
+    private static void reset() throws InterruptedException {
         Typer.type("e");
         BufferedImage image = null;
         try {
@@ -168,23 +165,23 @@ public class AIBM {
         Typer.pressKey("enter", 30000);
     }
 
-    public static void jumpToPhase(int phase){
+    public static void jumpToPhase(int phase) throws InterruptedException {
         String instructionSetString = "src\\Instruction_Sets\\JumpToPhase_" + phase + ".json";
         doInstructionSet(instructionSetString);
     }
 
 
-    public static void doPhase(int phase){
+    public static void doPhase(int phase) throws InterruptedException {
         String instructionSetString = "src\\Instruction_Sets\\Phase_" + phase + ".json";
         doInstructionSet(instructionSetString);
     }
 
-    public static void doPhase(int phase, int startingInstruction){
+    public static void doPhase(int phase, int startingInstruction) throws InterruptedException {
         String instructionSetString = "src\\Instruction_Sets\\Phase_" + phase + ".json";
         doInstructionSet(instructionSetString, startingInstruction);
     }
 
-    public static void doInstructionSet(String instructionSetString){
+    public static void doInstructionSet(String instructionSetString) throws InterruptedException {
         JSONArray instructionSet = loadInstructionSet(instructionSetString);
         for (int i = 0; i<instructionSet.size(); i++){
             Object instruction = instructionSet.get(i);
@@ -196,12 +193,13 @@ public class AIBM {
 
 
 
-    public static void doPhaseTime(int phase, long time){
+    public static void doPhaseTime(int phase, long time) throws InterruptedException {
         String instructionSetString = "src\\Instruction_Sets\\Phase_" + phase + ".json";
         doInstructionSetTime(instructionSetString, time);
     }
 
-    public static void doInstructionSetTime(String instructionSetString, long time){
+    public static void doInstructionSetTime(String instructionSetString, long time) throws InterruptedException {
+        checkInterrupted();
         JSONArray instructionSet = loadInstructionSet(instructionSetString);
         for (Object instruction : instructionSet){
             doInstruction((JSONObject) instruction);
@@ -215,7 +213,7 @@ public class AIBM {
         }
     }
 
-    public static void doInstructionSet(String instructionSetString, int startingInstruction){
+    public static void doInstructionSet(String instructionSetString, int startingInstruction) throws InterruptedException {
         JSONArray instructionSet = loadInstructionSet(instructionSetString);
         for (int i = startingInstruction; i<instructionSet.size(); i++){
             Object instruction = instructionSet.get(i);
@@ -225,7 +223,7 @@ public class AIBM {
         }
     }
 
-    private static int doInstruction(JSONObject instruction){
+    private static int doInstruction(JSONObject instruction) throws InterruptedException {
         String type = (String) instruction.get("type");
         String name = (String) instruction.get("name");
         System.out.println("Doing Instruction: " + name);
@@ -273,7 +271,7 @@ public class AIBM {
         return jumpValue;
     }
 
-    private static void doCommand(String command_string, boolean wait_until_done, long fuse) {
+    private static void doCommand(String command_string, boolean wait_until_done, long fuse) throws InterruptedException {
         Typer.command(command_string);
         if(wait_until_done && fuse == -1){
             Looker.waitUntilDone();
@@ -284,7 +282,7 @@ public class AIBM {
 
     }
 
-    private static void doCraft(String item, int number, boolean open_inventory, boolean close_inventory) {
+    private static void doCraft(String item, int number, boolean open_inventory, boolean close_inventory) throws InterruptedException {
         if(open_inventory){
             Typer.openInventory();
         }
@@ -296,7 +294,7 @@ public class AIBM {
         }
     }
 
-    private static void doSmelt(String item, int number, boolean place_in, boolean wait_until_done, boolean open_inventory, boolean close_inventory) {
+    private static void doSmelt(String item, int number, boolean place_in, boolean wait_until_done, boolean open_inventory, boolean close_inventory) throws InterruptedException {
         if(open_inventory){
             Typer.openInventory();
         }
@@ -315,7 +313,7 @@ public class AIBM {
         }
     }
 
-    private static void doPlace(String item, boolean enter) {
+    private static void doPlace(String item, boolean enter) throws InterruptedException {
 
         Looker.waitUntilDone();
         Typer.command(".b goal ~ ~1 ~");
@@ -346,7 +344,7 @@ public class AIBM {
         }
     }
 
-    private static void doSort(JSONArray spec, boolean discard_unspecified, boolean open_inventory, boolean close_inventory) {
+    private static void doSort(JSONArray spec, boolean discard_unspecified, boolean open_inventory, boolean close_inventory) throws InterruptedException {
         if(open_inventory){
             Typer.openInventory();
         }
@@ -367,7 +365,7 @@ public class AIBM {
         }
     }
 
-    private static void doLight(String portal) {
+    private static void doLight(String portal) throws InterruptedException {
         switch (portal) {
             case "nether":
                 Typer.type("2");
@@ -409,7 +407,7 @@ public class AIBM {
 
 
 
-    public static void doMove(String move_type) {
+    public static void doMove(String move_type) throws InterruptedException {
         switch (move_type){
             case "portal":
                 Typer.startMoveBack();
@@ -437,7 +435,7 @@ public class AIBM {
         }
     }
 
-    public static int doCheck(String check_type){
+    public static int doCheck(String check_type) throws InterruptedException {
         int jumpValue = 0;
         switch(check_type){
             case "flint":
@@ -486,17 +484,17 @@ public class AIBM {
     }
 
 
-    public static void doHotbar(String slot){
+    public static void doHotbar(String slot) throws InterruptedException {
         Typer.type(slot);
     }
 
-    public static void doThrow(){
+    public static void doThrow() throws InterruptedException {
         Typer.rightClick(250);
         Waiter.wait(100);
     }
 
 
-    public static void giveDiamondThings() {
+    public static void giveDiamondThings() throws InterruptedException {
         Typer.command("/clear @s",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("/give @s diamond_helmet{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("/give @s diamond_chestplate{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
@@ -521,7 +519,7 @@ public class AIBM {
     }
 
 
-    private static void gotoEndPortal(){
+    private static void gotoEndPortal() throws InterruptedException {
         Typer.command("/gamerule doDaylightCycle false");
         Typer.command(".b set exploreForBlocks true");
 
@@ -595,7 +593,7 @@ public class AIBM {
 
 
 
-    public static void goIntoEndPortal(){
+    public static void goIntoEndPortal() throws InterruptedException {
         Typer.command(".toggle KillAura");
         Typer.command(".b set avoidance false");
         Typer.command(".b goto stone_brick_stairs");
@@ -615,7 +613,7 @@ public class AIBM {
         Typer.releaseRightClick(1);
     }
 
-    public static void lightEndPortal(){
+    public static void lightEndPortal() throws InterruptedException {
         for(int rot = 0; rot<360; rot+=20){
             Typer.command(".rotate " + Integer.toString(rot) + " 0");
             Typer.type("5");
@@ -624,7 +622,8 @@ public class AIBM {
     }
 
 
-    public static JSONArray loadInstructionSet(String instructionSetString){
+    public static JSONArray loadInstructionSet(String instructionSetString) throws InterruptedException {
+        checkInterrupted();
         JSONParser jsonParser = new JSONParser();
         JSONArray instructionSet = null;
         try (FileReader reader = new FileReader(instructionSetString))
@@ -641,7 +640,7 @@ public class AIBM {
         return instructionSet;
     }
 
-    public static void startUp() throws IOException {
+    public static void startUp() throws IOException, InterruptedException {
         System.out.println("Hello world!");
         try {
             Filer.incrementRunCounter();
@@ -672,12 +671,12 @@ public class AIBM {
 
 
 
-    public static void makeObsidianTest() {
+    public static void makeObsidianTest() throws InterruptedException {
         Typer.command("/fill ~-1 ~-1 ~-1 ~-5 ~-2 ~-5 minecraft:lava", Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("/fill ~-3 ~3 ~-3 ~-3 ~3 ~-3 minecraft:water", Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
     }
 
-    public static void doHunt() {
+    public static void doHunt() throws InterruptedException {
         Typer.command("/clear @s",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("/give Cosmologicomical diamond_helmet{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("/give Cosmologicomical diamond_chestplate{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
@@ -714,5 +713,11 @@ public class AIBM {
         Typer.type("t",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("Best ye run...",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command(".b follow entity player",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
+    }
+
+    private static void checkInterrupted() throws InterruptedException {
+        if (Thread.currentThread().isInterrupted()) {
+            throw new InterruptedException();
+        }
     }
 }

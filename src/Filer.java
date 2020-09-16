@@ -11,12 +11,8 @@ import static java.nio.file.StandardCopyOption.*;
 
 public class Filer {
 
-
-    static {
-        checkInterrupted();
-    }
-
     public static void incrementRunCounter() throws IOException, InterruptedException {
+        checkInterrupted();
         // Read number
         File file = new File("src\\runCounter.txt");
         BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -25,7 +21,7 @@ public class Filer {
         count = count + 1;
         reader.close();
 
-        Thread.sleep(50);
+        Waiter.wait(50);
 
         //Write number
         FileWriter writer = new FileWriter("src\\runCounter.txt", false);
@@ -128,7 +124,8 @@ public class Filer {
     }
 
     //replacing the preset settings with our settings for impact
-    public static void loadPreset() throws IOException {
+    public static void loadPreset() throws IOException, InterruptedException {
+        checkInterrupted();
         Typer.command(".preset save user");
         String appData = System.getenv("APPDATA");
         Path src = Paths.get("src\\Presets_Schematics\\AIBM_preset.json");
@@ -138,7 +135,8 @@ public class Filer {
     }
 
     //addint our portal schematic to the schematics folder
-    public static void schematicsFolder() throws IOException {
+    public static void schematicsFolder() throws IOException, InterruptedException {
+        checkInterrupted();
         String appData = System.getenv("APPDATA");
         File loc = new File(appData + "\\.minecraft\\schematics");
         if (!(loc.exists() && loc.isDirectory())){
@@ -154,8 +152,8 @@ public class Filer {
     }
 
     //interpreting current user settings and making adjustments to fit our needs
-    public static void setBaritoneSettings() throws IOException {
-
+    public static void setBaritoneSettings() throws IOException, InterruptedException {
+        checkInterrupted();
         //locating the files needed and reading them into File objects, then BufferedReader
         String appData = System.getenv("APPDATA");
         File user = new File(appData + "\\.minecraft\\baritone\\settings.txt");
@@ -177,18 +175,21 @@ public class Filer {
 
         //read in the users settings file and create the HashMap
         while ((stUser = readerUser.readLine()) != null) {
+            checkInterrupted();
             String[] splitUser = stUser.split(" ", 2);
             userSettings.put(splitUser[0], splitUser[1]);
         }
 
         //create HashMap for our desired settings
         while ((stOurs = readerOurs.readLine()) != null) {
+            checkInterrupted();
             String[] splitOurs = stOurs.split(" ", 2);
             ourSettings.put(splitOurs[0], splitOurs[1]);
         }
 
         //for every entry @userData in @userSettings
         for (HashMap.Entry<String,String> userData : userSettings.entrySet()) {
+            checkInterrupted();
 
             //get the @key for this entry @userData
             String key = userData.getKey();
@@ -239,6 +240,7 @@ public class Filer {
 
         //for everything left in @ourSettings after checking the users settings
         for (HashMap.Entry<String,String> ourData : ourSettings.entrySet()) {
+            checkInterrupted();
 
             //push these remaining items to the Stack @out
             out.push(ourData.getKey() + " " + ourData.getValue());
@@ -249,6 +251,7 @@ public class Filer {
 
         //while @out is not empty
         while (!out.empty()) {
+            checkInterrupted();
 
             //pop from @out and run the command using Typer.command
             Typer.command(".b " + out.pop());
@@ -263,9 +266,9 @@ public class Filer {
         }
     }
 
-    private static void checkInterrupted() {
-        while (Thread.currentThread().isInterrupted()) {
-
+    private static void checkInterrupted() throws InterruptedException {
+        if (Thread.currentThread().isInterrupted()) {
+            throw new InterruptedException();
         }
     }
 

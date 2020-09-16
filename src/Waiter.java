@@ -6,7 +6,6 @@ public class Waiter {
 
 
     static{
-        checkInterrupted();
         shortSleepTime = 40;
         longSleepTime = 120;
         stationaryWaitTime = 1500;
@@ -15,55 +14,42 @@ public class Waiter {
 
 
     // Getters
-    public static int getShortSleepTime() {
+    public static int getShortSleepTime() throws InterruptedException {
+        checkInterrupted();
         return shortSleepTime;
     }
 
-    public static int getLongSleepTime() {
+    public static int getLongSleepTime() throws InterruptedException {
+        checkInterrupted();
         return longSleepTime;
     }
 
-    public static int getStationaryWaitTime() {
+    public static int getStationaryWaitTime() throws InterruptedException {
+        checkInterrupted();
         return stationaryWaitTime;
     }
 
 
     // Methods
-    public static void wait(int time){
-        try {
+    public static void wait(int time) throws InterruptedException {
             Thread.sleep(time);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
-    public static void waitShort(){
-        try {
+    public static void waitShort() throws InterruptedException {
             Thread.sleep(shortSleepTime);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
-    public static void waitLong(){
-        try {
+    public static void waitLong() throws InterruptedException {
             Thread.sleep(longSleepTime);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
-    public static void waitStationary(){
-        try {
+    public static void waitStationary() throws InterruptedException {
             Thread.sleep(stationaryWaitTime);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
-    private static void checkInterrupted() {
-        while (Thread.currentThread().isInterrupted()) {
-
+    private static void checkInterrupted() throws InterruptedException {
+        if (Thread.currentThread().isInterrupted()) {
+            throw new InterruptedException();
         }
     }
 
