@@ -6,8 +6,8 @@ public class Waiter {
 
 
     static{
-        shortSleepTime = 40;
-        longSleepTime = 120;
+        shortSleepTime = 50;
+        longSleepTime = 100;
         stationaryWaitTime = 1500;
     }
 
@@ -49,8 +49,8 @@ public class Waiter {
 
     private static void checkInterrupted() throws InterruptedException {
         if (Thread.currentThread().isInterrupted()) {
+            Typer.releaseAllKeys();
             throw new InterruptedException();
         }
     }
-
 }

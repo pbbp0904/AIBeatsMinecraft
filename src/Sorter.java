@@ -1,17 +1,13 @@
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Sorter {
     
     private static final int shortSleep;
     private static final int longSleep;
-    private static final int stationarySleep;
     
     static {
         shortSleep = 100;
         longSleep = 250;
-        stationarySleep = 1500;
     }
 
 
@@ -47,6 +43,7 @@ public class Sorter {
 
     private static void checkInterrupted() throws InterruptedException {
         if (Thread.currentThread().isInterrupted()) {
+            Typer.releaseAllKeys();
             throw new InterruptedException();
         }
     }

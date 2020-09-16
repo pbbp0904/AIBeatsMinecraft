@@ -37,7 +37,7 @@ public class Typer {
 
     }
 
-    public static void pressKey(String s) {
+    public static void pressKey(String s) throws InterruptedException {
         if (s.equals("unknown")) {
             System.out.println("Unknown key has been requested to type. Quitting... [TYPER]");
             System.exit(-1);
@@ -50,11 +50,24 @@ public class Typer {
             robot.keyRelease(k.get(s).get(0));
             robot.keyRelease(k.get(s).get(1));
         }
+        Waiter.wait(10);
     }
 
     public static void pressKey(String s, int waitTime) throws InterruptedException {
-        pressKey(s);
-        Waiter.wait(waitTime);
+        if (s.equals("unknown")) {
+            System.out.println("Unknown key has been requested to type. Quitting... [TYPER]");
+            System.exit(-1);
+        } else if (k.get(s).size() == 1) {
+            robot.keyPress(k.get(s).get(0));
+            Waiter.wait(waitTime);
+            robot.keyRelease(k.get(s).get(0));
+        } else if (k.get(s).size() == 2) {
+            robot.keyPress(k.get(s).get(1));
+            robot.keyPress(k.get(s).get(0));
+            Waiter.wait(waitTime);
+            robot.keyRelease(k.get(s).get(0));
+            robot.keyRelease(k.get(s).get(1));
+        }
     }
 
     public static void pressKey(int i) {
@@ -64,8 +77,8 @@ public class Typer {
 
     public static void pressKey(int i, int waitTime) throws InterruptedException {
         robot.keyPress(i);
-        robot.keyRelease(i);
         Waiter.wait(waitTime);
+        robot.keyRelease(i);
     }
 
     public static void holdKey(String s) {
@@ -87,6 +100,11 @@ public class Typer {
 
     public static void holdKey(int i) {
         robot.keyPress(i);
+    }
+
+    public static void holdKey(int i, int waitTime) throws InterruptedException {
+        robot.keyPress(i);
+        Waiter.wait(waitTime);
     }
 
     public static void releaseKey(String s) {
@@ -114,7 +132,7 @@ public class Typer {
     public static void type(String text) throws InterruptedException {
         checkInterrupted();
         for (int i = 0; i < text.length(); i++) {
-            Waiter.waitShort();
+            Waiter.wait(40);
             pressKey(text.substring(i, i + 1));
         }
         Waiter.waitLong();
@@ -144,34 +162,42 @@ public class Typer {
     }
 
     public static void startMoveForward() throws InterruptedException {
+        checkInterrupted();
         holdKey(moveForward);
     }
 
     public static void stopMoveForward() throws InterruptedException {
+        checkInterrupted();
         releaseKey(moveForward);
     }
 
     public static void startMoveLeft() throws InterruptedException {
+        checkInterrupted();
         holdKey(moveLeft);
     }
 
     public static void stopMoveLeft() throws InterruptedException {
+        checkInterrupted();
         releaseKey(moveLeft);
     }
 
     public static void startMoveBack() throws InterruptedException {
+        checkInterrupted();
         holdKey(moveBack);
     }
 
     public static void stopMoveBack() throws InterruptedException {
+        checkInterrupted();
         releaseKey(moveBack);
     }
 
     public static void startMoveRight() throws InterruptedException {
+        checkInterrupted();
         holdKey(moveRight);
     }
 
     public static void stopMoveRight() throws InterruptedException {
+        checkInterrupted();
         releaseKey(moveRight);
     }
 
@@ -429,15 +455,25 @@ public class Typer {
 
     }
 
+    public static void releaseAllKeys() {
+        System.out.println("iran");
+        for (HashMap.Entry<String, ArrayList<Integer>> entry : k.entrySet()) {
+            try {
+                Typer.releaseKey(entry.getValue().get(0));
+            }
+            catch (IllegalArgumentException ignore) {
+                System.out.println("Invalid key code tried");
+            }
+        }
+        robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+    }
+
     private static void checkInterrupted() throws InterruptedException {
         if (Thread.currentThread().isInterrupted()) {
-
-            for (HashMap.Entry<String, ArrayList<Integer>> entry : k.entrySet()) {
-                Typer.releaseKey(entry.getValue().get(0));
-                robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
-                robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-            }
+            Typer.releaseAllKeys();
             throw new InterruptedException();
         }
     }
 }
+

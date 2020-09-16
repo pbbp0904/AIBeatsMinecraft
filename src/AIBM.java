@@ -14,8 +14,8 @@ public class AIBM {
 
     public static void main() throws IOException, InterruptedException {
 
-        startUp();
-        //doPhase(1);
+        //startUp();
+        doPhase(1);
         //Looker.lookDown();
         //jumpToPhase(4);
         //doPhase(2);
@@ -105,6 +105,7 @@ public class AIBM {
     }
 
     private static void reset() throws InterruptedException {
+        checkInterrupted();
         Typer.type("e");
         BufferedImage image = null;
         try {
@@ -166,22 +167,26 @@ public class AIBM {
     }
 
     public static void jumpToPhase(int phase) throws InterruptedException {
+        checkInterrupted();
         String instructionSetString = "src\\Instruction_Sets\\JumpToPhase_" + phase + ".json";
         doInstructionSet(instructionSetString);
     }
 
 
     public static void doPhase(int phase) throws InterruptedException {
+        checkInterrupted();
         String instructionSetString = "src\\Instruction_Sets\\Phase_" + phase + ".json";
         doInstructionSet(instructionSetString);
     }
 
     public static void doPhase(int phase, int startingInstruction) throws InterruptedException {
+        checkInterrupted();
         String instructionSetString = "src\\Instruction_Sets\\Phase_" + phase + ".json";
         doInstructionSet(instructionSetString, startingInstruction);
     }
 
     public static void doInstructionSet(String instructionSetString) throws InterruptedException {
+        checkInterrupted();
         JSONArray instructionSet = loadInstructionSet(instructionSetString);
         for (int i = 0; i<instructionSet.size(); i++){
             Object instruction = instructionSet.get(i);
@@ -194,6 +199,7 @@ public class AIBM {
 
 
     public static void doPhaseTime(int phase, long time) throws InterruptedException {
+        checkInterrupted();
         String instructionSetString = "src\\Instruction_Sets\\Phase_" + phase + ".json";
         doInstructionSetTime(instructionSetString, time);
     }
@@ -214,6 +220,7 @@ public class AIBM {
     }
 
     public static void doInstructionSet(String instructionSetString, int startingInstruction) throws InterruptedException {
+        checkInterrupted();
         JSONArray instructionSet = loadInstructionSet(instructionSetString);
         for (int i = startingInstruction; i<instructionSet.size(); i++){
             Object instruction = instructionSet.get(i);
@@ -224,6 +231,7 @@ public class AIBM {
     }
 
     private static int doInstruction(JSONObject instruction) throws InterruptedException {
+        checkInterrupted();
         String type = (String) instruction.get("type");
         String name = (String) instruction.get("name");
         System.out.println("Doing Instruction: " + name);
@@ -272,6 +280,7 @@ public class AIBM {
     }
 
     private static void doCommand(String command_string, boolean wait_until_done, long fuse) throws InterruptedException {
+        checkInterrupted();
         Typer.command(command_string);
         if(wait_until_done && fuse == -1){
             Looker.waitUntilDone();
@@ -283,6 +292,7 @@ public class AIBM {
     }
 
     private static void doCraft(String item, int number, boolean open_inventory, boolean close_inventory) throws InterruptedException {
+        checkInterrupted();
         if(open_inventory){
             Typer.openInventory();
         }
@@ -295,6 +305,7 @@ public class AIBM {
     }
 
     private static void doSmelt(String item, int number, boolean place_in, boolean wait_until_done, boolean open_inventory, boolean close_inventory) throws InterruptedException {
+        checkInterrupted();
         if(open_inventory){
             Typer.openInventory();
         }
@@ -314,6 +325,7 @@ public class AIBM {
     }
 
     private static void doPlace(String item, boolean enter) throws InterruptedException {
+        checkInterrupted();
 
         Looker.waitUntilDone();
         Typer.command(".b goal ~ ~1 ~");
@@ -323,16 +335,19 @@ public class AIBM {
         Typer.command(".b path");
         Looker.waitUntilDone();
         Typer.openInventory();
+        checkInterrupted();
         Waiter.wait(100);
         MouseMover.moveMouseAway();
         Waiter.waitLong();
         Sorter.putItemInHotbar(item, 9, false);
         Typer.closeInventory();
+        checkInterrupted();
         Typer.type("9",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Looker.lookDown();
         Waiter.wait(Waiter.getLongSleepTime()*2);
         Typer.doSneak();
         Typer.doJump();
+        checkInterrupted();
         Waiter.wait(Waiter.getLongSleepTime()*2);
         Typer.holdRightClick(2000);
         Typer.releaseRightClick(Waiter.getShortSleepTime());
@@ -345,6 +360,7 @@ public class AIBM {
     }
 
     private static void doSort(JSONArray spec, boolean discard_unspecified, boolean open_inventory, boolean close_inventory) throws InterruptedException {
+        checkInterrupted();
         if(open_inventory){
             Typer.openInventory();
         }
@@ -352,6 +368,7 @@ public class AIBM {
         Waiter.wait(100);
 
         for (Object action : spec){
+            checkInterrupted();
             int slot = ((Number) (((JSONObject) action).get("slot"))).intValue();
             if(slot>0) {
                 Sorter.putItemInHotbar((String) ((JSONObject) action).get("item"), slot, (Boolean) ((JSONObject) action).get("backOnly"));
@@ -366,6 +383,7 @@ public class AIBM {
     }
 
     private static void doLight(String portal) throws InterruptedException {
+        checkInterrupted();
         switch (portal) {
             case "nether":
                 Typer.type("2");
@@ -408,6 +426,7 @@ public class AIBM {
 
 
     public static void doMove(String move_type) throws InterruptedException {
+        checkInterrupted();
         switch (move_type){
             case "portal":
                 Typer.startMoveBack();
@@ -436,6 +455,7 @@ public class AIBM {
     }
 
     public static int doCheck(String check_type) throws InterruptedException {
+        checkInterrupted();
         int jumpValue = 0;
         switch(check_type){
             case "flint":
@@ -485,10 +505,12 @@ public class AIBM {
 
 
     public static void doHotbar(String slot) throws InterruptedException {
+        checkInterrupted();
         Typer.type(slot);
     }
 
     public static void doThrow() throws InterruptedException {
+        checkInterrupted();
         Typer.rightClick(250);
         Waiter.wait(100);
     }
@@ -623,7 +645,6 @@ public class AIBM {
 
 
     public static JSONArray loadInstructionSet(String instructionSetString) throws InterruptedException {
-        checkInterrupted();
         JSONParser jsonParser = new JSONParser();
         JSONArray instructionSet = null;
         try (FileReader reader = new FileReader(instructionSetString))
@@ -637,6 +658,7 @@ public class AIBM {
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
+        checkInterrupted();
         return instructionSet;
     }
 
@@ -672,11 +694,13 @@ public class AIBM {
 
 
     public static void makeObsidianTest() throws InterruptedException {
+        checkInterrupted();
         Typer.command("/fill ~-1 ~-1 ~-1 ~-5 ~-2 ~-5 minecraft:lava", Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("/fill ~-3 ~3 ~-3 ~-3 ~3 ~-3 minecraft:water", Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
     }
 
     public static void doHunt() throws InterruptedException {
+        checkInterrupted();
         Typer.command("/clear @s",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("/give Cosmologicomical diamond_helmet{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
         Typer.command("/give Cosmologicomical diamond_chestplate{Enchantments:[{id:unbreaking,lvl:100}]}",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
@@ -717,7 +741,9 @@ public class AIBM {
 
     private static void checkInterrupted() throws InterruptedException {
         if (Thread.currentThread().isInterrupted()) {
+            Typer.releaseAllKeys();
             throw new InterruptedException();
         }
+
     }
 }
