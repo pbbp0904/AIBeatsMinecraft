@@ -530,11 +530,13 @@ public class Main {
                 Typer.closeInventory();
                 break;
             case "top_of_pillar":
-                boolean top_of_pillar_check = Looker.foundImageOnScreen("src\\Checkpoint_Images\\top_obsidian.jpg", Looker.getInventoryScreenRect(),0.01);
+                Looker.lookUp();
+                Waiter.wait(100);
+                boolean top_of_pillar_check = Looker.foundImageOnScreen("src\\Checkpoint_Images\\bedrock.jpg", Looker.getInventoryScreenRect(),0.01);
                 if (top_of_pillar_check){
                     jumpValue = 0;
                 }else{
-                    jumpValue = -1;
+                    jumpValue = -2;
                 }
 
                 break;

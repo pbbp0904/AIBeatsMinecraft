@@ -8,6 +8,6 @@
   {"type": "command", "name": "Give Diamond Boots", "command_string": "/give @s diamond_boots", "wait_until_done": false},
   {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": -1, "item": "diamond_helmet", "backOnly": false}, {"slot": -1, "item": "diamond_chestplate", "backOnly": false}, {"slot": -1, "item": "diamond_leggings", "backOnly": false}, {"slot": -1, "item": "diamond_boots", "backOnly": false}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
   {"type": "command", "name": "Give Mushroom Stew", "command_string": "/give @s minecraft:suspicious_stew{Effects:[{EffectId:23,EffectDuration:7}]} 20", "wait_until_done": false},
-  {"type": "command", "name": "Give Dirt", "command_string": "/give @s dirt 384", "wait_until_done": false},
+  {"type": "command", "name": "Give Dirt", "command_string": "/give @s dirt 448", "wait_until_done": false},
   {"type": "command", "name": "Make End Portal", "command_string": "/fill ~ ~ ~ ~ ~ ~ end_portal", "wait_until_done": false}
 ]
