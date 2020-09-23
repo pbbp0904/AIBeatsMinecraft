@@ -86,8 +86,8 @@ public class Looker {
     private static final Rectangle topLeftScreenRect;
 
     private static int guiScale;
-    private static int centerX;
-    private static int centerY;
+    private static final int centerX;
+    private static final int centerY;
 
     static{
         guiScale = 0;
@@ -208,7 +208,6 @@ public class Looker {
         return furnaceResSlot;
     }
 
-
     public static Rectangle getInventoryScreenRect() {
         return inventoryScreenRect;
     }
@@ -216,21 +215,6 @@ public class Looker {
     public static Rectangle getBackpackScreenRect() {
         return backpackScreenRect;
     }
-
-    public static Rectangle getCenterScreenRect() {
-        return centerScreenRect;
-    }
-
-    public static Rectangle getFurnaceProgressScreenRect() {
-        return furnaceProgressScreenRect;
-    }
-
-
-
-
-
-
-
 
     public static Rectangle getMinecraftWindow() {
         Rectangle rect = null;
@@ -362,7 +346,6 @@ public class Looker {
 
     public static boolean foundImageOnScreen(String pathname, Rectangle screenRect, double threshold) throws InterruptedException {
         BufferedImage screenImg = screenShot(screenRect);
-        String s = String.valueOf(System.currentTimeMillis());
         String filePath = new File(pathname).getAbsolutePath();
         BufferedImage img = resize(Objects.requireNonNull(getImage(filePath)), ((double) (guiScale))/3.0);
         double diff = findSubImageDiff(screenImg, img);
@@ -372,7 +355,6 @@ public class Looker {
 
     public static boolean foundImageOnScreenBW(String pathname, Rectangle screenRect, double threshold) throws InterruptedException {
         BufferedImage screenImg = makeImageBlackAndWhite(screenShot(screenRect),whiteThreshold);
-        String s = String.valueOf(System.currentTimeMillis());
         String filePath = new File(pathname).getAbsolutePath();
         BufferedImage img = makeImageBlackAndWhite(resize(Objects.requireNonNull(getImage(filePath)), ((double) (guiScale))/3.0),whiteThreshold) ;
         double diff = findSubImageDiff(screenImg, img);

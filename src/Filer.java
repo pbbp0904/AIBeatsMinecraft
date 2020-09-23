@@ -1,10 +1,7 @@
-import com.sun.jna.platform.FileUtils;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
 import static java.nio.file.StandardCopyOption.*;
@@ -139,15 +136,13 @@ public class Filer {
         AIBM.checkInterrupted();
         String appData = System.getenv("APPDATA");
         File loc = new File(appData + "\\.minecraft\\schematics");
-        if (!(loc.exists() && loc.isDirectory())){
-            loc.mkdir();
-        }
+        loc.mkdir();
         Path src = Paths.get("src\\Presets_Schematics\\AIBM_portal.schematic");
-        Path dest = Paths.get(appData + "\\.minecraft\\schematics\\AIBM_portal.schematic");
+        Path dest = Paths.get(loc + "AIBM_portal.schematic");
         Files.copy(src, dest, REPLACE_EXISTING);
 
         Path src2 = Paths.get("src\\Presets_Schematics\\AIBM_shield.schematic");
-        Path dest2 = Paths.get(appData + "\\.minecraft\\schematics\\AIBM_shield.schematic");
+        Path dest2 = Paths.get(loc + "AIBM_shield.schematic");
         Files.copy(src2, dest2, REPLACE_EXISTING);
     }
 
@@ -208,7 +203,6 @@ public class Filer {
 
                     //remove the entry from @ourSettings so it is not updated at the end
                     ourSettings.remove(key);
-                    continue;
                 }
 
                 //if the values are not the same
@@ -222,7 +216,6 @@ public class Filer {
 
                     //increment the settings updated @counter
                     counter++;
-                    continue;
                 }
             }
 
@@ -234,7 +227,6 @@ public class Filer {
 
                 //increment the settings updated @counter
                 counter++;
-                continue;
             }
         }
 

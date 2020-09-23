@@ -19,8 +19,6 @@ public class Typer {
     private static Integer sneak;
     private static Integer jump;
     private static HashMap<String, ArrayList<Integer>> k;
-    private static long PERIOD = 1000L;
-    private static long lastTime = System.currentTimeMillis() - PERIOD;
 
     static {
 
@@ -79,7 +77,7 @@ public class Typer {
 
     public static void pressKey(int i, int waitTime) throws InterruptedException {
         robot.keyPress(i);
-
+        Waiter.wait(waitTime);
         robot.keyRelease(i);
     }
 
@@ -353,7 +351,7 @@ public class Typer {
         k.put("X", new ArrayList<>(Arrays.asList(KeyEvent.VK_X, KeyEvent.VK_SHIFT)));
         k.put("Y", new ArrayList<>(Arrays.asList(KeyEvent.VK_Y, KeyEvent.VK_SHIFT)));
         k.put("Z", new ArrayList<>(Arrays.asList(KeyEvent.VK_Z, KeyEvent.VK_SHIFT)));
-        //End captial letters
+        //End capital letters
 
 
         //Begin numbers
@@ -452,7 +450,7 @@ public class Typer {
 
         //End symbols
 
-        //Unknown key. Only used in minecraft congif file for unassigned keys
+        //Unknown key. Only used in minecraft config file for unassigned keys
         k.put("unknown", new ArrayList<>(Collections.singletonList(-1)));
 
     }
