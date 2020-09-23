@@ -327,20 +327,20 @@ public class Looker {
     }
 
     public static boolean bufferedImagesEqual(BufferedImage img1, BufferedImage img2) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         if (img1.getWidth() == img2.getWidth() && img1.getHeight() == img2.getHeight()) {
             for (int x = 0; x < img1.getWidth(); x++) {
                 for (int y = 0; y < img1.getHeight(); y++) {
                     if (img1.getRGB(x, y) != img2.getRGB(x, y))
-                        checkInterrupted();
+                        AIBM.checkInterrupted();
                         return false;
                 }
             }
         } else {
-            checkInterrupted();
+            AIBM.checkInterrupted();
             return false;
         }
-        checkInterrupted();
+        AIBM.checkInterrupted();
         return true;
     }
 
@@ -350,12 +350,12 @@ public class Looker {
             for (int y = 0; y < screenRect.getHeight(); y+=2) {
                 Color c = new Color(image.getRGB(x, y));
                 if (c.equals(color)) {
-                    checkInterrupted();
+                    AIBM.checkInterrupted();
                     return true;
                 }
             }
         }
-        checkInterrupted();
+        AIBM.checkInterrupted();
         return false;
     }
 
@@ -390,7 +390,7 @@ public class Looker {
     }
 
     public static BufferedImage screenShot(Rectangle screenRect) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         Robot robot = null;
         try {
             robot = new Robot();
@@ -403,7 +403,7 @@ public class Looker {
     }
 
     public static BufferedImage getImage(String filename) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
 
         try {
             return ImageIO.read(new File(filename));
@@ -414,7 +414,7 @@ public class Looker {
     }
 
     public static BufferedImage makeImageBlackAndWhite(BufferedImage image,int threshold) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
 
         int width = image.getWidth();
         int height = image.getHeight();
@@ -437,12 +437,12 @@ public class Looker {
             }
         }
 
-        checkInterrupted();
+        AIBM.checkInterrupted();
         return image;
     }
 
     public static BufferedImage makeImageBlackAndWhite(BufferedImage image,int threshold, Color color) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
 
         int width = image.getWidth();
         int height = image.getHeight();
@@ -467,7 +467,7 @@ public class Looker {
 
             }
         }
-        checkInterrupted();
+        AIBM.checkInterrupted();
         return image;
     }
 
@@ -504,7 +504,7 @@ public class Looker {
 
 
     public static boolean findColorMatch(BufferedImage im1, Color color, Point p) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
 
         int pixel = im1.getRGB(p.x, p.y);
         Color color2 = new Color(pixel, true);
@@ -552,7 +552,7 @@ public class Looker {
      * Calculates the difference between two ARGB colours (BufferedImage.TYPE_INT_ARGB).
      */
     private static double compareARGB(int rgb1, int rgb2) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
 
         double r1 = ((rgb1 >> 16) & 0xFF) / 255.0;
         double r2 = ((rgb2 >> 16) & 0xFF) / 255.0;
@@ -578,7 +578,7 @@ public class Looker {
 //    over the input image.
 
     public static BufferedImage resize(BufferedImage inputImage, double percent) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
 
         int scaledWidth = (int) (inputImage.getWidth() * percent);
         int scaledHeight = (int) (inputImage.getHeight() * percent);
@@ -586,7 +586,7 @@ public class Looker {
     }
 
     public static BufferedImage resize(BufferedImage inputImage, int scaledWidth, int scaledHeight) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         // creates output image
         BufferedImage outputImage = new BufferedImage(scaledWidth, scaledHeight, inputImage.getType());
 
@@ -596,12 +596,5 @@ public class Looker {
         g2d.dispose();
 
         return outputImage;
-    }
-
-    private static void checkInterrupted() throws InterruptedException {
-        if (Thread.currentThread().isInterrupted()) {
-            Typer.releaseAllKeys();
-            throw new InterruptedException();
-        }
     }
 }

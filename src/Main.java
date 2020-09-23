@@ -48,6 +48,7 @@ class ThreadHandler extends Thread {
                 Typer.releaseAllKeys();
                 System.out.println("AIBM is closing.");
                 Main.setShutdown(true);
+                Main.setClosed(true);
             }
         }
     }
@@ -68,7 +69,7 @@ class Starter extends Thread implements NativeKeyListener {
     }
 
     public void nativeKeyPressed(NativeKeyEvent e) {
-        if (e.getKeyCode() == NativeKeyEvent.VC_BACK_SLASH) {
+        if (e.getKeyCode() == NativeKeyEvent.VC_END) {
             System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
             System.out.println("Voluntarily quitting run...");
             Main.setShutdown(true);
@@ -118,12 +119,14 @@ public class Main {
 
     public static boolean ready;
     public static boolean shutdown;
+    public static boolean closed;
     public static volatile Starter s;
     public static final ThreadHandler aibm = new ThreadHandler();
 
     public static void main(String[] args) throws InterruptedException {
         ready = false;
         shutdown = false;
+        closed = false;
         s = new Starter();
         s.start();
         s.setName("KeyboardListener");
@@ -147,15 +150,18 @@ public class Main {
             Waiter.wait(500);
         }
 
-        if (!aibm.isInterrupted()) {
-            aibm.interrupt();
+        while(!closed) {
+            if (!aibm.isInterrupted()) {
+                aibm.interrupt();
+            }
         }
 
-        Waiter.wait(1000);
         System.out.println("before escape 1");
-        Typer.pressKey("escape", 4000);
+        Typer.holdKey("escape",10);
         System.out.println("before escape 2");
-        //Typer.pressKey("escape");
+        Typer.holdKey("escape");
+        Typer.releaseKey("escape");
+        Typer.pressKey("escape");
         System.out.println("before cancel");
         Typer.command(".b cancel");
         Typer.command(".preset load user");
@@ -165,10 +171,7 @@ public class Main {
 
     }
 
-    public static void setReady(boolean rdy){
-        ready = rdy;
-    }
-    public static void setShutdown(boolean sd){
-        shutdown = sd;
-    }
+    public static void setReady(boolean rdy){ ready = rdy; }
+    public static void setShutdown(boolean sd){ shutdown = sd; }
+    public static void setClosed(boolean closed) { Main.closed = closed; }
 }
