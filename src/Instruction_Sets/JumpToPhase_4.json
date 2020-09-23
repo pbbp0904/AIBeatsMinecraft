@@ -1,5 +1,4 @@
 [
-  {"type": "command", "name": "Give Diamond Sword", "command_string": "/give @s diamond_sword", "wait_until_done": false},
   {"type": "command", "name": "Give Diamond Pickaxe", "command_string": "/give @s diamond_pickaxe", "wait_until_done": false},
   {"type": "command", "name": "Give Diamond Shovel", "command_string": "/give @s diamond_shovel", "wait_until_done": false},
   {"type": "command", "name": "Give Diamond Helmet", "command_string": "/give @s diamond_helmet", "wait_until_done": false},
