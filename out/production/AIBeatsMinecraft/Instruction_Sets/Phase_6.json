@@ -1,0 +1,204 @@
+[
+  {"type": "command", "name": "Turn Off Auto Weapon", "command_string": ".toggle autoweapon", "wait_until_done": false},
+  {"type": "command", "name": "Turn Off Parkour", "command_string": ".b set allowParkour false", "wait_until_done": false},
+  {"type": "command", "name": "Set Maximum Fall Height", "command_string": ".b set maxFallHeightNoWater 3", "wait_until_done": false},
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal 47 50 0", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at 42,0", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal 47 105 0", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at 42,0", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal 38 50 24", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at 33,24", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal 38 105 24", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at 33,24", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal 12 50 44", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at 12,39", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal 12 105 44", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at 12,39", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal -13 50 44", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at -13,39", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+
+  {"type": "command", "name": "Follow End Crystals", "command_string": ".b follow entity end_crystal", "wait_until_done": true, "fuse": 27000},
+  {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal -39 50 24", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at -34,24", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+
+  {"type": "command", "name": "Follow End Crystals", "command_string": ".b follow entity end_crystal", "wait_until_done": true, "fuse": 27000},
+  {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal -48 50 0", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at -43,0", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+
+  {"type": "command", "name": "Follow End Crystals", "command_string": ".b follow entity end_crystal", "wait_until_done": true, "fuse": 27000},
+  {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal -34 50 -30", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at -34,-25", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+
+  {"type": "command", "name": "Follow End Crystals", "command_string": ".b follow entity end_crystal", "wait_until_done": true, "fuse": 27000},
+  {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal -13 50 -44", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at -13,-40", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+
+  {"type": "command", "name": "Follow End Crystals", "command_string": ".b follow entity end_crystal", "wait_until_done": true, "fuse": 27000},
+  {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal 17 50 -40", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at 12,-40", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+
+  {"type": "command", "name": "Follow End Crystals", "command_string": ".b follow entity end_crystal", "wait_until_done": true, "fuse": 27000},
+  {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal 38 50 -25", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at 33,-25", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+
+  {"type": "command", "name": "Follow End Crystals", "command_string": ".b follow entity end_crystal", "wait_until_done": true, "fuse": 27000},
+  {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal 0 50 0", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at 33,-25", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+
+  {"type": "command", "name": "Follow End Crystals", "command_string": ".b follow entity end_crystal", "wait_until_done": true, "fuse": 30000},
+  {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal 0 50 0", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at 33,-25", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+
+  {"type": "command", "name": "Follow End Crystals", "command_string": ".b follow entity end_crystal", "wait_until_done": true, "fuse": 35000},
+  {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal 0 50 0", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at 33,-25", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+
+  {"type": "command", "name": "Follow End Crystals", "command_string": ".b follow entity end_crystal", "wait_until_done": true, "fuse": 40000},
+  {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal 0 50 0", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at 33,-25", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+
+  {"type": "command", "name": "Follow End Crystals", "command_string": ".b follow entity end_crystal", "wait_until_done": true, "fuse": 45000},
+  {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal 0 50 0", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at 33,-25", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+
+  {"type": "command", "name": "Follow End Crystals", "command_string": ".b follow entity end_crystal", "wait_until_done": true, "fuse": 50000},
+  {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal 0 50 0", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at 33,-25", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+
+  {"type": "command", "name": "Follow End Crystals", "command_string": ".b follow entity end_crystal", "wait_until_done": true, "fuse": 55000},
+  {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal 0 50 0", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at 33,-25", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+
+  {"type": "command", "name": "Follow End Crystals", "command_string": ".b follow entity end_crystal", "wait_until_done": true, "fuse": 60000},
+  {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false},
+
+  {"type": "command", "name": "Set Goal", "command_string": ".b goal 0 50 0", "wait_until_done": false},
+  {"type": "command", "name": "Path to pillar at 33,-25", "command_string": ".b path", "wait_until_done": true},
+
+  {"type": "sort",    "name": "Sort Inventory", "spec": [{"slot": 9, "item": "mushroom_stew", "backOnly": false}, {"slot": 8, "item": "mushroom_stew", "backOnly": true}, {"slot": 7, "item": "mushroom_stew", "backOnly": true}, {"slot": 6, "item": "mushroom_stew", "backOnly": true}, {"slot": 5, "item": "dirt", "backOnly": false}, {"slot": 4, "item": "dirt", "backOnly": true}], "discard_unspecified": false, "open_inventory": true, "close_inventory": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+  {"type": "command", "name": "Wait a bit", "command_string": " ", "wait_until_done": true},
+
+  {"type": "command", "name": "Follow End Crystals", "command_string": ".b follow entity end_crystal", "wait_until_done": true, "fuse": 120000},
+  {"type": "command", "name": "Stop Following", "command_string": ".b stop", "wait_until_done": false}
+]
