@@ -4,16 +4,15 @@ public class Sorter {
     
     private static final int shortSleep;
     private static final int longSleep;
-    private static final int stationarySleep;
     
     static {
         shortSleep = 100;
         longSleep = 250;
-        stationarySleep = 1500;
     }
 
 
-    public static void putItemInHotbar(String item, int slot, boolean lookOnlyInBackpack){
+    public static void putItemInHotbar(String item, int slot, boolean lookOnlyInBackpack) throws InterruptedException {
+        AIBM.checkInterrupted();
         MouseMover.moveMouseAway();
         Rectangle rect;
         if(lookOnlyInBackpack) {
@@ -26,7 +25,8 @@ public class Sorter {
     }
 
 
-    public static void putOnArmor(String item, boolean lookOnlyInBackpack) {
+    public static void putOnArmor(String item, boolean lookOnlyInBackpack) throws InterruptedException {
+        AIBM.checkInterrupted();
         MouseMover.moveMouseAway();
         Rectangle rect;
         if(lookOnlyInBackpack) {
