@@ -19,6 +19,8 @@ public class Typer {
     private static Integer sneak;
     private static Integer jump;
     private static HashMap<String, ArrayList<Integer>> k;
+    private static long PERIOD = 1000L;
+    private static long lastTime = System.currentTimeMillis() - PERIOD;
 
     static {
 
@@ -77,7 +79,7 @@ public class Typer {
 
     public static void pressKey(int i, int waitTime) throws InterruptedException {
         robot.keyPress(i);
-        Waiter.wait(waitTime);
+
         robot.keyRelease(i);
     }
 
@@ -130,7 +132,7 @@ public class Typer {
 
 
     public static void type(String text) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         for (int i = 0; i < text.length(); i++) {
             Waiter.wait(40);
             pressKey(text.substring(i, i + 1));
@@ -139,7 +141,7 @@ public class Typer {
     }
 
     public static void type(String text, int sleepS, int sleepL) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         for (int i = 0; i < text.length(); i++) {
             Waiter.wait(sleepS);
             pressKey(text.substring(i, i + 1));
@@ -148,75 +150,75 @@ public class Typer {
     }
 
     public static void command(String text, int sleepS, int sleepL) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         type(text.substring(0, 1), sleepS, sleepL);
         type(text.substring(1), sleepS, sleepL);
         pressKey("enter", Waiter.getLongSleepTime());
     }
 
     public static void command(String text) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         type(text.substring(0, 1));
         type(text.substring(1));
         pressKey("enter", Waiter.getLongSleepTime());
     }
 
     public static void startMoveForward() throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         holdKey(moveForward);
     }
 
     public static void stopMoveForward() throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         releaseKey(moveForward);
     }
 
     public static void startMoveLeft() throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         holdKey(moveLeft);
     }
 
     public static void stopMoveLeft() throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         releaseKey(moveLeft);
     }
 
     public static void startMoveBack() throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         holdKey(moveBack);
     }
 
     public static void stopMoveBack() throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         releaseKey(moveBack);
     }
 
     public static void startMoveRight() throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         holdKey(moveRight);
     }
 
     public static void stopMoveRight() throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         releaseKey(moveRight);
     }
 
     public static void leftClick(int sleepTime) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Waiter.wait(sleepTime);
     }
 
     public static void rightClick(int sleepTime) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
         Waiter.wait(sleepTime);
     }
 
     public static void holdLeftClick(int sleepTime) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         Waiter.wait(sleepTime);
     }
@@ -227,7 +229,7 @@ public class Typer {
     }
 
     public static void holdRightClick(int sleepTime) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
         Waiter.wait(sleepTime);
     }
@@ -238,44 +240,44 @@ public class Typer {
     }
 
     public static void openInventory() throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         pressKey(inventoryKey);
     }
 
     public static void sneak() throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         holdKey(sneak);
         Waiter.wait(50);
         releaseKey(sneak);
     }
 
     public static void doSneak() throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         holdKey(sneak);
     }
 
     public static void stopSneak() throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         releaseKey(sneak);
     }
 
     public static void jump() throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         pressKey(jump, 50);
     }
 
     public static void doJump() throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         holdKey(jump);
     }
 
     public static void stopJump() throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         releaseKey(jump);
     }
 
     public static void closeInventory() throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         pressKey("escape");
     }
 
@@ -456,7 +458,6 @@ public class Typer {
     }
 
     public static void releaseAllKeys() {
-        System.out.println("iran");
         for (HashMap.Entry<String, ArrayList<Integer>> entry : k.entrySet()) {
             try {
                 Typer.releaseKey(entry.getValue().get(0));
@@ -467,13 +468,6 @@ public class Typer {
         }
         robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-    }
-
-    private static void checkInterrupted() throws InterruptedException {
-        if (Thread.currentThread().isInterrupted()) {
-            Typer.releaseAllKeys();
-            throw new InterruptedException();
-        }
     }
 }
 

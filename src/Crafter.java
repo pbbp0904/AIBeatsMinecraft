@@ -9,11 +9,11 @@ public class Crafter {
     }
 
     public static void craft(String item, int number) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         int[] coords;
         switch (item) {
             case "oak_planks":
-                checkInterrupted();
+                AIBM.checkInterrupted();
                 Waiter.waitShort();
                 // Move Mouse Away
                 MouseMover.moveMouseAway();
@@ -21,7 +21,7 @@ public class Crafter {
                 // Find location of logs
                 coords = Looker.findLocationOnScreen("src\\Item_Images\\oak_log.jpg", Looker.getInventoryScreenRect());
 
-                checkInterrupted();
+                AIBM.checkInterrupted();
                 // Pick up items
                 MouseMover.moveMouse(coords, Waiter.getShortSleepTime());
                 Typer.leftClick(Waiter.getShortSleepTime());
@@ -31,7 +31,7 @@ public class Crafter {
                 for (int i = 0; i < number; i++) {
                     Typer.rightClick(Waiter.getShortSleepTime());
                 }
-                checkInterrupted();
+                AIBM.checkInterrupted();
                 // Place item back in original slot
                 MouseMover.moveMouse(coords, Waiter.getShortSleepTime());
                 Typer.leftClick(Waiter.getShortSleepTime());
@@ -45,23 +45,23 @@ public class Crafter {
 
 
             case "crafting_table":
-                checkInterrupted();
+                AIBM.checkInterrupted();
                 Waiter.waitLong();
                 // Move mouse away
                 MouseMover.moveMouseAway();
                 Waiter.waitLong();
-                checkInterrupted();
+                AIBM.checkInterrupted();
 
                 // Find location of wood
                 coords = Looker.findLocationOnScreen("src\\Item_Images\\oak_planks.jpg", Looker.getInventoryScreenRect());
 
-                checkInterrupted();
+                AIBM.checkInterrupted();
                 // Pick up items
                 MouseMover.moveMouse(coords, Waiter.getShortSleepTime());
                 Typer.leftClick(Waiter.getShortSleepTime());
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getHandCraftSlot1(), Waiter.getShortSleepTime());
-                checkInterrupted();
+                AIBM.checkInterrupted();
                 // Place the correct number of items
                 for (int i = 0; i < number; i++) {
                     Typer.rightClick(Waiter.getShortSleepTime());
@@ -72,7 +72,7 @@ public class Crafter {
                 for (int i = 0; i < number; i++) {
                     Typer.rightClick(Waiter.getShortSleepTime());
                 }
-                checkInterrupted();
+                AIBM.checkInterrupted();
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getHandCraftSlot3(), Waiter.getShortSleepTime());
                 // Place the correct number of items
@@ -85,7 +85,7 @@ public class Crafter {
                 for (int i = 0; i < number; i++) {
                     Typer.rightClick(Waiter.getShortSleepTime());
                 }
-                checkInterrupted();
+                AIBM.checkInterrupted();
 
                 // Place item back in original slot
                 MouseMover.moveMouse(coords, Waiter.getShortSleepTime());
@@ -100,21 +100,21 @@ public class Crafter {
 
 
             case "stick":
-                checkInterrupted();
+                AIBM.checkInterrupted();
                 Waiter.waitShort();
                 // Move Mouse Away
                 MouseMover.moveMouseAway();
 
                 // Find location of wood
                 coords = Looker.findLocationOnScreen("src\\Item_Images\\oak_planks.jpg", Looker.getInventoryScreenRect());
-                checkInterrupted();
+                AIBM.checkInterrupted();
 
                 // Pick up items
                 MouseMover.moveMouse(coords, Waiter.getShortSleepTime());
                 Typer.leftClick(Waiter.getShortSleepTime());
                 // Move mouse to craft
                 MouseMover.moveMouse(Looker.getHandCraftSlot2(), Waiter.getShortSleepTime());
-                checkInterrupted();
+                AIBM.checkInterrupted();
                 // Place the correct number of items
                 for (int i = 0; i < number; i++) {
                     Typer.rightClick(Waiter.getShortSleepTime());
@@ -125,7 +125,7 @@ public class Crafter {
                 for (int i = 0; i < number; i++) {
                     Typer.rightClick(Waiter.getShortSleepTime());
                 }
-                checkInterrupted();
+                AIBM.checkInterrupted();
 
                 // Place item back in original slot
                 MouseMover.moveMouse(coords, Waiter.getShortSleepTime());
@@ -135,19 +135,19 @@ public class Crafter {
                 Typer.holdKey("shift", Waiter.getShortSleepTime());
                 Typer.leftClick(Waiter.getShortSleepTime());
                 Typer.releaseKey("shift", Waiter.getShortSleepTime());
-                checkInterrupted();
+                AIBM.checkInterrupted();
                 break;
 
 
 
 
             case "mushroom_stew":
-                checkInterrupted();
+                AIBM.checkInterrupted();
                 Waiter.waitLong();
                 // Move Mouse Away
                 MouseMover.moveMouseAway();
                 Waiter.waitLong();
-                checkInterrupted();
+                AIBM.checkInterrupted();
 
                 // Find location of bowls
                 int[] bowlCoords = Looker.findLocationOnScreen("src\\Item_Images\\bowl.jpg", Looker.getInventoryScreenRect());
@@ -156,10 +156,10 @@ public class Crafter {
                 // Find location of red mushrooms
                 int[] redCoords = Looker.findLocationOnScreen("src\\Item_Images\\red_mushroom.jpg", Looker.getInventoryScreenRect());
 
-                checkInterrupted();
+                AIBM.checkInterrupted();
                 // Find if dandelions are on the screen
                 boolean dandelionsFound = Looker.foundImageOnScreen("src\\Item_Images\\dandelion.jpg", Looker.getInventoryScreenRect(),0.05);
-                checkInterrupted();
+                AIBM.checkInterrupted();
 
                 if(dandelionsFound) {
                     int[] dandelionCoords = Looker.findLocationOnScreen("src\\Item_Images\\dandelion.jpg", Looker.getInventoryScreenRect());
@@ -176,7 +176,7 @@ public class Crafter {
                     // Place item back in original slot
                     MouseMover.moveMouse(dandelionCoords, Waiter.getShortSleepTime());
                     Typer.leftClick(Waiter.getShortSleepTime());
-                    checkInterrupted();
+                    AIBM.checkInterrupted();
                 }
 
                 // Pick up items
@@ -189,13 +189,13 @@ public class Crafter {
                 // Place all the items
                 Typer.leftClick(Waiter.getShortSleepTime());
 
-                checkInterrupted();
+                AIBM.checkInterrupted();
                 // Place item back in original slot
                 MouseMover.moveMouse(bowlCoords, Waiter.getShortSleepTime());
                 Typer.leftClick(Waiter.getShortSleepTime());
 
 
-                checkInterrupted();
+                AIBM.checkInterrupted();
                 // Pick up items
                 MouseMover.moveMouse(brownCoords, Waiter.getShortSleepTime());
                 Typer.leftClick(Waiter.getShortSleepTime());
@@ -210,7 +210,7 @@ public class Crafter {
                 MouseMover.moveMouse(brownCoords, Waiter.getShortSleepTime());
                 Typer.leftClick(Waiter.getShortSleepTime());
 
-                checkInterrupted();
+                AIBM.checkInterrupted();
                 // Pick up items
                 MouseMover.moveMouse(redCoords, Waiter.getShortSleepTime());
                 Typer.leftClick(Waiter.getShortSleepTime());
@@ -220,7 +220,7 @@ public class Crafter {
                 for (int i = 0; i < number; i++) {
                     Typer.rightClick(Waiter.getShortSleepTime());
                 }
-                checkInterrupted();
+                AIBM.checkInterrupted();
                 // Place item back in original slot
                 MouseMover.moveMouse(redCoords, Waiter.getShortSleepTime());
                 Typer.leftClick(Waiter.getShortSleepTime());
@@ -234,12 +234,12 @@ public class Crafter {
                 Typer.holdKey("shift", Waiter.getShortSleepTime());
                 Typer.leftClick(Waiter.getShortSleepTime());
                 Typer.releaseKey("shift", Waiter.getShortSleepTime());
-                checkInterrupted();
+                AIBM.checkInterrupted();
                 break;
 
 
             case "ender_eye":
-                checkInterrupted();
+                AIBM.checkInterrupted();
                 Waiter.waitLong();
 
                 // Move Mouse Away
@@ -454,7 +454,7 @@ public class Crafter {
     }
 
     public static void craftItem(int[] materialCoords, int[] craftingPositions, int number) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         // Put item in crafting table
         putMaterialInTable(materialCoords, craftingPositions, number);
 
@@ -466,7 +466,7 @@ public class Crafter {
 
 
     public static void craftItem(int[] materialCoords1, int[] materialCoords2, int[] craftingPositions1, int[] craftingPositions2, int number) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         // Put item 1 in crafting table
         putMaterialInTable(materialCoords1, craftingPositions1, number);
 
@@ -479,7 +479,7 @@ public class Crafter {
 
 
     public static void getResultantItem() throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         MouseMover.moveMouse(Looker.getTableCraftSlotRes(), Waiter.getShortSleepTime());
         Typer.holdKey("shift", Waiter.getShortSleepTime());
         Typer.leftClick(Waiter.getShortSleepTime());
@@ -487,7 +487,7 @@ public class Crafter {
     }
 
     public static void putMaterialInTable(int[] materialCoords, int[] craftingPositions, int number) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
          // Pick up material
         MouseMover.moveMouse(materialCoords, Waiter.getShortSleepTime());
         Typer.leftClick(Waiter.getShortSleepTime());
@@ -510,7 +510,7 @@ public class Crafter {
 
 
     public static void moveToCraft(int value) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         switch (value) {
             case 1:
                 MouseMover.moveMouse(Looker.getTableCraftSlot1(), Waiter.getShortSleepTime());
@@ -543,7 +543,7 @@ public class Crafter {
     }
 
     public static void smelt(String item, int number) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         switch(item) {
             case "iron_ore":
                 // Move mouse away
@@ -588,17 +588,10 @@ public class Crafter {
 
 
     public static void getSmelt() throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         MouseMover.moveMouse(Looker.getFurnaceResSlot(),Waiter.getShortSleepTime());
         Typer.holdKey("shift", Waiter.getShortSleepTime());
         Typer.leftClick(Waiter.getShortSleepTime());
         Typer.releaseKey("shift", longSleep);
-    }
-
-    private static void checkInterrupted() throws InterruptedException {
-        if (Thread.currentThread().isInterrupted()) {
-            Typer.releaseAllKeys();
-            throw new InterruptedException();
-        }
     }
 }

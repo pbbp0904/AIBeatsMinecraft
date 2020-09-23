@@ -12,6 +12,8 @@ import javax.imageio.ImageIO;
 
 public class AIBM {
 
+    private static boolean paused = false;
+
     public static void main() throws IOException, InterruptedException {
 
         //startUp();
@@ -739,11 +741,27 @@ public class AIBM {
         Typer.command(".b follow entity player",Waiter.getShortSleepTime(),Waiter.getLongSleepTime());
     }
 
-    private static void checkInterrupted() throws InterruptedException {
+    public static boolean isPaused() {
+        return paused;
+    }
+
+    public static void setPaused(boolean paused) {
+        AIBM.paused = paused;
+    }
+
+    public static void togglePaused() {
+        if (paused) {
+            paused = false;
+        }
+        else {
+            paused = true;
+        }
+    }
+
+    public static void checkInterrupted() throws InterruptedException {
         if (Thread.currentThread().isInterrupted()) {
             Typer.releaseAllKeys();
             throw new InterruptedException();
         }
-
     }
 }

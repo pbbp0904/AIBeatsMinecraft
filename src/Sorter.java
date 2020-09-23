@@ -12,7 +12,7 @@ public class Sorter {
 
 
     public static void putItemInHotbar(String item, int slot, boolean lookOnlyInBackpack) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         MouseMover.moveMouseAway();
         Rectangle rect;
         if(lookOnlyInBackpack) {
@@ -26,7 +26,7 @@ public class Sorter {
 
 
     public static void putOnArmor(String item, boolean lookOnlyInBackpack) throws InterruptedException {
-        checkInterrupted();
+        AIBM.checkInterrupted();
         MouseMover.moveMouseAway();
         Rectangle rect;
         if(lookOnlyInBackpack) {
@@ -39,12 +39,5 @@ public class Sorter {
         Typer.holdRightClick(shortSleep);
         Typer.releaseRightClick(shortSleep);
         Typer.releaseKey("shift");
-    }
-
-    private static void checkInterrupted() throws InterruptedException {
-        if (Thread.currentThread().isInterrupted()) {
-            Typer.releaseAllKeys();
-            throw new InterruptedException();
-        }
     }
 }
