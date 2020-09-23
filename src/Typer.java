@@ -11,8 +11,6 @@ import java.util.HashMap;
 public class Typer {
 
     private static Robot robot;
-    private static final int shortSleep;
-    private static final int longSleep;
     private static Integer inventoryKey;
     private static Integer moveForward;
     private static Integer moveLeft;
@@ -23,14 +21,12 @@ public class Typer {
     private static HashMap<String, ArrayList<Integer>> k;
 
     static {
+
         try {
             robot = new Robot();
         } catch (AWTException e) {
             e.printStackTrace();
         }
-        shortSleep = Waiter.getShortSleepTime();
-        longSleep = Waiter.getLongSleepTime();
-
         createHashMap();
 
         try {
@@ -38,207 +34,248 @@ public class Typer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
-    public static void pressKey (String s){
+    public static void pressKey(String s) throws InterruptedException {
         if (s.equals("unknown")) {
             System.out.println("Unknown key has been requested to type. Quitting... [TYPER]");
             System.exit(-1);
-        }
-        else if (k.get(s).size() == 1) {
+        } else if (k.get(s).size() == 1) {
             robot.keyPress(k.get(s).get(0));
             robot.keyRelease(k.get(s).get(0));
-        }
-        else if (k.get(s).size() == 2) {
+        } else if (k.get(s).size() == 2) {
             robot.keyPress(k.get(s).get(1));
             robot.keyPress(k.get(s).get(0));
             robot.keyRelease(k.get(s).get(0));
             robot.keyRelease(k.get(s).get(1));
         }
+        Waiter.wait(10);
     }
 
-    public static void pressKey (String s, int waitTime){
-        pressKey(s);
-        Waiter.wait(waitTime);
-    }
-
-    public static void pressKey (int i){
-        robot.keyPress(i);
-        robot.keyRelease(i);
-    }
-    
-    public static void holdKey(String s){
+    public static void pressKey(String s, int waitTime) throws InterruptedException {
         if (s.equals("unknown")) {
             System.out.println("Unknown key has been requested to type. Quitting... [TYPER]");
             System.exit(-1);
-        }
-        else if (k.get(s).size() == 1) {
+        } else if (k.get(s).size() == 1) {
             robot.keyPress(k.get(s).get(0));
+            Waiter.wait(waitTime);
+            robot.keyRelease(k.get(s).get(0));
+        } else if (k.get(s).size() == 2) {
+            robot.keyPress(k.get(s).get(1));
+            robot.keyPress(k.get(s).get(0));
+            Waiter.wait(waitTime);
+            robot.keyRelease(k.get(s).get(0));
+            robot.keyRelease(k.get(s).get(1));
         }
-        else if (k.get(s).size() == 2) {
+    }
+
+    public static void pressKey(int i) {
+        robot.keyPress(i);
+        robot.keyRelease(i);
+    }
+
+    public static void pressKey(int i, int waitTime) throws InterruptedException {
+        robot.keyPress(i);
+        Waiter.wait(waitTime);
+        robot.keyRelease(i);
+    }
+
+    public static void holdKey(String s) {
+        if (s.equals("unknown")) {
+            System.out.println("Unknown key has been requested to type. Quitting... [TYPER]");
+            System.exit(-1);
+        } else if (k.get(s).size() == 1) {
+            robot.keyPress(k.get(s).get(0));
+        } else if (k.get(s).size() == 2) {
             robot.keyPress(k.get(s).get(1));
             robot.keyPress(k.get(s).get(0));
         }
     }
 
-    public static void holdKey (String s, int waitTime){
+    public static void holdKey(String s, int waitTime) throws InterruptedException {
         holdKey(s);
         Waiter.wait(waitTime);
     }
 
-    public static void holdKey (int i){
+    public static void holdKey(int i) {
         robot.keyPress(i);
     }
 
-    public static void releaseKey(String s){
+    public static void holdKey(int i, int waitTime) throws InterruptedException {
+        robot.keyPress(i);
+        Waiter.wait(waitTime);
+    }
+
+    public static void releaseKey(String s) {
         if (s.equals("unknown")) {
             System.out.println("Unknown key has been requested to type. Quitting... [TYPER]");
             System.exit(-1);
-        }
-        else if (k.get(s).size() == 1) {
+        } else if (k.get(s).size() == 1) {
             robot.keyRelease(k.get(s).get(0));
-        }
-        else if (k.get(s).size() == 2) {
+        } else if (k.get(s).size() == 2) {
             robot.keyRelease(k.get(s).get(1));
             robot.keyRelease(k.get(s).get(0));
         }
     }
 
-    public static void releaseKey (String s, int waitTime){
+    public static void releaseKey(String s, int waitTime) throws InterruptedException {
         releaseKey(s);
         Waiter.wait(waitTime);
     }
 
-    public static void releaseKey (int i){
+    public static void releaseKey(int i) {
         robot.keyRelease(i);
     }
-    
 
-    public static void type(String text) {
-        for(int i = 0; i < text.length(); i++){
-            Waiter.wait(shortSleep);
+
+    public static void type(String text) throws InterruptedException {
+        AIBM.checkInterrupted();
+        for (int i = 0; i < text.length(); i++) {
+            Waiter.wait(40);
             pressKey(text.substring(i, i + 1));
         }
-        Waiter.wait(longSleep);
+        Waiter.waitLong();
     }
 
-    public static void type(String text, int sleepS, int sleepL) {
-        for(int i = 0; i < text.length(); i++){
+    public static void type(String text, int sleepS, int sleepL) throws InterruptedException {
+        AIBM.checkInterrupted();
+        for (int i = 0; i < text.length(); i++) {
             Waiter.wait(sleepS);
             pressKey(text.substring(i, i + 1));
         }
         Waiter.wait(sleepL);
     }
 
-    public static void command(String text, int sleepS, int sleepL){
-        type(text.substring(0,1), sleepS, sleepL);
+    public static void command(String text, int sleepS, int sleepL) throws InterruptedException {
+        AIBM.checkInterrupted();
+        type(text.substring(0, 1), sleepS, sleepL);
         type(text.substring(1), sleepS, sleepL);
-        pressKey("enter", longSleep);
+        pressKey("enter", Waiter.getLongSleepTime());
     }
 
-    public static void command(String text){
-        type(text.substring(0,1));
+    public static void command(String text) throws InterruptedException {
+        AIBM.checkInterrupted();
+        type(text.substring(0, 1));
         type(text.substring(1));
-        pressKey("enter", longSleep);
+        pressKey("enter", Waiter.getLongSleepTime());
     }
 
-    public static void startMoveForward(){
+    public static void startMoveForward() throws InterruptedException {
+        AIBM.checkInterrupted();
         holdKey(moveForward);
     }
 
-    public static void stopMoveForward(){
+    public static void stopMoveForward() throws InterruptedException {
+        AIBM.checkInterrupted();
         releaseKey(moveForward);
     }
 
-    public static void startMoveLeft(){
+    public static void startMoveLeft() throws InterruptedException {
+        AIBM.checkInterrupted();
         holdKey(moveLeft);
     }
 
-    public static void stopMoveLeft(){
+    public static void stopMoveLeft() throws InterruptedException {
+        AIBM.checkInterrupted();
         releaseKey(moveLeft);
     }
 
-    public static void startMoveBack(){
+    public static void startMoveBack() throws InterruptedException {
+        AIBM.checkInterrupted();
         holdKey(moveBack);
     }
 
-    public static void stopMoveBack(){
+    public static void stopMoveBack() throws InterruptedException {
+        AIBM.checkInterrupted();
         releaseKey(moveBack);
     }
 
-    public static void startMoveRight(){
+    public static void startMoveRight() throws InterruptedException {
+        AIBM.checkInterrupted();
         holdKey(moveRight);
     }
 
-    public static void stopMoveRight(){
+    public static void stopMoveRight() throws InterruptedException {
+        AIBM.checkInterrupted();
         releaseKey(moveRight);
     }
 
-    public static void leftClick(int sleepTime){
+    public static void leftClick(int sleepTime) throws InterruptedException {
+        AIBM.checkInterrupted();
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Waiter.wait(sleepTime);
     }
 
-    public static void rightClick(int sleepTime){
+    public static void rightClick(int sleepTime) throws InterruptedException {
+        AIBM.checkInterrupted();
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
         robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
         Waiter.wait(sleepTime);
     }
 
-    public static void holdLeftClick(int sleepTime) {
+    public static void holdLeftClick(int sleepTime) throws InterruptedException {
+        AIBM.checkInterrupted();
         robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
         Waiter.wait(sleepTime);
     }
 
-    public static void releaseLeftClick(int sleepTime) {
+    public static void releaseLeftClick(int sleepTime) throws InterruptedException {
         robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         Waiter.wait(sleepTime);
     }
 
-    public static void holdRightClick(int sleepTime) {
+    public static void holdRightClick(int sleepTime) throws InterruptedException {
+        AIBM.checkInterrupted();
         robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
         Waiter.wait(sleepTime);
     }
 
-    public static void releaseRightClick(int sleepTime) {
+    public static void releaseRightClick(int sleepTime) throws InterruptedException {
         robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
         Waiter.wait(sleepTime);
     }
 
-    public static void openInventory(){
+    public static void openInventory() throws InterruptedException {
+        AIBM.checkInterrupted();
         pressKey(inventoryKey);
     }
 
-    public static void sneak(){
+    public static void sneak() throws InterruptedException {
+        AIBM.checkInterrupted();
         holdKey(sneak);
         Waiter.wait(50);
         releaseKey(sneak);
     }
 
-    public static void doSneak(){
+    public static void doSneak() throws InterruptedException {
+        AIBM.checkInterrupted();
         holdKey(sneak);
     }
 
-    public static void stopSneak(){
+    public static void stopSneak() throws InterruptedException {
+        AIBM.checkInterrupted();
         releaseKey(sneak);
     }
 
-    public static void jump(){
+    public static void jump() throws InterruptedException {
+        AIBM.checkInterrupted();
+        pressKey(jump, 50);
+    }
+
+    public static void doJump() throws InterruptedException {
+        AIBM.checkInterrupted();
         holdKey(jump);
-        Waiter.wait(50);
+    }
+
+    public static void stopJump() throws InterruptedException {
+        AIBM.checkInterrupted();
         releaseKey(jump);
     }
 
-    public static void doJump(){
-        holdKey(jump);
-    }
-
-    public static void stopJump(){
-        releaseKey(jump);
-    }
-
-    public static void closeInventory(){
+    public static void closeInventory() throws InterruptedException {
+        AIBM.checkInterrupted();
         pressKey("escape");
     }
 
@@ -254,8 +291,7 @@ public class Typer {
         jump = k.get(s[5]).get(0);
     }
 
-    public static void createHashMap(){
-
+    public static void createHashMap() {
         k = new HashMap<>();
 
         //Begin lower case letters
@@ -315,7 +351,7 @@ public class Typer {
         k.put("X", new ArrayList<>(Arrays.asList(KeyEvent.VK_X, KeyEvent.VK_SHIFT)));
         k.put("Y", new ArrayList<>(Arrays.asList(KeyEvent.VK_Y, KeyEvent.VK_SHIFT)));
         k.put("Z", new ArrayList<>(Arrays.asList(KeyEvent.VK_Z, KeyEvent.VK_SHIFT)));
-        //End captial letters
+        //End capital letters
 
 
         //Begin numbers
@@ -399,7 +435,6 @@ public class Typer {
         k.put("left.control", new ArrayList<>(Collections.singletonList(KeyEvent.VK_CONTROL)));
 
 
-
         //For your copy pasta pleasure, blank hashmap assign statements
 
 //        k.put("", new ArrayList<>(Arrays.asList(KeyEvent.VK_)));
@@ -415,8 +450,22 @@ public class Typer {
 
         //End symbols
 
-        //Unknown key. Only used in minecraft congif file for unassigned keys
+        //Unknown key. Only used in minecraft config file for unassigned keys
         k.put("unknown", new ArrayList<>(Collections.singletonList(-1)));
 
     }
+
+    public static void releaseAllKeys() {
+        for (HashMap.Entry<String, ArrayList<Integer>> entry : k.entrySet()) {
+            try {
+                Typer.releaseKey(entry.getValue().get(0));
+            }
+            catch (IllegalArgumentException ignore) {
+                System.out.println("Invalid key code tried");
+            }
+        }
+        robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+    }
 }
+
