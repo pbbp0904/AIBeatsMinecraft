@@ -576,10 +576,12 @@ public class Crafter {
                 for (int i = 0; i < (Math.ceil(number/8.0)); i++) {
                     Typer.rightClick(Waiter.getShortSleepTime());
                 }
-
                 // Place item back in original slot
                 MouseMover.moveMouse(coalCoords, Waiter.getShortSleepTime());
                 Typer.leftClick(longSleep);
+                break;
+
+            default:
                 break;
 
         }
